@@ -1,13 +1,18 @@
 const { DataTypes } = requiere("sequelize");
 
 module.export = (sequelize) => {
-  sequelize.difine("manager", {
-    user: {
+  sequelize.define("manager", {
+    id: {
+      type: DataTypes.NUMBER,
+      primaryKey: true,
+      unique: true,
+    },
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     password: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
   });

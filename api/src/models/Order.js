@@ -1,8 +1,8 @@
 const { DataTypes } = requiere("sequelize");
 
 module.export = (sequelize) => {
-  sequelize.difine("shoppingOrders", {
-    customerId: {
+  sequelize.define("order", {
+    id: {
       type: DataTypes.NUMBER,
       allowNull: false,
     },

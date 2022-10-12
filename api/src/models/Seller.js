@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 
 module.export = (sequalize) => {
-  sequalize.difine("seller", {
+  sequalize.define("seller", {
     id: {
       type: DataTypes.NUMBER,
       primaryKey: true,
@@ -24,6 +24,11 @@ module.export = (sequalize) => {
       allowNull: false,
       isEmail: true,
     },
+    // TODO cambiar datatype a ENUM con los partidos de buenos aires
+    city: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     adress: {
       type: DataTypes.STRING,
     },
@@ -35,7 +40,11 @@ module.export = (sequalize) => {
     },
     enabled: {
       type: DataTypes.BOOLEAN,
-      default: true
-    }
+      defaultValue: false
+    },
+    category: {
+      type: DataTypes.ENUM('panadería', 'restaurante', 'supermercado'),
+      allowNull: false,
+    },
   });
 };
