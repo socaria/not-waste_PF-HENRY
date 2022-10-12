@@ -60,46 +60,43 @@ function LandingPage() {
       <Carousel>
 
       <Carousel.Item>
-      <Carousel.Caption>
-        
-
-      </Carousel.Caption>
         <img
         className="d-block w-100"
           src={img}  height='500px'
-          alt="First slide"
-        />
+          alt="First slide"/>
+
         <Carousel.Caption>
           <h3 className={style.strD}>First slide label</h3>
           <h4 className={style.strD}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h4>
         </Carousel.Caption>
-      </Carousel.Item>
 
-      <Carousel.Item>
+    </Carousel.Item>
+
+    <Carousel.Item>
         <img
           className="d-block w-100"
           src={img} height='500px'
-          alt="Second slide"
-        />
+          alt="Second slide"/>
 
         <Carousel.Caption>
           <h3 className={style.strD}>Second slide label</h3>
           <h4 className={style.strD}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h4>
         </Carousel.Caption>
-      </Carousel.Item>
 
-      <Carousel.Item>
+    </Carousel.Item>
+
+    <Carousel.Item>
         <img
           className="d-block w-100"
           src={img} height='500px'
-          alt="Third slide"
-        />
+          alt="Third slide"/>
 
         <Carousel.Caption>
           <h3 className={style.strD}>Third slide label</h3>
           <h4 className={style.strD}>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</h4>
         </Carousel.Caption>
-      </Carousel.Item>
+
+    </Carousel.Item>
     </Carousel>
       <div className={style.cont}>
         <h1>inicio</h1>
