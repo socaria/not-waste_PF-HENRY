@@ -36,6 +36,13 @@ function Register(props) {
         [e.target.name]: e.target.checked,
         lastName: ''
       })
+      if (e.target.checked === false) {
+        setError(
+          {...error,
+            lastName: "Lastname is required"
+        }
+        )
+      }
     }
   }
 
@@ -65,14 +72,14 @@ function Register(props) {
           <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
         </svg>
         <div className="form-floating is-invalid">
-          <input type="text" className={!error.name ? 'form-control' : "form-control is-invalid"} id="floatingInputGroup2" placeholder="Name" name='name' required onChange={(e) => changeState(e)} />
+          <input type="text" className={!error.name ? 'form-control' : "form-control is-invalid"} id="floatingInputName" placeholder="Name" name='name' required onChange={(e) => changeState(e)} />
           <label for="floatingInputGroup2">Name</label>
           {error.name && <div className="invalid-feedback">
             {error.name}
           </div>}
           {!input.proveedor && <div className="input-group has-validation">
             <div className="form-floating is-invalid">
-              <input type="text" className={!error.lastName ? 'form-control' : "form-control is-invalid"} id="floatingInputGroup2" placeholder="lastName" name='lastName' required onChange={(e) => changeState(e)} />
+              <input type="text" className={!error.lastName ? 'form-control' : "form-control is-invalid"} id="floatingInputlastName" placeholder="lastName" name='lastName' required onChange={(e) => changeState(e)} />
               <label for="floatingInputGroup2">Lastname</label>
             </div>
             {error.lastName && <div className="invalid-feedback">
@@ -89,7 +96,7 @@ function Register(props) {
           <path d="M9.5 6.5a1.5 1.5 0 0 1-1 1.415l.385 1.99a.5.5 0 0 1-.491.595h-.788a.5.5 0 0 1-.49-.595l.384-1.99a1.5 1.5 0 1 1 2-1.415z" />
         </svg>
         <div className="form-floating is-invalid">
-          <input type="password" className={!error.password ? 'form-control' : "form-control is-invalid"} id="floatingInputGroup2" placeholder="Password" name='password' required onChange={(e) => changeState(e)} />
+          <input type="password" className={!error.password ? 'form-control' : "form-control is-invalid"} id="floatingInputPassword" placeholder="Password" name='password' required onChange={(e) => changeState(e)} />
           <label for="floatingInputGroup2">Password</label>
         </div>
         {error.password && <div className="invalid-feedback">
@@ -103,7 +110,7 @@ function Register(props) {
           <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
         </svg>
         <div className="form-floating is-invalid">
-          <input type="tel" className={!error.phone ? 'form-control' : "form-control is-invalid"} id="floatingInputGroup2" placeholder="Number phone" name='phone' required onChange={(e) => changeState(e)} />
+          <input type="tel" className={!error.phone ? 'form-control' : "form-control is-invalid"} id="floatingInputNumber phone" placeholder="Number phone" name='phone' required onChange={(e) => changeState(e)} />
           <label for="floatingInputGroup2">Number phone</label>
         </div>
         {error.phone && <div className="invalid-feedback">
@@ -117,7 +124,7 @@ function Register(props) {
           <path d="M11.793 8.5H9v-1h5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.354-.146l-.853-.854zM5 7c0 .552-.448 0-1 0s-1 .552-1 0a1 1 0 0 1 2 0z" />
         </svg>
         <div className="form-floating is-invalid">
-          <input type="email" className={!error.email ? 'form-control' : "form-control is-invalid"} id="floatingInputGroup2" name='email' placeholder="Email" required onChange={(e) => changeState(e)} />
+          <input type="email" className={!error.email ? 'form-control' : "form-control is-invalid"} id="floatingInputEmail" name='email' placeholder="Email" required onChange={(e) => changeState(e)} />
           <label for="floatingInputGroup2">Email</label>
         </div>
         {error.email && <div className="invalid-feedback">
