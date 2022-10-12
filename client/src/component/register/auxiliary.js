@@ -1,5 +1,6 @@
 export function validate (input) {
     let error = {}
+    
     if (!input.name) {
         error.name = "Name is required";
     }
