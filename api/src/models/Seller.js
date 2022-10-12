@@ -1,7 +1,7 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes } = require("sequelize");
 
-module.export = (sequalize) => {
-  sequalize.define("seller", {
+module.exports = (sequelize) => {
+  sequelize.define("seller", {
     id: {
       type: DataTypes.NUMBER,
       primaryKey: true,
@@ -17,7 +17,7 @@ module.export = (sequalize) => {
     },
     phone: {
       type: DataTypes.NUMBER,
-      allowNull: number,
+      allowNull: false,
     },
     email: {
       type: DataTypes.STRING,
@@ -40,10 +40,10 @@ module.export = (sequalize) => {
     },
     enabled: {
       type: DataTypes.BOOLEAN,
-      defaultValue: false
+      defaultValue: false,
     },
     category: {
-      type: DataTypes.ENUM('panadería', 'restaurante', 'supermercado'),
+      type: DataTypes.ENUM("panadería", "restaurante", "supermercado"),
       allowNull: false,
     },
   });

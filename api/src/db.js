@@ -5,8 +5,13 @@ const path = require("path");
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
 const sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/notwaste`
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/notwaste`,
+  {
+    logging: false, // set to console.log to see the raw SQL queries
+    native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+  }
 );
+
 const basename = path.basename(__filename);
 const modelDefiners = [];
 
@@ -27,8 +32,11 @@ let capsEntries = entries.map((entry) => [
 ]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-// const { } = sequelize.models;
+const { Seller, Product } = sequelize.models;
+Product.belongsToMany(Seller, { through: "product_seller" });
+Seller.belongsToMany(Product, { through: "product_seller" });
 // Aca van las Relaciones
+// const { }
 
 module.exports = {
   ...sequelize.models,
