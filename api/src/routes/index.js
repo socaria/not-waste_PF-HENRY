@@ -10,7 +10,7 @@ const {
 const router = Router();
 router.get('/seller/:city', getSellerByCity);
 router.get('/seller', getSellers);
-router.post('/seller', getSellers);
-router.put('/seller', getSellers);
+router.post('/seller', postSeller);
+router.put('/seller', putSeller);
 
 module.exports = router;
