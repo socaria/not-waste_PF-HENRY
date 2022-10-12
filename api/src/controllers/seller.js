@@ -2,19 +2,19 @@ const { Router } = require("express");
 const { Seller } = require("../db");
 
 const getSellerByCity = async (req, res) => {
-  const { city } = req.params;
-  let sellers = await Seller.findAll({ where: { city: city } });
-//   console.log(sellers);
-  if (sellers.length) {
-    res.status(200).send(sellers);
-  } else {
-    res.status(404).json("No se encontraron proveedores en esa ciudad");
-  }
+    const { city } = req.params;
+    let sellers = await Seller.findAll({ where: { city: city } });
+    //   console.log(sellers);
+    if (sellers.length) {
+        res.status(200).send(sellers);
+    } else {
+        res.status(404).json("No se encontraron proveedores en esa ciudad");
+    }
 };
 
 // Ruta get va a buscar a todos los proveedores de la base de datos. Si llegasen las propiedades
 // name o store cateogry por query se retornarán los proveedores que coincidan con lo solicitado
-const getSellers =  async (req, res) => {
+const getSellers = async (req, res) => {
     const { name, category } = req.query;
     let sellers;
     try {
@@ -49,7 +49,8 @@ const postSeller = async (req, res) => {
         cuit,
         imagen,
         city,
-        category
+        category,
+        enabled
     } = req.body
 
     try {
@@ -88,11 +89,12 @@ const putSeller = async (req, res) => {
         adress,
         cuit,
         imagen,
-        store,
         city,
+        category,
         enabled
     } = req.body;
     let sellerToModify = await Seller.findByPk(id)
+    console.log("🚀 ~ file: seller.js ~ line 97 ~ putSeller ~ sellerToModify", sellerToModify)
     try {
         if (!sellerToModify) { throw new Error('No hay proveedores con ese ID') }
         if (!name) { throw new Error('El campo del nombre del establecimiento es obligatorio') }
@@ -109,8 +111,8 @@ const putSeller = async (req, res) => {
                 adress,
                 cuit,
                 imagen,
-                store,
                 city,
+                category,
                 enabled
             }
         )
@@ -133,9 +135,9 @@ const putSeller = async (req, res) => {
 };
 
 module.exports = {
-  getSellerByCity,
-  getSellers,
-  postSeller,
-  putSeller,
+    getSellerByCity,
+    getSellers,
+    postSeller,
+    putSeller,
 
 };
