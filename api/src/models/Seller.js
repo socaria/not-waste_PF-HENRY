@@ -3,7 +3,7 @@ const { DataTypes } = require("sequelize");
 module.exports = (sequelize) => {
   sequelize.define("seller", {
     id: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       primaryKey: true,
       unique: true,
     },
@@ -16,7 +16,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     phone: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     email: {
@@ -33,7 +33,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
     },
     cuit: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
     },
     imagen: {
       type: DataTypes.STRING,
