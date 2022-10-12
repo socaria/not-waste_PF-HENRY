@@ -1,0 +1,27 @@
+.ul {
+    display: grid;
+    grid-template-columns:max-content(1, 1);
+    grid-gap: 10px;
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* background-color: aqua; */
+    color:rgb(21, 255, 0)
+    
+}
+
+.nav{
+    justify-content: center;
+}
+
+.str {
+    color: aliceblue;
+}
+
+.strD{
+    color: darkblue;
+}
+.cont {
+    background-color: aqua;
+    padding: 100px 100px 100px 100px;
+    margin: 100px 100px 100px 100px;
+}
