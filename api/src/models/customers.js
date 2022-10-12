@@ -15,15 +15,7 @@ module.export = (sequalize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    name: {
-      type: DataTypes.NUMBER,
-      allowNull: false,
-    },
     email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    city: {
       type: DataTypes.STRING,
       allowNull: false,
     },
