@@ -7,7 +7,7 @@ const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 const sequelize = new Sequelize(
   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/notwaste`
 );
-const basename = path.basename(_filename);
+const basename = path.basename(__filename);
 const modelDefiners = [];
 
 fs.readdirSync(path.join(__dirname, "/models"))
