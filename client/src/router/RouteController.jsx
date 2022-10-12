@@ -8,7 +8,6 @@ function RouteController (){
             <Routes>
                 <Route exact path='/' element={<LandingPage/>}></Route>
                 <Route exact path='/register' element={<Register />} />
-                <Route path='/' element={<h1>rama principal</h1>} />
             </Routes>
     )
 }
