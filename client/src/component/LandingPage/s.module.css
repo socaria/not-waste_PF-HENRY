@@ -1,0 +1,10 @@
+.ul {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 10px;
+}
+
+.cont {
+    padding: 100px 100px 100px 100px;
+    margin: 100px 100px 100px 100px;
+}
