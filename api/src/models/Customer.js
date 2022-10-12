@@ -1,7 +1,7 @@
-const { DataTypes } = requiere("sequalize");
+const { DataTypes } = require("sequelize");
 
-module.export = (sequalize) => {
-  sequalize.define("customer", {
+module.exports = (sequelize) => {
+  sequelize.define("customer", {
     id: {
       type: DataTypes.NUMBER,
       primaryKey: true,

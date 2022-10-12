@@ -1,7 +1,7 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes } = require("sequelize");
 
-module.export = (sequalize) => {
-  sequalize.define("product", {
+module.exports = (sequelize) => {
+  sequelize.define("product", {
     id: {
       type: DataTypes.NUMBER,
       primaryKey: true,
@@ -16,14 +16,21 @@ module.export = (sequalize) => {
       allowNull: false,
     },
     realValue: {
-      type: DataTypes.NUMBER
+      type: DataTypes.NUMBER,
     },
     description: {
       type: DataTypes.STRING,
-      allowNull: number,
+      allowNull: false,
     },
     category: {
-      type: DataTypes.ENUM('frescos', 'panificados', 'plato preparado', 'snack', 'bebidas', 'otros'),
+      type: DataTypes.ENUM(
+        "frescos",
+        "panificados",
+        "plato preparado",
+        "snack",
+        "bebidas",
+        "otros"
+      ),
       allowNull: false,
     },
     stock: {
@@ -32,7 +39,7 @@ module.export = (sequalize) => {
     },
     imagen: {
       type: DataTypes.STRING,
-      isUrl: true, 
+      isUrl: true,
     },
   });
 };
