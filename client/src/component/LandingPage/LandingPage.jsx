@@ -1,8 +1,6 @@
 import React from 'react'
-
 import style from './landing.module.css'
 
-import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
@@ -21,54 +19,47 @@ function LandingPage() {
         })
       }
 
-const img = "https://i0.wp.com/wokii.com/wp-content/uploads/2021/09/shutterstock-380434717.jpg?fit=1000%2C667&ssl=1"
+      const img = "https://i0.wp.com/wokii.com/wp-content/uploads/2021/09/shutterstock-380434717.jpg?fit=1000%2C667&ssl=1"
 
-const imgIcon = 'https://cdn.iconscout.com/icon/premium/png-256-thumb/vegetarian-food-1834409-1557027.png'
+      const imgIcon = 'https://cdn.iconscout.com/icon/premium/png-256-thumb/vegetarian-food-1834409-1557027.png'
   return (
     
-    <main >
+<main>
     <nav className="navbar navbar-expand-md navbar-dark bg-ligth">
-            <div className="container-fluid">
-                <img src={imgIcon} alt='🥑' width='50px'/>
-                <button className="navbar-toggler"
-                        type='button'
-                        data-bs-toggle='collapse'
-                        data-bs-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon bg-dark"></span>
-                </button>
+        <div className="container-fluid">
+            <img src={imgIcon} alt='🥑' width='50px'/>
+        <button className="navbar-toggler"
+                type='button'
+                data-bs-toggle='collapse'
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon bg-dark"></span>
+        </button>
 
-                <div className="collapse navbar-collapse" id='navbarSupportedContent'>
-                    <Navbar className="navbar-nav ms-auto px-4">
-                        <Container>
-                            <div class="vr bg-dark"></div>
-                            <Nav href='#inicio' className="nav-link mx-4" onClick={handleClick}>
-                                <Link to='/home'>INICIO</Link>
-                            </Nav>
-                            <div class="vr bg-dark"></div>
+        <div className="collapse navbar-collapse" id='navbarSupportedContent'>
+            <Navbar className="navbar-nav ms-auto px-4">
+                <div class="vr bg-dark"></div> 
+                    <Nav href='#inicio' className="nav-link mx-4" onClick={handleClick}><Link to='/home'>INICIO</Link></Nav>
+                <div class="vr bg-dark"></div>
+                    <Nav className="nav-link mx-4" href='#about' onClick={handleClick}>ABOUT</Nav>
+                <div class="vr bg-dark"></div>
+                    <Nav href='#FAQ' onClick={handleClick} className="nav-link mx-4">FAQ's</Nav>
+                <div class="vr bg-dark"></div>
+                    <Nav href='#contact' onClick={handleClick}  className="nav-link mx-4">CONTACTO</Nav>
+                <div class="vr bg-dark"></div>
+                    <Nav href='#nosotros' onClick={handleClick}  className="nav-link mx-4">NOSOTROS</Nav>
+                <div class="vr bg-dark"></div>
+            </Navbar>
+        </div>
+    </div>
+</nav>
 
-                            <Nav className="nav-link mx-4" href='#about' onClick={handleClick}>ABOUT</Nav>
-                            <div class="vr bg-dark"></div>
-
-                            <Nav href='#FAQ' onClick={handleClick} className="nav-link mx-4">FAQ's</Nav>
-                            <div class="vr bg-dark"></div>
-
-                            <Nav href='#contact' onClick={handleClick}  className="nav-link mx-4">CONTACTO</Nav>
-                            <div class="vr bg-dark"></div>
-
-                            <Nav href='#nosotros' onClick={handleClick}  className="nav-link mx-4">NOSOTROS</Nav>
-                            <div class="vr bg-dark"></div>
-                        </Container>
-                    </Navbar>
-                </div>
-            </div>
-        </nav>
       
-<Carousel>
+      <Carousel>
 
-    <Carousel.Item>
+      <Carousel.Item>
         <img
         className="d-block w-100"
           src={img}  height='500px'
@@ -106,9 +97,7 @@ const imgIcon = 'https://cdn.iconscout.com/icon/premium/png-256-thumb/vegetarian
         </Carousel.Caption>
 
     </Carousel.Item>
-</Carousel>
-
-
+    </Carousel>
       <div className={style.cont}>
         <h1>inicio</h1>
       </div>
