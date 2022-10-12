@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 
 module.export = (sequalize) => {
-  sequalize.difine("product", {
+  sequalize.define("product", {
     id: {
       type: DataTypes.NUMBER,
       primaryKey: true,
@@ -29,9 +29,6 @@ module.export = (sequalize) => {
     stock: {
       type: DataTypes.NUMBER,
       min: 0,
-    },
-    cuit: {
-      type: DataTypes.NUMBER,
     },
     imagen: {
       type: DataTypes.STRING,

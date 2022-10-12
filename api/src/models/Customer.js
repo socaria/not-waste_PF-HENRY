@@ -1,7 +1,7 @@
-const { DataTypes } = requiere("secualize");
+const { DataTypes } = requiere("sequalize");
 
 module.export = (sequalize) => {
-  sequalize.difine("customer", {
+  sequalize.define("customer", {
     id: {
       type: DataTypes.NUMBER,
       primaryKey: true,
@@ -19,9 +19,14 @@ module.export = (sequalize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    imagen: {
+    image: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+        // TODO cambiar datatype a ENUM con los partidos de buenos aires
+    city: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    }
   });
 };
