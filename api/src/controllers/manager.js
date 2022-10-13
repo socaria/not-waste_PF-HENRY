@@ -1,8 +1,8 @@
 const { Manager } = require("../db");
-const { arrayRes } = require("../public/api.js");
+const { arrayManager } = require("../public/api.js");
 
 const getApiInfo = async () => {
-  let objRes = arrayRes.map((manager) => {
+  let objRes = arrayManager.map((manager) => {
     return {
       id: manager.id,
       username: manager.username,
@@ -23,13 +23,22 @@ const getAllData = async () => {
   return infoTotal;
 };
 
+const validateNewManager = (newManager) => {
+  const { username, password } = newManager;
+
+  if (!username || !password) throw Error("Faltan parametros necesarios");
+  if (typeof username !== "string")
+    throw Error("el usuario debe ser en formato texto");
+  return true;
+};
+
 const getManagerById = async (req, res) => {
   const { id } = req.params;
 
   try {
     let managerId;
     if (id.length < 6) {
-      managerId = arrayRes.filter((manager) => manager.id === +id);
+      managerId = arrayManager.filter((manager) => manager.id === +id);
 
       res.status(200).json(managerId);
     } else {
@@ -63,7 +72,24 @@ const getAllManager = async (req, res) => {
   }
 };
 
+const postManager = async (req, res) => {
+  let { username, password } = req.body;
+  const newManager = { username, password };
+  try {
+    if (validateNewManager(newManager)) {
+      newManager.username = newManager.username.toLocaleLowerCase();
+      await Manager.create({ ...newManager });
+
+      return res.send("Manager creado exitosamente");
+    }
+  } catch (error) {
+    console.log(error);
+    res.json({ msj: error.message });
+  }
+};
+
 module.exports = {
   getAllManager,
   getManagerById,
+  postManager,
 };

@@ -1,4 +1,4 @@
-let arrayRes = [
+let arrayManager = [
   {
     id: 01,
     username: "pedro",
@@ -151,5 +151,5 @@ let arrayCity = [
 ];
 
 module.exports = {
-  arrayRes,
+  arrayManager,
 };

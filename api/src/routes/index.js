@@ -20,7 +20,11 @@ const {
   putPost,
   deletePost,
 } = require("../controllers/post");
-const { getAllManager, getManagerById } = require("../controllers/manager");
+const {
+  getManagerById,
+  getAllManager,
+  postManager,
+} = require("../controllers/manager");
 
 const router = Router();
 
@@ -50,7 +54,8 @@ router.get("/customer", getCallCustomer);
 router.post("/customer", postCustomer);
 
 //Rutas del Manager
-router.get("/manager", getAllManager);
 router.get("/manager/:id", getManagerById);
+router.get("/manager", getAllManager);
+router.post("/manager", postManager);
 
 module.exports = router;
