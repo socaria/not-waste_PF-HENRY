@@ -5,6 +5,7 @@ const {  getSellers, postSeller, putSeller,} = require("../controllers/seller");
 const { getProducts, postProduct, putProduct, deleteProduct, } = require("../controllers/product");
 const { getPostByCity, getPosts, postPost, putPost, deletePost,} = require("../controllers/post");
 const { getManagerById, getAllManager, postManager,} = require("../controllers/manager");
+
 const router = Router();
 
 //Rutas del seller
@@ -34,8 +35,13 @@ router.post("/customer", postCustomer);
 router.get("/manager/:id", getManagerById);
 router.get("/manager", getAllManager);
 router.post("/manager", postManager);
+router.post("/manager/:id", putManager);
 
 //Rutas de City
-router.get("/city", getCityInfo)
+router.get("/city", getCityInfo);
+
+//Rutas de Order
+router.get("/order/:id", getOrderById);
+router.get("/order", getAllOrder);
 
 module.exports = router;
