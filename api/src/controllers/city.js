@@ -11,8 +11,8 @@ const getCityInfo = async (req, res) => {
   json.forEach((e) => {
     City.findOrCreate({
       where: {
-        id: e.id,
         name: e.name,
+        id: e.id,
       },
     });
   });
