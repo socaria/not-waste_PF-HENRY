@@ -22,17 +22,6 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    category: {
-      type: DataTypes.ENUM(
-        "frescos",
-        "panificados",
-        "plato preparado",
-        "snack",
-        "bebidas",
-        "otros"
-      ),
-      allowNull: false,
-    },
     stock: {
       type: DataTypes.INTEGER,
       min: 0,
