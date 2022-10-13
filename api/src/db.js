@@ -32,7 +32,7 @@ let capsEntries = entries.map((entry) => [
 ]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Seller, Product, Customer, Manager, Order, Post, City } = sequelize.models;
+const { Seller, Product, Customer, Manager, Order, Post, City, Diet } = sequelize.models;
 
 //Relaciones de Seller
 Product.belongsTo(Seller, { through: "seller_product" });
