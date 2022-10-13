@@ -88,8 +88,29 @@ const postManager = async (req, res) => {
   }
 };
 
+const putManager = async (req, res) => {
+  const { id } = req.params;
+  const { password } = req.body;
+
+  let findManager = await Manager.findByPk(id);
+  try {
+    if (!findManager) {
+      throw new Error(`No hay Manager con el id: ${id}`);
+    }
+    if (!password) {
+      throw new Error("La contraseña no esta definida");
+    }
+    await Manager.update({ password }, { where: { id: id } });
+    return res.send("Manager modificado exitosamente");
+  } catch (error) {
+    console.log(error.message);
+    res.json({ msj: error.message });
+  }
+};
+
 module.exports = {
   getAllManager,
   getManagerById,
   postManager,
+  putManager,
 };
