@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { getCallCustomer } = require("../controllers/customer");
+const { postCustomer, getCallCustomer } = require("../controllers/customer");
 const {
   getSellerByCity,
   getSellers,
@@ -16,5 +16,6 @@ router.put("/seller", putSeller);
 //Aca van las rutas del Customers
 
 router.get("/customer", getCallCustomer);
+router.post("/customer", postCustomer);
 
 module.exports = router;

@@ -60,8 +60,36 @@ const getCallCustomer = async (req, res) => {
   }
 };
 
+const postCustomer = async (req, res) => {
+  try {
+    let { name, password, email, image, city } = req.body;
 
+    if (!name) {
+      console.log("El campo del nombre del establecimiento es obligatorio");
+    }
+    if (!password) {
+      console.log("La contraseña debe ser definida");
+    }
+
+    if (!email) console.log("El campo del e-mail es obligatorio");
+
+    if (!city) console.log("El campo de la ciudad es obligatorio");
+
+    let newClient = await Customer.create({
+      name,
+      password,
+      email,
+      image,
+      city,
+    });
+    console.log(newClient);
+    res.status(200).send("creado con exito");
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 module.exports = {
+  postCustomer,
   getCallCustomer,
 };
