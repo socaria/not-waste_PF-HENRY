@@ -1,4 +1,4 @@
-const { Order } = require("../db");
+const { Order, Post } = require("../db");
 const { arrayOrder } = require("../public/api.js");
 
 const getApiInfo = async () => {
@@ -14,7 +14,15 @@ const getApiInfo = async () => {
 };
 
 const getDbInfo = async () => {
-  return await Order.findAll();
+  return await Order.findAll({
+    include: {
+      model: Post,
+      attributes: ["id"],
+      through: {
+        attributes: [],
+      },
+    },
+  });
 };
 
 const getAllData = async () => {
@@ -76,21 +84,25 @@ const getAllOrder = async (req, res) => {
 };
 
 const postOrder = async (req, res) => {
-  let { state, review } = req.body;
-  const newOrder = { state, review };
+  let { state, review, postId } = req.body;
+  const newOrder = { state, review, postId };
+
   try {
     if (validateNewOrder(newOrder)) {
       newOrder.state = newOrder.state.toLocaleLowerCase();
-      await Order.create({ ...newOrder });
-
-      /* if (orderCreated) {
-        await orderCreated.setOrders(genresId);
-        const newOrder = await Order.findByPk(orderCreated.id, {
-          include: Genre,
+      let orderCreated = await Order.create({ ...newOrder });
+      // console.log(orderCreated.__proto__);
+      if (orderCreated) {
+        let postDB = await Post.findAll({
+          where: {
+            name: amount,
+          },
         });
-        return res.send(newOrder);
-      } */
-      return res.send("Order creada exitosamente");
+
+        await orderCreated.addPosts(postDB);
+
+        return res.send("Orden creada con exito");
+      }
     }
   } catch (error) {
     console.log(error);
