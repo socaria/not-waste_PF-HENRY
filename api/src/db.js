@@ -39,10 +39,28 @@ Product.belongsTo(Seller, { through: "seller_product" });
 Seller.hasMany(Product, { through: "seller_product" });
 Order.belongsTo(Seller, { through: "seller_order" });
 Seller.hasMany(Order, { through: "seller_order" });
-Product.belongsToMany(City, { through: "seller_city" });
-City.belongsToMany(Product, { through: "seller_city" });
+Seller.belongsToMany(City, { through: "seller_city" });
+City.belongsToMany(Seller, { through: "seller_city" });
 Seller.belongsTo(Manager, { through: "manager_seller" });
 Manager.hasMany(Seller, { through: "manager_seller" });
+
+//Relaciones de Product
+Diet.belongsToMany(Product, { through: "product_diet" });
+Product.belongsToMany(Diet, { through: "product_diet" });
+Product.hasMany(Post, { through: "post_product" });
+Post.belongsTo(Product, { through: "post_product" });
+
+//Relaciones de Post
+Post.belongsToMany(Order, { through: "post_order" });
+Order.belongsToMany(Post, { through: "post_order" });
+
+//Relaciones Customer
+Order.belongsTo(Customer, { through: "customer_order" });
+Customer.hasMany(Order, { through: "customer_order" });
+Customer.belongsToMany(City, { through: "customer_city" });
+City.belongsToMany(Customer, { through: "customer_city" });
+Customer.belongsTo(Manager, { through: "manager_customer" });
+Manager.hasMany(Customer, { through: "manager_customer" });
 
 // Aca van las Relaciones
 
