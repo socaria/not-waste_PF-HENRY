@@ -1,9 +1,9 @@
 import React from "react";
 
 function Footer() {
-
+// "navbar bg-light md-2"
     return (
-        <nav class="navbar bg-light md-2">
+        <nav class="navbar navbar-expand-md navbar-dark bg-ligth">
             <form class="container-fluid">
                 <div>
                     <button href="#" class="btn btn btn-secondary me-2 btn-lg" type="button">Contacto</button>

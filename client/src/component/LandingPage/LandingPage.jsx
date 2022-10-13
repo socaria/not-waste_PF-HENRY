@@ -8,16 +8,16 @@ import Carousel from 'react-bootstrap/Carousel';
 import { Link } from 'react-router-dom';
 
 function LandingPage() {
-  const handleClick = (e) => {
-    e.preventDefault()
-    const target = e.target.getAttribute('href')
-    const location = document.querySelector(target).offsetTop
-
-    window.scrollTo({
-      left: 0,
-      top: location - 50,
-    })
-  }
+    const handleClick = (e) => {
+        e.preventDefault()
+        const target = e.target.getAttribute('href')
+        const location = document.querySelector(target).offsetTop
+    
+        window.scrollTo({
+          left: 0,
+          top: location - 50,
+        })
+      }
 
       const img = "https://i0.wp.com/wokii.com/wp-content/uploads/2021/09/shutterstock-380434717.jpg?fit=1000%2C667&ssl=1"
 
@@ -38,29 +38,24 @@ function LandingPage() {
             <span className="navbar-toggler-icon bg-dark"></span>
         </button>
 
-                <div className="collapse navbar-collapse" id='navbarSupportedContent'>
-                    <Navbar className="navbar-nav ms-auto px-4">
-                            <div className="vr bg-dark"></div>
-                            <Nav href='#inicio' className="nav-link mx-4" onClick={handleClick}>
-                                <Link to='/home'>INICIO</Link>
-                            </Nav>
-                            <div className="vr bg-dark"></div>
+        <div className="collapse navbar-collapse" id='navbarSupportedContent'>
+            <Navbar className="navbar-nav ms-auto px-4">
+                <div className="vr bg-dark"></div> 
+                    <Nav href='#inicio' className="nav-link mx-4" onClick={handleClick}><Link to='/home'>INICIO</Link></Nav>
+                <div className="vr bg-dark"></div>
+                    <Nav className="nav-link mx-4" href='#about' onClick={handleClick}>ABOUT</Nav>
+                <div className="vr bg-dark"></div>
+                    <Nav href='#FAQ' onClick={handleClick} className="nav-link mx-4">FAQ's</Nav>
+                <div className="vr bg-dark"></div>
+                    <Nav href='#contact' onClick={handleClick}  className="nav-link mx-4">CONTACTO</Nav>
+                <div className="vr bg-dark"></div>
+                    <Nav href='#nosotros' onClick={handleClick}  className="nav-link mx-4">NOSOTROS</Nav>
+                <div className="vr bg-dark"></div>
+            </Navbar>
+        </div>
+    </div>
+</nav>
 
-                            <Nav className="nav-link mx-4" href='#about' onClick={handleClick}>ABOUT</Nav>
-                            <div className="vr bg-dark"></div>
-
-                            <Nav href='#FAQ' onClick={handleClick} className="nav-link mx-4">FAQ's</Nav>
-                            <div className="vr bg-dark"></div>
-
-                            <Nav href='#contact' onClick={handleClick}  className="nav-link mx-4">CONTACTO</Nav>
-                            <div className="vr bg-dark"></div>
-
-                            <Nav href='#nosotros' onClick={handleClick}  className="nav-link mx-4">NOSOTROS</Nav>
-                            <div className="vr bg-dark"></div>
-                    </Navbar>
-                </div>
-            </div>
-        </nav>
       
       <Carousel>
 
@@ -70,36 +65,36 @@ function LandingPage() {
           src={img}  height='500px'
           alt="First slide"/>
 
-          <Carousel.Caption>
-            <h3 className={style.strD}>First slide label</h3>
-            <h4 className={style.strD}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h4>
-          </Carousel.Caption>
+        <Carousel.Caption>
+          <h3 className={style.strD}>First slide label</h3>
+          <h4 className={style.strD}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h4>
+        </Carousel.Caption>
 
-        </Carousel.Item>
+    </Carousel.Item>
 
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src={img} height='500px'
-            alt="Second slide" />
+    <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={img} height='500px'
+          alt="Second slide"/>
 
-          <Carousel.Caption>
-            <h3 className={style.strD}>Second slide label</h3>
-            <h4 className={style.strD}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h4>
-          </Carousel.Caption>
+        <Carousel.Caption>
+          <h3 className={style.strD}>Second slide label</h3>
+          <h4 className={style.strD}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h4>
+        </Carousel.Caption>
 
-        </Carousel.Item>
+    </Carousel.Item>
 
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src={img} height='500px'
-            alt="Third slide" />
+    <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={img} height='500px'
+          alt="Third slide"/>
 
-          <Carousel.Caption>
-            <h3 className={style.strD}>Third slide label</h3>
-            <h4 className={style.strD}>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</h4>
-          </Carousel.Caption>
+        <Carousel.Caption>
+          <h3 className={style.strD}>Third slide label</h3>
+          <h4 className={style.strD}>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</h4>
+        </Carousel.Caption>
 
     </Carousel.Item>
     </Carousel>
@@ -126,7 +121,7 @@ function LandingPage() {
 
     </main>
   )
-
+  
 }
 
 export default LandingPage
