@@ -2,20 +2,20 @@ const { Router } = require("express");
 const { Product } = require("../db");
 
 const getProductByCity = async (req, res) => {
-    const { city } = req.params;
-    let products = await Product.findAll({ where: { city: city } });
-    //   console.log(products);
-    if (products.length) {
-        res.status(200).send(products);
-    } else {
-        res.status(404).json("No se encontraron proveedores en esa ciudad");
-    }
+    // const { city } = req.params;
+    // let products = await Product.findAll({ where: { city: city } });
+    // //   console.log(products);
+    // if (products.length) {
+    //     res.status(200).send(products);
+    // } else {
+    //     res.status(404).json("No se encontraron proveedores en esa ciudad");
+    // }
 };
 
 // Ruta get va a buscar a todos los proveedores de la base de datos. Si llegasen las propiedades
 // name o store cateogry por query se retornarán los proveedores que coincidan con lo solicitado
 const getProducts = async (req, res) => {
-    const { name, category } = req.query;
+    const { name, category, city } = req.query;
     let products;
     try {
         products = await Product.findAll();
