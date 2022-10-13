@@ -1,4 +1,4 @@
-const { Seller, City } = require("../db");
+const { Seller, City, Manager} = require("../db");
 
 const getSellerByCity = async (req, res) => {
     // const { city } = req.params;
@@ -71,9 +71,9 @@ const postSeller = async (req, res) => {
         adress,
         cuit,
         imagen,
-        city,
         category,
         enabled,
+        city,
         manager
     } = req.body
 
@@ -99,13 +99,8 @@ const postSeller = async (req, res) => {
                 name: city,
             },
         });
-        let managerDb = await Manager.findAll({
-            where: {
-                username: manager,
-            },
-        });
+        
         newSeller.addCity(cityDb);
-        newSeller.addManager(managerDb);
 
         res.send(newSeller);
 
@@ -126,7 +121,8 @@ const putSeller = async (req, res) => {
         imagen,
         city,
         category,
-        enabled
+        enabled,
+        managerId
     } = req.body;
     let sellerToModify = await Seller.findByPk(id);
     try {
@@ -153,7 +149,12 @@ const putSeller = async (req, res) => {
         let cityDb = await City.findAll({
             where: { name: city }
         })
-
+        let managerDb = await Manager.findAll({
+            where: {
+                username: managerId,
+            },
+        });
+        edited.addManager(managerDb);
         edited[0].setCities(cityDb);
         res.send(edited);
     } catch (e) {
