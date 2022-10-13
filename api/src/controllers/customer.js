@@ -80,9 +80,8 @@ const postCustomer = async (req, res) => {
       password,
       email,
       image,
-      city,
     });
-    console.log(newClient);
+    // console.log(newClient);
     res.status(200).send("creado con exito");
   } catch (error) {
     console.log(error);

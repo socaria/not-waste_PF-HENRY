@@ -25,9 +25,6 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     // TODO cambiar datatype a ENUM con los partidos de buenos aires
-    city: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-      allowNull: false,
-    },
+   
   });
 };
