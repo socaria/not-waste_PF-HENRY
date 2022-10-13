@@ -43,23 +43,23 @@ const imgIcon = 'https://cdn.iconscout.com/icon/premium/png-256-thumb/vegetarian
                 <div className="collapse navbar-collapse" id='navbarSupportedContent'>
                     <Navbar className="navbar-nav ms-auto px-4">
                         <Container>
-                            <div class="vr bg-dark"></div>
+                            <div className="vr bg-dark"></div>
                             <Nav href='#inicio' className="nav-link mx-4" onClick={handleClick}>
                                 <Link to='/home'>INICIO</Link>
                             </Nav>
-                            <div class="vr bg-dark"></div>
+                            <div className="vr bg-dark"></div>
 
                             <Nav className="nav-link mx-4" href='#about' onClick={handleClick}>ABOUT</Nav>
-                            <div class="vr bg-dark"></div>
+                            <div className="vr bg-dark"></div>
 
                             <Nav href='#FAQ' onClick={handleClick} className="nav-link mx-4">FAQ's</Nav>
-                            <div class="vr bg-dark"></div>
+                            <div className="vr bg-dark"></div>
 
                             <Nav href='#contact' onClick={handleClick}  className="nav-link mx-4">CONTACTO</Nav>
-                            <div class="vr bg-dark"></div>
+                            <div className="vr bg-dark"></div>
 
                             <Nav href='#nosotros' onClick={handleClick}  className="nav-link mx-4">NOSOTROS</Nav>
-                            <div class="vr bg-dark"></div>
+                            <div className="vr bg-dark"></div>
                         </Container>
                     </Navbar>
                 </div>
