@@ -4,7 +4,6 @@ import SearchBar from "../SearchBar/SearchBar";
 import Cart from '../Cart/Cart'
 import Navbar from 'react-bootstrap/Navbar';
 import burguermenu from '../../imagenes/burguermenu.png'
-import carrito from '../../imagenes/carrito.png'
 import logoProy from '../../imagenes/logoProy.png'
 
 
