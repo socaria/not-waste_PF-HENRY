@@ -12,14 +12,14 @@ module.exports = (sequelize) => {
       defaultValue: DataTypes.NOW,
     },
     state: {
-      type: DataTypes.ENUM('pendiente', 'confirmado', 'entregado', 'cancelado'),
-      defaultValue: 'pendiente'
+      type: DataTypes.ENUM("pendiente", "confirmado", "entregado", "cancelado"),
+      defaultValue: "pendiente",
     },
     review: {
       type: DataTypes.INTEGER,
       min: 0,
       max: 5,
       // TODO agregar condición de que sólo se puede modificar cuando el pedido está en estado entregado
-    }
+    },
   });
 };
