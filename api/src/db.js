@@ -32,9 +32,18 @@ let capsEntries = entries.map((entry) => [
 ]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Seller, Product, Customer, Manager, Order, Post } = sequelize.models;
-Product.belongsToMany(Seller, { through: "product_seller" });
-Seller.belongsToMany(Product, { through: "product_seller" });
+const { Seller, Product, Customer, Manager, Order, Post, City } = sequelize.models;
+
+//Relaciones de Seller
+Product.belongsTo(Seller, { through: "seller_product" });
+Seller.hasMany(Product, { through: "seller_product" });
+Order.belongsTo(Seller, { through: "seller_order" });
+Seller.hasMany(Order, { through: "seller_order" });
+Product.belongsToMany(City, { through: "seller_city" });
+City.belongsToMany(Product, { through: "seller_city" });
+Seller.belongsTo(Manager, { through: "manager_seller" });
+Manager.hasMany(Seller, { through: "manager_seller" });
+
 // Aca van las Relaciones
 
 module.exports = {
