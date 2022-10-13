@@ -6,7 +6,7 @@ import LandingPage from '../component/LandingPage/LandingPage';
 function RouteController (){
     return(
             <Routes>
-                <Route exact path='/' element={<LandingPage/>}></Route>
+                <Route exact path='/' element={<LandingPage/>} />
                 <Route exact path='/register' element={<Register />} />
             </Routes>
     )
