@@ -73,7 +73,8 @@ const postSeller = async (req, res) => {
         imagen,
         city,
         category,
-        enabled
+        enabled,
+        manager
     } = req.body
 
     try {
@@ -98,8 +99,13 @@ const postSeller = async (req, res) => {
                 name: city,
             },
         });
-
+        let managerDb = await Manager.findAll({
+            where: {
+                username: manager,
+            },
+        });
         newSeller.addCity(cityDb);
+        newSeller.addManager(managerDb);
 
         res.send(newSeller);
 
