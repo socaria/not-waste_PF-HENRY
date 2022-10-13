@@ -1,43 +1,45 @@
-const { Seller } = require("../db");
+const { Router } = require("express");
+const { Post } = require("../db");
 
-const getSellerByCity = async (req, res) => {
+const getPostByCity = async (req, res) => {
     const { city } = req.params;
-    //TODO ver que busque sin diferencia mayusculas
-    let sellers = await Seller.findAll({ where: { city: city } });
-    if (sellers.length) {
-        res.status(200).send(sellers);
+    let posts = await Post.findAll({ where: { city: city } });
+    //   console.log(posts);
+    if (posts.length) {
+        res.status(200).send(posts);
     } else {
         res.status(404).json("No se encontraron proveedores en esa ciudad");
     }
 };
 
 // Ruta get va a buscar a todos los proveedores de la base de datos. Si llegasen las propiedades
-const getSellers = async (req, res) => {
+// name o store cateogry por query se retornarán los proveedores que coincidan con lo solicitado
+const getPosts = async (req, res) => {
     const { name, category } = req.query;
-    let sellers;
+    let posts;
     try {
-        sellers = await Seller.findAll();
+        posts = await Post.findAll();
         if (name) {
-            sellers = sellers.filter(s => {
+            posts = posts.filter(s => {
                 s.name === name
             });
-            if (!sellers.length) {
+            if (!posts.length) {
                 throw new Error('No hay proveedores con ese nombre')
             };
         }
         if (category) {
-            sellers = sellers.filter(s => s.category === category)
-            if (!sellers.length) {
+            posts = posts.filter(s => s.category === category)
+            if (!posts.length) {
                 throw new Error('No hay proveedores con esa categoría de establecimiento')
             };
         }
-        res.status(200).send(sellers);
+        res.status(200).send(posts);
     } catch (e) {
         res.status(404).send(e.message);
     }
 };
 
-const postSeller = async (req, res) => {
+const postPost = async (req, res) => {
     let {
         name,
         password,
@@ -57,7 +59,7 @@ const postSeller = async (req, res) => {
         if (!phone) { throw new Error('El campo del teléfono es obligatorio') }
         if (!email) { throw new Error('El campo del e-mail es obligatorio') }
         if (!city) { throw new Error('El campo de la ciudad es obligatorio') }
-        let newSeller = await Seller.create({
+        let newPost = await Post.create({
             name,
             password,
             phone,
@@ -70,14 +72,14 @@ const postSeller = async (req, res) => {
             category
         })
 
-        res.send(newSeller);
+        res.send(newPost);
 
     } catch (e) {
         res.status(500).send(`${e}`)
     }
 };
 
-const putSeller = async (req, res) => {
+const putPost = async (req, res) => {
     const { id } = req.params;
     const {
         name,
@@ -91,15 +93,15 @@ const putSeller = async (req, res) => {
         category,
         enabled
     } = req.body;
-    let sellerToModify = await Seller.findByPk(id);
+    let postToModify = await Post.findByPk(id)
         try {
-        if (!sellerToModify) { throw new Error('No hay proveedores con ese ID') }
+        if (!postToModify) { throw new Error('No hay proveedores con ese ID') }
         if (!name) { throw new Error('El campo del nombre del establecimiento es obligatorio') }
         if (!password) { throw new Error('La contraseña debe ser definida') }
         if (!phone) { throw new Error('El campo del teléfono es obligatorio') }
         if (!email) { throw new Error('El campo del e-mail es obligatorio') }
         if (!city) { throw new Error('El campo de la ciudad es obligatorio') }
-        let edited = await Seller.update(
+        let edited = await Post.upsert(
             {
                 name,
                 password,
@@ -111,19 +113,35 @@ const putSeller = async (req, res) => {
                 city,
                 category,
                 enabled
-            },
-            {where: {id: id}}
+            }
         )
+        if (store) {
+            let storeToAdd = await Store.findAll({
+                where: { name: store }
+            })
+            postToModify.setStore(storeToAdd);
+        }
+        if (city) {
+            let cityToAdd = await City.findAll({
+                where: { name: city }
+            })
+            postToModify.setCity(cityToAdd);
+        }
         res.send(edited);
     } catch (e) {
         res.status(500).send(`${e}`)
     }
 };
 
+const deletePost = async (req, res) => {
+
+}
+
 module.exports = {
-    getSellerByCity,
-    getSellers,
-    postSeller,
-    putSeller,
+    getPostByCity,
+    getPosts,
+    postPost,
+    putPost,
+    deletePost
 
 };

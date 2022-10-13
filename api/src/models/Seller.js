@@ -5,6 +5,7 @@ module.exports = (sequelize) => {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
+      autoIncrement: true,
       unique: true,
     },
     name: {
@@ -23,6 +24,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
       isEmail: true,
+      unique: true
     },
     // TODO cambiar datatype a ENUM con los partidos de buenos aires
     city: {
@@ -40,7 +42,8 @@ module.exports = (sequelize) => {
     },
     enabled: {
       type: DataTypes.BOOLEAN,
-      defaultValue: false,
+      allowNull: false,
+      defaultValue: true,
     },
     category: {
       type: DataTypes.ENUM("panadería", "restaurante", "supermercado"),
