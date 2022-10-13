@@ -16,7 +16,15 @@ const getSellers = async (req, res) => {
     const { name, category } = req.query;
     let sellers;
     try {
-        sellers = await Seller.findAll();
+        sellers = await Seller.findAll({
+            include: {
+                model: City,
+                attributes: ["name"],
+                through: {
+                    attributes: [],
+                },
+            },
+        });
         if (name) {
             sellers = sellers.filter(s => {
                 s.name === name
@@ -70,11 +78,11 @@ const postSeller = async (req, res) => {
         })
         let cityDb = await City.findAll({
             where: {
-              name: city,
+                name: city,
             },
-          });
-      
-          newSeller.addCity(cityDb);
+        });
+
+        newSeller.addCity(cityDb);
 
         res.send(newSeller);
 
@@ -98,15 +106,16 @@ const putSeller = async (req, res) => {
         enabled
     } = req.body;
     let sellerToModify = await Seller.findByPk(id);
-        try {
+    try {
         if (!sellerToModify) { throw new Error('No hay proveedores con ese ID') }
         if (!name) { throw new Error('El campo del nombre del establecimiento es obligatorio') }
         if (!password) { throw new Error('La contraseña debe ser definida') }
         if (!phone) { throw new Error('El campo del teléfono es obligatorio') }
         if (!email) { throw new Error('El campo del e-mail es obligatorio') }
         if (!city) { throw new Error('El campo de la ciudad es obligatorio') }
-        let edited = await Seller.update(
+        let edited = await Seller.upsert(
             {
+                id,
                 name,
                 password,
                 phone,
@@ -114,12 +123,15 @@ const putSeller = async (req, res) => {
                 adress,
                 cuit,
                 imagen,
-                city,
                 category,
                 enabled
-            },
-            {where: {id: id}}
+            }
         )
+        let cityDb = await City.findAll({
+            where: { name: city }
+        })
+
+        edited[0].setCities(cityDb);
         res.send(edited);
     } catch (e) {
         res.status(500).send(`${e}`)
