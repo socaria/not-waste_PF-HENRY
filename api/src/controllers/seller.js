@@ -1,10 +1,9 @@
-const { Router } = require("express");
 const { Seller } = require("../db");
 
 const getSellerByCity = async (req, res) => {
     const { city } = req.params;
+    //TODO ver que busque sin diferencia mayusculas
     let sellers = await Seller.findAll({ where: { city: city } });
-    //   console.log(sellers);
     if (sellers.length) {
         res.status(200).send(sellers);
     } else {
@@ -13,7 +12,6 @@ const getSellerByCity = async (req, res) => {
 };
 
 // Ruta get va a buscar a todos los proveedores de la base de datos. Si llegasen las propiedades
-// name o store cateogry por query se retornarán los proveedores que coincidan con lo solicitado
 const getSellers = async (req, res) => {
     const { name, category } = req.query;
     let sellers;
@@ -93,16 +91,15 @@ const putSeller = async (req, res) => {
         category,
         enabled
     } = req.body;
-    let sellerToModify = await Seller.findByPk(id)
-    console.log("🚀 ~ file: seller.js ~ line 97 ~ putSeller ~ sellerToModify", sellerToModify)
-    try {
+    let sellerToModify = await Seller.findByPk(id);
+        try {
         if (!sellerToModify) { throw new Error('No hay proveedores con ese ID') }
         if (!name) { throw new Error('El campo del nombre del establecimiento es obligatorio') }
         if (!password) { throw new Error('La contraseña debe ser definida') }
         if (!phone) { throw new Error('El campo del teléfono es obligatorio') }
         if (!email) { throw new Error('El campo del e-mail es obligatorio') }
         if (!city) { throw new Error('El campo de la ciudad es obligatorio') }
-        let edited = await Seller.upsert(
+        let edited = await Seller.update(
             {
                 name,
                 password,
@@ -114,20 +111,9 @@ const putSeller = async (req, res) => {
                 city,
                 category,
                 enabled
-            }
+            },
+            {where: {id: id}}
         )
-        if (store) {
-            let storeToAdd = await Store.findAll({
-                where: { name: store }
-            })
-            sellerToModify.setStore(storeToAdd);
-        }
-        if (city) {
-            let cityToAdd = await City.findAll({
-                where: { name: city }
-            })
-            sellerToModify.setCity(cityToAdd);
-        }
         res.send(edited);
     } catch (e) {
         res.status(500).send(`${e}`)
