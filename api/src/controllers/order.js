@@ -24,6 +24,17 @@ const getAllData = async () => {
   return infoTotal;
 };
 
+const validateNewOrder = (newOrder) => {
+  const { state, review } = newOrder;
+
+  if (!state || !review) throw Error("Faltan parametros necesarios");
+  if (typeof state !== "string")
+    throw Error("el estado debe ser en formato texto");
+  if (review < 1 || review > 5)
+    throw Error("rating debe ser un número entre 1 y 5");
+  return true;
+};
+
 const getOrderById = async (req, res) => {
   const { id } = req.params;
 
@@ -64,7 +75,30 @@ const getAllOrder = async (req, res) => {
   }
 };
 
+const postOrder = async (req, res) => {
+  let { state, review } = req.body;
+  const newOrder = { state, review };
+  try {
+    if (validateNewOrder(newOrder)) {
+      newOrder.state = newOrder.state.toLocaleLowerCase();
+      await Order.create({ ...newOrder });
+
+      /* if (orderCreated) {
+        await orderCreated.setOrders(genresId);
+        const newOrder = await Order.findByPk(orderCreated.id, {
+          include: Genre,
+        });
+        return res.send(newOrder);
+      } */
+      return res.send("Order creada exitosamente");
+    }
+  } catch (error) {
+    console.log(error);
+    res.json({ msj: error.message });
+  }
+};
 module.exports = {
   getOrderById,
   getAllOrder,
+  postOrder,
 };
