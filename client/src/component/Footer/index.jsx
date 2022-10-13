@@ -1,6 +1,6 @@
 import React from "react";
 
-function footer() {
+function Footer() {
 
     return (
         <nav class="navbar bg-light md-2">
@@ -31,4 +31,4 @@ function footer() {
     )
 }
 
-export default footer
+export default Footer

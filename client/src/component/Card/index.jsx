@@ -1,7 +1,7 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-function card(props) {
+function Card(props) {
 
     let imgAlt = "https://us.123rf.com/450wm/jovanas/jovanas1602/jovanas160201103/52031691-icono-de-los-alimentos-de-la-comida-caliente.jpg?ver=6"
 
@@ -35,4 +35,4 @@ function card(props) {
     )
 }
 
-export default card
+export default Card
