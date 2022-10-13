@@ -1,4 +1,4 @@
-const { Seller } = require("../db");
+const { Seller, City } = require("../db");
 
 const getSellerByCity = async (req, res) => {
     const { city } = req.params;
@@ -66,9 +66,15 @@ const postSeller = async (req, res) => {
             cuit,
             imagen,
             enabled,
-            city,
             category
         })
+        let cityDb = await City.findAll({
+            where: {
+              name: city,
+            },
+          });
+      
+          newSeller.addCity(cityDb);
 
         res.send(newSeller);
 
