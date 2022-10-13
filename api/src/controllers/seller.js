@@ -1,19 +1,28 @@
 const { Seller, City } = require("../db");
 
 const getSellerByCity = async (req, res) => {
-    const { city } = req.params;
-    //TODO ver que busque sin diferencia mayusculas
-    let sellers = await Seller.findAll({ where: { city: city } });
-    if (sellers.length) {
-        res.status(200).send(sellers);
-    } else {
-        res.status(404).json("No se encontraron proveedores en esa ciudad");
-    }
+    // const { city } = req.params;
+    // //TODO ver que busque sin diferencia mayusculas
+    // let sellers = await Seller.findAll({
+    //     include: {
+    //         model: City,
+    //         attributes: ["name"],
+    //         through: {
+    //             attributes: [],
+    //         },
+    //     },
+    // });
+    // if (sellers.length) {
+    //     res.status(200).send(sellers);
+    // } else {
+    //     res.status(404).json("No se encontraron proveedores en esa ciudad");
+    // }
 };
 
-// Ruta get va a buscar a todos los proveedores de la base de datos. Si llegasen las propiedades
+// Ruta get va a buscar a todos los proveedores de la base de datos. 
+// Si llegasen las propiedades name, category y/o city por query
 const getSellers = async (req, res) => {
-    const { name, category } = req.query;
+    const { name, category, city } = req.query;
     let sellers;
     try {
         sellers = await Seller.findAll({
@@ -25,6 +34,13 @@ const getSellers = async (req, res) => {
                 },
             },
         });
+        if (city) {
+            sellers = sellers.filter(s =>
+                s.cities.find(c => c.name === city))
+            if (!sellers.length) {
+                throw new Error('No hay proveedores en esta ciudad')
+            };
+        }
         if (name) {
             sellers = sellers.filter(s => {
                 s.name === name
@@ -39,6 +55,7 @@ const getSellers = async (req, res) => {
                 throw new Error('No hay proveedores con esa categoría de establecimiento')
             };
         }
+
         res.status(200).send(sellers);
     } catch (e) {
         res.status(404).send(e.message);
