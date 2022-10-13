@@ -152,4 +152,5 @@ let arrayCity = [
 
 module.exports = {
   arrayRes,
+  arrayCity,
 };
