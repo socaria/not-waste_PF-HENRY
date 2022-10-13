@@ -1,11 +1,7 @@
 const { Router } = require("express");
 const { postCustomer, getCallCustomer } = require("../controllers/customer");
 const { getCityInfo } = require("../controllers/city");
-const {
-  getSellers,
-  postSeller,
-  putSeller,
-} = require("../controllers/seller");
+const { getSellers, postSeller, putSeller } = require("../controllers/seller");
 const {
   getProducts,
   postProduct,
@@ -30,7 +26,7 @@ const {
   postOrder,
 } = require("../controllers/order");
 
-
+const { getDietas } = require("../controllers/dieta");
 
 const router = Router();
 
@@ -69,5 +65,8 @@ router.get("/city", getCityInfo);
 router.get("/order/:id", getOrderById);
 router.get("/order", getAllOrder);
 router.post("/order", postOrder);
+
+//Ruta de Dietas
+router.get("/dietas", getDietas);
 
 module.exports = router;
