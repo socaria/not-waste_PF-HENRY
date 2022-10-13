@@ -1,15 +1,16 @@
 import React from 'react'
-import card from "../Card";
-
+import Card from "../Card";
+import products from './products'
 // en donde sea llamado debe pasarse como {Cards(products)} donde products debe ser un array como el modelo adjunto en ./products.js
 
 function Cards(props) {
 
+    props = products
     return (
-        <div class="row row-cols-1 row-cols-md-4 g-12 d-flex justify-content-center">
+        <div className="row row-cols-1 row-cols-md-4 g-12 d-flex justify-content-center bg-dark">
             {
                 props && props.map(product => (
-                    card(product)
+                    Card(product)
                 )
                 )
             }
