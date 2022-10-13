@@ -151,5 +151,6 @@ let arrayCity = [
 ];
 
 module.exports = {
+  arrayCity,
   arrayManager,
 };

@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const { postCustomer, getCallCustomer } = require("../controllers/customer");
+const { getCityInfo } = require("../controllers/city");
 const {
   getSellerByCity,
   getSellers,
@@ -57,5 +58,8 @@ router.post("/customer", postCustomer);
 router.get("/manager/:id", getManagerById);
 router.get("/manager", getAllManager);
 router.post("/manager", postManager);
+
+//Rutas de City
+router.get("/city", getCityInfo)
 
 module.exports = router;
