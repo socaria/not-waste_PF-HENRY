@@ -11,36 +11,32 @@ module.exports = (sequelize) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false,  
-      primaryKey: true,
     },
     phone: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true,
     },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
       isEmail: true,
       unique: true,
-      primaryKey: true,
     },
     adress: {
       type: DataTypes.STRING,
-      primaryKey: true,
+      allowNull: false,
     },
     cuit: {
       type: DataTypes.INTEGER,
-      primaryKey: true,
+      allowNull: false,
     },
     image: {
       type: DataTypes.STRING,
-      primaryKey: true,
+      allowNull: false,
     },
     category: {
       type: DataTypes.ENUM("panaderia", "restaurante", "supermercado"),
       allowNull: false,
-      primaryKey: true,
     },
     enabled: {
       type: DataTypes.BOOLEAN,
