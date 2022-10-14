@@ -1,4 +1,4 @@
-const dietas = [
+const diets = [
   {
     id: 01,
     name: "SIN TACC",
@@ -13,4 +13,4 @@ const dietas = [
   },
 ];
 
-module.exports = { dietas };
+module.exports = { diets };
