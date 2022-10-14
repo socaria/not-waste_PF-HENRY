@@ -1,9 +1,8 @@
 const { Post, Order, Diet } = require("../db");
 const { getAllPosts } = require("./utils/getAllPosts")
 
-// TODO traer dieta y precio del producto asociado
+
 const getPosts = async (req, res) => {
-    const { diet, price } = req.query;
     let posts;
     try {
         posts = await getAllPosts();
