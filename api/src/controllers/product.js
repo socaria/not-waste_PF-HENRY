@@ -1,20 +1,11 @@
 const { Product, Diet } = require("../db");
-
+const { getAllProducts } = require("./utils/getAllProducts")
 // Ruta get va a buscar a todos los proveedores de la base de datos. Si llegasen las propiedades
 // name o store cateogry por query se retornarán los proveedores que coincidan con lo solicitado
 const getProducts = async (req, res) => {
-    const { diet, category } = req.query;
     let products;
     try {
-        products = await Product.findAll({
-            include: {
-                model: Diet,
-                attributes: ["name"],
-                through: {
-                    attributes: [],
-                },
-            },
-        });
+        products = await getAllProducts();
         res.status(200).send(products);
     } catch (e) {
         res.status(404).send(e.message);
