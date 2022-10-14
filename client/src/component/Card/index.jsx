@@ -1,5 +1,6 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import style from './card.module.css'
 
 function Card(props) {
 
@@ -7,7 +8,7 @@ function Card(props) {
 
     return (
         <div key={uuidv4} className="card text-bg-light border-info my-2 mx-1">
-            <img src={props.imagen ? props.imagen : imgAlt} width='250px' height='300px' className="card-img-top" alt="Img not found" />
+            <img src={props.imagen ? props.imagen : imgAlt} className={style.img} alt="Img not found" />
             <div className="card-body">
                 <h5 className="card-header mb-2 bg-secondary bg-gradient text-white">{props.name}</h5>
                 <p className="card-text">{props.description}</p>
