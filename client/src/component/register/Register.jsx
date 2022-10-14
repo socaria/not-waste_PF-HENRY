@@ -2,6 +2,8 @@ import { useState } from "react"
 import states from "./barrios-data"
 import { v4 as uuidv4 } from 'uuid';
 import { validate } from "./auxiliary";
+import AuthProfile from "../AuthProfile";
+
 
 function Register(props) {
 
@@ -149,8 +151,9 @@ function Register(props) {
       <div className="col-12">
         <button className="btn btn-primary" type="submit" value='register' onClick={(event) => { postRegister(event) }}>Register</button>
       </div>
-
+          {AuthProfile()}
     </form>
+
   )
 }
 

@@ -5,10 +5,14 @@ import Cart from '../Cart/Cart'
 import Navbar from 'react-bootstrap/Navbar';
 import burguermenu from '../../imagenes/burguermenu.png'
 import logoProy from '../../imagenes/logoProy.png'
-
-
+import LogingButton from "../LoginButton";
+import LogoutButton from "../LogoutButton";
+import { useAuth0 } from '@auth0/auth0-react' //esto es un hook que da auth0
 
 function NavBar() {
+
+    const {isAuthenticated} = useAuth0() //isAuthenticated me informa si es usuario esta logueado o no
+
     return (
         <nav className="navbar navbar-expand-md navbar-dark bg-light">
             <div className="container-fluid">
@@ -30,7 +34,7 @@ function NavBar() {
                             {/* <img src={carrito} alt="logocarr" width='50px' className="mx-4"/> */}
                         
                         <div className="vr bg-dark"></div>
-                        <li className="nav-item"><Link to='/login' className="nav-link mx-4">LOGIN</Link></li>
+                        {isAuthenticated ? <LogoutButton /> : <LogingButton />   }
                         <div className="vr bg-dark"></div>
                         <li className="nav-item"><Link to='/register' className="nav-link mx-4">REGISTER</Link></li>
                         <div className="vr bg-dark"></div>
