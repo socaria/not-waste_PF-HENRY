@@ -21,12 +21,12 @@ const getPosts = async (req, res) => {
     }
 };
 
-//TODO asignar sellerId
+
 const postPost = async (req, res) => {
     let {
         date,
         amount,
-        productId
+        productId,
     } = req.body
 
     try {
@@ -47,38 +47,21 @@ const postPost = async (req, res) => {
 const putPost = async (req, res) => {
     const { id } = req.params;
     let {
-        name,
-        price,
-        realValue,
-        description,
-        stock,
-        imagen,
-        diets
+        date,
+        amount,
+        productId,
     } = req.body
     let postToModify = await Post.findByPk(id)
     try {
-        if (!name) { throw new Error('Debe definirse un nombre') }
-        if (!price) { throw new Error('Debe definirse un precio') }
-        if (!realValue) { throw new Error('Debe definirse un valor real') }
-        if (!description) { throw new Error('Debe definirse una descripción') }
-        if (!stock) { throw new Error('Debe definirse un stock') }
-        let postToModify = await Post.upsert(
-            {
-                id,
-                name,
-                price,
-                realValue,
-                description,
-                stock,
-                imagen
-            }
-        )
-        let dietDb = await Diet.findAll({
-            where: { name: diets }
+        if (!date) { throw new Error('Debe definirse una fecha') }
+        if (!amount) { throw new Error('Debe definirse una cantidad') }
+        if (!productId) { throw new Error('Debe definirse los productos') }
+        let postToModify = await Post.upsert({
+            id,
+            date,
+            amount,
+            productId
         })
-
-        postToModify[0].setDiets(dietDb);
-
         res.send(postToModify);
     } catch (e) {
         res.status(500).send(`${e}`)
