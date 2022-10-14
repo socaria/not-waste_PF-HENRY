@@ -53,10 +53,10 @@ const arrayPost = [{
     productId: 11
 },
 {
-    id: 14,
+    id: 10,
     date: "2022-11-03",
     amount: 2,
-    productId: 11
+    productId: 14
 }
 ]
 
