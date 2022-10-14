@@ -1,5 +1,5 @@
 const { Manager } = require("../db");
-const { arrayManager } = require("../public/api.js");
+const { arrayManager } = require("../public/arrayManager.js");
 
 const getApiInfo = async () => {
   let objRes = arrayManager.map((manager) => {

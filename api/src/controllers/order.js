@@ -1,5 +1,5 @@
 const { Order, Post } = require("../db");
-const { arrayOrder } = require("../public/api.js");
+const { arrayOrder } = require("../public/arrayOrder.js");
 
 const getApiInfo = async () => {
   let objRes = arrayOrder.map((order) => {
