@@ -1,39 +1,15 @@
-const { Seller, City, Manager} = require("../db");
-
-const getSellerByCity = async (req, res) => {
-    // const { city } = req.params;
-    // //TODO ver que busque sin diferencia mayusculas
-    // let sellers = await Seller.findAll({
-    //     include: {
-    //         model: City,
-    //         attributes: ["name"],
-    //         through: {
-    //             attributes: [],
-    //         },
-    //     },
-    // });
-    // if (sellers.length) {
-    //     res.status(200).send(sellers);
-    // } else {
-    //     res.status(404).json("No se encontraron proveedores en esa ciudad");
-    // }
-};
+const { Seller, City, Manager } = require("../db");
+const { getAllSellers } = require("./utils/getAllSellers")
 
 // Ruta get va a buscar a todos los proveedores de la base de datos. 
 // Si llegasen las propiedades name, category y/o city por query
+
+
 const getSellers = async (req, res) => {
     const { name, category, city } = req.query;
     let sellers;
     try {
-        sellers = await Seller.findAll({
-            include: {
-                model: City,
-                attributes: ["name"],
-                through: {
-                    attributes: [],
-                },
-            },
-        });
+        sellers = await getAllSellers();
         if (city) {
             sellers = sellers.filter(s =>
                 s.cities.find(c => c.name === city))
@@ -74,7 +50,6 @@ const postSeller = async (req, res) => {
         category,
         enabled,
         city,
-        manager
     } = req.body
 
     try {
@@ -99,7 +74,7 @@ const postSeller = async (req, res) => {
                 name: city,
             },
         });
-        
+
         newSeller.addCity(cityDb);
 
         res.send(newSeller);
@@ -109,6 +84,7 @@ const postSeller = async (req, res) => {
     }
 };
 
+// TODO actualizar manager cuando el estado pasa a enabled
 const putSeller = async (req, res) => {
     const { id } = req.params;
     const {
@@ -121,9 +97,9 @@ const putSeller = async (req, res) => {
         imagen,
         city,
         category,
-        enabled,
-        managerId
+        enabled
     } = req.body;
+
     let sellerToModify = await Seller.findByPk(id);
     try {
         if (!sellerToModify) { throw new Error('No hay proveedores con ese ID') }
@@ -149,12 +125,7 @@ const putSeller = async (req, res) => {
         let cityDb = await City.findAll({
             where: { name: city }
         })
-        let managerDb = await Manager.findAll({
-            where: {
-                username: managerId,
-            },
-        });
-        edited.addManager(managerDb);
+
         edited[0].setCities(cityDb);
         res.send(edited);
     } catch (e) {
@@ -163,9 +134,7 @@ const putSeller = async (req, res) => {
 };
 
 module.exports = {
-    getSellerByCity,
     getSellers,
     postSeller,
     putSeller,
-
 };

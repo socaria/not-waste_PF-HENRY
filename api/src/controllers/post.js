@@ -1,79 +1,36 @@
-const { Router } = require("express");
-const { Post } = require("../db");
+const { Post, Order, Diet } = require("../db");
+const { getAllPosts } = require("./utils/getAllPosts")
 
-const getPostByCity = async (req, res) => {
-    const { city } = req.params;
-    let posts = await Post.findAll({ where: { city: city } });
-    //   console.log(posts);
-    if (posts.length) {
-        res.status(200).send(posts);
-    } else {
-        res.status(404).json("No se encontraron proveedores en esa ciudad");
-    }
-};
-
-// Ruta get va a buscar a todos los proveedores de la base de datos. Si llegasen las propiedades
-// name o store cateogry por query se retornarán los proveedores que coincidan con lo solicitado
+// TODO traer dieta y precio del producto asociado
 const getPosts = async (req, res) => {
-    const { name, category } = req.query;
+    const { diet, price } = req.query;
     let posts;
     try {
-        posts = await Post.findAll();
-        if (name) {
-            posts = posts.filter(s => {
-                s.name === name
-            });
-            if (!posts.length) {
-                throw new Error('No hay proveedores con ese nombre')
-            };
-        }
-        if (category) {
-            posts = posts.filter(s => s.category === category)
-            if (!posts.length) {
-                throw new Error('No hay proveedores con esa categoría de establecimiento')
-            };
-        }
+        posts = await getAllPosts();
         res.status(200).send(posts);
     } catch (e) {
         res.status(404).send(e.message);
     }
 };
 
+
 const postPost = async (req, res) => {
     let {
-        name,
-        password,
-        phone,
-        email,
-        adress,
-        cuit,
-        imagen,
-        city,
-        category,
-        enabled
+        date,
+        amount,
+        productId,
     } = req.body
 
     try {
-        if (!name) { throw new Error('El campo del nombre del establecimiento es obligatorio') }
-        if (!password) { throw new Error('La contraseña debe ser definida') }
-        if (!phone) { throw new Error('El campo del teléfono es obligatorio') }
-        if (!email) { throw new Error('El campo del e-mail es obligatorio') }
-        if (!city) { throw new Error('El campo de la ciudad es obligatorio') }
+        if (!date) { throw new Error('Debe definirse una fecha') }
+        if (!amount) { throw new Error('Debe definirse una cantidad') }
+        if (!productId) { throw new Error('Debe definirse los productos') }
         let newPost = await Post.create({
-            name,
-            password,
-            phone,
-            email,
-            adress,
-            cuit,
-            imagen,
-            enabled,
-            city,
-            category
+            date,
+            amount
         })
-
+        newPost.setProduct(productId)
         res.send(newPost);
-
     } catch (e) {
         res.status(500).send(`${e}`)
     }
@@ -81,67 +38,45 @@ const postPost = async (req, res) => {
 
 const putPost = async (req, res) => {
     const { id } = req.params;
-    const {
-        name,
-        password,
-        phone,
-        email,
-        adress,
-        cuit,
-        imagen,
-        city,
-        category,
-        enabled
-    } = req.body;
+    let {
+        date,
+        amount,
+        productId,
+    } = req.body
     let postToModify = await Post.findByPk(id)
-        try {
-        if (!postToModify) { throw new Error('No hay proveedores con ese ID') }
-        if (!name) { throw new Error('El campo del nombre del establecimiento es obligatorio') }
-        if (!password) { throw new Error('La contraseña debe ser definida') }
-        if (!phone) { throw new Error('El campo del teléfono es obligatorio') }
-        if (!email) { throw new Error('El campo del e-mail es obligatorio') }
-        if (!city) { throw new Error('El campo de la ciudad es obligatorio') }
-        let edited = await Post.upsert(
-            {
-                name,
-                password,
-                phone,
-                email,
-                adress,
-                cuit,
-                imagen,
-                city,
-                category,
-                enabled
-            }
-        )
-        if (store) {
-            let storeToAdd = await Store.findAll({
-                where: { name: store }
-            })
-            postToModify.setStore(storeToAdd);
-        }
-        if (city) {
-            let cityToAdd = await City.findAll({
-                where: { name: city }
-            })
-            postToModify.setCity(cityToAdd);
-        }
-        res.send(edited);
+    try {
+        if (!date) { throw new Error('Debe definirse una fecha') }
+        if (!amount) { throw new Error('Debe definirse una cantidad') }
+        if (!productId) { throw new Error('Debe definirse los productos') }
+        let postToModify = await Post.upsert({
+            id,
+            date,
+            amount,
+            productId
+        })
+        res.send(postToModify);
     } catch (e) {
         res.status(500).send(`${e}`)
     }
 };
 
 const deletePost = async (req, res) => {
-
+    const { id } = req.params;
+    let postToDelete = await Post.findByPk(id)
+    if (!postToDelete) {
+        return res
+            .status(404)
+            .json({
+                error: 'There is not posts with this ID'
+            });
+    }
+    await Post.destroy({ where: { id: id } })
+    res.send(`El producto con el id ${id} fue eliminado`);
 }
 
 module.exports = {
-    getPostByCity,
     getPosts,
     postPost,
     putPost,
     deletePost
-
 };

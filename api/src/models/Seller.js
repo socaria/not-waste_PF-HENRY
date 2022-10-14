@@ -1,12 +1,12 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes, UUIDV4 } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define("seller", {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
+      defaultValue: UUIDV4,
+      allowNull: false,
       primaryKey: true,
-      autoIncrement: true,
-      unique: true,
     },
     name: {
       type: DataTypes.STRING,
@@ -32,7 +32,7 @@ module.exports = (sequelize) => {
     cuit: {
       type: DataTypes.INTEGER,
     },
-    imagen: {
+    image: {
       type: DataTypes.STRING,
     },
     enabled: {
@@ -41,7 +41,7 @@ module.exports = (sequelize) => {
       defaultValue: true,
     },
     category: {
-      type: DataTypes.ENUM("panadería", "restaurante", "supermercado"),
+      type: DataTypes.ENUM("panaderia", "restaurante", "supermercado"),
       allowNull: false,
     },
   });
