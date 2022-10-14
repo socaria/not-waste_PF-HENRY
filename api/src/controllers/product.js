@@ -13,6 +13,7 @@ const getProducts = async (req, res) => {
     }
 };
 
+//TODO asignar sellerId
 const postProduct = async (req, res) => {
     let {
         name,
