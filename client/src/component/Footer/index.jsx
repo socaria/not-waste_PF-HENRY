@@ -1,9 +1,10 @@
 import React from "react";
+import style from './footer.module.css'
 
 function Footer() {
 // "navbar bg-light md-2"
     return (
-        <nav className="navbar navbar-expand-md navbar-dark bg-ligth">
+        <nav className="navbar navbar-expand-md navbar-dark bg-light" id={style.footer}>
             <form className="container-fluid">
                 <div>
                     <button href="#" className="btn btn btn-secondary me-2 btn-lg" type="button">Contacto</button>
