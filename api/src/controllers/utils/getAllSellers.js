@@ -7,7 +7,6 @@ const getApiInfo = async () => {
             id: s.id,
             name: s.name,
             email: s.email,
-            password: s.password,
             phone: s.phone,
             adress: s.adress,
             cuit: s.cuit,

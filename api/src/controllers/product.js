@@ -20,7 +20,7 @@ const postProduct = async (req, res) => {
         realValue,
         description,
         stock,
-        imagen,
+        image,
         diets
     } = req.body
 
@@ -36,7 +36,7 @@ const postProduct = async (req, res) => {
             realValue,
             description,
             stock,
-            imagen
+            image
         })
         let dietDb = await Diet.findAll({
             where: {
@@ -61,7 +61,7 @@ const putProduct = async (req, res) => {
         realValue,
         description,
         stock,
-        imagen,
+        image,
         diets
     } = req.body
     let productToModify = await Product.findByPk(id)
@@ -79,7 +79,7 @@ const putProduct = async (req, res) => {
                 realValue,
                 description,
                 stock,
-                imagen
+                image
             }
         )
         let dietDb = await Diet.findAll({

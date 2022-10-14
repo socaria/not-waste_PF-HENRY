@@ -41,12 +41,11 @@ const getSellers = async (req, res) => {
 const postSeller = async (req, res) => {
     let {
         name,
-        password,
         phone,
         email,
         adress,
         cuit,
-        imagen,
+        image,
         category,
         enabled,
         city,
@@ -54,18 +53,16 @@ const postSeller = async (req, res) => {
 
     try {
         if (!name) { throw new Error('El campo del nombre del establecimiento es obligatorio') }
-        if (!password) { throw new Error('La contraseña debe ser definida') }
         if (!phone) { throw new Error('El campo del teléfono es obligatorio') }
         if (!email) { throw new Error('El campo del e-mail es obligatorio') }
         if (!city) { throw new Error('El campo de la ciudad es obligatorio') }
         let newSeller = await Seller.create({
             name,
-            password,
             phone,
             email,
             adress,
             cuit,
-            imagen,
+            image,
             enabled,
             category
         })
@@ -89,12 +86,11 @@ const putSeller = async (req, res) => {
     const { id } = req.params;
     const {
         name,
-        password,
         phone,
         email,
         adress,
         cuit,
-        imagen,
+        image,
         city,
         category,
         enabled
@@ -104,7 +100,6 @@ const putSeller = async (req, res) => {
     try {
         if (!sellerToModify) { throw new Error('No hay proveedores con ese ID') }
         if (!name) { throw new Error('El campo del nombre del establecimiento es obligatorio') }
-        if (!password) { throw new Error('La contraseña debe ser definida') }
         if (!phone) { throw new Error('El campo del teléfono es obligatorio') }
         if (!email) { throw new Error('El campo del e-mail es obligatorio') }
         if (!city) { throw new Error('El campo de la ciudad es obligatorio') }
@@ -112,12 +107,11 @@ const putSeller = async (req, res) => {
             {
                 id,
                 name,
-                password,
                 phone,
                 email,
                 adress,
                 cuit,
-                imagen,
+                image,
                 category,
                 enabled
             }

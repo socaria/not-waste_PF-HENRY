@@ -23,7 +23,7 @@ const getCallCustomer = async (req, res) => {
 
 const postCustomer = async (req, res) => {
   try {
-    let { name, email, image, city } = req.body;
+    let { name, email, city } = req.body;
 
     if (!name) {
       console.log("El campo del nombre del establecimiento es obligatorio");
@@ -35,7 +35,6 @@ const postCustomer = async (req, res) => {
     let newClient = await Customer.create({
       name,
       email,
-      image,
     });
     let cityDb = await City.findAll({
       where: {
