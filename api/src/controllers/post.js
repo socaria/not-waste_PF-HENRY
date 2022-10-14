@@ -79,7 +79,7 @@ const deletePost = async (req, res) => {
             });
     }
     await Post.destroy({ where: { id: id } })
-    res.send('done');
+    res.send(`El producto con el id ${id} fue eliminado`);
 }
 
 module.exports = {
