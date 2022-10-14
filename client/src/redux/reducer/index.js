@@ -30,8 +30,7 @@ export default function rootReducer(state = initialState, actions) {
     case 'GET_PRODUCT': {
       return {
           ...state,
-          product : actions.payload,
-          state: actions.payload
+          product : actions.payload
         }
       }
 

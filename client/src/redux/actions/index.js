@@ -37,7 +37,7 @@ export function getProduct () {
                 type: 'GET_PRODUCT',
                 payload: price.data
             })
-            console.log(price.data)
+            //console.log(price.data)
         } catch (error) {
             console.log(error)
         }
