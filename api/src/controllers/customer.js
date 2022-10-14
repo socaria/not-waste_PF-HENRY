@@ -25,32 +25,28 @@ const postCustomer = async (req, res) => {
   try {
     let { name, email, city } = req.body;
 
-    if (!name) {
-      console.log("El campo del nombre del establecimiento es obligatorio");
-    }
-    if (!email) console.log("El campo del e-mail es obligatorio");
+    if (!name) { throw new Error('El nombre de usuario debe estar definido') }
+    if (!email) { throw new Error('El enail de usuario debe estar definido') }
 
-    if (!city) console.log("El campo de la ciudad es obligatorio");
-
-    let newClient = await Customer.create({
+    let newCustomer = await Customer.create({
       name,
       email,
     });
-    let cityDb = await City.findAll({
-      where: {
-        name: city,
-      },
-    });
+    if (city) {
+      let cityDb = await City.findAll({
+        where: {
+          name: city,
+        },
+      });
+      newCustomer.addCity(cityDb);
+    }
 
-    newClient.addCity(cityDb);
-
-    res.status(200).send("Creado con Exito");
-  } catch (error) {
-    console.log(error);
-  }
-};
-
+    res.status(200).send(newCustomer);
+  } catch (e) {
+    res.status(500).send(`${e}`)
+  };
+}
 module.exports = {
   postCustomer,
   getCallCustomer,
-};
+}
