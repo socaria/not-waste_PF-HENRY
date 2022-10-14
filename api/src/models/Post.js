@@ -1,12 +1,12 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes, UUIDV4 } = require('sequelize');
 
 module.exports = (sequelize) => {
   sequelize.define("post", {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
+      defaultValue: UUIDV4,
+      allowNull: false,
       primaryKey: true,
-      autoIncrement: true,
-      unique: true,
     },
     date: {
       type: DataTypes.DATE,  

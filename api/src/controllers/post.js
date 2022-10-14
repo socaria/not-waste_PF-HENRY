@@ -1,20 +1,12 @@
-
 const { Post, Order, Diet } = require("../db");
+const { getAllPosts } = require("./utils/getAllPosts")
 
 // TODO traer dieta y precio del producto asociado
 const getPosts = async (req, res) => {
     const { diet, price } = req.query;
     let posts;
     try {
-        posts = await Post.findAll({
-            include: {
-                model: Order,
-                attributes: ["id"],
-                through: {
-                    attributes: [],
-                },
-            },
-        });
+        posts = await getAllPosts();
         res.status(200).send(posts);
     } catch (e) {
         res.status(404).send(e.message);

@@ -1,6 +1,6 @@
 const arrayProduct = [
   {
-    id: 01,
+    id: "6c78e0cd-1889-475d-a351-cd2729fad5b0",
     name: "ensalada",
     price: 300,
     realValue: 900,
