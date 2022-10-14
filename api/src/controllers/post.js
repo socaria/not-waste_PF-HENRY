@@ -1,14 +1,15 @@
 
-const { Post, Diet } = require("../db");
+const { Post, Order, Diet } = require("../db");
 
+// TODO traer dieta y precio del producto asociado
 const getPosts = async (req, res) => {
     const { diet, price } = req.query;
     let posts;
     try {
         posts = await Post.findAll({
             include: {
-                model: Diet,
-                attributes: ["name"],
+                model: Order,
+                attributes: ["id"],
                 through: {
                     attributes: [],
                 },
@@ -23,39 +24,21 @@ const getPosts = async (req, res) => {
 //TODO asignar sellerId
 const postPost = async (req, res) => {
     let {
-        name,
-        price,
-        realValue,
-        description,
-        stock,
-        imagen,
-        diets
+        date,
+        amount,
+        productId
     } = req.body
 
     try {
-        if (!name) { throw new Error('Debe definirse un nombre') }
-        if (!price) { throw new Error('Debe definirse un precio') }
-        if (!realValue) { throw new Error('Debe definirse un valor real') }
-        if (!description) { throw new Error('Debe definirse una descripción') }
-        if (!stock) { throw new Error('Debe definirse un stock') }
+        if (!date) { throw new Error('Debe definirse una fecha') }
+        if (!amount) { throw new Error('Debe definirse una cantidad') }
+        if (!productId) { throw new Error('Debe definirse los productos') }
         let newPost = await Post.create({
-            name,
-            price,
-            realValue,
-            description,
-            stock,
-            imagen
+            date,
+            amount
         })
-        let dietDb = await Diet.findAll({
-            where: {
-                name: diets,
-            },
-        });
-
-        newPost.addDiets(dietDb);
-
+        newPost.setProduct(productId)
         res.send(newPost);
-
     } catch (e) {
         res.status(500).send(`${e}`)
     }
@@ -103,21 +86,21 @@ const putPost = async (req, res) => {
 };
 
 const deletePost = async (req, res) => {
-        const { id } = req.params;
-        let postToDelete = await Post.findByPk(id)
-        if (!postToDelete) {
-            return res
-                .status(404)
-                .json({
-                    error: 'There is not posts with this ID'
-                });
-        }    
-        await Post.destroy({ where: { id: id } })
-        res.send('done');    
+    const { id } = req.params;
+    let postToDelete = await Post.findByPk(id)
+    if (!postToDelete) {
+        return res
+            .status(404)
+            .json({
+                error: 'There is not posts with this ID'
+            });
+    }
+    await Post.destroy({ where: { id: id } })
+    res.send('done');
 }
 
 module.exports = {
-    getPost,
+    getPosts,
     postPost,
     putPost,
     deletePost
