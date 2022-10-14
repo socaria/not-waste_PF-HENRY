@@ -1,5 +1,5 @@
 const { arraySeller } = require("../../public/arraySeller");
-const { Seller, City, Product } = require("../../db");
+const { Seller, City, Product, Post } = require("../../db");
 
 const getApiInfo = async () => {
     let sellersApi = arraySeller.map((s) => {
@@ -28,8 +28,13 @@ const getDbInfo = async () => {
                 attributes: [],
             },
         },
-        {model: Product,
-        }]
+        {
+            model: Product,
+            include: {
+                model: Post
+            }
+        },
+        ]
 
     });
 };
