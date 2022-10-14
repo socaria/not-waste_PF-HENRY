@@ -1,5 +1,5 @@
 import React from 'react';
-import Cards from '../Cards';
+import Supplier from '../Supplier/Supplier';
 import NavBar from '../NavBar/Navbar';
 import Filters from '../Filters/Filters'
 import Footer from '../Footer';
@@ -9,7 +9,7 @@ function Home(){
         <div>
             <NavBar />
             <Filters />
-            <Cards />
+            <Supplier />
             <Footer />
         </div>
     )

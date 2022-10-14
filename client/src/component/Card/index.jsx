@@ -3,12 +3,6 @@ import { v4 as uuidv4 } from 'uuid';
 import '../Card/card.css'
 
 function Card({name, image, price}) {
-
-    let imgAlt = "https://us.123rf.com/450wm/jovanas/jovanas1602/jovanas160201103/52031691-icono-de-los-alimentos-de-la-comida-caliente.jpg?ver=6"
-    const img='https://static.vecteezy.com/system/resources/previews/002/032/170/large_2x/healthy-diet-ingredients-on-a-shabby-white-background-free-photo.jpg'
-      const img2='https://static.vecteezy.com/system/resources/previews/003/350/919/large_2x/top-view-of-healthy-food-on-white-wooden-background-photo.jpg'
-      const img3= 'https://static.vecteezy.com/system/resources/previews/002/032/172/large_2x/top-view-of-healthy-foods-on-a-dark-slate-background-free-photo.jpg'
-      const imgIcon = 'https://cdn.iconscout.com/icon/premium/png-256-thumb/vegetarian-food-1834409-1557027.png'
     return (
         //-----------------------------------------Card de cristian----------------------------------------------
         // <div key={uuidv4} className="card text-bg-light border-info my-5 mx-5">
