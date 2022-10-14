@@ -12,6 +12,16 @@ const getProducts = async (req, res) => {
     }
 };
 
+const getProductsBySeller = async (req, res) => {
+    let { sellerId } = req.params;
+    try {
+    let allProducts = await getAllProducts();
+    let productFromSeller = await allProducts.filter(p => p.sellerId === sellerId)
+        res.status(200).send(productFromSeller);
+    } catch (e) {
+        res.status(404).send('No hay productos de ese vendedor');
+    }
+};
 //TODO asignar sellerId
 const postProduct = async (req, res) => {
     let {
@@ -21,7 +31,8 @@ const postProduct = async (req, res) => {
         description,
         stock,
         image,
-        diets
+        diets,
+        sellerId
     } = req.body
 
     try {
@@ -36,7 +47,8 @@ const postProduct = async (req, res) => {
             realValue,
             description,
             stock,
-            image
+            image,
+            sellerId
         })
         let dietDb = await Diet.findAll({
             where: {
@@ -112,5 +124,6 @@ module.exports = {
     getProducts,
     postProduct,
     putProduct,
-    deleteProduct
+    deleteProduct,
+    getProductsBySeller
 };

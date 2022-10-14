@@ -1,0 +1,70 @@
+{
+    "id": "ab2d4126-6db8-4550-a893-ebf5bc688000",
+    "name": "Seller A",
+    "phone": 123456,
+    "email": "asabcd@gmail.com",
+    "adress": "av siempreviva 123",
+    "cuit": 27896522,
+    "image": "https://image.shutterstock.com/image-vector/fruit-seller-selling-apples-oranges-600w-795476500.jpg",
+    "category": "restaurante",
+    "enabled": false,
+    "createdAt": "2022-10-14T19:49:59.719Z",
+    "updatedAt": "2022-10-14T19:49:59.719Z",
+    "managerId": null,
+    "cities": [],
+    "products": [
+        {
+            "id": "0fd25333-b70e-422d-aa22-77dd319e793a",
+            "name": "Arvejas",
+            "price": 200,
+            "realValue": 1000,
+            "description": "combo de frutas de estación, puede variar según disponibilidad",
+            "stock": 3,
+            "image": null,
+            "createdAt": "2022-10-14T19:50:20.245Z",
+            "updatedAt": "2022-10-14T19:50:20.245Z",
+            "sellerId": "ab2d4126-6db8-4550-a893-ebf5bc688000",
+            "posts": {
+                "id": "ab2d4126-6db8-4550-a893-ebf5bc688000",
+                "name": "Seller A",
+                "phone": 123456,
+                "email": "asabcd@gmail.com",
+                "adress": "av siempreviva 123",
+                "cuit": 27896522,
+                "image": "https://image.shutterstock.com/image-vector/fruit-seller-selling-apples-oranges-600w-795476500.jpg",
+                "category": "restaurante",
+                "enabled": false,
+                "createdAt": "2022-10-14T19:49:59.719Z",
+                "updatedAt": "2022-10-14T19:49:59.719Z",
+                "managerId": null,
+                "cities": [],
+                "products": [
+                    {
+                        "id": "0fd25333-b70e-422d-aa22-77dd319e793a",
+                        "name": "Arvejas",
+                        "price": 200,
+                        "realValue": 1000,
+                        "description": "combo de frutas de estación, puede variar según disponibilidad",
+                        "stock": 3,
+                        "image": null,
+                        "createdAt": "2022-10-14T19:50:20.245Z",
+                        "updatedAt": "2022-10-14T19:50:20.245Z",
+                        "sellerId": "ab2d4126-6db8-4550-a893-ebf5bc688000"
+                    },
+                    {
+                        "id": "688fffc4-f9c0-4e43-9a5d-21ffedcd49f5",
+                        "name": "Lentejas",
+                        "price": 200,
+                        "realValue": 1000,
+                        "description": "combo de frutas de estación, puede variar según disponibilidad",
+                        "stock": 3,
+                        "image": null,
+                        "createdAt": "2022-10-14T19:50:10.024Z",
+                        "updatedAt": "2022-10-14T19:50:10.024Z",
+                        "sellerId": "ab2d4126-6db8-4550-a893-ebf5bc688000"
+                    }
+                ]
+            }
+        }
+    ]
+}
