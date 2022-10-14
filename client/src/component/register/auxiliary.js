@@ -29,7 +29,7 @@ export function validate (input) {
 
     if(!input.email) {
         error.mail = "Email is required";
-    } else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(input.email)) {
+    } else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(input.email)) {
         error.email = "Enter a valid email"
     }
 
