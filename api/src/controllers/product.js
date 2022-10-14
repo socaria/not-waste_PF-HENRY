@@ -96,7 +96,17 @@ const putProduct = async (req, res) => {
 };
 
 const deleteProduct = async (req, res) => {
-
+        const { id } = req.params;
+        let productToDelete = await Product.findByPk(id)
+        if (!productToDelete) {
+            return res
+                .status(404)
+                .json({
+                    error: 'There is not products with this ID'
+                });
+        }    
+        await Product.destroy({ where: { id: id } })
+        res.send('done');    
 }
 
 module.exports = {
