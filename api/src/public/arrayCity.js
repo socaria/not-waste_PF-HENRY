@@ -1,20 +1,3 @@
-let arrayManager = [
-  {
-    id: 01,
-    username: "pedro",
-    password: "abc123",
-  },
-  {
-    id: 02,
-    username: "juan",
-    password: "abc456",
-  },
-  {
-    id: 03,
-    username: "maria",
-    password: "abc789",
-  },
-];
 let arrayCity = [
   {
     id: 01,
@@ -149,29 +132,7 @@ let arrayCity = [
     name: "Vélez Sarsfield",
   },
 ];
-let arrayOrder = [
-  {
-    id: 01,
-    date: "14-11-88",
-    state: "pendiente",
-    review: 5,
-  },
-  {
-    id: 02,
-    date: "25-04-92",
-    state: "confirmado",
-    review: 4,
-  },
-  {
-    id: 03,
-    date: "20-12-95",
-    state: "entregado",
-    review: 3,
-  },
-];
 
 module.exports = {
   arrayCity,
-  arrayManager,
-  arrayOrder,
 };
