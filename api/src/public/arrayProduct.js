@@ -249,6 +249,8 @@ const arrayProduct = [
     image:
       "https://disfruta.co/storage/productos/45/JnhYMdwPH8hNSsC3yn6vqaTathxE2zHPwb4KhWhP.jpg",
   },
+  //Aca van las panaderias con sus ideas 
+  
 ];
 
 module.exports = {
