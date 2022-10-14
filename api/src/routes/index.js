@@ -65,6 +65,6 @@ router.get("/order", getAllOrder);
 router.post("/order", postOrder);
 
 //Ruta de Dietas
-router.get("/dietas", getDietas);
+router.get("/diets", getDietas);
 
 module.exports = router;
