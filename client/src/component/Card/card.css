@@ -1,0 +1,38 @@
+.containerpri {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    margin: 20px;
+    border: 1px solid black;
+    border-radius: 15px;
+    width: 18rem;
+}
+
+.imgbig {
+    border-radius: 15px;
+    border: black solid;
+    height: 120px;
+    margin: 3%;
+    flex-wrap: wrap;
+}
+
+.contenido {
+    font-size: 17px;
+    color: white;
+    text-shadow: white;
+    padding: 5px 10px;
+}
+
+.h3name {
+    display: flex;
+}
+
+.h4price {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10px ;
+    margin-top: 22%;
+}
