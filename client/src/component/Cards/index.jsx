@@ -7,7 +7,7 @@ function Cards(props) {
 
     props = products
     return (
-        <div className="row row-cols-1 row-cols-md-4 g-12 d-flex justify-content-center bg-dark">
+        <div className="row row-cols-1 row-cols-md-4 g-12 d-flex justify-content-center bg-dark mb-5">
             {
                 props && props.map(product => (
                     Card(product)
