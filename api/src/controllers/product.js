@@ -6,7 +6,15 @@ const getProducts = async (req, res) => {
     const { diet, category } = req.query;
     let products;
     try {
-        products = await Product.findAll();
+        products = await Product.findAll({
+            include: {
+                model: Diet,
+                attributes: ["name"],
+                through: {
+                    attributes: [],
+                },
+            },
+        });
         res.status(200).send(products);
     } catch (e) {
         res.status(404).send(e.message);
