@@ -1,9 +1,10 @@
-const { DataTypes } = requiere("secualize");
+const { DataTypes } = require("sequelize");
 
-module.export = (sequalize) => {
-  sequalize.difine("customer", {
+module.exports = (sequelize) => {
+  sequelize.define("customer", {
     id: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
       unique: true,
     },
@@ -15,21 +16,15 @@ module.export = (sequalize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    name: {
-      type: DataTypes.NUMBER,
-      allowNull: false,
-    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    city: {
+    image: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    imagen: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+    // TODO cambiar datatype a ENUM con los partidos de buenos aires
+   
   });
 };
