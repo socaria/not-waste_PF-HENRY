@@ -22,7 +22,7 @@ const postProduct = async (req, res) => {
         description,
         stock,
         imagen,
-        diet
+        diets
     } = req.body
 
     try {
@@ -41,7 +41,7 @@ const postProduct = async (req, res) => {
         })
         let dietDb = await Diet.findAll({
             where: {
-                name: diet,
+                name: diets,
             },
         });
 
@@ -56,53 +56,40 @@ const postProduct = async (req, res) => {
 
 const putProduct = async (req, res) => {
     const { id } = req.params;
-    const {
+    let {
         name,
-        password,
-        phone,
-        email,
-        adress,
-        cuit,
+        price,
+        realValue,
+        description,
+        stock,
         imagen,
-        city,
-        category,
-        enabled
-    } = req.body;
+        diets
+    } = req.body
     let productToModify = await Product.findByPk(id)
     try {
-        if (!productToModify) { throw new Error('No hay proveedores con ese ID') }
-        if (!name) { throw new Error('El campo del nombre del establecimiento es obligatorio') }
-        if (!password) { throw new Error('La contraseña debe ser definida') }
-        if (!phone) { throw new Error('El campo del teléfono es obligatorio') }
-        if (!email) { throw new Error('El campo del e-mail es obligatorio') }
-        if (!city) { throw new Error('El campo de la ciudad es obligatorio') }
-        let edited = await Product.upsert(
+        if (!name) { throw new Error('Debe definirse un nombre') }
+        if (!price) { throw new Error('Debe definirse un precio') }
+        if (!realValue) { throw new Error('Debe definirse un valor real') }
+        if (!description) { throw new Error('Debe definirse una descripción') }
+        if (!stock) { throw new Error('Debe definirse un stock') }
+        let productToModify = await Product.upsert(
             {
+                id,
                 name,
-                password,
-                phone,
-                email,
-                adress,
-                cuit,
-                imagen,
-                city,
-                category,
-                enabled
+                price,
+                realValue,
+                description,
+                stock,
+                imagen
             }
         )
-        if (store) {
-            let storeToAdd = await Store.findAll({
-                where: { name: store }
-            })
-            productToModify.setStore(storeToAdd);
-        }
-        if (city) {
-            let cityToAdd = await City.findAll({
-                where: { name: city }
-            })
-            productToModify.setCity(cityToAdd);
-        }
-        res.send(edited);
+        let dietDb = await Diet.findAll({
+            where: { name: diets }
+        })
+
+        productToModify[0].setDiets(dietDb);
+
+        res.send(productToModify);
     } catch (e) {
         res.status(500).send(`${e}`)
     }
