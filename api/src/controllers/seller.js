@@ -1,48 +1,9 @@
-const e = require("express");
 const { Seller, City, Manager } = require("../db");
+const { getAllSellers } = require("./utils/getAllSellers")
 
 // Ruta get va a buscar a todos los proveedores de la base de datos. 
 // Si llegasen las propiedades name, category y/o city por query
 
-const { arraySeller } = require("../public/arraySeller");
-
-const getApiInfo = async () => {
-    let sellersApi = arraySeller.map((s) => {
-        return {
-            id: s.id,
-            name: s.name,
-            email: s.email,
-            password: s.password,
-            phone: s.phone,
-            adress: s.adress,
-            cuit: s.cuit,
-            image: s.image,
-            enabled: e.enabled,
-            cities: e.cities,
-            category: e.category,
-        };
-    });
-    return sellersApi;
-};
-
-const getDbInfo = async () => {
-    return await Seller.findAll({
-        include: {
-            model: City,
-            attributes: ["name"],
-            through: {
-                attributes: [],
-            },
-        },
-    });
-};
-
-const getAllSellers = async () => {
-    const apiInfo = await getApiInfo();
-    const dbInfo = await getDbInfo();
-    const infoTotal = apiInfo.concat(dbInfo);
-    return infoTotal;
-};
 
 const getSellers = async (req, res) => {
     const { name, category, city } = req.query;
