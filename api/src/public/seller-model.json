@@ -1,0 +1,149 @@
+[
+    {
+        "id": "1eef5560-b4cb-4fef-b14e-54b79e429561",
+        "name": "carrefour",
+        "phone": 351685888,
+        "email": "carrefour@gmail.com",
+        "adress": "av siempreviva 123",
+        "cuit": 273859623,
+        "image": "https://cclasarenas.com/wp-content/uploads/2020/04/carrefour-las-arenas.jpg",
+        "category": "supermercado",
+        "enabled": false,
+        "createdAt": "2022-10-15T15:38:26.202Z",
+        "updatedAt": "2022-10-15T15:38:26.202Z",
+        "managerId": null,
+        "cities": [
+            {
+                "name": "Almagro"
+            },
+            {
+                "name": "Balvanera"
+            }
+        ],
+        "products": [
+            {
+                "id": "34504504-643c-48ea-bca8-ef9c9fc9ee85",
+                "name": "combo de frutas",
+                "price": 200,
+                "realValue": 1000,
+                "description": "combo de verduras según variead disponible, peso aproximado 3kg",
+                "stock": 3,
+                "image": "https://www.lavanguardia.com/files/og_thumbnail/uploads/2019/06/04/5e99794702a16.jpeg",
+                "createdAt": "2022-10-15T15:40:26.545Z",
+                "updatedAt": "2022-10-15T15:40:26.545Z",
+                "sellerId": "1eef5560-b4cb-4fef-b14e-54b79e429561",
+                "posts": [
+                    {
+                        "id": "026fa69f-d73d-47f5-b844-e464b821836e",
+                        "date": "2022-11-03T00:00:00.000Z",
+                        "amount": 3,
+                        "createdAt": "2022-10-15T15:41:30.973Z",
+                        "updatedAt": "2022-10-15T15:41:30.976Z",
+                        "productId": "34504504-643c-48ea-bca8-ef9c9fc9ee85",
+                        "orders": []
+                    },
+                    {
+                        "id": "c47f7f73-3146-4aed-b8cc-b09e91a81635",
+                        "date": "2022-11-02T00:00:00.000Z",
+                        "amount": 3,
+                        "createdAt": "2022-10-15T15:41:26.676Z",
+                        "updatedAt": "2022-10-15T15:41:26.678Z",
+                        "productId": "34504504-643c-48ea-bca8-ef9c9fc9ee85",
+                        "orders": []
+                    },
+                    {
+                        "id": "d4fb51ab-9b02-425d-9ec3-b7ee2a5135ac",
+                        "date": "2022-11-01T00:00:00.000Z",
+                        "amount": 3,
+                        "createdAt": "2022-10-15T15:41:23.811Z",
+                        "updatedAt": "2022-10-15T15:41:23.877Z",
+                        "productId": "34504504-643c-48ea-bca8-ef9c9fc9ee85",
+                        "orders": []
+                    }
+                ]
+            },
+            {
+                "id": "68fc187b-ee42-4ec0-b450-d5c26681b518",
+                "name": "combo de carne",
+                "price": 500,
+                "realValue": 2000,
+                "description": "combo de cortes de carne vacuna según variead disponible, peso aproximado 2kg",
+                "stock": 3,
+                "image": "https://static2.abc.es/media/bienestar/2021/09/27/tipos-de-carne-1-kWj--620x349@abc.jpg",
+                "createdAt": "2022-10-15T15:38:44.900Z",
+                "updatedAt": "2022-10-15T15:45:29.961Z",
+                "sellerId": "1eef5560-b4cb-4fef-b14e-54b79e429561",
+                "posts": [
+                    {
+                        "id": "7384b370-a0f2-49c1-85b2-3c67758d94e5",
+                        "date": "2022-11-03T00:00:00.000Z",
+                        "amount": 3,
+                        "createdAt": "2022-10-15T15:42:26.185Z",
+                        "updatedAt": "2022-10-15T15:42:26.188Z",
+                        "productId": "68fc187b-ee42-4ec0-b450-d5c26681b518",
+                        "orders": []
+                    },
+                    {
+                        "id": "02876540-517d-4f8f-836b-5d6353abcb3d",
+                        "date": "2022-11-02T00:00:00.000Z",
+                        "amount": 3,
+                        "createdAt": "2022-10-15T15:42:22.752Z",
+                        "updatedAt": "2022-10-15T15:42:22.755Z",
+                        "productId": "68fc187b-ee42-4ec0-b450-d5c26681b518",
+                        "orders": []
+                    },
+                    {
+                        "id": "c4cee0a5-5dea-4332-9938-f0fb1818c03e",
+                        "date": "2022-11-01T00:00:00.000Z",
+                        "amount": 3,
+                        "createdAt": "2022-10-15T15:42:19.811Z",
+                        "updatedAt": "2022-10-15T15:42:19.973Z",
+                        "productId": "68fc187b-ee42-4ec0-b450-d5c26681b518",
+                        "orders": []
+                    }
+                ]
+            },
+            {
+                "id": "0d217241-5c90-491e-bc14-314d324bdd27",
+                "name": "combo de verduras",
+                "price": 200,
+                "realValue": 1000,
+                "description": "combo de verduras según variead disponible, peso aproximado 3kg",
+                "stock": 3,
+                "image": "https://cdn.buttercms.com/wxIxPlVqRvCE4fE6tvgO",
+                "createdAt": "2022-10-15T15:40:04.848Z",
+                "updatedAt": "2022-10-15T15:40:04.848Z",
+                "sellerId": "1eef5560-b4cb-4fef-b14e-54b79e429561",
+                "posts": [
+                    {
+                        "id": "9d2d92f7-5b88-468d-aac9-b4fb2156148c",
+                        "date": "2022-11-01T00:00:00.000Z",
+                        "amount": 3,
+                        "createdAt": "2022-10-15T15:41:54.536Z",
+                        "updatedAt": "2022-10-15T15:41:54.539Z",
+                        "productId": "0d217241-5c90-491e-bc14-314d324bdd27",
+                        "orders": []
+                    },
+                    {
+                        "id": "f22206ce-067f-445e-a651-295a72661758",
+                        "date": "2022-11-02T00:00:00.000Z",
+                        "amount": 3,
+                        "createdAt": "2022-10-15T15:41:51.760Z",
+                        "updatedAt": "2022-10-15T15:41:51.762Z",
+                        "productId": "0d217241-5c90-491e-bc14-314d324bdd27",
+                        "orders": []
+                    },
+                    {
+                        "id": "7a26f04b-623e-45fe-9e69-adcbd0c6b838",
+                        "date": "2022-11-03T00:00:00.000Z",
+                        "amount": 3,
+                        "createdAt": "2022-10-15T15:41:49.039Z",
+                        "updatedAt": "2022-10-15T15:41:49.104Z",
+                        "productId": "0d217241-5c90-491e-bc14-314d324bdd27",
+                        "orders": []
+                    }
+                ]
+            }
+        ]
+    }
+]
