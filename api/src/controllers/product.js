@@ -15,8 +15,8 @@ const getProducts = async (req, res) => {
 const getProductsBySeller = async (req, res) => {
     let { sellerId } = req.params;
     try {
-    let allProducts = await getAllProducts();
-    let productFromSeller = await allProducts.filter(p => p.sellerId === sellerId)
+        let allProducts = await getAllProducts();
+        let productFromSeller = await allProducts.filter(p => p.sellerId === sellerId)
         res.status(200).send(productFromSeller);
     } catch (e) {
         res.status(404).send('No hay productos de ese vendedor');
@@ -94,11 +94,13 @@ const putProduct = async (req, res) => {
                 image
             }
         )
-        let dietDb = await Diet.findAll({
-            where: { name: diets }
-        })
+        if (diets) {
+            let dietDb = await Diet.findAll({
+                where: { name: diets }
+            })
 
-        productToModify[0].setDiets(dietDb);
+            productToModify[0].setDiets(dietDb);
+        }
 
         res.send(productToModify);
     } catch (e) {
@@ -107,17 +109,17 @@ const putProduct = async (req, res) => {
 };
 
 const deleteProduct = async (req, res) => {
-        const { id } = req.params;
-        let productToDelete = await Product.findByPk(id)
-        if (!productToDelete) {
-            return res
-                .status(404)
-                .json({
-                    error: 'There is not products with this ID'
-                });
-        }    
-        await Product.destroy({ where: { id: id } })
-        res.send('done');    
+    const { id } = req.params;
+    let productToDelete = await Product.findByPk(id)
+    if (!productToDelete) {
+        return res
+            .status(404)
+            .json({
+                error: 'There is not products with this ID'
+            });
+    }
+    await Product.destroy({ where: { id: id } })
+    res.send('done');
 }
 
 module.exports = {

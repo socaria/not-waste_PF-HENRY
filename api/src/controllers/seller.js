@@ -48,14 +48,14 @@ const postSeller = async (req, res) => {
         image,
         category,
         enabled,
-        city,
+        cities,
     } = req.body
 
     try {
         if (!name) { throw new Error('El campo del nombre del establecimiento es obligatorio') }
         if (!phone) { throw new Error('El campo del teléfono es obligatorio') }
         if (!email) { throw new Error('El campo del e-mail es obligatorio') }
-        if (!city) { throw new Error('El campo de la ciudad es obligatorio') }
+        if (!cities) { throw new Error('El campo de la ciudad es obligatorio') }
         let newSeller = await Seller.create({
             name,
             phone,
@@ -68,7 +68,7 @@ const postSeller = async (req, res) => {
         })
         let cityDb = await City.findAll({
             where: {
-                name: city,
+                name: cities,
             },
         });
 
