@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { getCities, getDiet, getSellers, getProduct, orderPriceProduct } from "../../redux/actions";
-import Card from "../Card/Card";
+import CarouselSeller from '../CarouselSeller/CarouselSeller'
 import NavBar from '../NavBar/Navbar';
 import Footer from '../Footer';
 import '../Home/Home.css'
@@ -12,14 +12,16 @@ function Home() {
     const [, setOrden] = useState()
     const cities = useSelector(state => state.cities)
     const diet = useSelector(state => state.diet)
+    const sellers = useSelector(state => state.seller)
+    console.log(sellers,' SELLER HOME')
     const product = useSelector(state => state.product)
+    
 
     useEffect(() => {
         dispatch(getCities())
         dispatch(getSellers())
         dispatch(getProduct())
         dispatch(getDiet())
-
     }, [dispatch])
 
     function handleCities(e) {
@@ -82,50 +84,17 @@ function Home() {
                         <option>CATEGORIAS DEL PROVEEDOR</option>
                     </select>
                 </div>
-                
-{/* ----------------------------------------------------------CARRUSEL, HAY QUE ARREGLAR-------------------------- */}
-                <div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel">
-                    <div className="carousel-inner">
-                        <div className="carousel-item active">
-                            <div className="carruselCard">
-                                <h1>primer imagen</h1>
-                                {
-                                    product?.map((e, i) => {
-                                        return (
-                                            <div key={i}>
-                                                <Card image={e.image} name={e.name} price={e.price} />
-                                            </div>
-                                        )
-                                    })
-                                }
-                            </div>
-                        </div>
-                        <div className="carousel-item">
-                            <div className="carruselCard">
-                            <h1>segunda imagen</h1>
-                                    {
-                                        product?.map((e, i) => {
-                                            return (
-                                                <div key={i}>
-                                                    <Card image={e.image} name={e.name} price={e.price} />
-                                                </div>
-                                            )
-                                        })
-                                    }
-                            </div>
-                        </div>
-                    </div>
-                    <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span className="visually-hidden">Anterior</span>
-                    </button>
-                    <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span className="visually-hidden">Siguiente</span>
-                    </button>
-                </div>
-{/* ----------------------------------------------------------CARRUSEL, HAY QUE ARREGLAR-------------------------- */}
 
+                {
+                    sellers?.map(se => {
+                        return(
+                            <div>
+                                <CarouselSeller name={se.name} products={se.products} />
+                            </div>
+                        )
+                    })
+                }
+                
             </div>
             <Footer />
         </div>
