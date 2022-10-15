@@ -1,24 +1,11 @@
 export function validate (input) {
     let error = {}
     
-    if (!input.name) {
-        error.name = "Name is required";
+    if (!input.namesupplier) {
+        error.namesupplier = "Name is required";
     }
-    else if (!/^[A-Za-z0-9\s]+$/g.test(input.name)) {
-        error.name = "Name is invalid. They only allow letters and numbers"
-    }
-
-    if (!input.proveedor && !input.lastName) {
-        error.lastName = "Lastname is required";
-    }
-    else if (!input.proveedor && !/^[A-Za-z0-9\s]+$/g.test(input.lastName)) {
-        error.lastName = "Lastname is invalid. They only allow letters and numbers"
-    }
-
-    if (!input.password) {
-        error.password = "Password is required";
-    } else if (!/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/g.test(input.password)) {
-        error.password = "The password must have at least 8 and 16 characters, at least one digit, at least one lowercase and at least one uppercase.It can NOT have other symbols."
+    else if (!/^[A-Za-z0-9\s]+$/g.test(input.namesupplier)) {
+        error.namesupplier = "Name is invalid. They only allow letters and numbers"
     }
 
     if (!input.phone) {
@@ -27,14 +14,18 @@ export function validate (input) {
         error.phone = 'Enter a valid phone number'
     }
 
-    if(!input.email) {
-        error.mail = "Email is required";
-    } else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(input.email)) {
-        error.email = "Enter a valid email"
+    if(input.category === '') {
+        error.category = 'Category is required'
     }
 
-    if(input.state === '') {
-        error.state = 'State is required'
+    if (!input.adress) {
+        error.adress = "Adress is required";
+    }
+
+    if (!input.cuit) {
+        error.cuit = 'Cuit is required';
+    } else if (!/\b(20|23|24|27|30|33|34)(\D)?[0-9]{8}(\D)?[0-9]/g.test(input.cuit)) {
+        error.cuit = 'Enter a valid cuit'
     }
 
     return error;

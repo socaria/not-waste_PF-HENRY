@@ -73,3 +73,45 @@ export function orderPriceProduct(payload) {
         payload
     }
 }
+
+export function getCustomer () {
+    return async function(dispatch) {
+        try {
+            const customer = await axios.get('http://localhost:3001/customer')
+            dispatch({
+                type: 'GET_CUSTOMER',
+                payload: customer.data
+            })
+            // console.log(seller)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+export function postCustomer(data) {
+    return fetch('http://localhost:3001/customer', {
+        method: 'POST', // or 'PUT'
+        body: JSON.stringify(data), // data can be `string` or {object}!
+        headers:{
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(res => res.json())
+    .catch(error => console.error('Error:', error))
+    .then(response => console.log('Success:', response));
+}
+
+export function postSeller(data) {
+    console.log(JSON.stringify(data))
+    return fetch('http://localhost:3001/seller', {
+        method: 'POST', // or 'PUT'
+        body: JSON.stringify(data), // data can be `string` or {object}!
+        headers:{
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(res => res.json())
+    .catch(error => console.error('Error:', error))
+    .then(response => console.log('Success:', response));
+}
