@@ -46,16 +46,17 @@ export function getProduct () {
 }
 
 export function prodDetail (id) {
-    console.log(id)
+    console.log(id, 'hola')
     return async function(dispatch) {
         try {
-            // const price = await axios.get('http://localhost:3001/product')
+            const detailProduct = await axios.get('http://localhost:3001/product/' + id)
             dispatch({
                 type: 'PROD_DETAIL',
-                payload: product.find(e=>id === e.id)
+                payload: detailProduct.data
             })
             //console.log(price.data)
         } catch (error) {
+            
             console.log(error)
         }
     }

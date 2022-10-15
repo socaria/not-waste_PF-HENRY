@@ -1,8 +1,8 @@
-const { arrayProduct } = require("../../public/arrayProduct");
-const { Product, Diet, Post } = require("../../db");
+const product = require('../../public/product-model.json')
+const { Product, Diet, Post, Order } = require("../../db");
 
 const getApiInfo = async () => {
-    let productApi = arrayProduct.map((p) => {
+    let productApi = product.map((p) => {
         return {
             id: p.id,
             name: p.name,
@@ -28,6 +28,7 @@ const getDbInfo = async () => {
         },
         {
             model: Post,
+            include: { model: Order}
         }
     ]
     });
