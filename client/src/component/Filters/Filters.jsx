@@ -1,11 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import './Filters.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { getCities, getDiet, getSellers, getProduct, orderPriceProduct } from "../../redux/actions";
+import Card from "../Card";
 
 function Filters() {
     
     const dispatch = useDispatch()
+    
+    const [, setOrden] = useState()
+
     const seller = useSelector(state => state.seller)
     const cities = useSelector(state => state.cities)
     const diet = useSelector(state => state.diet)
@@ -22,6 +26,9 @@ console.log(price)
 
     },[dispatch])
 
+
+
+
     function handleCities(e) {
         dispatch(getCities())
         console.log(e.target.value)
@@ -29,8 +36,10 @@ console.log(price)
 
     function handleOrderPrice(e) {
         e.preventDefault()
+        // dispatch(getProduct(e.target.value))
         dispatch(orderPriceProduct(e.target.value))
-        console.log(e.target.value)
+        setOrden(e.target.value)
+        // console.log(e.target.value)
     }
 
     function handleFilterDiet(e) {
@@ -82,6 +91,18 @@ console.log(price)
                     <option>CATEGORIAS DEL PROVEEDOR</option>
                 </select>
             </div>
+            <div>
+            {
+                product?.map((e, i) => {
+                    return (
+                        <div key={i}>
+                            <Card image={e.image} name={e.name} price={e.price}/>
+                        </div>
+                    )
+                })
+            }
+        </div>
+
         </div>
     )
 }
