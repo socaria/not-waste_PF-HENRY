@@ -1,5 +1,5 @@
 const { arrayProduct } = require("../../public/arrayProduct");
-const { Product, Diet } = require("../../db");
+const { Product, Diet, Post } = require("../../db");
 
 const getApiInfo = async () => {
     let productApi = arrayProduct.map((p) => {
@@ -11,6 +11,7 @@ const getApiInfo = async () => {
             description: p.description,
             stock: p.stock,
             image: p.image,
+            sellerId: p.sellerId
         };
     });
     return productApi;
@@ -18,13 +19,17 @@ const getApiInfo = async () => {
 
 const getDbInfo = async () => {
     return await Product.findAll({
-        include: {
+        include: [{
             model: Diet,
             attributes: ["name"],
             through: {
                 attributes: [],
             },
         },
+        {
+            model: Post,
+        }
+    ]
     });
 };
 

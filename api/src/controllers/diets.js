@@ -1,8 +1,8 @@
 const { Diet } = require("../db");
-const { dietas } = require("../public/dietas");
+const { diets } = require("../public/diets");
 // console.log(dietas);
 const getDietas = async (req, res) => {
-  const json = await dietas.map((e) => {
+  const json = await diets.map((e) => {
     return {
       id: e.id,
       name: e.name,
