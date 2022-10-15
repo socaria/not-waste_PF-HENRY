@@ -2,7 +2,7 @@ const { Router } = require("express");
 const { postCustomer, getCallCustomer } = require("../controllers/customer");
 const { getCityInfo } = require("../controllers/city");
 const { getSellers, postSeller, putSeller } = require("../controllers/seller");
-const { getProducts, postProduct, putProduct, deleteProduct, getProductsBySeller } = require("../controllers/product");
+const { getProducts, postProduct, putProduct, deleteProduct, getProductsById } = require("../controllers/product");
 const { getPosts, postPost, putPost, deletePost } = require("../controllers/post");
 const { getManagerById, getAllManager, postManager, putManager } = require("../controllers/manager");
 const { getOrderById, getAllOrder, postOrder } = require("../controllers/order");
@@ -16,7 +16,7 @@ router.post("/seller", postSeller);
 router.put("/seller/:id", putSeller);
 
 //Rutas del Product
-router.get("/product/:sellerId", getProductsBySeller);
+router.get("/product/:id", getProductsById);
 router.get("/product", getProducts);
 router.post("/product", postProduct);
 router.put("/product/:id", putProduct);

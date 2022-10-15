@@ -38,14 +38,14 @@ const getProducts = async (req, res) => {
     }
 };
 
-const getProductsBySeller = async (req, res) => {
-    let { sellerId } = req.params;
+const getProductsById = async (req, res) => {
+    let { id } = req.params;
     try {
-        let allProducts = await getAllProducts();
-        let productFromSeller = await allProducts.filter(p => p.sellerId === sellerId)
-        res.status(200).send(productFromSeller);
+        let allProduct = await getAllProducts();
+        let productId = await allProducts.filter(p => p.id === id)
+        res.status(200).send(productId);
     } catch (e) {
-        res.status(404).send('No hay productos de ese vendedor');
+        res.status(404).send('No hay productos de ese id');
     }
 };
 //TODO asignar sellerId
@@ -153,5 +153,5 @@ module.exports = {
     postProduct,
     putProduct,
     deleteProduct,
-    getProductsBySeller
+    getProductsById
 };
