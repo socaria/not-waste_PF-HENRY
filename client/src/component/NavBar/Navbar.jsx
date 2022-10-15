@@ -26,7 +26,7 @@ function NavBar() {
                 <span><img src={burguermenu} alt="logoburg" width='30px' /></span>
                 </button>
                     <img src={logoProy} alt="logocarr" width='70px' className="mx-5"/>
-                <h3 className="me-5">Not Waste</h3>
+                   <h3><Link to='/home' className="nav-link mx-4">Not Waste</Link></h3>
                 <SearchBar />
                 <div className="collapse navbar-collapse" id='navbarSupportedContent'>
                     <Navbar className="navbar-nav ms-auto mx-5">
