@@ -41,7 +41,7 @@ const getProducts = async (req, res) => {
 const getProductsById = async (req, res) => {
     let { id } = req.params;
     try {
-        let allProduct = await getAllProducts();
+        let allProducts = await getAllProducts();
         let productId = await allProducts.filter(p => p.id === id)
         res.status(200).send(productId);
     } catch (e) {
