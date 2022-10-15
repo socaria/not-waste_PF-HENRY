@@ -441,7 +441,7 @@ const arrayProduct = [
     sellerId: 12,
   },
   {
-    id: 37,
+    id: '37',
     name: "combo panificados salado",
     price: 350,
     realValue: 700,
