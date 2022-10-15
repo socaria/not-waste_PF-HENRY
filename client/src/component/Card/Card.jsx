@@ -36,12 +36,12 @@ function Card({name, image, price}) {
 
         //-----------------------------------------Card de gabi---------------------------------------------- BOOTSTRAP
         <div>
-        <div class="card">
-            <img src={image} className='imgbig' alt="..."/>
+        <div className="card">
+            <img src={image} className='imgbig' alt="imgcard"/>
                 <div className="card-body">
                     <h5 className="card-title">{name}</h5>
                     <div className='h4price'>
-                        <a href="#" class="btn btn-primary">Detalle</a>
+                        <a href="#" className="btn btn-primary">Detalle</a>
                         <h4 >{price}</h4>
                     </div>
                 </div>
