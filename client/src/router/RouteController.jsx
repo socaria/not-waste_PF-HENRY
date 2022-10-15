@@ -13,11 +13,12 @@ function RouteController (){
             <Routes>
                 <Route exact path='/' element={<LandingPage/>} />
                 <Route exact path='/register' element={<Registrering />} />
-                <Route exact path='/home' element={<Home />} />
+                <Route path='/home' element={<Home />} />
                 <Route exact path='/profile' element={<Profile />} />
                 <Route exact path="/contact" element={<Contact />} />
                 <Route exact path="/developers" element={<Developers />} />
-                <Route path="/home/:id" element={<Details />}></Route>
+                <Route path='/home/:productId' element={<Details/>}>
+        </Route>
             </Routes>
     )
 }

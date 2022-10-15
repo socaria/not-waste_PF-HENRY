@@ -2,15 +2,21 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { prodDetail } from '../../redux/actions'
 import style from './details.module.css'
-function Details(props) {
-console.log(props)
-  // const  id = props.match.params.id
+import { useParams } from "react-router-dom";
+function Details() {
+
+  const { productId } = useParams()
+  console.log(productId)
+
   const dispatch = useDispatch()
+  
   const product = useSelector(state => state.prodDetails)
+
   useEffect(()=>{
-    dispatch(prodDetail(props))
+    dispatch(prodDetail(productId))
   },[])
 
+  console.log(product)
 const prodDetails = product?.map(e => {
   return {
       name: e.name,
