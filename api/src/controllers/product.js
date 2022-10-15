@@ -36,7 +36,7 @@ const getProducts = async (req, res) => {
     } catch (e) {
         res.status(404).send(e.message);
     }
-};getProductsByIds
+};
 
 const getProductsById = async (req, res) => {
     let { id } = req.params;
