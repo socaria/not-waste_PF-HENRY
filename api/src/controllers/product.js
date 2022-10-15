@@ -9,24 +9,24 @@ const getProducts = async (req, res) => {
     try {
         products = await getAllProducts();
         if (diet) {
-            sellers = sellers.filter(s =>
+            products = products.filter(s =>
                 s.diets.find(d => d.name === diet))
-            if (!sellers.length) {
+            if (!products.length) {
                 throw new Error('No hay productos asociados a esa dieta')
             };
         }
         if (price) {
-            sellers = sellers = sellers.filter(s =>
+            products = products = products.filter(s =>
                 s.price < price )
-            if (!sellers.length) {
+            if (!products.length) {
                 throw new Error('No hay productos con precio inferior al solicitado')
             }; 
         
         }
         if (description) {
-            sellers = sellers.filter(s => 
+            products = products.filter(s => 
                 s => s.description.toLowerCase().includes(description.toLowerCase()))
-            if (!sellers.length) {
+            if (!products.length) {
                 throw new Error('No hay proveedores con esa categoría de establecimiento')
             };
         }
@@ -36,7 +36,7 @@ const getProducts = async (req, res) => {
     } catch (e) {
         res.status(404).send(e.message);
     }
-};
+};getProductsByIds
 
 const getProductsById = async (req, res) => {
     let { id } = req.params;
