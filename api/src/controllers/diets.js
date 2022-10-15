@@ -1,7 +1,7 @@
 const { Diet } = require("../db");
 const { diets } = require("../public/diets");
-// console.log(dietas);
-const getDietas = async (req, res) => {
+
+const getDiets = async (req, res) => {
   const json = await diets.map((e) => {
     return {
       id: e.id,
@@ -19,6 +19,7 @@ const getDietas = async (req, res) => {
   return res.status(200).send(json);
 };
 
+
 module.exports = {
-  getDietas,
+  getDiets,
 };
