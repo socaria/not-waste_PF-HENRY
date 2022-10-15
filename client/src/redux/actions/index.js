@@ -1,6 +1,6 @@
 import axios from 'axios'
 const seller = require('../../seller.json')
-
+const product = require('../../product.json')
 export function getSellers () {
     return async function(dispatch) {
         try {
@@ -37,6 +37,22 @@ export function getProduct () {
             dispatch({
                 type: 'GET_PRODUCT',
                 payload: price.data
+            })
+            //console.log(price.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+export function prodDetail (id) {
+    console.log(id)
+    return async function(dispatch) {
+        try {
+            // const price = await axios.get('http://localhost:3001/product')
+            dispatch({
+                type: 'PROD_DETAIL',
+                payload: product.find(e=>id === e.id)
             })
             //console.log(price.data)
         } catch (error) {
