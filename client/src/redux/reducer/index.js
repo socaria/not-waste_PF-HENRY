@@ -5,6 +5,7 @@ const initialState = {
   price: [],
   diet: [],
   customer: []
+
 }
 
 export default function rootReducer(state = initialState, actions) {
