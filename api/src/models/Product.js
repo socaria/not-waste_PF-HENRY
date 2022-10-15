@@ -1,7 +1,7 @@
 const { DataTypes, UUIDV4 } = require("sequelize");
 
 module.exports = (sequelize) => {
-  sequelize.define("seller", {
+  sequelize.define("product", {
     id: {
       type: DataTypes.UUID,
       defaultValue: UUIDV4,
@@ -10,38 +10,26 @@ module.exports = (sequelize) => {
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false,  
+      allowNull: false,
     },
-    phone: {
+    price: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      isEmail: true,
-      unique: true,
-    },
-    adress: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    cuit: {
+    realValue: {
       type: DataTypes.INTEGER,
+    },
+    description: {
+      type: DataTypes.STRING,
       allowNull: false,
+    },
+    stock: {
+      type: DataTypes.INTEGER,
+      min: 0,
     },
     image: {
       type: DataTypes.STRING,
-      allowNull: false,
-    },
-    category: {
-      type: DataTypes.ENUM("panaderia", "restaurante", "supermercado"),
-      allowNull: false,
-    },
-    enabled: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: false,
+      isUrl: true,
     },
   });
 };

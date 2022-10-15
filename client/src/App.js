@@ -1,13 +1,14 @@
 import React from 'react';
 import './App.css';
-import Register from './components/register';
+import { RouteController } from './router/RouteController.jsx'
+import { BrowserRouter } from 'react-router-dom';
 
 
 function App() {
   return (
-    <>
-    <Register />
-    </>
+    <BrowserRouter>
+      <RouteController />
+    </BrowserRouter>
   );
 }
 
