@@ -2,10 +2,36 @@ const { Product, Diet } = require("../db");
 const { getAllProducts } = require("./utils/getAllProducts")
 // Ruta get va a buscar a todos los proveedores de la base de datos. Si llegasen las propiedades
 // name o store cateogry por query se retornarán los proveedores que coincidan con lo solicitado
+
 const getProducts = async (req, res) => {
+    const { diet, price, description } = req.body;
     let products;
     try {
         products = await getAllProducts();
+        if (diet) {
+            sellers = sellers.filter(s =>
+                s.diets.find(d => d.name === diet))
+            if (!sellers.length) {
+                throw new Error('No hay productos asociados a esa dieta')
+            };
+        }
+        if (price) {
+            sellers = sellers = sellers.filter(s =>
+                s.price < price )
+            if (!sellers.length) {
+                throw new Error('No hay productos con precio inferior al solicitado')
+            }; 
+        
+        }
+        if (description) {
+            sellers = sellers.filter(s => 
+                s => s.description.toLowerCase().includes(description.toLowerCase()))
+            if (!sellers.length) {
+                throw new Error('No hay proveedores con esa categoría de establecimiento')
+            };
+        }
+
+        
         res.status(200).send(products);
     } catch (e) {
         res.status(404).send(e.message);
