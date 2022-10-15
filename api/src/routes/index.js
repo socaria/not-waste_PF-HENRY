@@ -6,7 +6,7 @@ const { getProducts, postProduct, putProduct, deleteProduct, getProductsBySeller
 const { getPosts, postPost, putPost, deletePost } = require("../controllers/post");
 const { getManagerById, getAllManager, postManager, putManager } = require("../controllers/manager");
 const { getOrderById, getAllOrder, postOrder } = require("../controllers/order");
-const { getDietas } = require("../controllers/diets");
+const { getDiets } = require("../controllers/diets");
 
 const router = Router();
 
@@ -47,6 +47,7 @@ router.get("/order", getAllOrder);
 router.post("/order", postOrder);
 
 //Ruta de Dietas
-router.get("/diets", getDietas);
+router.get("/diets", getDiets);
+
 
 module.exports = router;
