@@ -1,12 +1,13 @@
 import axios from 'axios'
+const seller = require('../../seller.json')
 
 export function getSellers () {
     return async function(dispatch) {
         try {
-            const seller = await axios.get('http://localhost:3001/seller')
+            // const seller = await axios.get('http://localhost:3001/seller')
             dispatch({
                 type: 'GET_SELLER',
-                payload: seller.data
+                payload: seller
             })
             // console.log(seller)
         } catch (error) {
@@ -47,7 +48,7 @@ export function getProduct () {
 export function getDiet () {
     return async function(dispatch) {
         try {
-        const diet = await axios.get('http://localhost:3001/dietas')    
+        const diet = await axios.get('http://localhost:3001/diets')    
             dispatch({
                 type: 'GET_DIET',
                 payload: diet.data
