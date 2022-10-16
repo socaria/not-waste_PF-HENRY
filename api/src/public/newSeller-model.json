@@ -20,7 +20,49 @@
         "name": "Almagro"
       }
     ],
-    "products": []
+    "products": [
+      {
+          "id": "34504504-643c-48ea-bca8-ef9c9fc9ee85",
+          "name": "combo de frutas",
+          "price": 200,
+          "realValue": 1000,
+          "description": "combo de verduras según variead disponible, peso aproximado 3kg",
+          "stock": 3,
+          "image": "https://www.lavanguardia.com/files/og_thumbnail/uploads/2019/06/04/5e99794702a16.jpeg",
+          "createdAt": "2022-10-15T15:40:26.545Z",
+          "updatedAt": "2022-10-15T15:40:26.545Z",
+          "sellerId": "1eef5560-b4cb-4fef-b14e-54b79e429561",
+          "posts": [
+              {
+                  "id": "026fa69f-d73d-47f5-b844-e464b821836e",
+                  "date": "2022-11-03T00:00:00.000Z",
+                  "amount": 3,
+                  "createdAt": "2022-10-15T15:41:30.973Z",
+                  "updatedAt": "2022-10-15T15:41:30.976Z",
+                  "productId": "34504504-643c-48ea-bca8-ef9c9fc9ee85",
+                  "orders": []
+              },
+              {
+                  "id": "c47f7f73-3146-4aed-b8cc-b09e91a81635",
+                  "date": "2022-11-02T00:00:00.000Z",
+                  "amount": 3,
+                  "createdAt": "2022-10-15T15:41:26.676Z",
+                  "updatedAt": "2022-10-15T15:41:26.678Z",
+                  "productId": "34504504-643c-48ea-bca8-ef9c9fc9ee85",
+                  "orders": []
+              },
+              {
+                  "id": "d4fb51ab-9b02-425d-9ec3-b7ee2a5135ac",
+                  "date": "2022-11-01T00:00:00.000Z",
+                  "amount": 3,
+                  "createdAt": "2022-10-15T15:41:23.811Z",
+                  "updatedAt": "2022-10-15T15:41:23.877Z",
+                  "productId": "34504504-643c-48ea-bca8-ef9c9fc9ee85",
+                  "orders": []
+              }
+          ]
+        }
+      ]
   },
   {
     "id": "e9f6e7a7-1713-4b9c-860c-dbc3fb249f66",
