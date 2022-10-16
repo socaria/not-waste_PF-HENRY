@@ -1,5 +1,5 @@
 const arraySeller = require("../../public/newSeller-model.json")
-const { Seller, City, Product, Post, Order } = require("../../db");
+const { Seller, Diet, City, Product, Post, Order } = require("../../db");
 
 const getApiInfo = async () => {
   let sellersApi = arraySeller.map((s) => {
@@ -14,7 +14,7 @@ const getApiInfo = async () => {
       enabled: s.enabled,
       cities: s.cities,
       category: s.category,
-      products: s.products
+      products: s.products,
     };
   });
   return sellersApi;
@@ -32,13 +32,21 @@ const getDbInfo = async () => {
       },
       {
         model: Product,
-        include: {
+        include: [{
           model: Post,
           include: {
             model: Order,
-          },
+          }
         },
-      },
+        {
+        model: Diet,
+        attributes: ["name"],
+        through: {
+          attributes: [],
+        },
+      }]
+  },
+      
     ],
   });
 };

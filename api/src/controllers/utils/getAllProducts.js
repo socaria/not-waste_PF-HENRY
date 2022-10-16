@@ -13,6 +13,7 @@ const getApiInfo = async () => {
       image: p.image,
       posts: p.posts,
       sellerId: p.sellerId,
+      diets: p.diets
     };
   });
   return productApi;
