@@ -27,7 +27,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     cuit: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BIGINT,
       allowNull: false,
     },
     image: {
