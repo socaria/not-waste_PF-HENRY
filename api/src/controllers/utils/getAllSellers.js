@@ -1,4 +1,4 @@
-const { arraySeller } = require("../../public/arraySeller");
+const arraySeller = require("../../public/newSeller-model.json")
 const { Seller, City, Product, Post, Order } = require("../../db");
 
 const getApiInfo = async () => {
@@ -14,6 +14,7 @@ const getApiInfo = async () => {
       enabled: s.enabled,
       cities: s.cities,
       category: s.category,
+      products: s.products
     };
   });
   return sellersApi;
