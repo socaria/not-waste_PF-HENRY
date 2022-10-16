@@ -8,13 +8,11 @@ function CarouselSeller({seller}) {
 
     return (
         <div className='container'>
-            <h1 className='nameh1'>{capitalizeFirstLetter(seller.name)}</h1>
-            <div className='carousel'>
+            <h1 className='seller-title'>{capitalizeFirstLetter(seller.name)}</h1>
+            <div className='container-cards'>
                 {
                     seller.products.map(product => {
                         return (
-
-                            // <div className='cardsContainer'>
                             product.posts.map(post => {
                                 return (
                                     <PostCard 

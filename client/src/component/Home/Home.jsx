@@ -85,7 +85,9 @@ function Home() {
                     </select>
                 </div>
                 {
-                    sellers?.map(seller => {
+
+                   sellers?.map(seller => {
+                    if (seller.products.find(p => p.posts.length > 0 ))
                         return(
                                 <CarouselSeller key={seller.id} seller={seller}  />
                         )
