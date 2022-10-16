@@ -35,16 +35,3 @@ export function validate(input) {
 
   return error;
 }
-
-export const widget_cloudinary = cloudinary.createUploadWidget(
-  {
-    cloudName: "ddb69vp6o",
-    uploadPreset: "not_waste",
-  },
-  (err, result) => {
-    if (!err && result && result.event === "success") {
-      console.log("Imagen subida con exito", result.info);
-      imagen.value = result.info.secure_url;
-    }
-  }
-);

@@ -1,9 +1,10 @@
 import { useState } from "react";
 import categories from "./categories";
 import { v4 as uuidv4 } from "uuid";
-import { validate, widget_cloudinary } from "./auxiliary";
+import { validate } from "./auxiliary";
 import { useDispatch } from "react-redux";
 import { postCustomer, postSeller } from "../../redux/actions";
+import { Image } from "cloudinary-react";
 
 function Register(props) {
   console.log(props);
@@ -21,6 +22,7 @@ function Register(props) {
     cuit: "",
     category: "",
   });
+  const [imagenLoading, setImagenLoading] = useState(false);
 
   const [error, setError] = useState({});
 
@@ -94,18 +96,26 @@ function Register(props) {
     dispatch(postCustomer({ name, email }));
   };
 
-  widget_cloudinary = cloudinary.createUploadWidget(
-    {
-      cloudName: "ddb69vp6o",
-      uploadPreset: "not_waste",
-    },
-    (err, result) => {
-      if (!err && result && result.event === "success") {
-        console.log("Imagen subida con exito", result.info);
-        input.target.value = result.info.secure_url;
+  const uploadImage = async (e) => {
+    const files = e.target.files;
+    const data = new FormData();
+    data.append("file", files[0]);
+    data.append("upload_preset", "notWaste");
+    setImagenLoading(true);
+
+    const res = await fetch(
+      "https://api.cloudinary.com/v2.0/ddb69vp6o/image/upload",
+      {
+        method: "POST",
+        body: data,
       }
-    }
-  );
+    );
+    const file = await res.json();
+    console.log(res);
+    setInput.imageSupplier(file.secure_url);
+    console.log(file.secure_url);
+    setImagenLoading(false);
+  };
 
   return (
     <>
@@ -200,17 +210,20 @@ function Register(props) {
               Please upload the information requested in order to be a Not Waste
               supplier
             </h5>
-
+            <Image cloudName="ddb69vp6o" publicId="" style={{ width: 200 }} />
             <div className="input-group has-validation">
-              <boton
-                className="btn btn-primary"
-                id="btn-foto"
-                onClick={widget_cloudinary.open()}
-              >
-                Subir
-              </boton>
               <div className="form-floating is-invalid">
                 <input
+                  type="file"
+                  name="imageSupplier"
+                  onChange={uploadImage}
+                />
+                {imagenLoading ? (
+                  <h3>Cargando imagen...</h3>
+                ) : (
+                  <img src={input.imageSupplier} style={{ width: "200px" }} />
+                )}
+                {/* <input
                   type="text"
                   className={
                     !error.imageSupplier
@@ -222,8 +235,8 @@ function Register(props) {
                   name="imageSupplier"
                   required
                   onChange={(e) => changeState(e)}
-                />
-                <label for="floatingInputGroup2">Image of your store</label>
+                /> 
+                <label for="floatingInputGroup2">Image of your store</label>*/}
                 {error.imageSupplier && (
                   <div className="invalid-feedback">{error.imageSupplier}</div>
                 )}
