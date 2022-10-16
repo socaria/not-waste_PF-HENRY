@@ -1,6 +1,6 @@
 import React from 'react'
 import { Carousel } from 'react-bootstrap';
-import ProductCard from '../ProductCard/ProductCard';
+import PostCard from '../PostCard/PostCard';
 import '../CarouselSeller/CarouselSell.css'
 import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
 
@@ -17,7 +17,7 @@ function CarouselSeller({seller}) {
                             // <div className='cardsContainer'>
                             product.posts.map(post => {
                                 return (
-                                    <ProductCard 
+                                    <PostCard 
                                     key={post.id} 
                                     product={product}
                                     post={post} />
