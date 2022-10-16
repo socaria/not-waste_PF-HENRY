@@ -1,24 +1,33 @@
 import React from 'react'
-import Card from '../Card/Card';
+import { Carousel } from 'react-bootstrap';
+import ProductCard from '../ProductCard/ProductCard';
 import '../CarouselSeller/CarouselSell.css'
+import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
 
-function CarouselSeller(props) {
+function CarouselSeller({seller}) {
 
     return (
-        <div className='bigContainer'>
-            <h1 className='nameh1'>{props.name}</h1>
-            <div className='containerPrincipal'>
-                <div className='contCards'>
-                    {
-                        props.products.map(p => {
-                            return (
-                                <div className='cardsContainer'>
-                                    <Card key={p.id} name={p.name} image={p.image} price={p.price} />
-                                </div>
+        <div className='container'>
+            <h1 className='nameh1'>{capitalizeFirstLetter(seller.name)}</h1>
+            <div className='carousel'>
+                {
+                    seller.products.map(product => {
+                        return (
+
+                            // <div className='cardsContainer'>
+                            product.posts.map(post => {
+                                return (
+                                    <ProductCard 
+                                    key={post.id} 
+                                    product={product}
+                                    post={post} />
+                                )
+                            }
+
                             )
-                        })
-                    }
-                </div>
+                        )
+                    })
+                }
             </div>
         </div>
     )
