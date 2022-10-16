@@ -4,6 +4,8 @@ import { prodDetail, getSellers } from '../../redux/actions'
 import './postDetail.css';
 import { useParams } from "react-router-dom";
 import { Card, Badge, ListGroup, Button } from 'react-bootstrap';
+import NavBar from '../NavBar/Navbar';
+import Footer from '../Footer/index';
 
 const PostDetail = () => {
   const { productId } = useParams()
@@ -19,13 +21,14 @@ const PostDetail = () => {
   if (product.id) {
     return (
       <>
+        <NavBar />
         <Card className="w-50 mx-auto mt-4">
           <div className='d-flex position-relative' >
             <Card.Img variant="top" src={product.image} />
             <Card.ImgOverlay className='d-flex align-items-start flex-column justify-content-between'>
               <Badge pill bg="warning">
                 {product.posts && product.posts?.length > 1 ? "+" + product?.posts[0].amount + " disponible(s)"
-                : product.posts[0].amount + " disponible(s)"}
+                  : product.posts[0].amount + " disponible(s)"}
               </Badge>
               <Card.Title className='text-white fw-bold bg-light rounded p-2 '>
                 <span className='text-dark text-uppercase'>{product.name}</span>
@@ -53,7 +56,7 @@ const PostDetail = () => {
                   Carrer de la Riera de Sant Miquel 29, 08006 Barcelona
                 </Card.Link>
               </ListGroup.Item>
-              
+
               {product?.diets.length > 0 &&
                 <>
                   <Card.Subtitle className="mb-2 text-muted">Dietas</Card.Subtitle>
@@ -85,6 +88,7 @@ const PostDetail = () => {
             })}
           </Card.Footer>
         </Card>
+        <Footer />
       </>
     )
   }
