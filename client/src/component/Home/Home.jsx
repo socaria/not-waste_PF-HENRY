@@ -84,13 +84,10 @@ function Home() {
                         <option>CATEGORIAS DEL PROVEEDOR</option>
                     </select>
                 </div>
-
                 {
-                    sellers?.map(se => {
+                    sellers?.map(seller => {
                         return(
-                            <div>
-                                <CarouselSeller name={se.name} products={se.products} />
-                            </div>
+                                <CarouselSeller key={seller.id} seller={seller}  />
                         )
                     })
                 }
