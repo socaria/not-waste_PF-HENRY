@@ -54,7 +54,7 @@ const PostDetail = () => {
                 </Card.Link>
               </ListGroup.Item>
               
-              {product?.diets &&
+              {product?.diets.length > 0 &&
                 <>
                   <Card.Subtitle className="mb-2 text-muted">Dietas</Card.Subtitle>
                   {product.diets?.map(diet => {
