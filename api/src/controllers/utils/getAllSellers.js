@@ -14,7 +14,7 @@ const getApiInfo = async () => {
       enabled: s.enabled,
       cities: s.cities,
       category: s.category,
-    products:s.products
+      products: s.products
     };
   });
   return sellersApi;
