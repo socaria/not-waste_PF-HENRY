@@ -7,8 +7,8 @@ function Footer() {
         <nav className="navbar navbar-expand-md navbar-dark bg-light" id={style.footer}>
             <form className="container-fluid">
                 <div>
-                    <a href="/contact" className="btn btn btn-secondary me-2 btn-lg" type="button">Contact</a>
-                    <a href="/developers" className="btn btn-outline-secondary" type="button">Developers</a>
+                    <a href="/contact" className="btn btn btn-secondary me-2 btn-lg" type="button">Contacto</a>
+                    <a href="/developers" className="btn btn-outline-secondary" type="button">Desarrolladores</a>
                 </div>
                 <div>
                     <a href="https://es-la.facebook.com/" className="btn btn-primary me-2" type="button">
