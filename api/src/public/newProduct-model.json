@@ -15,8 +15,37 @@
         "name": "vegetarianos"
       }
     ],
-    "posts": []
+    "posts": [
+      {
+        "id": "7384b370-a0f2-49c1-85b2-3c67758d94e5",
+        "date": "2022-11-03T00:00:00.000Z",
+        "amount": 3,
+        "createdAt": "2022-10-15T15:42:26.185Z",
+        "updatedAt": "2022-10-15T15:42:26.188Z",
+        "productId": "68fc187b-ee42-4ec0-b450-d5c26681b518",
+        "orders": []
+      },
+      {
+        "id": "02876540-517d-4f8f-836b-5d6353abcb3d",
+        "date": "2022-11-02T00:00:00.000Z",
+        "amount": 3,
+        "createdAt": "2022-10-15T15:42:22.752Z",
+        "updatedAt": "2022-10-15T15:42:22.755Z",
+        "productId": "68fc187b-ee42-4ec0-b450-d5c26681b518",
+        "orders": []
+      },
+      {
+        "id": "c4cee0a5-5dea-4332-9938-f0fb1818c03e",
+        "date": "2022-11-01T00:00:00.000Z",
+        "amount": 3,
+        "createdAt": "2022-10-15T15:42:19.811Z",
+        "updatedAt": "2022-10-15T15:42:19.973Z",
+        "productId": "68fc187b-ee42-4ec0-b450-d5c26681b518",
+        "orders": []
+      }
+    ]
   },
+
   {
     "id": "406a2496-85b4-446f-8699-d879d47a8a0b",
     "name": "papas fritas",
