@@ -11,15 +11,15 @@ function Registrering(){
     let db = VerifyProfile(log.email)
   
     return(<>
-    {db.exists && window.location.assign("http://localhost:3000/home")};
+    {db.exists && window.location.assign("http://localhost:3000/home")}
         <div>
             <NavBar />
             {log? 
             <Register {...log}/> : 
-            <div class="card w-75">
-            <div class="card-body">
-              <h5 class="card-title">Logging is requerid</h5>
-              <p class="card-text">To register you need to log in with your Google account.</p>
+            <div className="card w-75">
+            <div className="card-body">
+              <h5 className="card-title">Logging is requerid</h5>
+              <p className="card-text">To register you need to log in with your Google account.</p>
               <LogingButton />
             </div>
           </div>}

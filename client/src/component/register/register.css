@@ -1,0 +1,14 @@
+#formDiv {
+    text-align: center;
+}
+
+#contForm{
+    border: 1px solid #ccc;
+    background-color: #E1FFB1;
+    border-radius: 20px;
+}
+
+#buttonRegister{
+    margin-top: 8%;
+    margin-bottom: -6%;
+}
