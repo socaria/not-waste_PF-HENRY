@@ -1,13 +1,12 @@
 import axios from 'axios'
-const seller = require('../../seller.json')
-const product = require('../../product.json')
+
 export function getSellers () {
     return async function(dispatch) {
         try {
-            // const seller = await axios.get('http://localhost:3001/seller')
+            const seller = await axios.get('http://localhost:3001/seller')
             dispatch({
                 type: 'GET_SELLER',
-                payload: seller
+                payload: seller.data
             })
             // console.log(seller)
         } catch (error) {
