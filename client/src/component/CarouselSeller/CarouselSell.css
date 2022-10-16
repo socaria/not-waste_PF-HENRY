@@ -1,0 +1,23 @@
+.container {
+    margin-top: 30px;
+    flex-wrap: wrap;
+    
+}
+
+.container-cards {
+    background-color: white;
+    padding: 8px;
+    margin: 16px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    display: inline-flex;
+    width: 80%;
+    overflow-x: auto;
+    height: 400px;
+}
+
+
+.seller-title {
+    text-align: flex-start;
+    padding-left: 4px;
+}
