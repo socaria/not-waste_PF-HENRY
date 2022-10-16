@@ -9,7 +9,7 @@ function PostCard({ product, post }) {
     return (
         <Card className="card">
             <Card.Link className='card-link' href={`/home/${product.id}`}>
-                <Card.Img variant="top" src={product.image} />
+                <Card.Img className="card-image" variant="top" src={product.image} />
                 <Card.ImgOverlay>
                     <Badge pill bg="light" text="dark">
                         {post.amount} disponible(s)
@@ -17,7 +17,7 @@ function PostCard({ product, post }) {
                 </Card.ImgOverlay>
                 <Card.Body>
                     <Card.Title>{capitalizeFirstLetter(product.name)}</Card.Title>
-                    <Card.Text>
+                    <Card.Text className='card-description'>
                         {capitalizeFirstLetter(product.description)}
                     </Card.Text>
                 </Card.Body>
