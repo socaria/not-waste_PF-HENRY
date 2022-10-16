@@ -1,0 +1,285 @@
+[
+  {
+    "id": "6ee25820-d2c5-458b-8b42-4d8a7f2e8bec",
+    "name": "carrefour",
+    "phone": 351685888,
+    "email": "carrefour@gmail.com",
+    "adress": "chacabuco 123",
+    "cuit": 26712937,
+    "image": "https://bit.ly/3gcsG9G",
+    "category": "supermercado",
+    "enabled": true,
+    "createdAt": "2022-10-16T02:51:59.946Z",
+    "updatedAt": "2022-10-16T02:51:59.946Z",
+    "managerId": null,
+    "cities": [
+      {
+        "name": "Balvanera"
+      },
+      {
+        "name": "Almagro"
+      }
+    ],
+    "products": []
+  },
+  {
+    "id": "e9f6e7a7-1713-4b9c-860c-dbc3fb249f66",
+    "name": "dia",
+    "phone": 351685888,
+    "email": "dia@gmail.com",
+    "adress": "chacabuco 123",
+    "cuit": 26712938,
+    "image": "https://bit.ly/3T4MKcP",
+    "category": "supermercado",
+    "enabled": true,
+    "createdAt": "2022-10-16T02:52:44.863Z",
+    "updatedAt": "2022-10-16T02:52:44.863Z",
+    "managerId": null,
+    "cities": [
+      {
+        "name": "Almagro"
+      }
+    ],
+    "products": []
+  },
+  {
+    "id": "7266197a-e36a-48d5-8c0f-3a3fa34b0c3f",
+    "name": "la celeste",
+    "phone": 351685888,
+    "email": "laceleste@gmail.com",
+    "adress": "dean funes 123",
+    "cuit": 26752937,
+    "image": "https://bit.ly/3ewWHka",
+    "category": "panaderia",
+    "enabled": true,
+    "createdAt": "2022-10-16T02:54:35.382Z",
+    "updatedAt": "2022-10-16T02:54:35.382Z",
+    "managerId": null,
+    "cities": [
+      {
+        "name": "Barracas"
+      }
+    ],
+    "products": []
+  },
+  {
+    "id": "69aad267-c897-4b2d-9d7a-404c5484a5be",
+    "name": "del pilar",
+    "phone": 351685838,
+    "email": "delpilar@gmail.com",
+    "adress": "colon 123",
+    "cuit": 26752437,
+    "image": "https://bit.ly/3VwdSTB",
+    "category": "panaderia",
+    "enabled": true,
+    "createdAt": "2022-10-16T02:55:39.272Z",
+    "updatedAt": "2022-10-16T02:55:39.272Z",
+    "managerId": null,
+    "cities": [
+      {
+        "name": "Belgrano"
+      }
+    ],
+    "products": []
+  },
+  {
+    "id": "f0534204-6895-4932-9c52-4ebc79689881",
+    "name": "homies",
+    "phone": 351585838,
+    "email": "homies@gmail.com",
+    "adress": "colon 123",
+    "cuit": 26752537,
+    "image": "https://bit.ly/3S6nX6X",
+    "category": "restaurante",
+    "enabled": true,
+    "createdAt": "2022-10-16T02:56:13.890Z",
+    "updatedAt": "2022-10-16T02:56:13.890Z",
+    "managerId": null,
+    "cities": [
+      {
+        "name": "Boedo"
+      }
+    ],
+    "products": []
+  },
+  {
+    "id": "222ce92c-c4bc-4b6a-8e59-57539f4116bf",
+    "name": "subway",
+    "phone": 351554838,
+    "email": "subway@gmail.com",
+    "adress": "tucuman 123",
+    "cuit": 26754637,
+    "image": "https://bit.ly/3T4MKcP",
+    "category": "restaurante",
+    "enabled": true,
+    "createdAt": "2022-10-16T02:56:52.518Z",
+    "updatedAt": "2022-10-16T02:56:52.518Z",
+    "managerId": null,
+    "cities": [
+      {
+        "name": "Caballito"
+      }
+    ],
+    "products": []
+  },
+  {
+    "id": "c913909b-520a-4b45-b747-e8c9fa228ae5",
+    "name": "alianza",
+    "phone": 596858478,
+    "email": "alianza@gmail.com",
+    "adress": "Av. lara 520",
+    "cuit": 588742937,
+    "image": "https://bit.ly/3gd8mVW",
+    "category": "panaderia",
+    "enabled": true,
+    "createdAt": "2022-10-16T02:57:40.439Z",
+    "updatedAt": "2022-10-16T02:57:40.439Z",
+    "managerId": null,
+    "cities": [
+      {
+        "name": "Almagro"
+      }
+    ],
+    "products": []
+  },
+  {
+    "id": "b5b6a64e-3434-40ea-a9fd-5bdd8d8ad85f",
+    "name": "entremasas",
+    "phone": 695858752,
+    "email": "entremasas@gmail.com",
+    "adress": "calle ahumada 8547",
+    "cuit": 695747527,
+    "image": "https://bit.ly/3VvHKzn",
+    "category": "panaderia",
+    "enabled": true,
+    "createdAt": "2022-10-16T02:58:23.465Z",
+    "updatedAt": "2022-10-16T02:58:23.465Z",
+    "managerId": null,
+    "cities": [
+      {
+        "name": "Caballito"
+      }
+    ],
+    "products": []
+  },
+  {
+    "id": "007d4a9e-1093-44ef-87c0-8f68399e0ea6",
+    "name": "miguel",
+    "phone": 741356982,
+    "email": "miguel@gmail.com",
+    "adress": "av los leones 3245",
+    "cuit": 965447784,
+    "image": "https://bit.ly/3S6nX6X",
+    "category": "panaderia",
+    "enabled": true,
+    "createdAt": "2022-10-16T02:59:18.395Z",
+    "updatedAt": "2022-10-16T02:59:18.395Z",
+    "managerId": null,
+    "cities": [
+      {
+        "name": "Colegiales"
+      }
+    ],
+    "products": []
+  },
+  {
+    "id": "9c872641-c7e2-4701-be41-5c1c64af61c2",
+    "name": "mochahs panaderia & pasteleria",
+    "phone": 454156773,
+    "email": "mochahs@gmail.com",
+    "adress": "calle san miguel 845",
+    "cuit": 247142424,
+    "image": "https://bit.ly/3CzIs6k",
+    "category": "panaderia",
+    "enabled": true,
+    "createdAt": "2022-10-16T03:00:02.776Z",
+    "updatedAt": "2022-10-16T03:00:02.776Z",
+    "managerId": null,
+    "cities": [
+      {
+        "name": "Floresta"
+      }
+    ],
+    "products": []
+  },
+  {
+    "id": "4f8d7b8f-da00-4a2e-9cd3-2d7600f6eb0a",
+    "name": "big panes",
+    "phone": 558756344,
+    "email": "bpanes@gmail.com",
+    "adress": "salecianos 1085",
+    "cuit": 365142282,
+    "image": "https://bit.ly/3VwdSTB",
+    "category": "panaderia",
+    "enabled": true,
+    "createdAt": "2022-10-16T03:00:42.148Z",
+    "updatedAt": "2022-10-16T03:00:42.148Z",
+    "managerId": null,
+    "cities": [
+      {
+        "name": "La Paternal"
+      }
+    ],
+    "products": []
+  },
+  {
+    "id": "2a0447fa-4140-4e94-84a3-e9064e39a1e8",
+    "name": "villa hermosa panaderia",
+    "phone": 857759614,
+    "email": "villahermosa@gmail.com",
+    "adress": "san martin 525",
+    "cuit": 342542752,
+    "image": "https://bit.ly/3ewWHka",
+    "category": "panaderia",
+    "enabled": true,
+    "createdAt": "2022-10-16T03:01:19.399Z",
+    "updatedAt": "2022-10-16T03:01:19.399Z",
+    "managerId": null,
+    "cities": [
+      {
+        "name": "Mataderos"
+      }
+    ],
+    "products": []
+  },
+  {
+    "id": "464c1ead-21ba-4d69-99c1-27e44d6390df",
+    "name": "panaderia los hermanos",
+    "phone": 532751414,
+    "email": "loshermanos@gmail.com",
+    "adress": "estacion 687",
+    "cuit": 854542624,
+    "image": "https://bit.ly/3gelQkl",
+    "category": "panaderia",
+    "enabled": true,
+    "createdAt": "2022-10-16T03:02:04.821Z",
+    "updatedAt": "2022-10-16T03:02:04.821Z",
+    "managerId": null,
+    "cities": [
+      {
+        "name": "Nuñez"
+      }
+    ],
+    "products": []
+  },
+  {
+    "id": "fb77b1ee-06b4-4c58-82e0-d77ef3ff9e7f",
+    "name": "sweet love panaderia y pasteleria",
+    "phone": 556852334,
+    "email": "sweetlove@gmail.com",
+    "adress": "bolivar 3475",
+    "cuit": 965142584,
+    "image": "https://bit.ly/3T4MKcP",
+    "category": "panaderia",
+    "enabled": true,
+    "createdAt": "2022-10-16T03:03:00.943Z",
+    "updatedAt": "2022-10-16T03:03:00.943Z",
+    "managerId": null,
+    "cities": [
+      {
+        "name": "Parque Avellaneda"
+      }
+    ],
+    "products": []
+  }
+]

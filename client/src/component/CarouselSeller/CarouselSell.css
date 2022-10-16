@@ -1,4 +1,4 @@
-.bigContainer {
+.container {
     margin-top: 30px;
     flex-wrap: wrap;
 }
@@ -12,13 +12,13 @@
     text-align: center;
 }
 
-.contCards {
-    display: flex;
-    justify-content: center;
+.carousel {
+    display: inline-flex;
+    /* justify-content: center; */
     border: solid black 1px;
     border-radius: 8px;
     width: 80%;
-    flex-wrap: wrap;
+    overflow-x: auto;
 }
 
 .selects {
