@@ -1,0 +1,740 @@
+[
+  {
+    "id": "5db5606c-b5b3-46f1-bdea-ad13c737e0a6",
+    "name": "combo de panificado salado",
+    "price": 300,
+    "realValue": 550,
+    "description": "medialuna salado 12 unidades mixta",
+    "stock": 10,
+    "image": "https://bit.ly/3S3Fc90",
+    "createdAt": "2022-10-15T23:39:45.054Z",
+    "updatedAt": "2022-10-15T23:39:45.054Z",
+    "sellerId": "a11b8fe4-49d8-4ad7-b957-f9a3ad3bd2db",
+    "diets": [
+      {
+        "name": "vegana"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "f2a13549-13f1-43a0-8b04-e6a3c5d3f903",
+    "name": "combo de panificado dulce",
+    "price": 400,
+    "realValue": 600,
+    "description": "medialuna para 2 persona",
+    "stock": 10,
+    "image": "https://bit.ly/3gcVn6z",
+    "createdAt": "2022-10-15T23:51:03.857Z",
+    "updatedAt": "2022-10-15T23:51:03.857Z",
+    "sellerId": "a11b8fe4-49d8-4ad7-b957-f9a3ad3bd2db",
+    "diets": [
+      {
+        "name": "sin gluten"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "e08a2301-2a7f-4a07-a871-60437a7a09dd",
+    "name": "combo dulce",
+    "price": 500,
+    "realValue": 750,
+    "description": "facturas, media lunas 7 unidades",
+    "stock": 10,
+    "image": "https://bit.ly/3T3PSp7",
+    "createdAt": "2022-10-15T23:55:43.047Z",
+    "updatedAt": "2022-10-15T23:55:43.047Z",
+    "sellerId": "0906235c-4d24-41e4-afbc-085fe9d121ad",
+    "diets": [
+      {
+        "name": "sin gluten"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "0064db23-5a45-40ce-a7b6-64da93f4fbe4",
+    "name": "combo empanadas",
+    "price": 700,
+    "realValue": 1200,
+    "description": "12 unidades mixtas",
+    "stock": 3,
+    "image": "https://bit.ly/3T4UV91",
+    "createdAt": "2022-10-15T23:58:05.969Z",
+    "updatedAt": "2022-10-15T23:58:05.969Z",
+    "sellerId": "0906235c-4d24-41e4-afbc-085fe9d121ad",
+    "diets": [
+      {
+        "name": "pescatariano"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "968fd32d-1f66-4dfd-abe3-93e323eab607",
+    "name": "combo facturas",
+    "price": 500,
+    "realValue": 900,
+    "description": "10 unidades",
+    "stock": 20,
+    "image": "https://bit.ly/3CDBhd3",
+    "createdAt": "2022-10-15T23:59:49.308Z",
+    "updatedAt": "2022-10-15T23:59:49.308Z",
+    "sellerId": "ba0f2e4c-39c9-4cda-ae0c-e6236f0d7269",
+    "diets": [
+      {
+        "name": "sin tacc"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "a72b8347-4435-4059-94ac-c301a7c20c8b",
+    "name": "combo almuerzo",
+    "price": 700,
+    "realValue": 1200,
+    "description": "Almuerzo saludable 2 persona",
+    "stock": 7,
+    "image": "https://bit.ly/3CFanl0",
+    "createdAt": "2022-10-16T00:01:29.540Z",
+    "updatedAt": "2022-10-16T00:01:29.540Z",
+    "sellerId": "ba0f2e4c-39c9-4cda-ae0c-e6236f0d7269",
+    "diets": [
+      {
+        "name": "vegetarianos"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "b048a43d-b1b4-484d-8387-91c68c38203c",
+    "name": "combo merienda",
+    "price": 300,
+    "realValue": 800,
+    "description": "facturas 6 unidades",
+    "stock": 7,
+    "image": "https://bit.ly/3CEkd6X",
+    "createdAt": "2022-10-16T00:02:55.590Z",
+    "updatedAt": "2022-10-16T00:02:55.590Z",
+    "sellerId": "a64aeb9d-44e8-4bc8-8045-729a06110a94",
+    "diets": [
+      {
+        "name": "lacteos"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "06025763-a8f8-4675-bc40-e9d4c3933787",
+    "name": "combo almuerzo",
+    "price": 400,
+    "realValue": 700,
+    "description": "empanadas surtidas, 8 unidades",
+    "stock": 6,
+    "image": "https://bit.ly/3rWrJ8c",
+    "createdAt": "2022-10-16T00:04:48.361Z",
+    "updatedAt": "2022-10-16T00:04:48.361Z",
+    "sellerId": "a64aeb9d-44e8-4bc8-8045-729a06110a94",
+    "diets": [
+      {
+        "name": "vegana"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "688023b1-23c0-4cca-ba08-5fcb5d1fd387",
+    "name": "combo almuerzo",
+    "price": 350,
+    "realValue": 700,
+    "description": "empanadas surtidas, 10 unidades",
+    "stock": 6,
+    "image": "https://bit.ly/3rYuXYR",
+    "createdAt": "2022-10-16T00:06:05.088Z",
+    "updatedAt": "2022-10-16T00:06:05.088Z",
+    "sellerId": "176c148b-aa2b-4e25-8213-1796bf5ff294",
+    "diets": [
+      {
+        "name": "pescatariano"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "eebc260f-c588-4c96-8de8-61c1ac341799",
+    "name": "combo desayuno",
+    "price": 350,
+    "realValue": 700,
+    "description": "facturas dulces, salado 6 unidades",
+    "stock": 6,
+    "image": "https://bit.ly/3D01sw0",
+    "createdAt": "2022-10-16T00:07:52.382Z",
+    "updatedAt": "2022-10-16T00:07:52.382Z",
+    "sellerId": "176c148b-aa2b-4e25-8213-1796bf5ff294",
+    "diets": [
+      {
+        "name": "sin tacc"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "6a9deae3-6463-4622-872a-1aa224a6e435",
+    "name": "combo empanadas",
+    "price": 350,
+    "realValue": 700,
+    "description": "12 unidades empanadas mixtas",
+    "stock": 6,
+    "image": "https://bit.ly/3D1KdKO",
+    "createdAt": "2022-10-16T00:09:12.031Z",
+    "updatedAt": "2022-10-16T00:09:12.031Z",
+    "sellerId": "e5f74100-d7fd-45dc-bec9-e083d6b9f3d8",
+    "diets": [
+      {
+        "name": "vegana"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "99a52cf2-3018-4f87-8a44-6afe0137a0d6",
+    "name": "combo facturas",
+    "price": 350,
+    "realValue": 700,
+    "description": "12 unidades de facturas mixtas",
+    "stock": 6,
+    "image": "https://bit.ly/3rZP3Sq",
+    "createdAt": "2022-10-16T00:11:15.959Z",
+    "updatedAt": "2022-10-16T00:11:15.959Z",
+    "sellerId": "34f05a8a-e900-43a4-815a-af8fa8d4f683",
+    "diets": [
+      {
+        "name": "sin gluten"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "81cacf4f-8e0a-4441-b570-d142b5f36432",
+    "name": "combo facturas",
+    "price": 350,
+    "realValue": 700,
+    "description": "12 unidades de facturas mixtas",
+    "stock": 6,
+    "image": "https://bit.ly/3yJf6RC",
+    "createdAt": "2022-10-16T00:13:10.005Z",
+    "updatedAt": "2022-10-16T00:13:10.005Z",
+    "sellerId": "66dc53f7-c026-4019-98c1-8ca11c00992b",
+    "diets": [
+      {
+        "name": "sin tacc"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "dc57cf0f-2822-443c-9c31-faa875f7962b",
+    "name": "combo desayuno",
+    "price": 350,
+    "realValue": 700,
+    "description": "desayuno completo para una persona",
+    "stock": 6,
+    "image": "https://bit.ly/3Ti8EsY",
+    "createdAt": "2022-10-16T00:16:29.161Z",
+    "updatedAt": "2022-10-16T00:16:29.161Z",
+    "sellerId": "66dc53f7-c026-4019-98c1-8ca11c00992b",
+    "diets": [
+      {
+        "name": "vegetarianos"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "c15c8eaf-3a79-4675-9e4a-5b5d8107be34",
+    "name": "combo desayuno",
+    "price": 350,
+    "realValue": 700,
+    "description": "desayuno completo para una persona",
+    "stock": 6,
+    "image": "https://bit.ly/3Ti8EsY",
+    "createdAt": "2022-10-16T00:17:56.547Z",
+    "updatedAt": "2022-10-16T00:17:56.547Z",
+    "sellerId": "65f55bc8-7175-4578-818c-5ca65a921720",
+    "diets": [
+      {
+        "name": "lacteos"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "f4bf3564-2613-40bd-ba24-f26d5a24e575",
+    "name": "combo empanadas",
+    "price": 300,
+    "realValue": 600,
+    "description": "12 unidades mixtas",
+    "stock": 8,
+    "image": "https://bit.ly/3Ti8EsY",
+    "createdAt": "2022-10-16T00:19:23.714Z",
+    "updatedAt": "2022-10-16T00:19:23.714Z",
+    "sellerId": "65f55bc8-7175-4578-818c-5ca65a921720",
+    "diets": [
+      {
+        "name": "pescatariano"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "92d46ba0-e019-45de-8259-20fef95fe333",
+    "name": "combo panificados salado",
+    "price": 350,
+    "realValue": 700,
+    "description": " facturas, medialunas 12 unidades",
+    "stock": 6,
+    "image": "https://bit.ly/3VpabPH",
+    "createdAt": "2022-10-16T00:20:43.341Z",
+    "updatedAt": "2022-10-16T00:20:43.341Z",
+    "sellerId": "65f55bc8-7175-4578-818c-5ca65a921720",
+    "diets": [
+      {
+        "name": "vegana"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "beec2b9c-e7b4-4a85-892c-5e6294613821",
+    "name": "combo budines",
+    "price": 350,
+    "realValue": 700,
+    "description": " budines para 2 personas",
+    "stock": 6,
+    "image": "https://bit.ly/3T6nOle",
+    "createdAt": "2022-10-16T00:22:00.238Z",
+    "updatedAt": "2022-10-16T00:22:00.238Z",
+    "sellerId": "65f55bc8-7175-4578-818c-5ca65a921720",
+    "diets": [
+      {
+        "name": "sin gluten"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "24730f38-ebb2-4e5e-9c05-34b28978b101",
+    "name": "combo budines",
+    "price": 350,
+    "realValue": 700,
+    "description": " budines para 2 personas",
+    "stock": 6,
+    "image": "https://bit.ly/3yJf6RC",
+    "createdAt": "2022-10-16T00:23:10.937Z",
+    "updatedAt": "2022-10-16T00:23:10.937Z",
+    "sellerId": "21d90778-6499-453e-bbd7-810add67bab0",
+    "diets": [
+      {
+        "name": "sin tacc"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "3fd37c59-65de-48f5-a80c-980ef0d5c3c9",
+    "name": "combo chispitas",
+    "price": 400,
+    "realValue": 700,
+    "description": "chispita para 1 personas",
+    "stock": 22,
+    "image": "https://bit.ly/3MxgPzi",
+    "createdAt": "2022-10-16T00:24:12.633Z",
+    "updatedAt": "2022-10-16T00:24:12.633Z",
+    "sellerId": "21d90778-6499-453e-bbd7-810add67bab0",
+    "diets": [
+      {
+        "name": "sin gluten"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "ec124732-da3f-408e-94bc-1f2d31d6fb6c",
+    "name": "ensalada",
+    "price": 300,
+    "realValue": 900,
+    "description": "Para la pechuga de pollo, usamos una pechuga sin filetear. La cocemos durante 5 minutos en agua con sal y después la terminamos de hacer en la plancha o parrilla",
+    "stock": 3,
+    "image": "https://bit.ly/3s0Te0y",
+    "createdAt": "2022-10-16T00:42:35.983Z",
+    "updatedAt": "2022-10-16T00:42:35.983Z",
+    "sellerId": "a636b44a-ddcf-4963-8d1b-2ae68a96cd71",
+    "diets": [
+      {
+        "name": "vegetarianos"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "e297e4b1-6224-4346-bb4c-b61e095ce8a7",
+    "name": "papas fritas",
+    "price": 120,
+    "realValue": 500,
+    "description": "Las papas fritas o patatas fritas, también conocidas como papas a la belga, patatas a la belga o papas francesas, son las papas que se preparan cortándose en forma de bastones y friéndolas en aceite caliente hasta que queden doradas",
+    "stock": 5,
+    "image": "https://bit.ly/3TmmWbV",
+    "createdAt": "2022-10-16T00:45:01.107Z",
+    "updatedAt": "2022-10-16T00:45:01.107Z",
+    "sellerId": "d68f8f8f-afd6-4f59-938e-33b624beac2f",
+    "diets": [
+      {
+        "name": "pescatariano"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "f4b5ff10-852e-4bd3-8d15-97751c385d37",
+    "name": "Pastel Tres Leches con Mousse",
+    "price": 850,
+    "realValue": 1200,
+    "description": "Esta es la torta o pastel tres leches mas rica que jamas probarás!! Si, lleva bastante trabajo por que son varias preparaciones por separado, pero valen la pena.",
+    "stock": 2,
+    "image": "https://bit.ly/3yL96I2",
+    "createdAt": "2022-10-16T00:46:26.106Z",
+    "updatedAt": "2022-10-16T00:46:26.106Z",
+    "sellerId": "176c148b-aa2b-4e25-8213-1796bf5ff294",
+    "diets": [
+      {
+        "name": "sin gluten"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "f18d6410-fa46-4abc-94fa-b60e5e6d14e7",
+    "name": "Desayuno Especial",
+    "price": 700,
+    "realValue": 1000,
+    "description": "Este pack contiene, Medialuna con Jamón y Cheddar,Licuado de Banana",
+    "stock": 10,
+    "image": "https://bit.ly/3yEUh9R",
+    "createdAt": "2022-10-16T00:47:39.933Z",
+    "updatedAt": "2022-10-16T00:47:39.933Z",
+    "sellerId": "6d0e05c1-9f1f-479c-aa3a-1bccf0a57a26",
+    "diets": [
+      {
+        "name": "vegana"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "3a02b593-9e53-4c5a-add4-48557657497e",
+    "name": "Desayuno",
+    "price": 500,
+    "realValue": 900,
+    "description": "Este pack contiene, Chipa X 10, Latte Caramel",
+    "stock": 3,
+    "image": "https://bit.ly/3Tmn0Zd",
+    "createdAt": "2022-10-16T00:48:59.669Z",
+    "updatedAt": "2022-10-16T00:48:59.669Z",
+    "sellerId": "f04e79ad-f4ed-444d-93ae-ba20334ba0ca",
+    "diets": [
+      {
+        "name": "sin gluten"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "1f4857c9-7a84-4d86-a0c2-9992f22a114c",
+    "name": "Pizza Flama",
+    "price": 400,
+    "realValue": 800,
+    "description": "Este pack contiene, Faina, Extra Mozzarella ,Jamón Cocido,Panceta",
+    "stock": 3,
+    "image": "https://bit.ly/3D0WvDd",
+    "createdAt": "2022-10-16T00:50:16.528Z",
+    "updatedAt": "2022-10-16T00:50:16.528Z",
+    "sellerId": "a636b44a-ddcf-4963-8d1b-2ae68a96cd71",
+    "diets": [
+      {
+        "name": "vegetarianos"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "943e548c-4edc-4b0f-a8ec-379b3c6059d3",
+    "name": "Pizza Jamon y Morrones",
+    "price": 700,
+    "realValue": 1300,
+    "description": "Este pack contiene, Chocolatosso, Coca-Cola Sabor Original 500 ml, Fanta Naranja sin Azúcar 500 ml",
+    "stock": 5,
+    "image": "https://bit.ly/3D0zMqM",
+    "createdAt": "2022-10-16T00:51:21.120Z",
+    "updatedAt": "2022-10-16T00:51:21.120Z",
+    "sellerId": "0906235c-4d24-41e4-afbc-085fe9d121ad",
+    "diets": [
+      {
+        "name": "pescatariano"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "9e903064-5b9f-466c-879d-15e8fbaff32a",
+    "name": "Empanadas Jamon y Queso Mangiamo",
+    "price": 400,
+    "realValue": 800,
+    "description": "Este pack contiene, 6 empanadas",
+    "stock": 12,
+    "image": "https://bit.ly/3ToiPMn",
+    "createdAt": "2022-10-16T00:52:30.518Z",
+    "updatedAt": "2022-10-16T00:52:30.518Z",
+    "sellerId": "a11b8fe4-49d8-4ad7-b957-f9a3ad3bd2db",
+    "diets": [
+      {
+        "name": "vegana"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "52c00ae2-cfe3-452c-9ffe-6853585e440c",
+    "name": "Empanadas Mixtas",
+    "price": 300,
+    "realValue": 500,
+    "description": "Este pack contiene, 3 empandas",
+    "stock": 10,
+    "image": "https://bit.ly/3EICJO4",
+    "createdAt": "2022-10-16T00:53:34.597Z",
+    "updatedAt": "2022-10-16T00:53:34.597Z",
+    "sellerId": "d68f8f8f-afd6-4f59-938e-33b624beac2f",
+    "diets": [
+      {
+        "name": "sin tacc"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "b9b3d573-bc0d-4594-a5e4-2f323b7323ee",
+    "name": "Ramen",
+    "price": 1000,
+    "realValue": 1500,
+    "description": "Este pack contiene, Tare de pollo, finas fetas de bondiola braseada, fideos ramen, huevo marinado, verdeo y togarashi. ",
+    "stock": 3,
+    "image": "https://bit.ly/3T5XffY",
+    "createdAt": "2022-10-16T00:54:43.650Z",
+    "updatedAt": "2022-10-16T00:54:43.650Z",
+    "sellerId": "a636b44a-ddcf-4963-8d1b-2ae68a96cd71",
+    "diets": [
+      {
+        "name": "vegana"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "e94d4cbe-fc2e-4791-bd7f-32522b69458d",
+    "name": "Croquetas",
+    "price": 400,
+    "realValue": 700,
+    "description": " Este pack contiene, De arroz al curry con hongos, aderezo de aquafaba sriracha. apto vegano.",
+    "stock": 5,
+    "image": "https://bit.ly/3CZSYoz",
+    "createdAt": "2022-10-16T00:55:48.229Z",
+    "updatedAt": "2022-10-16T00:55:48.229Z",
+    "sellerId": "f04e79ad-f4ed-444d-93ae-ba20334ba0ca",
+    "diets": [
+      {
+        "name": "pescatariano"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "3931a37a-95c5-431e-b3d7-3f9156ced80c",
+    "name": "Bao de Bondiola",
+    "price": 600,
+    "realValue": 1200,
+    "description": " Este pack contiene, Pan taiwanés al vapor relleno de bondiola braseada con 5 especias asiáticas, maní , pepinos en pickles y cilantro acompañado de papas rotas y alioli.",
+    "stock": 4,
+    "image": "https://bit.ly/3T8U0Ew",
+    "createdAt": "2022-10-16T00:57:11.722Z",
+    "updatedAt": "2022-10-16T00:57:11.722Z",
+    "sellerId": "a11b8fe4-49d8-4ad7-b957-f9a3ad3bd2db",
+    "diets": [
+      {
+        "name": "vegana"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "44d64ccd-8dbb-42a4-86ba-0e261741306d",
+    "name": "Ko-curry Vegano",
+    "price": 800,
+    "realValue": 1200,
+    "description": "Este pack contiene, Curry tailandes picante de tofu a la plancha y vegetales de estacion, con leche de coco, arroz y semillas.",
+    "stock": 4,
+    "image": "https://bit.ly/3D0UGWZ",
+    "createdAt": "2022-10-16T00:58:12.267Z",
+    "updatedAt": "2022-10-16T00:58:12.267Z",
+    "sellerId": "a636b44a-ddcf-4963-8d1b-2ae68a96cd71",
+    "diets": [
+      {
+        "name": "vegana"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "11b830f6-4295-4d7e-9a44-001c5cfe6cb8",
+    "name": "Gyoza Hongos y Tofu",
+    "price": 400,
+    "realValue": 800,
+    "description": "Este pack contiene, Masa de wonton relleno de hongos portobellos y champiñones, tofu natural, kimchi, aceite de sesamo. Acompañado con una salsa citrica y cibulette.",
+    "stock": 12,
+    "image": "https://bit.ly/3VwBBmQ",
+    "createdAt": "2022-10-16T00:59:19.615Z",
+    "updatedAt": "2022-10-16T00:59:19.615Z",
+    "sellerId": "6d0e05c1-9f1f-479c-aa3a-1bccf0a57a26",
+    "diets": [
+      {
+        "name": "vegetarianos"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "90ea2c8a-72f6-4d01-a696-777f648bd17c",
+    "name": "Arrolladitos de Carne",
+    "price": 500,
+    "realValue": 1000,
+    "description": "Este pack contiene, Sumaleel, Salsa Agridulce, Camarones",
+    "stock": 3,
+    "image": "https://bit.ly/3MyeGTO",
+    "createdAt": "2022-10-16T01:00:36.935Z",
+    "updatedAt": "2022-10-16T01:00:36.935Z",
+    "sellerId": "a11b8fe4-49d8-4ad7-b957-f9a3ad3bd2db",
+    "diets": [
+      {
+        "name": "sin tacc"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "3f0672c3-c0ad-4c0a-9b6d-761b4f63c8a1",
+    "name": "bandeja de 30 huevos de gallina",
+    "price": 200,
+    "realValue": 1000,
+    "description": "Por su fragilidad, los huevos son uno de los alimentos más delicados, pero la verdad es que se conservan bastante bien: cuentan con aproximadamente 28 días de caducidad",
+    "stock": 64,
+    "image": "https://bit.ly/3gdsRln",
+    "createdAt": "2022-10-16T01:02:05.589Z",
+    "updatedAt": "2022-10-16T01:02:05.589Z",
+    "sellerId": "d68f8f8f-afd6-4f59-938e-33b624beac2f",
+    "diets": [
+      {
+        "name": "sin tacc"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "01c46710-d753-42bc-a002-4b251fc4c7ad",
+    "name": "Pollo Entero De Campo | 1.6 kg",
+    "price": 1500,
+    "realValue": 6000,
+    "description": "El Pollo De Campo de Granja M es alimentado con maíz natural, extra magro. Criado en un sistema de bienestar animal, sin el uso de antibióticos ni hormonas. Bajo en sodio y libre de gluten y soya.",
+    "stock": 24,
+    "image": "https://bit.ly/3EODPYD",
+    "createdAt": "2022-10-16T01:03:20.923Z",
+    "updatedAt": "2022-10-16T01:03:20.923Z",
+    "sellerId": "d68f8f8f-afd6-4f59-938e-33b624beac2f",
+    "diets": [
+      {
+        "name": "sin tacc"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "cc2d867a-024c-4a8d-8049-59562eb77839",
+    "name": "Macarrones a la boloñesa (300 gramos)",
+    "price": 600,
+    "realValue": 1200,
+    "description": "Macarrones a la Boloñesa elaborados con productos de gran calidad. Plato ya cocinado, listo para calentar y servir.",
+    "stock": 24,
+    "image": "https://bit.ly/3S5gk0k",
+    "createdAt": "2022-10-16T01:04:33.435Z",
+    "updatedAt": "2022-10-16T01:04:33.435Z",
+    "sellerId": "0906235c-4d24-41e4-afbc-085fe9d121ad",
+    "diets": [
+      {
+        "name": "pescatariano"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "9867c288-0088-4b7e-9918-a50e67a75be7",
+    "name": "Aguacate / Palta (maduros) 1kg",
+    "price": 350,
+    "realValue": 900,
+    "description": "¡Pero no los tires a la basura todavía! Tenemos 3 ideas para aprovechar los aguacates demasiado maduros que te encantarán. #1 Guacamole exprés #2 Aderezo para ensaladas #3 Sopa.",
+    "stock": 20,
+    "image": "https://bit.ly/3D0A5Ss",
+    "createdAt": "2022-10-16T01:05:39.177Z",
+    "updatedAt": "2022-10-16T01:05:39.177Z",
+    "sellerId": "d68f8f8f-afd6-4f59-938e-33b624beac2f",
+    "diets": [
+      {
+        "name": "sin tacc"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "f0dc8b82-3dee-4453-805f-242596e5761b",
+    "name": "Yogurt griego natural artesanal 1L",
+    "price": 850,
+    "realValue": 2500,
+    "description": "Yogurt griego natural elaborado 100% con leche de vaca de forma artesanal por productores del Estado de Querétaro, tiene una textura y sabor natural.",
+    "stock": 18,
+    "image": "https://bit.ly/3VxJ98y",
+    "createdAt": "2022-10-16T01:06:44.453Z",
+    "updatedAt": "2022-10-16T01:06:44.453Z",
+    "sellerId": "6d0e05c1-9f1f-479c-aa3a-1bccf0a57a26",
+    "diets": [
+      {
+        "name": "vegana"
+      }
+    ],
+    "posts": []
+  },
+  {
+    "id": "5e5e2ccc-b4ae-44b7-a9f1-2df39dc57237",
+    "name": "Bandeja de verduras surtidas",
+    "price": 250,
+    "realValue": 1500,
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
+    "stock": 24,
+    "image": "https://bit.ly/3TojiOD",
+    "createdAt": "2022-10-16T01:07:57.218Z",
+    "updatedAt": "2022-10-16T01:07:57.218Z",
+    "sellerId": "d68f8f8f-afd6-4f59-938e-33b624beac2f",
+    "diets": [
+      {
+        "name": "vegetarianos"
+      }
+    ],
+    "posts": []
+  }
+]
