@@ -48,10 +48,11 @@ export function prodDetail (id) {
     console.log(id, 'hola')
     return async function(dispatch) {
         try {
-            const detailProduct = await axios.get('http://localhost:3001/product/' + id)
-            dispatch({
+            let detailProduct = await (await axios.get('http://localhost:3001/product/' + id))
+            detailProduct = detailProduct.data[0];
+                        dispatch({
                 type: 'PROD_DETAIL',
-                payload: detailProduct.data
+                payload: detailProduct
             })
             //console.log(price.data)
         } catch (error) {
