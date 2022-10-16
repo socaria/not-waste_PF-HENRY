@@ -11,7 +11,7 @@ const getApiInfo = async () => {
       description: p.description,
       stock: p.stock,
       image: p.image,
-      posts: p.posts.map((p) => [p.amount, p.date]),
+      posts: p.posts,
       sellerId: p.sellerId,
     };
   });
