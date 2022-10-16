@@ -111,15 +111,14 @@ function LandingPage() {
       <div className={style.center}>
           <h1 className={style.nav}>CANASTAS DE COMIDA SORPRESA</h1>
           <img alt='imgCanasta' src='https://alimentacionysalud.unam.mx/wp-content/uploads/2020/11/reducir-riesgo-1536x1024.jpg'
-className={style.imgRedonda}
-    />
+              className={style.imgRedonda}/>
       </div>
       <div className={style.center}>
           <h1 className={style.nav}>COMPRA A UN PRECIO REDUCIDO</h1>
           <img alt='imgChanchito' src='https://cdn.icon-icons.com/icons2/516/PNG/512/coin_money_icon-icons.com_51091.png' 
           className={style.imgRedonda}/>
 
-      </div>
+      </div> 
       <div className={style.center}>
           <h1 className={style.nav}>CUIDA EL PLANETA</h1>
           <img alt='imgPlaneta' src='https://us.123rf.com/450wm/sudowoodo/sudowoodo1810/sudowoodo181000004/128176206-dibujo-de-planeta-tierra-con-cara-de-dibujos-animados-lindo-naturaleza-y-ecolog%C3%ADa-ilustraci%C3%B3n-de-art.jpg?ver=6' 
