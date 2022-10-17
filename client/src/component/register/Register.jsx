@@ -1,17 +1,15 @@
-import { useState, useEffect } from "react"
-import categories from "./categories"
-import { v4 as uuidv4 } from 'uuid';
+import { useState, useEffect } from "react";
+import categories from "./categories";
+import { v4 as uuidv4 } from "uuid";
 import { validate } from "./auxiliary";
 import { getCities } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { postCustomer, postSeller } from "../../redux/actions";
-import '../register/register.css'
-
+import "../register/register.css";
 
 function Register(props) {
-
-  const dispatch = useDispatch()
-  const cities = useSelector(state => state.cities)
+  const dispatch = useDispatch();
+  const cities = useSelector((state) => state.cities);
 
   useEffect(() => {
     dispatch(getCities())
@@ -35,9 +33,8 @@ function Register(props) {
   const [error, setError] = useState({})
 
   const changeState = function (e) {
-
-    if (e.target.name !== 'supplier') {
-      e.preventDefault()
+    if (e.target.name !== "supplier") {
+      e.preventDefault();
       setInput({
         ...input,
         [e.target.name]: e.target.value
@@ -51,17 +48,16 @@ function Register(props) {
       setInput({
         ...input,
         [e.target.name]: e.target.checked,
-      })
-      setError(
-        {
-          ...error,
-          namesupplier: "Se requiere un nombre"
-        }
-      )
+      });
+      setError({
+        ...error,
+        namesupplier: "Se requiere un nombre",
+      });
+
       if (e.target.checked === false) {
       }
     }
-  }
+  };
 
   const handleSelectCity = (e) => {
     if (!input.cities.length)
@@ -74,17 +70,22 @@ function Register(props) {
     if (!input.cities.includes(e.target.value)) {
       setInput({
         ...input,
-        cities: [...input.cities, e.target.value]
-      })
+        cities: [...input.cities, e.target.value],
+      });
     }
     
   }
 
   const option_categories = () => {
-    return categories && categories.map(category =>
-      <option key={uuidv4()} value={category}>{category}</option>
-    )
-  }
+    return (
+      categories &&
+      categories.map((category) => (
+        <option key={uuidv4()} value={category}>
+          {category}
+        </option>
+      ))
+    );
+  };
 
   const registerSupplier = (e) => {
     const name = input.namesupplier
@@ -99,10 +100,10 @@ function Register(props) {
   }
 
   const registerCustomer = () => {
-    const { name, email } = input
-    console.log({ name, email })
-    dispatch(postCustomer({ name, email }))
-  }
+    const { name, email } = input;
+    console.log({ name, email });
+    dispatch(postCustomer({ name, email }));
+  };
 
   const handleDeleteCity = (e) => {
     e.preventDefault()
@@ -131,6 +132,19 @@ function Register(props) {
           <label className="form-check-label" for="flexSwitchCheckDefault">Soy proveedor</label>
         </div>
 
+        <div className="input-group has-validation my-3 mx-5">
+          <input
+            className="form-check-input me-3"
+            type="checkbox"
+            role="switch"
+            id="flexSwitchCheckDefault"
+            name="supplier"
+            onClick={(e) => changeState(e)}
+          />
+          <label className="form-check-label" for="flexSwitchCheckDefault">
+            Soy proveedor
+          </label>
+        </div>
 
         <div className="input-group has-validation">
           <div className="form-floating is-invalid">
@@ -271,4 +285,4 @@ function Register(props) {
   )
 }
 
-export default Register
+export default Register;

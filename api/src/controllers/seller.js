@@ -1,4 +1,5 @@
 const { Seller, City, Manager } = require("../db");
+const cloudinary = require("../utils/cloudinary");
 const { getAllSellers } = require("./utils/getAllSellers");
 
 // Ruta get va a buscar a todos los proveedores de la base de datos.
@@ -41,6 +42,27 @@ const getSellers = async (req, res) => {
         );
       }
     }
+    if (price) {
+      sellers = sellers.filter((s) =>
+        s.products.find(p =>
+          p.price < price))
+      if (!sellers.length) {
+        throw new Error(
+          "No hay proveedores con esa categoría de establecimiento"
+        );
+      }
+    }
+
+    if (diet) {
+      sellers = sellers.filter((s) =>
+        s.products.find(p =>
+          p.diets.find(d => d.name === diet)))
+      if (!sellers.length) {
+        throw new Error(
+          "No hay proveedores con esa categoría de establecimiento"
+        );
+      }
+    }
 
     res.status(200).send(sellers);
   } catch (e) {
@@ -65,16 +87,25 @@ const postSeller = async (req, res) => {
     if (!cities) {
       throw new Error("El campo de la ciudad es obligatorio");
     }
-    let newSeller = await Seller.create({
-      name,
-      phone,
-      email,
-      adress,
-      cuit,
-      image,
-      enabled,
-      category,
-    });
+
+    if (image) {
+      const uploadRes = await cloudinary.uploader.upload(image, {
+        upload_preset: "not_waste",
+      });
+
+      if (uploadRes) {
+        let newSeller = await Seller.create({
+          name,
+          phone,
+          email,
+          adress,
+          cuit,
+          image: uploadRes,
+          enabled,
+          category,
+        });
+      }
+    }
 
     if (cities) {
       let cityDb = await City.findAll({
