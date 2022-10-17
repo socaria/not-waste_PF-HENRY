@@ -8,6 +8,7 @@ export function validate(input) {
       "El nombre no es válido. Solo se permiten letras y números...";
   }
 
+<<<<<<< HEAD
   if (!input.phone) {
     error.phone = "Número de teléfono es requerido...";
   } else if (
@@ -17,6 +18,15 @@ export function validate(input) {
   ) {
     error.phone = "Ingresa un numero de teléfono valido...";
   }
+=======
+    if(!input.image) {
+        error.image = 'Debe ingresear una imagen...'
+    }
+    
+    if(!input.cities.length) {
+        error.cities = 'Debe seleccionar al menos una ciudad!'
+    }
+>>>>>>> 5b2235b6e1c228d52b66b8be7dde10841fb0ac2e
 
   if (!input.image) {
     error.image = "Debe ingresear una imagen...";

@@ -63,6 +63,12 @@ function Register(props) {
   };
 
   const handleSelectCity = (e) => {
+    if (!input.cities.length) {
+      setError({
+        ...error,
+        cities: undefined,
+      });
+    }
     if (!input.cities.includes(e.target.value)) {
       setInput({
         ...input,
@@ -82,7 +88,7 @@ function Register(props) {
     );
   };
 
-  const registerSupplier = () => {
+  const registerSupplier = (e) => {
     const name = input.namesupplier;
     const { phone, email, adress, cuit, image, category } = input;
     if (!Object.keys(error).length) {
@@ -100,6 +106,7 @@ function Register(props) {
         })
       );
     } else {
+      e.preventDefault();
       alert(
         "Hay campos incompletos o inválidos. Por favor revise su formulario, todos los campos son obligatorios."
       );
@@ -116,6 +123,13 @@ function Register(props) {
 
   const handleDeleteCity = (e) => {
     e.preventDefault();
+    console.log(e.target);
+    if (input.cities.length === 1) {
+      setError({
+        ...error,
+        cities: "Debe seleccionar al menos una ciudad!",
+      });
+    }
     setInput({
       ...input,
       cities: input.cities.filter((g) => g !== e.target.value),
@@ -247,13 +261,13 @@ function Register(props) {
                     <input
                       type="file"
                       className={
-                        !error.adress
+                        !error.image
                           ? "form-control ms-2"
                           : "form-control is-invalid ms-2"
                       }
                       id="inputForm"
-                      placeholder="adress"
-                      name="adress"
+                      placeholder="image"
+                      name="image"
                       required
                       onChange={(e) => changeState(e)}
                     />
@@ -262,29 +276,37 @@ function Register(props) {
                       <div className="invalid-feedback">{error.image}</div>
                     )}
                   </div>
-                </div>
 
-                <br />
+                  <br />
 
-                <div className="input-group has-validation">
-                  <div className="form-floating is-invalid">
-                    <input
-                      type="tel"
-                      className={
-                        !error.phone
-                          ? "form-control ms-2"
-                          : "form-control is-invalid ms-2"
-                      }
-                      id="inputForm"
-                      placeholder="phone"
-                      name="phone"
-                      required
-                      onChange={(e) => changeState(e)}
-                    />
-                    <label for="floatingInputGroup2">Número de teléfono</label>
+                  <div className="input-group has-validation">
+                    <div className="form-floating is-invalid">
+                      <input
+                        type="tel"
+                        className={
+                          !error.phone
+                            ? "form-control ms-2"
+                            : "form-control is-invalid ms-2"
+                        }
+                        id="inputForm"
+                        placeholder="phone"
+                        name="phone"
+                        required
+                        onChange={(e) => changeState(e)}
+                      />
+                      <label for="floatingInputGroup2">
+                        Número de teléfono
+                      </label>
+                    </div>
+                    {error.phone && (
+                      <div className="invalid-feedback">{error.phone}</div>
+                    )}
                   </div>
                   {error.phone && (
                     <div className="invalid-feedback">{error.phone}</div>
+                  )}
+                  {error.cities && (
+                    <div className="invalid-feedback">{error.cities}</div>
                   )}
                 </div>
 
@@ -296,6 +318,7 @@ function Register(props) {
                   aria-label="Default select example"
                   id="inputForm"
                   onChange={(e) => handleSelectCity(e)}
+                  value=""
                 >
                   <option selected>Seleccione su localidad</option>
                   {cities?.map((cities, i) => {
@@ -312,7 +335,11 @@ function Register(props) {
                   {input.cities?.map((ci, i) => (
                     <div key={i}>
                       <p>{ci}</p>
-                      <button value={ci} onClick={(e) => handleDeleteCity(e)}>
+                      <button
+                        value={ci}
+                        name="cities"
+                        onClick={(e) => handleDeleteCity(e)}
+                      >
                         X
                       </button>
                     </div>
