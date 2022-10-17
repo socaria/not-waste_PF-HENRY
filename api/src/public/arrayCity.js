@@ -1,138 +1,138 @@
-let arrayCity = [
+let arraycity = [
   {
     id: 01,
-    name: "Agronomía",
+    name: "agronomia",
   },
   {
     id: 02,
-    name: "Almagro",
+    name: "almagro",
   },
   {
     id: 03,
-    name: "Balvanera",
+    name: "balvanera",
   },
   {
     id: 04,
-    name: "Barracas",
+    name: "barracas",
   },
   {
     id: 05,
-    name: "Belgrano",
+    name: "belgrano",
   },
   {
     id: 06,
-    name: "Boedo",
+    name: "boedo",
   },
   {
     id: 07,
-    name: "Caballito",
+    name: "caballito",
   },
   {
     id: 08,
-    name: "Chacarita",
+    name: "chacarita",
   },
   {
     id: 09,
-    name: "Colegiales",
+    name: "colegiales",
   },
   {
     id: 10,
-    name: "Constitucion",
+    name: "constitucion",
   },
   {
     id: 11,
-    name: "Flores",
+    name: "flores",
   },
   {
     id: 12,
-    name: "Floresta",
+    name: "floresta",
   },
   {
     id: 13,
-    name: "La Boca",
+    name: "la boca",
   },
   {
     id: 14,
-    name: "La Paternal",
+    name: "la paternal",
   },
   {
     id: 15,
-    name: "Liniers",
+    name: "liniers",
   },
   {
     id: 16,
-    name: "Mataderos",
+    name: "mataderos",
   },
   {
     id: 17,
-    name: "Nueva Pompeya",
+    name: "nueva pompeya",
   },
   {
     id: 18,
-    name: "Nuñez",
+    name: "nuñez",
   },
   {
     id: 19,
-    name: "Palermo",
+    name: "palermo",
   },
   {
     id: 20,
-    name: "Parque Avellaneda",
+    name: "parque avellaneda",
   },
   {
     id: 21,
-    name: "Parque Patricio",
+    name: "parque patricio",
   },
   {
     id: 22,
-    name: "Puerto Madero",
+    name: "puerto madero",
   },
   {
     id: 23,
-    name: "Recoleta",
+    name: "recoleta",
   },
   {
     id: 24,
-    name: "Retiro",
+    name: "retiro",
   },
   {
     id: 25,
-    name: "Saavedra",
+    name: "saavedra",
   },
   {
     id: 26,
-    name: "San Cristóbal",
+    name: "san cristobal",
   },
   {
     id: 27,
-    name: "San Telmo",
+    name: "san telmo",
   },
   {
     id: 28,
-    name: "Villa Devoto",
+    name: "villa devoto",
   },
   {
     id: 29,
-    name: "Villa Crespo",
+    name: "villa crespo",
   },
   {
     id: 30,
-    name: "Villa Lugano",
+    name: "villa lugano",
   },
   {
     id: 31,
-    name: "Villa Urquiza",
+    name: "villa Urquiza",
   },
   {
     id: 32,
-    name: "Villa Soldati",
+    name: "villa soldati",
   },
   {
     id: 33,
-    name: "Vélez Sarsfield",
+    name: "velez sarsfield",
   },
 ];
 
 module.exports = {
-  arrayCity,
+  arraycity,
 };
