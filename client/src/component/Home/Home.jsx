@@ -1,33 +1,94 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { getCities, getDiet, getSellers, getProduct, orderPriceProduct } from "../../redux/actions";
+import { getCities, getDiet, getSellers, getProduct, orderPriceProduct, filterByCity } from "../../redux/actions";
 import CarouselSeller from '../CarouselSeller/CarouselSeller'
 import NavBar from '../NavBar/Navbar';
 import Footer from '../Footer';
-import '../Home/Home.css'
+import '../Home/Home.css';
+import { Dropdown } from 'react-bootstrap';
 
 function Home() {
     const dispatch = useDispatch()
 
-    const [, setOrden] = useState()
-    const cities = useSelector(state => state.cities)
-    const diet = useSelector(state => state.diet)
-    const sellers = useSelector(state => state.seller)
-    console.log(sellers,' SELLER HOME')
-    const product = useSelector(state => state.product)
-    
+    const [orden, setOrden] = useState()
+    const cities = useSelector(state => state.cities);
+    const diet = useSelector(state => state.diet);
+    const sellers = useSelector(state => state.seller);
+    console.log('Home sellers', sellers);
+    const queryParams = useSelector(state => state.queryParams);
+
+    // const product = useSelector(state => state.product)
 
     useEffect(() => {
-        dispatch(getCities())
-        dispatch(getSellers())
-        dispatch(getProduct())
-        dispatch(getDiet())
+        dispatch(getCities());
+        dispatch(getSellers());
+        dispatch(getProduct());
+        dispatch(getDiet());
     }, [dispatch])
 
-    function handleCities(e) {
-        dispatch(getCities())
-        console.log(e.target.value)
+    var [filter, setFilter] = useState({
+        city: "Floresta",
+        diet: "vegana",
+        category: "all"
+    })
+
+    const ordenamiento = function () {
+
+        const allSeller = sellers.map((e) => ({
+            id: e.id,
+            name: e.name,
+            image: e.image,
+            adress: e.adress,
+            category: e.category,
+            cities: e.cities?.map((c) => c.name),
+            cuit: e.cuit,
+            email: e.email,
+            products: e.products.map((d) => ({
+                name: d.name,
+                price: d.price,
+                diets: d.diets?.map(e => e.name)
+            })),
+        }));
+
+        // filtrados = allSeller.filter( e => e.includes("Parque Avellaneda"))
+        let filtrados = []
+
+        if (filter.city !== "all") {
+            for (let i = 0; i < allSeller.length; i++) {
+                if (allSeller[i].cities.includes(filter.city)) {
+                    filtrados.push(allSeller[i])
+                }
+            }
+        } else { filtrados = allSeller }
+
+        if (filtrados.length && filter.diet !== "all") {
+            const auxdiet = []
+            for (let i = 0; i < filtrados.length; i++) {
+                for (let e = 0; e < filtrados[i].products.length; e++) {
+                    if (filtrados[i].products[e].diets.includes(filter.diet)) {
+                        auxdiet.push(filtrados[i])
+                    }
+                } filtrados = auxdiet
+            }
+        }
+
+        console.log(filtrados)
     }
+
+
+
+
+    function handleFilterByCities(e) {
+        e.preventDefault();
+        dispatch(getSellers({
+            ...queryParams,
+            city: e.target.value,
+        }));
+    }
+
+    // function handleCities(e) {
+    //     dispatch(getCities())
+    // }
 
     function handleOrderPrice(e) {
         e.preventDefault()
@@ -39,26 +100,44 @@ function Home() {
         dispatch(getDiet())
     }
 
+
     function handleFilterCategory(e) {
 
     }
     return (
         <div>
+            {/* {ordenamiento()} */}
             <NavBar />
             <div className="container-fluid my-3">
                 <div className="contSelects">
-                    <select onChange={handleCities} className="selects">
+                    <Dropdown >
+                        <Dropdown.Toggle onChange={e => handleFilterByCities(e)} variant="success" id="dropdown-basic">
+                            Filtrar por ciudad
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu>
+                            {
+                                cities?.map(cities => {
+                                    return (
+                                        <Dropdown.Item className='text-capitalize' eventKey={cities.name} key={cities.id} >{cities.name}</Dropdown.Item>
+                                    )
+
+                                })
+                            }
+                        </Dropdown.Menu>
+                    </Dropdown>
+                    {/* <select className="selects" onChange={(e) => handleFilterByCities(e)}>
                         <option>CIUDADES</option>
                         {
                             cities?.map(cities => {
                                 return (
-                                    <option value={cities.name} key={cities.id}>{cities.name}</option>
+                                    <option value={cities.name} key={cities.id} >{cities.name}</option>
                                 )
 
                             })
                         }
                         <option>BARRIOS MAPEADOS</option>
-                    </select>
+                    </select> */}
 
 
                     <select onChange={handleOrderPrice} className="selects">
@@ -86,14 +165,13 @@ function Home() {
                 </div>
                 {
 
-                   sellers?.map(seller => {
-                    if (seller.products.find(p => p.posts.length > 0 ))
-                        return(
-                                <CarouselSeller key={seller.id} seller={seller}  />
-                        )
+                    sellers?.map(seller => {
+                        if (seller.products.find(p => p.posts.length > 0))
+                            return (
+                                <CarouselSeller key={seller.id} seller={seller} />
+                            )
                     })
                 }
-                
             </div>
             <Footer />
         </div>

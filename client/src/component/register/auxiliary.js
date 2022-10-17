@@ -18,6 +18,10 @@ export function validate(input) {
     error.phone = "Ingresa un numero de teléfono valido...";
   }
 
+  if (!input.image) {
+    error.image = "Debe ingresear una imagen...";
+  }
+
   if (input.category === "") {
     error.category = "La categoría es requerida...";
   }
@@ -26,24 +30,12 @@ export function validate(input) {
     error.adress = "La dirección es requerida...";
   }
 
-  if (!input.image) {
-    error.image = "La imagen es requerida...";
-  }
-
   if (!input.cuit) {
     error.cuit = "CUIT es requerido...";
   } else if (
     !/\b(20|23|24|27|30|33|34)(\D)?[0-9]{8}(\D)?[0-9]/g.test(input.cuit)
   ) {
     error.cuit = "Ingresar un número de CUIT...";
-  }
-
-  if (!input.cuit) {
-    error.cuit = "Cuit is required";
-  } else if (
-    !/\b(20|23|24|27|30|33|34)(\D)?[0-9]{8}(\D)?[0-9]/g.test(input.cuit)
-  ) {
-    error.cuit = "Enter a valid cuit";
   }
 
   return error;
