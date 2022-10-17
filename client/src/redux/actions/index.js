@@ -133,3 +133,10 @@ export function postSeller(data) {
     .catch(error => console.error('Error:', error))
     .then(response => console.log('Success:', response));
 }
+
+export const filterByCity = (payload) => {
+    return {
+      type: "FILTER_BY_CITY",
+      payload,
+    };
+  };

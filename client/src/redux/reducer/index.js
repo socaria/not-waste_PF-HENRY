@@ -5,7 +5,8 @@ const initialState = {
   price: [],
   diet: [],
   customer: [],
-  prodDetails:[]
+  prodDetails:[],
+  allSeller: []
 }
 
 export default function rootReducer(state = initialState, actions) {
@@ -14,7 +15,8 @@ export default function rootReducer(state = initialState, actions) {
     case 'GET_SELLER':
       return {
         ...state,
-        seller: actions.payload
+        seller: actions.payload,
+        allSeller: actions.payload
       }
 
     case 'GET_CITIES':
@@ -28,6 +30,30 @@ export default function rootReducer(state = initialState, actions) {
         diet: actions.payload
       }
 
+      case "FILTER_BY_CITY":
+        const allSeller = state.allSeller.map((e) => ({
+          id: e.id,
+          name: e.name,
+          image: e.image,
+          adress: e.adress,
+          category: e.category,
+          cities: e.cities.map((c) => c.name),
+          cuit: e.cuit,
+          email: e.email,
+          products: e.products.map((d) => ({
+            name: d.name,
+            price: d.price,
+          })),
+        }));
+        const filterSeller = allSeller.filter((e) =>
+          e.cities.includes(actions.payload)
+        );
+        console.log( allSeller);
+        console.log( filterSeller);
+        return {
+          ...state,
+          seller: filterSeller,
+        };
 
     case 'GET_PRODUCT': {
       return {
