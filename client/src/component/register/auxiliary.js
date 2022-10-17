@@ -8,6 +8,20 @@ export function validate(input) {
       "El nombre no es válido. Solo se permiten letras y números...";
   }
 
+<<<<<<< HEAD
+  if (!input.image) {
+    error.image = 'Debe ingresear una imagen...'
+  }
+
+  if (!input.cities.length) {
+    error.cities = 'Debe seleccionar al menos una ciudad!'
+  }
+
+  if (input.category === '') {
+    error.category = 'La categoría es requerida...'
+  }
+=======
+>>>>>>> 33874e502ed4e933a6cf7ea640d6d5d5c834dcf4
   if (!input.phone) {
     error.phone = "Número de teléfono es requerido...";
   } else if (
@@ -17,6 +31,8 @@ export function validate(input) {
   ) {
     error.phone = "Ingresa un numero de teléfono valido...";
   }
+<<<<<<< HEAD
+=======
 
   if (!input.image) {
     error.image = "Debe ingresear una imagen...";
@@ -25,6 +41,7 @@ export function validate(input) {
   if (input.category === "") {
     error.category = "La categoría es requerida...";
   }
+>>>>>>> 33874e502ed4e933a6cf7ea640d6d5d5c834dcf4
 
   if (!input.adress) {
     error.adress = "La dirección es requerida...";

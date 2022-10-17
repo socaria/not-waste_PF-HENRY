@@ -1,8 +1,8 @@
 const { City } = require("../db");
-const { arraycity } = require("../public/arrayCity.js");
+const { arrayCity } = require("../public/arrayCity.js");
 
 const getCityInfo = async (req, res) => {
-  let json = await arraycity.map((e) => {
+  let json = await arrayCity.map((e) => {
     return {
       id: e.id,
       name: e.name,
