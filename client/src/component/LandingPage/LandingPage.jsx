@@ -21,9 +21,9 @@ function LandingPage() {
         })
       }
 
-      const img='https://static.vecteezy.com/system/resources/previews/002/032/170/large_2x/healthy-diet-ingredients-on-a-shabby-white-background-free-photo.jpg'
-      const img2='https://static.vecteezy.com/system/resources/previews/003/350/919/large_2x/top-view-of-healthy-food-on-white-wooden-background-photo.jpg'
-      const img3= 'https://static.vecteezy.com/system/resources/previews/002/032/172/large_2x/top-view-of-healthy-foods-on-a-dark-slate-background-free-photo.jpg'
+      const img='https://img.freepik.com/fotos-premium/comida-italiana-ingredientes_1220-4676.jpg?w=5000'
+      const img2='https://img.freepik.com/foto-gratis/concepto-comida-sabrosa-carne-res-vista-superior-verduras_185193-74994.jpg?w=5000&t=st=1665986120~exp=1665986720~hmac=656d6d168a4d199700f7730e0c08f6202abb54ba30846d93c2bdc9dd1596fd21'
+      const img3= 'https://static.vecteezy.com/system/resources/previews/001/271/830/large_2x/baked-bread-on-illuminated-background-free-photo.jpg'
       const imgIcon = 'https://cdn.iconscout.com/icon/premium/png-256-thumb/vegetarian-food-1834409-1557027.png'
   return (
     
@@ -31,7 +31,8 @@ function LandingPage() {
 <div>
     <nav className="navbar navbar-expand-md bg-ligth">
         <div className="container-fluid">
-            <img src={imgIcon} alt='🥑' width='50px'/>
+            <img src={imgIcon} alt='🥑' width='50px'/>        
+        <div className="nav-link mx-4"><h3>Not Waste</h3></div>
         <button className="navbar-toggler"
                 type='button'
                 data-bs-toggle='collapse'
@@ -43,17 +44,18 @@ function LandingPage() {
         </button>
 
         <div className="collapse navbar-collapse" id='navbarSupportedContent'>
-            <Navbar className=" navbar-nav ms-auto px-4">
+
+            <Navbar className=" navbar-nav ms-auto px-5">
                 <div className="vr bg-dark"></div> 
                     <Nav href='#inicio' className=" nav-link mx-4" onClick={handleClick}><Link to='/home'>INICIO</Link></Nav>
                 <div className="vr bg-dark"></div>
-                    <Nav className="nav-link mx-4 text-light" href='#about' onClick={handleClick}>ABOUT</Nav>
+                    <Nav className="nav-link mx-4 text-dark" href='#about' onClick={handleClick}>ABOUT</Nav>
                 <div className="vr bg-dark"></div>
-                    <Nav href='#FAQ' onClick={handleClick} className=" text-white mx-4">FAQ's</Nav>
+                    <Nav href='#FAQ' onClick={handleClick} className=" text-dark mx-4">FAQ's</Nav>
                 <div className="vr bg-dark"></div>
-                    <Nav href='#nosotros' onClick={handleClick} className="nav-link text-white mx-4">NOSOTROS</Nav>
+                    <Nav href='#nosotros' onClick={handleClick} className="nav-link text-dark mx-4">NOSOTROS</Nav>
                 <div className="vr bg-dark"></div>
-                    <Nav href='#contact' onClick={handleClick} className="nav-link text-light mx-4">CONTACTANOS</Nav>
+                    <Nav href='#contact' onClick={handleClick} className="nav-link text-dark mx-4">CONTACTANOS</Nav>
                 <div className="vr bg-dark"></div>
             </Navbar>
         </div>
@@ -145,7 +147,24 @@ function LandingPage() {
         </div>
       </div>
 
+
+      <div className={style.contForm}>
+    <div className={style.cont} id='contact'>
+      <h1 className={style.center}>CONTACTANOS</h1>
+    <form>
+      <div className={style.inputCont}>
+        <input placeholder="" type="text" ></input>
       </div>
+      <div className={style.inputCont}>
+        <input placeholder="" type="text"></input>
+      </div>
+      <div className={style.inputCont}>
+        <input placeholder="" type="text"></input>
+      </div>
+    </form>
+        </div>
+      </div>
+    </div>
     </main>
   )
   
