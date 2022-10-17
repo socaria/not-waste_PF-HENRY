@@ -10,13 +10,14 @@ import LogoutButton from "../LogoutButton";
 import { useAuth0 } from '@auth0/auth0-react' //esto es un hook que da auth0
 import AuthProfile from "../AuthProfile";
 import VerifyProfile from "../VerifyProfile";
+import '../NavBar/Navbar.css'
 
 function NavBar() {
 
     const {isAuthenticated} = useAuth0() //isAuthenticated me informa si es usuario esta logueado o no
     let db = VerifyProfile(AuthProfile("profile").email)
     return (
-        <nav className="navbar navbar-expand-md navbar-dark bg-light">
+        <nav className="navbar navbar-expand-md" id="navbar">
             <div className="container-fluid">
                 <button className="navbar-toggler"
                         type='button'
