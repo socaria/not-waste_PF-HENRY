@@ -297,12 +297,13 @@ function Register(props) {
                     <br />
                     <img
                       src={input.image}
+                      className="form-control ms-2"
                       alt="Seller image!"
                       style={{ width: "300px" }}
                     />
                   </>
                 ) : (
-                  <p>Cargando imagen...</p>
+                  <p></p>
                 )}
 
                 <br />
