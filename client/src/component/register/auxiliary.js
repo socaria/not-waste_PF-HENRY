@@ -14,6 +14,11 @@ export function validate (input) {
         error.phone = 'Ingresa un numero de teléfono valido...'
     }
 
+    if(!input.image) {
+        error.image = 'Debe ingresear una imagen...'
+    }
+    
+
     if(input.category === '') {
         error.category = 'La categoría es requerida...'
     }
