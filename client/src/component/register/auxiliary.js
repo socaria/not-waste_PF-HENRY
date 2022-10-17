@@ -1,41 +1,45 @@
-export function validate (input) {
-    let error = {}
-    
-    if (!input.name) {
-        error.name = "Name is required";
-    }
-    else if (!/^[A-Za-z0-9\s]+$/g.test(input.name)) {
-        error.name = "Name is invalid. They only allow letters and numbers"
-    }
+export function validate(input) {
+  let error = {};
 
-    if (!input.proveedor && !input.lastName) {
-        error.lastName = "Lastname is required";
-    }
-    else if (!input.proveedor && !/^[A-Za-z0-9\s]+$/g.test(input.lastName)) {
-        error.lastName = "Lastname is invalid. They only allow letters and numbers"
-    }
+  if (!input.namesupplier) {
+    error.namesupplier = "El nombre es requerido...";
+  } else if (!/^[A-Za-z0-9\s]+$/g.test(input.namesupplier)) {
+    error.namesupplier =
+      "El nombre no es válido. Solo se permiten letras y números...";
+  }
 
-    if (!input.password) {
-        error.password = "Password is required";
-    } else if (!/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/g.test(input.password)) {
-        error.password = "The password must have at least 8 and 16 characters, at least one digit, at least one lowercase and at least one uppercase.It can NOT have other symbols."
-    }
+  if (!input.image) {
+    error.image = 'Debe ingresear una imagen...'
+  }
 
-    if (!input.phone) {
-        error.phone = 'Phone is required';
-    } else if (!/^(?:(?:00)?549?)?0?(?:11|[2368]\d)(?:(?=\d{0,2}15)\d{2})??\d{8}$/g.test(input.phone)) {
-        error.phone = 'Enter a valid phone number'
-    }
+  if (!input.cities.length) {
+    error.cities = 'Debe seleccionar al menos una ciudad!'
+  }
 
-    if(!input.email) {
-        error.mail = "Email is required";
-    } else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(input.email)) {
-        error.email = "Enter a valid email"
-    }
+  if (input.category === '') {
+    error.category = 'La categoría es requerida...'
+  }
+  if (!input.phone) {
+    error.phone = "Número de teléfono es requerido...";
+  } else if (
+    !/^(?:(?:00)?549?)?0?(?:11|[2368]\d)(?:(?=\d{0,2}15)\d{2})??\d{8}$/g.test(
+      input.phone
+    )
+  ) {
+    error.phone = "Ingresa un numero de teléfono valido...";
+  }
 
-    if(input.state === '') {
-        error.state = 'State is required'
-    }
+  if (!input.adress) {
+    error.adress = "La dirección es requerida...";
+  }
 
-    return error;
+  if (!input.cuit) {
+    error.cuit = "CUIT es requerido...";
+  } else if (
+    !/\b(20|23|24|27|30|33|34)(\D)?[0-9]{8}(\D)?[0-9]/g.test(input.cuit)
+  ) {
+    error.cuit = "Ingresar un número de CUIT...";
+  }
+
+  return error;
 }
