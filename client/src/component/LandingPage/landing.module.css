@@ -1,5 +1,4 @@
 .main {
-    /* background-color: rgba(0, 0, 0, 0.493) */
 background-color:#B6E388;
 }
 
@@ -38,6 +37,7 @@ background-color:#B6E388;
     justify-content: center;
     
 }
+
 .imgRedonda {
     width:250px;
     height:250px;
@@ -53,6 +53,16 @@ background-color:#B6E388;
 
 
 .center {
-    margin:50px 50px 0px 0px;
     text-align:center
+}
+
+.inputCont {
+    display: flex;
+    justify-content:center;
+    margin: 100px 0px 100px 0px;
+}
+
+.contForm {
+    padding: 0px 100px 100px 100px;
+    margin: 100px 250px 0px 250px;
 }
