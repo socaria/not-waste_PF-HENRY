@@ -39,8 +39,8 @@ function NavBar() {
                         <div className="vr bg-dark"></div>
                         {isAuthenticated ? <LogoutButton /> : <LogingButton />   }
                         <div className="vr bg-dark"></div>
-                        {!db.exists &&
-                        <li className="nav-item"><Link to='/register' className="nav-link mx-4">REGISTER</Link></li>}
+                        {/* {!db.exists &&
+                        <li className="nav-item"><Link to='/register' className="nav-link mx-4">REGISTER</Link></li>} */}
                         <div className="vr bg-dark"></div>
                     </Navbar>
                 </div>
