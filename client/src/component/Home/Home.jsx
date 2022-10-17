@@ -29,7 +29,7 @@ function Home() {
         e.preventDefault();
         // dispatch(getSellers());
         window.location.reload();
-        
+
     }
 
 
@@ -61,6 +61,8 @@ function Home() {
 
         }));
     }
+    let currentCities = sellers.map(s => s.cities.map(c => c.name));
+    console.log("🚀 ~ file: Home.jsx ~ line 66 ~ Home ~ currentCities", currentCities)
 
     return (
         <div>
@@ -93,10 +95,11 @@ function Home() {
                             onChange={(e) => handleFiltersCity(e)}>
                             <option>Ciudades</option>
                             {
-                                
-                                cities?.map(cities => {
+
+
+                                currentCities?.map(cities => {
                                     return (
-                                        <option className='filter-options' value={cities.name} key={cities.id} >{cities.name}</option>
+                                        <option className='filter-options' value={cities} key={cities} >{cities}</option>
                                     )
 
                                 })
