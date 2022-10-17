@@ -136,6 +136,34 @@ function Register(props) {
     });
   };
 
+  const handleSellerImageUpload = (e) => {
+    const file = e.target.files[0];
+
+    TransformFile(file);
+  };
+
+  const TransformFile = (file) => {
+    const reader = new FileReader();
+
+    if (file) {
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        setInput({
+          ...input,
+          image: reader.result,
+        });
+
+        // setInput.image(reader.result);
+      };
+    } else {
+      setInput({
+        ...input,
+        image: "",
+      });
+      // setInput.image("");
+    }
+  };
+
   return (
     <>
       <form className="form-check form-switch my-3 mx-5" id="formDiv">
@@ -260,53 +288,58 @@ function Register(props) {
                   <div className="form-floating is-invalid">
                     <input
                       type="file"
+                      accept="image/"
                       className={
                         !error.image
                           ? "form-control ms-2"
                           : "form-control is-invalid ms-2"
                       }
-                      id="inputForm"
-                      placeholder="image"
-                      name="image"
+                      id="inputFormImage"
+                      placeholder="imagen"
+                      name="imagen"
                       required
-                      onChange={(e) => changeState(e)}
+                      onChange={handleSellerImageUpload}
                     />
                     {/* <label for="floatingInputGroup2">Foto de perfil</label> */}
                     {error.image && (
                       <div className="invalid-feedback">{error.image}</div>
                     )}
                   </div>
+                </div>
+                {input.image ? (
+                  <>
+                    <br />
+                    <img
+                      src={input.image}
+                      alt="Seller image!"
+                      style={{ width: "300px" }}
+                    />
+                  </>
+                ) : (
+                  <p>Cargando imagen...</p>
+                )}
 
-                  <br />
+                <br />
 
-                  <div className="input-group has-validation">
-                    <div className="form-floating is-invalid">
-                      <input
-                        type="tel"
-                        className={
-                          !error.phone
-                            ? "form-control ms-2"
-                            : "form-control is-invalid ms-2"
-                        }
-                        id="inputForm"
-                        placeholder="phone"
-                        name="phone"
-                        required
-                        onChange={(e) => changeState(e)}
-                      />
-                      <label for="floatingInputGroup2">
-                        Número de teléfono
-                      </label>
-                    </div>
-                    {error.phone && (
-                      <div className="invalid-feedback">{error.phone}</div>
-                    )}
+                <div className="input-group has-validation">
+                  <div className="form-floating is-invalid">
+                    <input
+                      type="tel"
+                      className={
+                        !error.phone
+                          ? "form-control ms-2"
+                          : "form-control is-invalid ms-2"
+                      }
+                      id="inputForm"
+                      placeholder="phone"
+                      name="phone"
+                      required
+                      onChange={(e) => changeState(e)}
+                    />
+                    <label for="floatingInputGroup2">Número de teléfono</label>
                   </div>
                   {error.phone && (
                     <div className="invalid-feedback">{error.phone}</div>
-                  )}
-                  {error.cities && (
-                    <div className="invalid-feedback">{error.cities}</div>
                   )}
                 </div>
 
