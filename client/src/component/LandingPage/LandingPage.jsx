@@ -1,4 +1,4 @@
-import React, { createElement } from 'react'
+import React from 'react'
 import style from './landing.module.css'
 
 import Nav from 'react-bootstrap/Nav';
@@ -7,7 +7,6 @@ import Navbar from 'react-bootstrap/Navbar';
 import Carousel from 'react-bootstrap/Carousel';
 import { Link } from 'react-router-dom';
 
-createElement()
 function LandingPage() {
     const handleClick = (e) => {
         e.preventDefault()
@@ -57,95 +56,97 @@ function LandingPage() {
                 <div className="vr bg-dark"></div>
                     <Nav href='#contact' onClick={handleClick} className="nav-link text-dark mx-4">CONTACTANOS</Nav>
                 <div className="vr bg-dark"></div>
-            </Navbar>
-        </div>
-    </div>
-</nav>
-  </div>
+                <Nav href='#contact' onClick={handleClick} className="nav-link text-light mx-4">CONTACTANOS</Nav>
+                <div className="vr bg-dark"></div>
+              </Navbar>
+            </div>
+          </div>
+        </nav>
+      </div>
 
-      
+
       <Carousel >
 
-      <Carousel.Item >
-        <img
-        className=" d-block w-100 "
-          src={img}  height='500px' 
-          alt="First slide"/>
+        <Carousel.Item >
+          <img
+            className=" d-block w-100 "
+            src={img} height='500px'
+            alt="First slide" />
 
-        <Carousel.Caption>
-          {/* <h3 className={style.strD}>First slide label</h3>
+          <Carousel.Caption>
+            {/* <h3 className={style.strD}>First slide label</h3>
           <h4 className={style.strD}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h4> */}
-        </Carousel.Caption>
+          </Carousel.Caption>
 
-    </Carousel.Item>
+        </Carousel.Item>
 
-    <Carousel.Item >
-        <img
-          className="d-block w-100"
-          src={img2} height='500px' 
-          alt="Second slide"/>
+        <Carousel.Item >
+          <img
+            className="d-block w-100"
+            src={img2} height='500px'
+            alt="Second slide" />
 
-        <Carousel.Caption>
-          {/* <h3 className={style.strD}>Second slide label</h3>
+          <Carousel.Caption>
+            {/* <h3 className={style.strD}>Second slide label</h3>
           <h4 className={style.strD}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h4> */}
-        </Carousel.Caption>
+          </Carousel.Caption>
 
-    </Carousel.Item>
+        </Carousel.Item>
 
-    <Carousel.Item >
-        <img
-          className="d-flex w-100"
-          src={img3} height='500px' 
-          alt="Third slide"/>
+        <Carousel.Item >
+          <img
+            className="d-flex w-100"
+            src={img3} height='500px'
+            alt="Third slide" />
 
-        <Carousel.Caption>
-          {/* <h3 className={style.strD}>Third slide label</h3>
+          <Carousel.Caption>
+            {/* <h3 className={style.strD}>Third slide label</h3>
           <h4 className={style.strD}>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</h4> */}
-        </Carousel.Caption>
+          </Carousel.Caption>
 
-    </Carousel.Item>
-    </Carousel>
-<div >
-      <div className={style.cont} id='about'>
-      
-        <div className={style.cont3}>
+        </Carousel.Item>
+      </Carousel>
+      <div >
+        <div className={style.cont} id='about'>
 
-      <div className={style.center}>
-          <h1 className={style.nav}>CANASTAS DE COMIDA SORPRESA</h1>
-          <img alt='imgCanasta' src='https://alimentacionysalud.unam.mx/wp-content/uploads/2020/11/reducir-riesgo-1536x1024.jpg'
-              className={style.imgRedonda}/>
-      </div>
-      <div className={style.center}>
-          <h1 className={style.nav}>COMPRA A UN PRECIO REDUCIDO</h1>
-          <img alt='imgChanchito' src='https://cdn.icon-icons.com/icons2/516/PNG/512/coin_money_icon-icons.com_51091.png' 
-          className={style.imgRedonda}/>
+          <div className={style.cont3}>
 
-      </div> 
-      <div className={style.center}>
-          <h1 className={style.nav}>CUIDA EL PLANETA</h1>
-          <img alt='imgPlaneta' src='https://us.123rf.com/450wm/sudowoodo/sudowoodo1810/sudowoodo181000004/128176206-dibujo-de-planeta-tierra-con-cara-de-dibujos-animados-lindo-naturaleza-y-ecolog%C3%ADa-ilustraci%C3%B3n-de-art.jpg?ver=6' 
-          className={style.imgRedonda}/>
+            <div className={style.center}>
+              <h1 className={style.nav}>CANASTAS DE COMIDA SORPRESA</h1>
+              <img alt='imgCanasta' src='https://alimentacionysalud.unam.mx/wp-content/uploads/2020/11/reducir-riesgo-1536x1024.jpg'
+                className={style.imgRedonda} />
+            </div>
+            <div className={style.center}>
+              <h1 className={style.nav}>COMPRA A UN PRECIO REDUCIDO</h1>
+              <img alt='imgChanchito' src='https://cdn.icon-icons.com/icons2/516/PNG/512/coin_money_icon-icons.com_51091.png'
+                className={style.imgRedonda} />
 
-      </div>
-      </div>
-      </div>
+            </div>
+            <div className={style.center}>
+              <h1 className={style.nav}>CUIDA EL PLANETA</h1>
+              <img alt='imgPlaneta' src='https://us.123rf.com/450wm/sudowoodo/sudowoodo1810/sudowoodo181000004/128176206-dibujo-de-planeta-tierra-con-cara-de-dibujos-animados-lindo-naturaleza-y-ecolog%C3%ADa-ilustraci%C3%B3n-de-art.jpg?ver=6'
+                className={style.imgRedonda} />
 
-      <div className={style.cont} id='FAQ'>
+            </div>
+          </div>
+        </div>
+
+        <div className={style.cont} id='FAQ'>
           <div className={style.cont2}>
-        <h1>FAQ</h1>
-        <p>¡Una alivio para tu bolsillo y una buena acción para el planeta!</p>
-        <p>Encontrá productos alimenticios a un precio <strong>reducido</strong> evitando desperdiciar exedentes de comida, comprando canastas de alimentos</p>
-        <p><strong>Que contiene una canasta?</strong> el contenido es sorpresa, pero no te preocupes, los proveedores se comprometen a respetar las normas de calidad de los mismos</p>
+            <h1>FAQ</h1>
+            <p>¡Una alivio para tu bolsillo y una buena acción para el planeta!</p>
+            <p>Encontrá productos alimenticios a un precio <strong>reducido</strong> evitando desperdiciar exedentes de comida, comprando canastas de alimentos</p>
+            <p><strong>Que contiene una canasta?</strong> el contenido es sorpresa, pero no te preocupes, los proveedores se comprometen a respetar las normas de calidad de los mismos</p>
+          </div>
         </div>
-      </div>
 
 
-      <div className={style.cont} id='nosotros'>
-      <div className={style.cont2}>
-          <h1 >NOSOTROS</h1>
-          <p>Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+        <div className={style.cont} id='nosotros'>
+          <div className={style.cont2}>
+            <h1 >NOSOTROS</h1>
+            <p>Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+          </div>
         </div>
-      </div>
 
 
       <div className={style.contForm}>
@@ -167,7 +168,7 @@ function LandingPage() {
     </div>
     </main>
   )
-  
+
 }
 
 export default LandingPage
