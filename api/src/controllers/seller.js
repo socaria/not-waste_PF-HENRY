@@ -46,98 +46,98 @@ const getSellers = async (req, res) => {
   } catch (e) {
     res.status(404).send(e.message);
   }
-};
 
-const postSeller = async (req, res) => {
-  let { name, phone, email, adress, cuit, image, category, enabled, cities } =
-    req.body;
+  const postSeller = async (req, res) => {
+    let { name, phone, email, adress, cuit, image, category, enabled, cities } =
+      req.body;
 
-  try {
-    if (!name) {
-      throw new Error("El campo del nombre del establecimiento es obligatorio");
-    }
-    if (!phone) {
-      throw new Error("El campo del teléfono es obligatorio");
-    }
-    if (!email) {
-      throw new Error("El campo del e-mail es obligatorio");
-    }
-    if (!cities) {
-      throw new Error("El campo de la ciudad es obligatorio");
-    }
-    let newSeller = await Seller.create({
-      name,
-      phone,
-      email,
-      adress,
-      cuit,
-      image,
-      enabled,
-      category,
-    });
-
-    if (cities) {
-      let cityDb = await City.findAll({
-        where: {
-          name: cities,
-        },
+    try {
+      if (!name) {
+        throw new Error("El campo del nombre del establecimiento es obligatorio");
+      }
+      if (!phone) {
+        throw new Error("El campo del teléfono es obligatorio");
+      }
+      if (!email) {
+        throw new Error("El campo del e-mail es obligatorio");
+      }
+      if (!cities) {
+        throw new Error("El campo de la ciudad es obligatorio");
+      }
+      let newSeller = await Seller.create({
+        name,
+        phone,
+        email,
+        adress,
+        cuit,
+        image,
+        enabled,
+        category,
       });
-      newSeller.addCity(cityDb);
-    }
 
-    res.send(newSeller);
-  } catch (e) {
-    res.status(500).send(`${e}`);
-  }
-};
+      if (cities) {
+        let cityDb = await City.findAll({
+          where: {
+            name: cities,
+          },
+        });
+        newSeller.addCity(cityDb);
+      }
 
-// TODO actualizar manager cuando el estado pasa a enabled
-const putSeller = async (req, res) => {
-  const { id } = req.params;
-  const { name, phone, email, adress, cuit, image, city, category, enabled } =
-    req.body;
+      res.send(newSeller);
+    } catch (e) {
+      res.status(500).send(`${e}`);
+    }
+  };
 
-  let sellerToModify = await Seller.findByPk(id);
-  try {
-    if (!sellerToModify) {
-      throw new Error("No hay proveedores con ese ID");
-    }
-    if (!name) {
-      throw new Error("El campo del nombre del establecimiento es obligatorio");
-    }
-    if (!phone) {
-      throw new Error("El campo del teléfono es obligatorio");
-    }
-    if (!email) {
-      throw new Error("El campo del e-mail es obligatorio");
-    }
-    if (!city) {
-      throw new Error("El campo de la ciudad es obligatorio");
-    }
-    let edited = await Seller.upsert({
-      id,
-      name,
-      phone,
-      email,
-      adress,
-      cuit,
-      image,
-      category,
-      enabled,
-    });
-    let cityDb = await City.findAll({
-      where: { name: city },
-    });
+  // TODO actualizar manager cuando el estado pasa a enabled
+  const putSeller = async (req, res) => {
+    const { id } = req.params;
+    const { name, phone, email, adress, cuit, image, city, category, enabled } =
+      req.body;
 
-    edited[0].setCities(cityDb);
-    res.send(edited);
-  } catch (e) {
-    res.status(500).send(`${e}`);
-  }
-};
+    let sellerToModify = await Seller.findByPk(id);
+    try {
+      if (!sellerToModify) {
+        throw new Error("No hay proveedores con ese ID");
+      }
+      if (!name) {
+        throw new Error("El campo del nombre del establecimiento es obligatorio");
+      }
+      if (!phone) {
+        throw new Error("El campo del teléfono es obligatorio");
+      }
+      if (!email) {
+        throw new Error("El campo del e-mail es obligatorio");
+      }
+      if (!city) {
+        throw new Error("El campo de la ciudad es obligatorio");
+      }
+      let edited = await Seller.upsert({
+        id,
+        name,
+        phone,
+        email,
+        adress,
+        cuit,
+        image,
+        category,
+        enabled,
+      });
+      let cityDb = await City.findAll({
+        where: { name: city },
+      });
 
-module.exports = {
-  getSellers,
-  postSeller,
-  putSeller,
-};
+      edited[0].setCities(cityDb);
+      res.send(edited);
+    } catch (e) {
+      res.status(500).send(`${e}`);
+    }
+  };
+
+  module.exports = {
+    getSellers,
+    postSeller,
+    putSeller,
+  };
+}
