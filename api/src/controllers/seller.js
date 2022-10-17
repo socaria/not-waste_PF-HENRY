@@ -1,4 +1,5 @@
 const { Seller, City, Manager } = require("../db");
+const cloudinary = require("../utils/cloudinary");
 const { getAllSellers } = require("./utils/getAllSellers");
 
 // Ruta get va a buscar a todos los proveedores de la base de datos.
@@ -55,16 +56,25 @@ const postSeller = async (req, res) => {
     if (!cities) {
       throw new Error("El campo de la ciudad es obligatorio");
     }
-    let newSeller = await Seller.create({
-      name,
-      phone,
-      email,
-      adress,
-      cuit,
-      image,
-      enabled,
-      category,
-    });
+
+    if (image) {
+      const uploadRes = await cloudinary.uploader.upload(image, {
+        upload_preset: "not_waste",
+      });
+
+      if (uploadRes) {
+        let newSeller = await Seller.create({
+          name,
+          phone,
+          email,
+          adress,
+          cuit,
+          image: uploadRes,
+          enabled,
+          category,
+        });
+      }
+    }
 
     if (cities) {
       let cityDb = await City.findAll({

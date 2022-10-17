@@ -1,32 +1,50 @@
-export function validate (input) {
-    let error = {}
-    
-    if (!input.namesupplier) {
-        error.namesupplier = "Name is required";
-    }
-    else if (!/^[A-Za-z0-9\s]+$/g.test(input.namesupplier)) {
-        error.namesupplier = "Name is invalid. They only allow letters and numbers"
-    }
+export function validate(input) {
+  let error = {};
 
-    if (!input.phone) {
-        error.phone = 'Phone is required';
-    } else if (!/^(?:(?:00)?549?)?0?(?:11|[2368]\d)(?:(?=\d{0,2}15)\d{2})??\d{8}$/g.test(input.phone)) {
-        error.phone = 'Enter a valid phone number'
-    }
+  if (!input.namesupplier) {
+    error.namesupplier = "El nombre es requerido...";
+  } else if (!/^[A-Za-z0-9\s]+$/g.test(input.namesupplier)) {
+    error.namesupplier =
+      "El nombre no es válido. Solo se permiten letras y números...";
+  }
 
-    if(input.category === '') {
-        error.category = 'Category is required'
-    }
+  if (!input.phone) {
+    error.phone = "Número de teléfono es requerido...";
+  } else if (
+    !/^(?:(?:00)?549?)?0?(?:11|[2368]\d)(?:(?=\d{0,2}15)\d{2})??\d{8}$/g.test(
+      input.phone
+    )
+  ) {
+    error.phone = "Ingresa un numero de teléfono valido...";
+  }
 
-    if (!input.adress) {
-        error.adress = "Adress is required";
-    }
+  if (input.category === "") {
+    error.category = "La categoría es requerida...";
+  }
 
-    if (!input.cuit) {
-        error.cuit = 'Cuit is required';
-    } else if (!/\b(20|23|24|27|30|33|34)(\D)?[0-9]{8}(\D)?[0-9]/g.test(input.cuit)) {
-        error.cuit = 'Enter a valid cuit'
-    }
+  if (!input.adress) {
+    error.adress = "La dirección es requerida...";
+  }
 
-    return error;
+  if (!input.image) {
+    error.image = "La imagen es requerida...";
+  }
+
+  if (!input.cuit) {
+    error.cuit = "CUIT es requerido...";
+  } else if (
+    !/\b(20|23|24|27|30|33|34)(\D)?[0-9]{8}(\D)?[0-9]/g.test(input.cuit)
+  ) {
+    error.cuit = "Ingresar un número de CUIT...";
+  }
+
+  if (!input.cuit) {
+    error.cuit = "Cuit is required";
+  } else if (
+    !/\b(20|23|24|27|30|33|34)(\D)?[0-9]{8}(\D)?[0-9]/g.test(input.cuit)
+  ) {
+    error.cuit = "Enter a valid cuit";
+  }
+
+  return error;
 }

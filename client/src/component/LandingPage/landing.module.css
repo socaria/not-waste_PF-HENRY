@@ -1,33 +1,58 @@
-.ul {
+.main {
     /* background-color: rgba(0, 0, 0, 0.493) */
-background-color:#565e5f;
+background-color:#B6E388;
 }
 
 .nav{
+    display: flex;
     justify-content: center;
+    
 }
 
 .str {
-    color: aliceblue;
+    color: rgb(0, 0, 0);
 }
 
 .strD{
     color: darkblue;
 }
 .cont {
-    background-image: url(https://static.vecteezy.com/system/resources/previews/005/434/903/large_2x/blank-of-wood-table-background-free-photo.jpg);
-    background-color: rgba(236, 232, 232, 0.986); 
-    backdrop-filter: blur(115px);
+    
+    background-color: #fcffb293; 
     padding: 100px 100px 100px 100px;
-    margin: 100px 100px 100px 100px;
+    margin: 100px 0px 0px 0px;
 }
 
 .cont2 {
     backdrop-filter: blur(115px);
     background-color: rgba(255, 255, 255, .15); 
     backdrop-filter: blur(5px);
-    border: 1px solid rgb(0, 0, 0);
+    border: 4px solid #E1FFB1;
     border-radius:5px;
     padding: 5px;
 
+}
+
+.cont3{
+    display: flex;
+    justify-content: center;
+    
+}
+.imgRedonda {
+    width:250px;
+    height:250px;
+    border-radius:150px;
+    transition: transform .2s;
+}
+
+.imgRedonda:hover {
+    transform: scale(1.1);  
+    
+}
+
+
+
+.center {
+    margin:50px 50px 0px 0px;
+    text-align:center
 }
