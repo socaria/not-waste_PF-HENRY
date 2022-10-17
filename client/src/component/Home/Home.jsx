@@ -4,7 +4,8 @@ import { getCities, getDiet, getSellers, getProduct, orderPriceProduct, filterBy
 import CarouselSeller from '../CarouselSeller/CarouselSeller'
 import NavBar from '../NavBar/Navbar';
 import Footer from '../Footer';
-import '../Home/Home.css'
+import '../Home/Home.css';
+import { Dropdown } from 'react-bootstrap';
 
 function Home() {
     const dispatch = useDispatch()
@@ -16,10 +17,10 @@ function Home() {
     // const product = useSelector(state => state.product)
 
     useEffect(() => {
-        dispatch(getCities())
-        dispatch(getSellers())
-        dispatch(getProduct())
-        dispatch(getDiet())
+        dispatch(getCities());
+        dispatch(getSellers());
+        dispatch(getProduct());
+        dispatch(getDiet());
     }, [dispatch])
 
     var [filter, setFilter] = useState({
@@ -55,17 +56,18 @@ function Home() {
                     filtrados.push(allSeller[i])
                 }
             }
-        } else {filtrados = allSeller}
+        } else { filtrados = allSeller }
 
         if (filtrados.length && filter.diet !== "all") {
             const auxdiet = []
             for (let i = 0; i < filtrados.length; i++) {
                 for (let e = 0; e < filtrados[i].products.length; e++) {
-                if (filtrados[i].products[e].diets.includes(filter.diet)) {
-                    auxdiet.push(filtrados[i])
-                }
-            } filtrados = auxdiet
-        }}
+                    if (filtrados[i].products[e].diets.includes(filter.diet)) {
+                        auxdiet.push(filtrados[i])
+                    }
+                } filtrados = auxdiet
+            }
+        }
 
         console.log(filtrados)
     }
@@ -101,7 +103,23 @@ function Home() {
             <NavBar />
             <div className="container-fluid my-3">
                 <div className="contSelects">
-                    <select className="selects" onChange={(e) => handleFilterByCities(e)}>
+                    <Dropdown >
+                        <Dropdown.Toggle  variant="success" id="dropdown-basic">
+                            Filtrar por ciudad
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu>
+                            {
+                                cities?.map(cities => {
+                                    return (
+                                        <Dropdown.Item className='text-capitalize' value={cities.name} key={cities.id} >{cities.name}</Dropdown.Item>
+                                    )
+
+                                })
+                            }
+                        </Dropdown.Menu>
+                    </Dropdown>
+                    {/* <select className="selects" onChange={(e) => handleFilterByCities(e)}>
                         <option>CIUDADES</option>
                         {
                             cities?.map(cities => {
@@ -112,7 +130,7 @@ function Home() {
                             })
                         }
                         <option>BARRIOS MAPEADOS</option>
-                    </select>
+                    </select> */}
 
 
                     <select onChange={handleOrderPrice} className="selects">
