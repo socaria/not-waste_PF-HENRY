@@ -7,7 +7,7 @@ import { getSellers } from "../../redux/actions";
 function SearchBar() {
   const dispatch = useDispatch();
   const [input, setInput] = useState('');
-  let queryParams = useSelector(state => state.queryParams)
+  const queryParams = useSelector(state => state.queryParams)
 
   function handleInputChange(e) {
     e.preventDefault();
@@ -16,10 +16,7 @@ function SearchBar() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    queryParams={...queryParams, description: input}
-    dispatch(getSellers(queryParams));
-    console.log('queryParams', queryParams)
-
+    dispatch(getSellers({...queryParams, description: input}));
   }
 
   return (

@@ -15,7 +15,6 @@ export function getSellers(queryParams) {
     }
     if (queryParams?.description) {
         url.searchParams.append("description", queryParams?.description);
-
     }
     if (queryParams?.diet) {
         url.searchParams.append("diet", queryParams?.diet);
@@ -25,12 +24,15 @@ export function getSellers(queryParams) {
     if (queryParams?.sortBy) {
         url.searchParams.append("sortBy", queryParams?.sortBy);
     }
+    console.log('url', url.href)
+
 
     return async function (dispatch) {
         const response = await fetch(url);
 
         if (response.ok) {
             const json = await response.json();
+            console.log('json', json)
             dispatch({ type: 'GET_SELLER', payload: json, query: queryParams });
         } else {
             dispatch({ type: 'REQUEST_ERROR', payload: 'La búsqueda no arrojó resultados' });

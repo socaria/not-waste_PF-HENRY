@@ -14,6 +14,7 @@ function Home() {
     const cities = useSelector(state => state.cities);
     const diet = useSelector(state => state.diet);
     const sellers = useSelector(state => state.seller);
+    console.log('Home sellers', sellers);
     const queryParams = useSelector(state => state.queryParams);
 
     // const product = useSelector(state => state.product)
@@ -84,7 +85,7 @@ function Home() {
             city: e.target.value,
         }));
     }
-   
+
     // function handleCities(e) {
     //     dispatch(getCities())
     // }
@@ -110,7 +111,7 @@ function Home() {
             <div className="container-fluid my-3">
                 <div className="contSelects">
                     <Dropdown >
-                        <Dropdown.Toggle onChange={e => handleFilterByCities(e)}  variant="success" id="dropdown-basic">
+                        <Dropdown.Toggle onChange={e => handleFilterByCities(e)} variant="success" id="dropdown-basic">
                             Filtrar por ciudad
                         </Dropdown.Toggle>
 
@@ -171,7 +172,6 @@ function Home() {
                             )
                     })
                 }
-
             </div>
             <Footer />
         </div>
