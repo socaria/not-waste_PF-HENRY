@@ -6,17 +6,18 @@ import NavBar from '../NavBar/Navbar';
 import Footer from '../Footer';
 import '../Home/Home.css';
 import { Dropdown } from 'react-bootstrap';
+import Message from "../Message/Message";
+
 
 function Home() {
     const dispatch = useDispatch()
-
     const [orden, setOrden] = useState()
     const cities = useSelector(state => state.cities);
     const diet = useSelector(state => state.diet);
     const sellers = useSelector(state => state.seller);
     console.log('Home sellers', sellers);
     const queryParams = useSelector(state => state.queryParams);
-
+    const errorMessage = useSelector((state) => state.errorMessage);
     // const product = useSelector(state => state.product)
 
     useEffect(() => {
@@ -25,6 +26,12 @@ function Home() {
         dispatch(getProduct());
         dispatch(getDiet());
     }, [dispatch])
+
+
+    function handleCleanFilters(e) {
+        e.preventDefault();
+        dispatch(getSellers(null));
+    }
 
     var [filter, setFilter] = useState({
         city: "Floresta",
@@ -108,71 +115,77 @@ function Home() {
         <div>
             {/* {ordenamiento()} */}
             <NavBar />
-            <div className="container-fluid my-3">
-                <div className="contSelects">
-                    <Dropdown >
-                        <Dropdown.Toggle onChange={e => handleFilterByCities(e)} variant="success" id="dropdown-basic">
-                            Filtrar por ciudad
-                        </Dropdown.Toggle>
+            {errorMessage
+                ? <>
+                    <button
+                        className="selects"
+                        onClick={e => handleCleanFilters(e)}
+                    >
+                        Limpiar filtros
+                    </button>
+                    <Message message={errorMessage} type="error" />
 
-                        <Dropdown.Menu>
+                </>
+                :
+                <div className="container-fluid my-3">
+
+                    <div className="contSelects">
+                        <button
+                            className="selects"
+                            onClick={e => handleCleanFilters(e)}
+                        >
+                            Limpiar filtros
+                        </button>
+                        <select
+                            key={"filterBy_" + queryParams?.diet}
+                            value={queryParams?.city || ''}
+                            className="selects"
+                            onChange={(e) => handleFilterByCities(e)}>
+                            <option>Ciudades</option>
                             {
                                 cities?.map(cities => {
                                     return (
-                                        <Dropdown.Item className='text-capitalize' eventKey={cities.name} key={cities.id} >{cities.name}</Dropdown.Item>
+                                        <option className='filter-options' value={cities.name} key={cities.id} >{cities.name}</option>
                                     )
 
                                 })
                             }
-                        </Dropdown.Menu>
-                    </Dropdown>
-                    {/* <select className="selects" onChange={(e) => handleFilterByCities(e)}>
-                        <option>CIUDADES</option>
-                        {
-                            cities?.map(cities => {
+                        </select>
+
+                        <select onChange={handleOrderPrice} className="selects">
+                            <option>PRECIOS</option>
+                            <option value='mayor'>MENOR A MAYOR</option>
+                            <option value='menor'>MAYOR A MENOR</option>
+                        </select>
+
+
+                        <select onChange={handleFilterDiet} className="selects">
+                            <option>DIETA</option>
+                            {
+                                diet?.map(cities => {
+                                    return (
+                                        <option value={cities.name} key={cities.id}>{cities.name}</option>
+                                    )
+
+                                })
+                            }
+                        </select>
+                        <select onChange={handleFilterCategory} className="selects">
+                            <option>CATEGORIA</option>
+                            <option>CATEGORIAS DEL PROVEEDOR</option>
+                        </select>
+                    </div>
+                    {
+
+                        sellers?.map(seller => {
+                            if (seller.products.find(p => p.posts.length > 0))
                                 return (
-                                    <option value={cities.name} key={cities.id} >{cities.name}</option>
+                                    <CarouselSeller key={seller.id} seller={seller} />
                                 )
-
-                            })
-                        }
-                        <option>BARRIOS MAPEADOS</option>
-                    </select> */}
-
-
-                    <select onChange={handleOrderPrice} className="selects">
-                        <option>PRECIOS</option>
-                        <option value='mayor'>MENOR A MAYOR</option>
-                        <option value='menor'>MAYOR A MENOR</option>
-                    </select>
-
-
-                    <select onChange={handleFilterDiet} className="selects">
-                        <option>DIETA</option>
-                        {
-                            diet?.map(cities => {
-                                return (
-                                    <option value={cities.name} key={cities.id}>{cities.name}</option>
-                                )
-
-                            })
-                        }
-                    </select>
-                    <select onChange={handleFilterCategory} className="selects">
-                        <option>CATEGORIA</option>
-                        <option>CATEGORIAS DEL PROVEEDOR</option>
-                    </select>
+                        })
+                    }
                 </div>
-                {
-
-                    sellers?.map(seller => {
-                        if (seller.products.find(p => p.posts.length > 0))
-                            return (
-                                <CarouselSeller key={seller.id} seller={seller} />
-                            )
-                    })
-                }
-            </div>
+            }
             <Footer />
         </div>
     )

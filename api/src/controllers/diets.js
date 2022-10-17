@@ -8,14 +8,14 @@ const getDiets = async (req, res) => {
       name: e.name,
     };
   });
-  // json.forEach((e) => {
-  //   Diet.findOrCreate({
-  //     where: {
-  //       name: e.name,
-  //       id: e.id,
-  //     },
-  //   });
-  // });
+  json.forEach((e) => {
+    Diet.findOrCreate({
+      where: {
+        name: e.name,
+        id: e.id,
+      },
+    });
+  });
   return res.status(200).send(json);
 };
 
