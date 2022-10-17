@@ -8,14 +8,15 @@ const getCityInfo = async (req, res) => {
       name: e.name,
     };
   });
-  json.forEach((e) => {
-    City.findOrCreate({
-      where: {
-        name: e.name,
-        id: e.id,
-      },
-    });
-  });
+  console.log("json city", JSON.stringify(json,null,2))
+  // json.forEach((e) => {
+  //   City.findOrCreate({
+  //     where: {
+  //       name: e.name,
+  //       id: e.id + 10,
+  //     },
+  //   });
+  // });
   return res.status(200).send(json);
 };
 
