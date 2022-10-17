@@ -109,6 +109,35 @@ function Register(props) {
   };
 
   console.log(input.cities, "CITIES SELECCIONADAS");
+  console.log(input.image, "IMAGEN SELECCIONADA");
+
+  const handleSellerImageUpload = (e) => {
+    const file = e.target.files[0];
+
+    TransformFile(file);
+  };
+
+  const TransformFile = (file) => {
+    const reader = new FileReader();
+
+    if (file) {
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        setInput({
+          ...input,
+          image: reader.result,
+        });
+
+        // setInput.image(reader.result);
+      };
+    } else {
+      setInput({
+        ...input,
+        image: "",
+      });
+      // setInput.image("");
+    }
+  };
 
   return (
     <>
@@ -220,23 +249,36 @@ function Register(props) {
                   <div className="form-floating is-invalid">
                     <input
                       type="file"
+                      accept="image/"
                       className={
-                        !error.adress
+                        !error.image
                           ? "form-control ms-2"
                           : "form-control is-invalid ms-2"
                       }
-                      id="floatingInputName"
-                      placeholder="adress"
-                      name="adress"
+                      id="floatingInputImage"
+                      placeholder="imagen"
+                      name="image"
                       required
-                      onChange={(e) => changeState(e)}
+                      onChange={handleSellerImageUpload}
                     />
                     {/* <label for="floatingInputGroup2">Foto de perfil</label> */}
-                    {error.adress && (
-                      <div className="invalid-feedback">{error.adress}</div>
+                    {error.image && (
+                      <div className="invalid-feedback">{error.image}</div>
                     )}
                   </div>
                 </div>
+                {input.image ? (
+                  <>
+                    <br />
+                    <img
+                      src={input.image}
+                      alt="Seller image!"
+                      style={{ width: "300px" }}
+                    />
+                  </>
+                ) : (
+                  <p>Cargando imagen...</p>
+                )}
 
                 <br />
 

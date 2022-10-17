@@ -26,6 +26,10 @@ export function validate(input) {
     error.adress = "La dirección es requerida...";
   }
 
+  if (!input.image) {
+    error.image = "La imagen es requerida...";
+  }
+
   if (!input.cuit) {
     error.cuit = "CUIT es requerido...";
   } else if (
