@@ -1,4 +1,5 @@
 [
+    
     {
         "id": "23ac02bc-f8e7-4d0f-b2f0-33a491bfd04f",
         "name": "lo de jacinto",
@@ -14,7 +15,7 @@
         "managerId": null,
         "cities": [
             {
-                "name": "Parque Avellaneda"
+                "name": "parque avellaneda"
             }
         ],
         "products": [
@@ -77,7 +78,7 @@
         "managerId": null,
         "cities": [
             {
-                "name": "Caballito"
+                "name": "caballito"
             }
         ],
         "products": [
@@ -159,7 +160,7 @@
         "managerId": null,
         "cities": [
             {
-                "name": "Mataderos"
+                "name": "mataderos"
             }
         ],
         "products": [
@@ -212,7 +213,7 @@
         "managerId": null,
         "cities": [
             {
-                "name": "Parque Avellaneda"
+                "name": "parque avellaneda"
             }
         ],
         "products": [
@@ -309,7 +310,7 @@
         "managerId": null,
         "cities": [
             {
-                "name": "Colegiales"
+                "name": "colegiales"
             }
         ],
         "products": [
@@ -382,7 +383,7 @@
         "managerId": null,
         "cities": [
             {
-                "name": "Almagro"
+                "name": "almagro"
             }
         ],
         "products": [
@@ -464,7 +465,7 @@
         "managerId": null,
         "cities": [
             {
-                "name": "Barracas"
+                "name": "barracas"
             }
         ],
         "products": [
@@ -592,7 +593,7 @@
         "managerId": null,
         "cities": [
             {
-                "name": "La Paternal"
+                "name": "la paternal"
             }
         ],
         "products": [
@@ -645,7 +646,7 @@
         "managerId": null,
         "cities": [
             {
-                "name": "Caballito"
+                "name": "caballito"
             }
         ],
         "products": [
@@ -680,10 +681,10 @@
         "managerId": null,
         "cities": [
             {
-                "name": "Almagro"
+                "name": "almagro"
             },
             {
-                "name": "Balvanera"
+                "name": "balvarena"
             }
         ],
         "products": [
@@ -793,7 +794,7 @@
         "managerId": null,
         "cities": [
             {
-                "name": "Almagro"
+                "name": "almagro"
             }
         ],
         "products": [
@@ -909,7 +910,7 @@
         "managerId": null,
         "cities": [
             {
-                "name": "Belgrano"
+                "name": "belgrano"
             }
         ],
         "products": [
@@ -991,7 +992,7 @@
         "managerId": null,
         "cities": [
             {
-                "name": "Floresta"
+                "name": "floresta"
             }
         ],
         "products": [
@@ -1073,7 +1074,7 @@
         "managerId": null,
         "cities": [
             {
-                "name": "Boedo"
+                "name": "boedo"
             }
         ],
         "products": []
