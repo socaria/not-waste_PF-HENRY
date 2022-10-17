@@ -6,31 +6,42 @@ const { getAllSellers } = require("./utils/getAllSellers")
 
 
 const getSellers = async (req, res) => {
-    const { name, category, city } = req.query;
-    let sellers;
-    try {
-        sellers = await getAllSellers();
-        if (city) {
-            sellers = sellers.filter(s =>
-                s.cities.find(c => c.name === city))
-            if (!sellers.length) {
-                throw new Error('No hay proveedores en esta ciudad')
-            };
-        }
-        if (name) {
-            sellers = sellers.filter(s => {
-                s.name === name
-            });
-            if (!sellers.length) {
-                throw new Error('No hay proveedores con ese nombre')
-            };
-        }
-        if (category) {
-            sellers = sellers.filter(s => s.category === category)
-            if (!sellers.length) {
-                throw new Error('No hay proveedores con esa categoría de establecimiento')
-            };
-        }
+  const { name, category, city, description, price, diet } = req.query;
+  let sellers;
+  try {
+    sellers = await getAllSellers();
+    if (city) {
+      sellers = sellers.filter((s) => s.cities.find((c) => c.name === city));
+      if (!sellers.length) {
+        throw new Error("No hay proveedores en esta ciudad");
+      }
+    }
+    if (name) {
+      sellers = sellers.filter((s) => {
+        s.name === name;
+      });
+      if (!sellers.length) {
+        throw new Error("No hay proveedores con ese nombre");
+      }
+    }
+    if (category) {
+      sellers = sellers.filter((s) => s.category === category);
+      if (!sellers.length) {
+        throw new Error(
+          "No hay proveedores con esa categoría de establecimiento"
+        );
+      }
+    }
+    if (description) {
+      sellers = sellers.filter((s) =>
+        s.products.find(p =>
+          p.description.toLowerCase().includes(description.toLowerCase())));
+      if (!sellers.length) {
+        throw new Error(
+          "No hay proveedores con esa categoría de establecimiento"
+        );
+      }
+}
 
         res.status(200).send(sellers);
     } catch (e) {
