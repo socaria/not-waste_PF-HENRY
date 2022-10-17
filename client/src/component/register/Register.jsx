@@ -17,16 +17,20 @@ function Register(props) {
 
   const [input, setInput] = useState({
     supplier: false,
-    image: props.picture,
+    //image: props.picture,
     email: props.email.toLowerCase(),
     name: props.name.toLowerCase(),
+
     namesupplier: "",
     phone: "",
+    image: "",
     adress: "",
     cities: [],
     cuit: "",
     category: "",
   });
+  // console.log(input.cities,'INPUUUUUTTT')
+
   const [error, setError] = useState({});
 
   const changeState = function (e) {
@@ -42,7 +46,7 @@ function Register(props) {
           [e.target.name]: e.target.value,
         })
       );
-      console.log(error);
+      // console.log(error)
     } else {
       setInput({
         ...input,
@@ -92,12 +96,12 @@ function Register(props) {
           image,
           category,
           name,
-          city: [],
+          cities: [],
         })
       );
     } else {
       alert(
-        "There are incomplete or invalid fields. Please review your form, all fields are required.Not Waste."
+        "Hay campos incompletos o inválidos. Por favor revise su formulario, todos los campos son obligatorios."
       );
     }
   };
@@ -109,34 +113,13 @@ function Register(props) {
   };
 
   console.log(input.cities, "CITIES SELECCIONADAS");
-  console.log(input.image, "IMAGEN SELECCIONADA");
 
-  const handleSellerImageUpload = (e) => {
-    const file = e.target.files[0];
-
-    TransformFile(file);
-  };
-
-  const TransformFile = (file) => {
-    const reader = new FileReader();
-
-    if (file) {
-      reader.readAsDataURL(file);
-      reader.onloadend = () => {
-        setInput({
-          ...input,
-          image: reader.result,
-        });
-
-        // setInput.image(reader.result);
-      };
-    } else {
-      setInput({
-        ...input,
-        image: "",
-      });
-      // setInput.image("");
-    }
+  const handleDeleteCity = (e) => {
+    e.preventDefault();
+    setInput({
+      ...input,
+      cities: input.cities.filter((g) => g !== e.target.value),
+    });
   };
 
   return (
@@ -144,6 +127,20 @@ function Register(props) {
       <form className="form-check form-switch my-3 mx-5" id="formDiv">
         <div className="text-center">
           <h1>¡COMPLETA TU REGISTRO!</h1>
+        </div>
+
+        <div className="input-group has-validation my-3 mx-5">
+          <input
+            className="form-check-input me-3"
+            type="checkbox"
+            role="switch"
+            id="flexSwitchCheckDefault"
+            name="supplier"
+            onClick={(e) => changeState(e)}
+          />
+          <label className="form-check-label" for="flexSwitchCheckDefault">
+            Soy proveedor
+          </label>
         </div>
 
         <div className="input-group has-validation my-3 mx-5">
@@ -226,7 +223,7 @@ function Register(props) {
                           ? "form-control ms-2"
                           : "form-control is-invalid ms-2"
                       }
-                      id="floatingInputName"
+                      id="inputForm"
                       placeholder="Name"
                       name="namesupplier"
                       required
@@ -249,17 +246,16 @@ function Register(props) {
                   <div className="form-floating is-invalid">
                     <input
                       type="file"
-                      accept="image/"
                       className={
-                        !error.image
+                        !error.adress
                           ? "form-control ms-2"
                           : "form-control is-invalid ms-2"
                       }
-                      id="floatingInputImage"
-                      placeholder="imagen"
-                      name="image"
+                      id="inputForm"
+                      placeholder="adress"
+                      name="adress"
                       required
-                      onChange={handleSellerImageUpload}
+                      onChange={(e) => changeState(e)}
                     />
                     {/* <label for="floatingInputGroup2">Foto de perfil</label> */}
                     {error.image && (
@@ -267,18 +263,6 @@ function Register(props) {
                     )}
                   </div>
                 </div>
-                {input.image ? (
-                  <>
-                    <br />
-                    <img
-                      src={input.image}
-                      alt="Seller image!"
-                      style={{ width: "300px" }}
-                    />
-                  </>
-                ) : (
-                  <p>Cargando imagen...</p>
-                )}
 
                 <br />
 
@@ -291,7 +275,7 @@ function Register(props) {
                           ? "form-control ms-2"
                           : "form-control is-invalid ms-2"
                       }
-                      id="floatingInputNumber phone"
+                      id="inputForm"
                       placeholder="phone"
                       name="phone"
                       required
@@ -306,20 +290,31 @@ function Register(props) {
 
                 <br />
 
-                <select onChange={(e) => handleSelectCity(e)}>
-                  <option>Ciudades</option>
-                  {cities?.map((cities) => {
+                {/* <div className="form-control ms-2"> */}
+                <select
+                  className="form-select ms-2"
+                  aria-label="Default select example"
+                  id="inputForm"
+                  onChange={(e) => handleSelectCity(e)}
+                >
+                  <option selected>Seleccione su localidad</option>
+                  {cities?.map((cities, i) => {
                     return (
-                      <option value={cities.name} key={cities.id}>
+                      <option key={i} value={cities.name}>
                         {cities.name}
                       </option>
                     );
                   })}
                 </select>
+                {/* </div> */}
+
                 <div>
-                  {input.cities?.map((ci) => (
-                    <div>
+                  {input.cities?.map((ci, i) => (
+                    <div key={i}>
                       <p>{ci}</p>
+                      <button value={ci} onClick={(e) => handleDeleteCity(e)}>
+                        X
+                      </button>
                     </div>
                   ))}
                 </div>
@@ -335,13 +330,13 @@ function Register(props) {
                           ? "form-control ms-2"
                           : "form-control is-invalid ms-2"
                       }
-                      id="floatingInputName"
+                      id="inputForm"
                       placeholder="adress"
                       name="adress"
                       required
                       onChange={(e) => changeState(e)}
                     />
-                    <label for="floatingInputGroup2">Dirección</label>
+                    <label>Dirección</label>
                     {error.adress && (
                       <div className="invalid-feedback">{error.adress}</div>
                     )}
@@ -359,7 +354,7 @@ function Register(props) {
                           ? "form-control ms-2"
                           : "form-control is-invalid ms-2"
                       }
-                      id="floatingInputNumber phone"
+                      id="inputForm"
                       placeholder="cuit"
                       name="cuit"
                       required
@@ -377,21 +372,23 @@ function Register(props) {
 
                 <br />
 
-                <div>
-                  <select
-                    className="form-select form-select-lg mb-3"
-                    name="category"
-                    aria-label=".form-select-lg example"
-                    onChange={(e) => changeState(e)}
-                    value={input.category}
-                  >
-                    <option value="">Seleccione su categoría</option>
-                    {option_categories()}
-                  </select>
-                </div>
+                {/* <div className="form-control ms-2"> */}
+                <select
+                  className="form-select form-select-lg ms-2"
+                  name="category"
+                  id="inputForm"
+                  aria-label=".form-select-lg example"
+                  onChange={(e) => changeState(e)}
+                  value={input.category}
+                >
+                  <option value="">Seleccione su categoría</option>
+                  {option_categories()}
+                </select>
+                {/* </div> */}
 
-                <div className="col-12" id="buttonRegister">
+                <div className="col-12">
                   <button
+                    id="buttonRegister"
                     className="btn btn-primary"
                     type="submit"
                     value="register"
