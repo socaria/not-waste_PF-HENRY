@@ -18,6 +18,9 @@ export function validate (input) {
         error.image = 'Debe ingresear una imagen...'
     }
     
+    if(!input.cities.length) {
+        error.cities = 'Debe seleccionar al menos una ciudad!'
+    }
 
     if(input.category === '') {
         error.category = 'La categoría es requerida...'
