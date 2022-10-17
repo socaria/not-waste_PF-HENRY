@@ -185,20 +185,6 @@ function Register(props) {
           </label>
         </div>
 
-        <div className="input-group has-validation my-3 mx-5">
-          <input
-            className="form-check-input me-3"
-            type="checkbox"
-            role="switch"
-            id="flexSwitchCheckDefault"
-            name="supplier"
-            onClick={(e) => changeState(e)}
-          />
-          <label className="form-check-label" for="flexSwitchCheckDefault">
-            Soy proveedor
-          </label>
-        </div>
-
         <div className="input-group has-validation">
           <div className="form-floating is-invalid">
             <input
