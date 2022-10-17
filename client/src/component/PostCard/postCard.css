@@ -9,7 +9,7 @@
     color: black;
 }
 
-.card {
+.postCard {
     margin: 20px;
     border-radius: 15px;
     min-width: 18rem;
@@ -24,7 +24,8 @@
 .card-image {
     min-height: 150px;
     max-height: 150px;
-    border-radius: 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
 
 
@@ -40,7 +41,7 @@
     overflow: hidden;
 }
 
-.card:hover {
+.postCard:hover {
     transform: scale(1.010);
     cursor: pointer;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
