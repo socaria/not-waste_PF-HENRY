@@ -5,7 +5,7 @@ const { getAllSellers } = require("./utils/getAllSellers");
 // Si llegasen las propiedades name, category y/o city por query
 
 const getSellers = async (req, res) => {
-  const { name, category, city } = req.query;
+  const { name, category, city, description, price, diet } = req.query;
   let sellers;
   try {
     sellers = await getAllSellers();
@@ -25,6 +25,16 @@ const getSellers = async (req, res) => {
     }
     if (category) {
       sellers = sellers.filter((s) => s.category === category);
+      if (!sellers.length) {
+        throw new Error(
+          "No hay proveedores con esa categoría de establecimiento"
+        );
+      }
+    }
+    if (description) {
+      sellers = sellers.filter((s) =>
+        s.products.find(p =>
+          p.description.toLowerCase().includes(description.toLowerCase())));
       if (!sellers.length) {
         throw new Error(
           "No hay proveedores con esa categoría de establecimiento"
