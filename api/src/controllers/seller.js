@@ -68,7 +68,7 @@ const getSellers = async (req, res) => {
   } catch (e) {
     res.status(404).send(e.message);
   }
-
+}
   const postSeller = async (req, res) => {
     let { name, phone, email, adress, cuit, image, category, enabled, cities } =
       req.body;
@@ -157,9 +157,9 @@ const getSellers = async (req, res) => {
     }
   };
 
-  module.exports = {
-    getSellers,
-    postSeller,
-    putSeller,
-  };
-}
+
+module.exports = {
+  getSellers,
+  postSeller,
+  putSeller,
+};
