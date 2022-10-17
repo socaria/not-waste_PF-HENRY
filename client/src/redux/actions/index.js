@@ -11,7 +11,7 @@ export function getSellers(queryParams) {
     }
     if (queryParams?.price) {
         url.searchParams.append("price", queryParams?.price);
-
+        console.log('url', url)
     }
     if (queryParams?.description) {
         url.searchParams.append("description", queryParams?.description);
