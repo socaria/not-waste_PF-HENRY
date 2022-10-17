@@ -108,6 +108,7 @@ const getSellers = async (req, res) => {
 
       res.send(newSeller);
     } catch (e) {
+      console.log(e.message)
       res.status(500).send(`${e}`);
     }
   };

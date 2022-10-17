@@ -8,7 +8,7 @@ export function validate(input) {
       "El nombre no es válido. Solo se permiten letras y números...";
   }
 
-  if (!input.image) {
+  if (!input.archivo) {
     error.image = 'Debe ingresear una imagen...'
   }
 
