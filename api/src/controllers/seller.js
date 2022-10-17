@@ -1,4 +1,5 @@
 const { Seller, City, Manager } = require("../db");
+const cloudinary = require("../utils/cloudinary");
 const { getAllSellers } = require("./utils/getAllSellers");
 
 // Ruta get va a buscar a todos los proveedores de la base de datos.
@@ -35,6 +36,27 @@ const getSellers = async (req, res) => {
       sellers = sellers.filter((s) =>
         s.products.find(p =>
           p.description.toLowerCase().includes(description.toLowerCase())));
+      if (!sellers.length) {
+        throw new Error(
+          "No hay proveedores con esa categoría de establecimiento"
+        );
+      }
+    }
+    if (price) {
+      sellers = sellers.filter((s) =>
+        s.products.find(p =>
+          p.price < price))
+      if (!sellers.length) {
+        throw new Error(
+          "No hay proveedores con esa categoría de establecimiento"
+        );
+      }
+    }
+
+    if (diet) {
+      sellers = sellers.filter((s) =>
+        s.products.find(p =>
+          p.diets.find(d => d.name === diet)))
       if (!sellers.length) {
         throw new Error(
           "No hay proveedores con esa categoría de establecimiento"
