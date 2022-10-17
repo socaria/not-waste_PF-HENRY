@@ -6,7 +6,9 @@ const initialState = {
   diet: [],
   customer: [],
   prodDetails:[],
-  allSeller: []
+  allSeller: [],
+  queryParams: null,
+  errorMessage: ""
 }
 
 export default function rootReducer(state = initialState, actions) {
@@ -16,8 +18,14 @@ export default function rootReducer(state = initialState, actions) {
       return {
         ...state,
         seller: actions.payload,
-        allSeller: actions.payload
+        allSeller: actions.payload,
+        queryParams: actions.query
       }
+    case 'REQUEST_ERROR':
+    return{
+        ...state,
+        errorMessage: actions.payload
+    }
 
     case 'GET_CITIES':
       return {
