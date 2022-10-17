@@ -11,9 +11,11 @@ function Home() {
     const dispatch = useDispatch()
 
     const [orden, setOrden] = useState()
-    const cities = useSelector(state => state.cities)
-    const diet = useSelector(state => state.diet)
-    const sellers = useSelector(state => state.seller)
+    const cities = useSelector(state => state.cities);
+    const diet = useSelector(state => state.diet);
+    const sellers = useSelector(state => state.seller);
+    const queryParams = useSelector(state => state.queryParams);
+
     // const product = useSelector(state => state.product)
 
     useEffect(() => {
@@ -77,9 +79,12 @@ function Home() {
 
     function handleFilterByCities(e) {
         e.preventDefault();
-        dispatch(filterByCity(e.target.value));
+        dispatch(getSellers({
+            ...queryParams,
+            city: e.target.value,
+        }));
     }
-
+   
     // function handleCities(e) {
     //     dispatch(getCities())
     // }
@@ -94,17 +99,18 @@ function Home() {
         dispatch(getDiet())
     }
 
+
     function handleFilterCategory(e) {
 
     }
     return (
         <div>
-            {ordenamiento()}
+            {/* {ordenamiento()} */}
             <NavBar />
             <div className="container-fluid my-3">
                 <div className="contSelects">
                     <Dropdown >
-                        <Dropdown.Toggle  variant="success" id="dropdown-basic">
+                        <Dropdown.Toggle onChange={e => handleFilterByCities(e)}  variant="success" id="dropdown-basic">
                             Filtrar por ciudad
                         </Dropdown.Toggle>
 
@@ -112,7 +118,7 @@ function Home() {
                             {
                                 cities?.map(cities => {
                                     return (
-                                        <Dropdown.Item className='text-capitalize' value={cities.name} key={cities.id} >{cities.name}</Dropdown.Item>
+                                        <Dropdown.Item className='text-capitalize' eventKey={cities.name} key={cities.id} >{cities.name}</Dropdown.Item>
                                     )
 
                                 })

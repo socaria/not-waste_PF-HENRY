@@ -3,10 +3,11 @@ import '../SearchBar/SearchBar.css';
 import { useDispatch, useSelector } from 'react-redux'
 import { getSellers } from "../../redux/actions";
 
+
 function SearchBar() {
   const dispatch = useDispatch();
   const [input, setInput] = useState('');
-  const queryParams = useSelector(state => state.queryParams)
+  let queryParams = useSelector(state => state.queryParams)
 
   function handleInputChange(e) {
     e.preventDefault();
@@ -15,32 +16,30 @@ function SearchBar() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(getSellers({
-      ...queryParams,
-      title: input
-    }));
-    setInput('');
+    queryParams={...queryParams, description: input}
+    dispatch(getSellers(queryParams));
+    console.log('queryParams', queryParams)
 
   }
 
   return (
     <div className="container-fluid mx-5">
-      <form className="d-flex" role="search">
+      <div className="d-flex">
         <input
           className="form-control me-2"
-          type="search"
+          type="text"
           placeholder="Buscar..."
           aria-label="Buscar"
-          onChange={e => handleInputChange(e)}
+          onChange={e => {handleInputChange(e)}}
         />
         <button
           className="btn btn-outline-success"
           id="buttonSearch"
           type="submit"
-          onClick={e => handleSubmit(e)}
+          onClick={e => {handleSubmit(e)}}
         >Buscar
         </button>
-      </form>
+      </div>
 
     </div>
   )
