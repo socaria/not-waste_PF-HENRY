@@ -9,24 +9,24 @@ const getProducts = async (req, res) => {
     try {
         products = await getAllProducts();
         if (diet) {
-            sellers = sellers.filter(s =>
+            products = products.filter(s =>
                 s.diets.find(d => d.name === diet))
-            if (!sellers.length) {
+            if (!products.length) {
                 throw new Error('No hay productos asociados a esa dieta')
             };
         }
         if (price) {
-            sellers = sellers = sellers.filter(s =>
+            products = products = products.filter(s =>
                 s.price < price )
-            if (!sellers.length) {
+            if (!products.length) {
                 throw new Error('No hay productos con precio inferior al solicitado')
             }; 
         
         }
         if (description) {
-            sellers = sellers.filter(s => 
+            products = products.filter(s => 
                 s => s.description.toLowerCase().includes(description.toLowerCase()))
-            if (!sellers.length) {
+            if (!products.length) {
                 throw new Error('No hay proveedores con esa categoría de establecimiento')
             };
         }
@@ -38,14 +38,14 @@ const getProducts = async (req, res) => {
     }
 };
 
-const getProductsBySeller = async (req, res) => {
-    let { sellerId } = req.params;
+const getProductsById = async (req, res) => {
+    let { id } = req.params;
     try {
         let allProducts = await getAllProducts();
-        let productFromSeller = await allProducts.filter(p => p.sellerId === sellerId)
-        res.status(200).send(productFromSeller);
+        let productId = await allProducts.filter(p => p.id === id)
+        res.status(200).send(productId);
     } catch (e) {
-        res.status(404).send('No hay productos de ese vendedor');
+        res.status(404).send('No hay productos de ese id');
     }
 };
 //TODO asignar sellerId
@@ -153,5 +153,5 @@ module.exports = {
     postProduct,
     putProduct,
     deleteProduct,
-    getProductsBySeller
+    getProductsById
 };
