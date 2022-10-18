@@ -6,8 +6,10 @@ import AuthProfile from '../AuthProfile';
 import LogingButton from '../LoginButton';
 import VerifyProfile from '../VerifyProfile';
 import '../Registrering/Registering.css'
+import { useAuth0 } from '@auth0/auth0-react';
 
 function Registrering() {
+  const {isLoading} = useAuth0
   let log = AuthProfile("profile") // esto puede ser {}, true o false
   let db = VerifyProfile(log.email)
 
@@ -17,6 +19,7 @@ function Registrering() {
       <div>
         <NavBar />
         <div className='dashRegister'>
+          { isLoading && <h1>Cargando....</h1>}
           {log ?
             <Register {...log} /> :
             <div className="card w-75">
