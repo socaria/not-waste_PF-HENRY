@@ -6,6 +6,7 @@ import { getCities } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { postCustomer, postSeller } from "../../redux/actions";
 import "../register/register.css";
+import registerSupplier from "./middleware";
 
 function Register(props) {
   const dispatch = useDispatch();
@@ -17,24 +18,23 @@ function Register(props) {
 
   const [input, setInput] = useState({
     supplier: false,
-    //image: props.picture,
     email: props.email.toLowerCase(),
     name: props.name.toLowerCase(),
-
+    imageurl: "",
     namesupplier: "",
     phone: "",
-    image: "",
+    image: {},
     adress: "",
     cities: [],
     cuit: "",
     category: "",
   });
-  // console.log(input.cities,'INPUUUUUTTT')
+
 
   const [error, setError] = useState({});
 
   const changeState = function (e) {
-    if (e.target.name !== "supplier") {
+    if (e.target.name !== "supplier" && e.target.name !== 'image') {
       e.preventDefault();
       setInput({
         ...input,
@@ -46,8 +46,8 @@ function Register(props) {
           [e.target.name]: e.target.value,
         })
       );
-      // console.log(error)
-    } else {
+    }
+    if (e.target.name === "supplier") {
       setInput({
         ...input,
         [e.target.name]: e.target.checked,
@@ -60,8 +60,9 @@ function Register(props) {
       if (e.target.checked === false) {
       }
     }
-  };
+  }
 
+  
   const handleSelectCity = (e) => {
     if (!input.cities.length) {
       setError({
@@ -87,39 +88,78 @@ function Register(props) {
       ))
     );
   };
+  
+  const changestateimage = (e) => {
+    const files = e.target.files[0]
+    console.log(files)
+    setInput({
+      ...input,
+      archivo: files,
+    });
+  }
 
-  const registerSupplier = (e) => {
-    const name = input.namesupplier;
-    const { phone, email, adress, cuit, image, category } = input;
-    if (!Object.keys(error).length) {
-      console.log({ phone, email, adress, cuit, image, category, name });
-      dispatch(
-        postSeller({
-          phone,
-          email,
-          adress,
-          cuit,
-          image,
-          category,
-          name,
-          cities: [],
-        })
-      );
-    } else {
-      e.preventDefault();
-      alert(
-        "Hay campos incompletos o inválidos. Por favor revise su formulario, todos los campos son obligatorios."
-      );
-    }
-  };
+  const reload = () => {
+    window.location.assign("http://localhost:3000/home")
+  }
+
+  const registrarproveedor = (e) => {
+    e.preventDefault();
+  if (!Object.keys(error).length) {
+    registerSupplier(e, input)
+    setTimeout(() => {
+    reload()
+   }, 3000);
+   document.getElementById('buttonRegister').disabled = true;
+  } else {
+    e.preventDefault();
+    alert(
+      "Hay campos incompletos o inválidos. Por favor revise su formulario, todos los campos son obligatorios."
+    );
+  }
+  }
+  // const registerSupplier = async (e) => {
+  //   e.preventDefault()
+  //   const name = input.namesupplier;
+  //   let image = input.archivo
+  //   const { phone, email, adress, cuit, category, cities } = input;
+  //   if (!Object.keys(error).length) {
+  //     const data = new FormData()
+  //     data.append('file', image)
+  //     data.append("upload_preset", "imagesnotwaste")
+  //     const res = await fetch(
+  //       "https://api.cloudinary.com/v1_1/sercm/image/upload",
+  //       {
+  //         method: "POST",
+  //         body: data,
+  //       }
+  //     )
+  //     const url = await res.json()
+  //     image = url.secure_url
+  //     dispatch(
+  //       postSeller({
+  //         phone,
+  //         email,
+  //         adress,
+  //         cuit,
+  //         image,
+  //         category,
+  //         name,
+  //         cities
+  //       })
+  //     )
+  //   } else {
+  //     e.preventDefault();
+  //     alert(
+  //       "Hay campos incompletos o inválidos. Por favor revise su formulario, todos los campos son obligatorios."
+  //     );
+  //   }
+  // };
 
   const registerCustomer = () => {
     const { name, email } = input;
     console.log({ name, email });
     dispatch(postCustomer({ name, email }));
   };
-
-  console.log(input.cities, "CITIES SELECCIONADAS");
 
   const handleDeleteCity = (e) => {
     e.preventDefault();
@@ -134,34 +174,6 @@ function Register(props) {
       ...input,
       cities: input.cities.filter((g) => g !== e.target.value),
     });
-  };
-
-  const handleSellerImageUpload = (e) => {
-    const file = e.target.files[0];
-
-    TransformFile(file);
-  };
-
-  const TransformFile = (file) => {
-    const reader = new FileReader();
-
-    if (file) {
-      reader.readAsDataURL(file);
-      reader.onloadend = () => {
-        setInput({
-          ...input,
-          image: reader.result,
-        });
-
-        // setInput.image(reader.result);
-      };
-    } else {
-      setInput({
-        ...input,
-        image: "",
-      });
-      // setInput.image("");
-    }
   };
 
   return (
@@ -228,8 +240,8 @@ function Register(props) {
                 className="btn btn-primary"
                 type="submit"
                 value="registerCustomer"
-                onClick={(event) => {
-                  registerCustomer(event);
+                onClick={(e) => {
+                  registerCustomer(e);
                 }}
               >
                 Confirmar
@@ -254,7 +266,6 @@ function Register(props) {
                       id="inputForm"
                       placeholder="Name"
                       name="namesupplier"
-                      required
                       onChange={(e) => changeState(e)}
                     />
                     <label for="floatingInputGroup2">
@@ -274,7 +285,6 @@ function Register(props) {
                   <div className="form-floating is-invalid">
                     <input
                       type="file"
-                      accept="image/"
                       className={
                         !error.image
                           ? "form-control ms-2"
@@ -282,30 +292,15 @@ function Register(props) {
                       }
                       id="inputFormImage"
                       placeholder="imagen"
-                      name="imagen"
+                      name="image"
                       required
-                      onChange={handleSellerImageUpload}
+                      onChange={(e) => changestateimage(e)}
                     />
-                    {/* <label for="floatingInputGroup2">Foto de perfil</label> */}
                     {error.image && (
                       <div className="invalid-feedback">{error.image}</div>
                     )}
                   </div>
                 </div>
-                {input.image ? (
-                  <>
-                    <br />
-                    <img
-                      src={input.image}
-                      className="form-control ms-2"
-                      alt="Seller image!"
-                      style={{ width: "300px" }}
-                    />
-                  </>
-                ) : (
-                  <p></p>
-                )}
-
                 <br />
 
                 <div className="input-group has-validation">
@@ -439,8 +434,8 @@ function Register(props) {
                     className="btn btn-primary"
                     type="submit"
                     value="register"
-                    onClick={(event) => {
-                      registerSupplier(event);
+                    onClick={(e) => {
+                      registrarproveedor(e)
                     }}
                   >
                     Registrarse

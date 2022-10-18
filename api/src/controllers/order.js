@@ -91,7 +91,6 @@ const postOrder = async (req, res) => {
     if (validateNewOrder(newOrder)) {
       newOrder.state = newOrder.state.toLocaleLowerCase();
       let orderCreated = await Order.create({ ...newOrder });
-      // console.log(orderCreated.__proto__);
       if (orderCreated) {
         let postDB = await Post.findAll({
           where: {

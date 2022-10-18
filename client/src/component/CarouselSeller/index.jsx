@@ -1,5 +1,5 @@
 import React from 'react'
-import PostCard from '../PostCard/PostCard';
+import PostCard from '../PostCard';
 import '../CarouselSeller/carouselSeller.css'
 import { Image } from 'react-bootstrap'
 import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';

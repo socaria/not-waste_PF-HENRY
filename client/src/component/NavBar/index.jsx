@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom'
-import SearchBar from "../SearchBar/SearchBar";
-import Cart from '../Cart/Cart'
+import SearchBar from "../SearchBar";
+import Cart from '../Cart'
 import Navbar from 'react-bootstrap/Navbar';
 import burguermenu from '../../imagenes/burguermenu.png'
 import logoProy from '../../imagenes/logoProy.png'
@@ -39,8 +39,8 @@ function NavBar() {
                         <div className="vr bg-dark"></div>
                         {isAuthenticated ? <LogoutButton /> : <LogingButton />   }
                         <div className="vr bg-dark"></div>
-                        {/* {!db.exists &&
-                        <li className="nav-item"><Link to='/register' className="nav-link mx-4">REGISTER</Link></li>} */}
+                        {!db.exists &&
+                        <li className="nav-item"><Link to='/register' className="nav-link mx-4">REGISTER</Link></li>}
                         <div className="vr bg-dark"></div>
                     </Navbar>
                 </div>
