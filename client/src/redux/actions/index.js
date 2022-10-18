@@ -11,7 +11,7 @@ export function getSellers(queryParams) {
     }
     if (queryParams?.price) {
         url.searchParams.append("price", queryParams?.price);
-        console.log('url', url)
+
     }
     if (queryParams?.description) {
         url.searchParams.append("description", queryParams?.description);
@@ -24,7 +24,7 @@ export function getSellers(queryParams) {
     if (queryParams?.sortBy) {
         url.searchParams.append("sortBy", queryParams?.sortBy);
     }
-    console.log('url', url.href)
+
 
 
     return async function (dispatch) {
@@ -32,7 +32,7 @@ export function getSellers(queryParams) {
 
         if (response.ok) {
             const json = await response.json();
-            console.log('json', json)
+
             dispatch({ type: 'GET_SELLER', payload: json, query: queryParams });
         } else {
             dispatch({ type: 'REQUEST_ERROR', payload: 'La búsqueda no arrojó resultados' });
@@ -74,7 +74,6 @@ export function getProduct() {
                 type: 'GET_PRODUCT',
                 payload: price.data
             })
-            //console.log(price.data)
         } catch (error) {
             console.log(error)
         }
@@ -82,7 +81,6 @@ export function getProduct() {
 }
 
 export function prodDetail(id) {
-    console.log(id, 'hola')
     return async function (dispatch) {
         try {
             let detailProduct = await (await axios.get('http://localhost:3001/product/' + id))
@@ -91,7 +89,6 @@ export function prodDetail(id) {
                 type: 'PROD_DETAIL',
                 payload: detailProduct
             })
-            //console.log(price.data)
         } catch (error) {
 
             console.log(error)
@@ -114,20 +111,20 @@ export function getDiet() {
 }
 
 
-export function filtro(payload) {
-    return {
-        type: 'FILTRO_DIETA',
-        payload
-    }
-}
+// export function filtro(payload) {
+//     return {
+//         type: 'FILTRO_DIETA',
+//         payload
+//     }
+// }
 
 
-export function orderPriceProduct(payload) {
-    return {
-        type: 'FILTRO_PRECIO',
-        payload
-    }
-}
+// export function orderPriceProduct(payload) {
+//     return {
+//         type: 'FILTRO_PRECIO',
+//         payload
+//     }
+// }
 
 export function getCustomer() {
     return async function (dispatch) {
@@ -137,7 +134,6 @@ export function getCustomer() {
                 type: 'GET_CUSTOMER',
                 payload: customer.data
             })
-            // console.log(seller)
         } catch (error) {
             console.log(error)
         }
@@ -158,7 +154,6 @@ export function postCustomer(data) {
 }
 
 export function postSeller(data) {
-    console.log(JSON.stringify(data))
     return fetch('http://localhost:3001/seller', {
         method: 'POST', // or 'PUT'
         body: JSON.stringify(data), // data can be `string` or {object}!
