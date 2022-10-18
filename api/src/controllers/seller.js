@@ -1,5 +1,4 @@
 const { Seller, City, Manager } = require("../db");
-const cloudinary = require("../utils/cloudinary");
 const { getAllSellers } = require("./utils/getAllSellers");
 
 // Ruta get va a buscar a todos los proveedores de la base de datos.

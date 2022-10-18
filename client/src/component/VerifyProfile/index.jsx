@@ -9,23 +9,28 @@ function VerifyProfile (props) { //se debe pasar como propiedad el email a busca
     useEffect(() => {
         dispatch(getSellers())
     }, [dispatch])
-    // const customer = useSelector(state => state.customer)
-    // useEffect(() => {
-    //     dispatch(getCustomer())
-    // }, [dispatch])
+    const customer = useSelector(state => state.customer)
+    useEffect(() => {
+        dispatch(getCustomer())
+    }, [dispatch])
+    if(!customer){
+        dispatch(getSellers())
+    }
+    
     let respuesta = {exists: false}
     if(props){
-    // 
+    
     seller && seller.map(e => {
         if (e.email === props.toLowerCase()) {
             respuesta = {exists: true,type: "seller", ...e}
         }
     })
-    // customer && customer.map(e => {
-    //     if (e.email === props.toLowerCase()) {
-    //         respuesta = {exists: true,type: "customer", ...e}
-    //     }
-    // })
+    // seller && seller.map(e => e.email === props.toLowerCase() ? respuesta = {exists: true,type: "seller", ...e}: respuesta)
+    customer && customer.map(e => {
+        if (e.email === props.toLowerCase()) {
+            respuesta = {exists: true,type: "customer", ...e}
+        }
+    })
 
 }
 

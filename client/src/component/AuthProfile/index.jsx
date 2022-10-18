@@ -9,13 +9,6 @@ function AuthProfile (profile) {
             return user
         }
         return isAuthenticated
-        // <div>
-        //     <JSONPretty id="json-pretty" theme={JSONPrettyMon} data={user}></JSONPretty>
-        //     {user && <img src={user.picture} alt={user.name}/>}
-        //     {user && <h2>{user.name}</h2>}
-        //     {console.log(user)}
-
-        // </div>
 }
 
 export default AuthProfile
