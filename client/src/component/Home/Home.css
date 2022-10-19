@@ -33,3 +33,8 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+.colorBg {
+  background-color: #c7f2a4;
+  margin-top: 0;
+  padding-top: 1rem;
+}
