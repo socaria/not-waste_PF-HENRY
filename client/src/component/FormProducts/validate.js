@@ -9,22 +9,22 @@ export function validate(input) {
   }
 
   if (!input.price) {
-    error.image = "Debe ingresear una un precio";
+    error.price = "Debe ingresear una un precio...";
   }
 
   if (!input.realValue) {
-    error.realValue = "Debe seleccionar el valor real";
+    error.realValue = "Debe ingresar el valor real de su product...";
   }
 
   if (input.description === "") {
     error.description = "La descripción es requerida...";
   }
   if (!input.stock) {
-    error.stock = "El stock es requerido...";
+    error.stock = "Ingrese la cantidad de stock disponible...";
   }
 
   if (!input.image) {
-    error.image = "La imagen es requerida...";
+    error.image = "Debe ingresar una imagen...";
   }
 
   return error;
