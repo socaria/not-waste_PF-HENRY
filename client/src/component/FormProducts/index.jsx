@@ -40,30 +40,67 @@ function FormProduct() {
       })
     );
   }
-  function handleSubmit(e) {
+
+  async function handleSubmit(e) {
     e.preventDefault();
     setError(validate(input));
-    const errorSubmit = validate(input);
-    if (Object.value(errorSubmit).length !== 0 || !input.diets.length) {
-      alert("Datos Faltantes");
-    } else {
-      dispatch(postProduct(input));
+    // const errorSubmit = validate(input);
+    if (!Object.keys(error).length && input.diets.length) {
+      let imageObj = input.image;
+      const data = new FormData();
+      data.append("file", imageObj);
+      data.append("upload_preset", "imagesnotwaste");
+      const res = await fetch(
+        "https://api.cloudinary.com/v1_1/sercm/image/upload",
+        {
+          method: "POST",
+          body: data,
+        }
+      );
+      const url = await res.json();
+      imageObj = url.secure_url;
+      const inputMod = {
+        ...input,
+        image: imageObj
+      }
+      console.log(inputMod, 'INPUTMOD')
+      dispatch(postProduct(inputMod));
       alert("Product añadido con exito");
-      setInput({
-        name: "",
-        price: "",
-        realValue: "",
-        image: "",
-        description: "",
-        stock: "",
-        diets: [],
-      });
+    } else {
+      alert("Datos Faltantes");
     }
   }
+
+  function handleSelectDiet(e) {
+    if (!input.diets.includes(e.target.value)) {
+      setInput({
+        ...input,
+        diets: [...input.diets, e.target.value]
+      })
+    }
+  }
+
+  function handleDelete(e) {
+    e.preventDefault();
+    setInput({
+      ...input,
+      diets: input.diets.filter(d => d !== e.target.value)
+    })
+  }
+
+  const changeStateImage = (e) => {
+    const files = e.target.files[0];
+    //console.log(files);
+    setInput({
+      ...input,
+      image: files,
+    });
+  };
 
   return (
     <Form>
       <Form.Group className="mb-3" controlId="formBasicEmail">
+
         <Form.Label></Form.Label>
         <Form.Control
           name="name"
@@ -73,6 +110,8 @@ function FormProduct() {
           onChange={(e) => handleInput(e)}
         />
         {error.name && <p>{error.name}</p>}
+
+
         <Form.Label></Form.Label>
         <Form.Control
           name="price"
@@ -82,6 +121,8 @@ function FormProduct() {
           onChange={(e) => handleInput(e)}
         />
         {error.price && <p>{error.price}</p>}
+
+
         <Form.Label></Form.Label>
         <Form.Control
           name="realValue"
@@ -91,15 +132,20 @@ function FormProduct() {
           onChange={(e) => handleInput(e)}
         />
         {error.realValue && <p>{error.realValue}</p>}
+
+
         <Form.Label></Form.Label>
-        <Form.Control
-          name="description"
-          value={input.description}
-          type="text"
-          placeholder="Descripción"
-          onChange={(e) => handleInput(e)}
-        />
+        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+          <Form.Label></Form.Label>
+          <Form.Control as="textarea" rows={4}
+            value={input.description}
+            name="description"
+            onChange={(e) => handleInput(e)}
+            placeholder="Descripción" />
+        </Form.Group>
         {error.description && <p>{error.description}</p>}
+
+
         <Form.Label></Form.Label>
         <Form.Control
           name="stock"
@@ -108,24 +154,38 @@ function FormProduct() {
           placeholder="Stock"
           onChange={(e) => handleInput(e)}
         />
-        {error.image && <p>{error.image}</p>}
-        <Form.Select aria-label="Default select example">
-          <option value="">Seleccione la Dieta</option>
-          <option value="sin tacc">Sin Tacc</option>
-          <option value="vegana">Vegana</option>
-          <option value="vegetarianos">Vegetarianos</option>
-          <option value="sin gluten">Sin gluten</option>
-          <option value="lacteos">Lacteos</option>
-          <option value="pescatariano">Pescatariano</option>
+        {error.stock && <p>{error.stock}</p>}
+
+
+        <Form.Label></Form.Label>
+        <Form.Select aria-label="Default select example" onChange={(e) => handleSelectDiet(e)}>
+          <option>Seleccione una dieta</option>
+          {
+            diets?.map((e, i) => {
+              return (
+                <option value={e.name} key={i} >{e.name}</option>
+              )
+            })
+          }
         </Form.Select>
+        {
+          input.diets?.map((diet, i) => (
+            <div key={i}>
+              <p>{diet}</p>
+              <button value={diet} onClick={(e) => handleDelete(e)}>X</button>
+            </div>
+          ))
+        }
+
+
         <Form.Label></Form.Label>
         <Form.Control
           name="image"
-          value={input.image}
-          type="text"
+          type="file"
           placeholder="Imagen del producto"
-          onChange={(e) => handleInput(e)}
+          onChange={(e) => changeStateImage(e)}
         />
+        {error.image && <p>{error.image}</p>}
       </Form.Group>
 
       <Button type="submit" onClick={(e) => handleSubmit(e)}>
