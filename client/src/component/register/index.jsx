@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { postCustomer, postSeller } from "../../redux/actions";
 import "../register/register.css";
 import registerSupplier from "./middleware";
+import Cookies from "universal-cookie";
 
 function Register(props) {
   const dispatch = useDispatch();
@@ -30,11 +31,10 @@ function Register(props) {
     category: "",
   });
 
-
   const [error, setError] = useState({});
 
   const changeState = function (e) {
-    if (e.target.name !== "supplier" && e.target.name !== 'image') {
+    if (e.target.name !== "supplier" && e.target.name !== "image") {
       e.preventDefault();
       setInput({
         ...input,
@@ -60,9 +60,8 @@ function Register(props) {
       if (e.target.checked === false) {
       }
     }
-  }
+  };
 
-  
   const handleSelectCity = (e) => {
     if (!input.cities.length) {
       setError({
@@ -88,35 +87,35 @@ function Register(props) {
       ))
     );
   };
-  
+
   const changestateimage = (e) => {
-    const files = e.target.files[0]
-    console.log(files)
+    const files = e.target.files[0];
+    console.log(files);
     setInput({
       ...input,
       archivo: files,
     });
-  }
+  };
 
   const reload = () => {
-    window.location.assign("http://localhost:3000/home")
-  }
+    window.location.assign("http://localhost:3000/home");
+  };
 
   const registrarproveedor = (e) => {
     e.preventDefault();
-  if (!Object.keys(error).length) {
-    registerSupplier(e, input)
-    setTimeout(() => {
-    reload()
-   }, 3000);
-   document.getElementById('buttonRegister').disabled = true;
-  } else {
-    e.preventDefault();
-    alert(
-      "Hay campos incompletos o inválidos. Por favor revise su formulario, todos los campos son obligatorios."
-    );
-  }
-  }
+    if (!Object.keys(error).length) {
+      registerSupplier(e, input);
+      setTimeout(() => {
+        reload();
+      }, 3000);
+      document.getElementById("buttonRegister").disabled = true;
+    } else {
+      e.preventDefault();
+      alert(
+        "Hay campos incompletos o inválidos. Por favor revise su formulario, todos los campos son obligatorios."
+      );
+    }
+  };
   // const registerSupplier = async (e) => {
   //   e.preventDefault()
   //   const name = input.namesupplier;
@@ -157,13 +156,17 @@ function Register(props) {
 
   const registerCustomer = () => {
     const { name, email } = input;
-    console.log({ name, email });
+    const cookies = new Cookies();
+    cookies.set("customerName", `${input.name}`, { path: "/" });
+    cookies.set("customerEmail", `${input.email}`, { path: "/" });
+    window.location.href = "./perfilCustomer";
+    // console.log({ name, email });
     dispatch(postCustomer({ name, email }));
   };
 
   const handleDeleteCity = (e) => {
     e.preventDefault();
-    console.log(e.target);
+    // console.log(e.target);
     if (input.cities.length === 1) {
       setError({
         ...error,
@@ -435,7 +438,7 @@ function Register(props) {
                     type="submit"
                     value="register"
                     onClick={(e) => {
-                      registrarproveedor(e)
+                      registrarproveedor(e);
                     }}
                   >
                     Registrarse
