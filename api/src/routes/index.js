@@ -7,6 +7,7 @@ const { getPosts, postPost, putPost, deletePost } = require("../controllers/post
 const { getManagerById, getAllManager, postManager, putManager } = require("../controllers/manager");
 const { getOrderById, getAllOrder, postOrder } = require("../controllers/order");
 const { getDiets } = require("../controllers/diets");
+const {post_create_preference, get_feedback} = require('../controllers/mercadopago')
 
 const router = Router();
 
@@ -49,5 +50,9 @@ router.post("/order", postOrder);
 //Ruta de Dietas
 router.get("/diets", getDiets);
 
+//mercadopago -->
+router.post("/create_preference", post_create_preference);
+router.get("/feedback", get_feedback)
+//<-- mercadopago
 
 module.exports = router;
