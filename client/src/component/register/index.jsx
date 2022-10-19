@@ -157,13 +157,13 @@ function Register(props) {
 
   const registerCustomer = () => {
     const { name, email } = input;
-    console.log({ name, email });
+    // console.log({ name, email });
     dispatch(postCustomer({ name, email }));
   };
 
   const handleDeleteCity = (e) => {
     e.preventDefault();
-    console.log(e.target);
+    // console.log(e.target);
     if (input.cities.length === 1) {
       setError({
         ...error,
