@@ -8,6 +8,7 @@ import Contact from "../component/Contact";
 import Developers from "../component/Developers";
 import PostDetail from "../component/PostDetail";
 import FormProduct from "../component/FormProducts";
+import Order from "../component/Order";
 
 function RouteController() {
   return (
@@ -20,6 +21,7 @@ function RouteController() {
       <Route exact path="/developers" element={<Developers />} />
       <Route path="/home/:productId" element={<PostDetail />} />
       <Route path="/formproduct" element={<FormProduct />} />
+      <Route path="/customer/orders" element={<Order/>}/>
     </Routes>
   );
 }
