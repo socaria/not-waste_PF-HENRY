@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { postSeller } from "../../redux/actions";
+import Cookies from "universal-cookie";
 
 const dispatch = useDispatch;
 
@@ -19,6 +20,8 @@ const registerSupplier = async (e, input, error) => {
   );
   const url = await res.json();
   image = url.secure_url;
+
+  const cookies = new Cookies();
 
   cookies.set("sellerName", `${input.namesupplier}`, { path: "/" });
   cookies.set("sellerEmail", `${input.email}`, { path: "/" });
