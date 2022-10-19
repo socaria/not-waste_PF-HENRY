@@ -34,7 +34,7 @@ function NavBar() {
                 <div className="collapse navbar-collapse" id='navbarSupportedContent'>
                     <Navbar className="navbar-nav ms-auto mx-5">
                         <Cart />
-                            {/* <img src={carrito} alt="logocarr" width='50px' className="mx-4"/> */}
+                            
                         
                         <div className="vr bg-dark"></div>
                         {isAuthenticated ? <LogoutButton /> : <LogingButton />   }
