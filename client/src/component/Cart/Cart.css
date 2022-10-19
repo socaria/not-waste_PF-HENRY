@@ -1,4 +1,9 @@
 .cart-subtitle {
- font-size: 13px;
- align-items: flex-start;
+    font-size: 13px;
+    align-items: flex-start;
+}
+
+.cart-container {
+    margin-top: 4px;
+    margin-left: 4px;
 }
