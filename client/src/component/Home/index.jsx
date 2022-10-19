@@ -1,21 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { getCities, getDiet, getSellers, getProduct, orderPriceProduct, filterByCity } from "../../redux/actions";
-import CarouselSeller from '../CarouselSeller/CarouselSeller'
-import NavBar from '../NavBar/Navbar';
+import { getCities, getDiet, getSellers, getProduct } from "../../redux/actions";
+import CarouselSeller from '../CarouselSeller'
+import NavBar from '../NavBar';
 import Footer from '../Footer';
 import '../Home/Home.css';
-import { Dropdown } from 'react-bootstrap';
-import Message from "../Message/Message";
-
+import Message from "../Message";
+import { v4 as uuidv4 } from "uuid";
 
 function Home() {
     const dispatch = useDispatch();
-    const cities = useSelector(state => state.cities);
     const sellers = useSelector(state => state.seller);
     const queryParams = useSelector(state => state.queryParams);
     const errorMessage = useSelector((state) => state.errorMessage);
-    // const product = useSelector(state => state.product)
 
     useEffect(() => {
         dispatch(getCities());
@@ -27,7 +24,6 @@ function Home() {
 
     function handleCleanFilters(e) {
         e.preventDefault();
-        // dispatch(getSellers());
         window.location.reload();
 
     }
@@ -62,8 +58,6 @@ function Home() {
         }));
     }
     let currentCities = sellers.map(s => s.cities.map(c => c.name));
-    console.log("🚀 ~ file: Home.jsx ~ line 66 ~ Home ~ currentCities", currentCities)
-
     return (
         <div>
             <NavBar />
@@ -99,7 +93,7 @@ function Home() {
 
                                 currentCities?.map(cities => {
                                     return (
-                                        <option className='filter-options' value={cities} key={cities} >{cities}</option>
+                                        <option className='filter-options' value={cities} key={uuidv4()} >{cities}</option>
                                     )
 
                                 })

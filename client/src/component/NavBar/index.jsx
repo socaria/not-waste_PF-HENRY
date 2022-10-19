@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom'
-import SearchBar from "../SearchBar/SearchBar";
-import Cart from '../Cart/Cart'
+import SearchBar from "../SearchBar";
+import Cart from '../Cart'
 import Navbar from 'react-bootstrap/Navbar';
 import burguermenu from '../../imagenes/burguermenu.png'
 import logoProy from '../../imagenes/logoProy.png'

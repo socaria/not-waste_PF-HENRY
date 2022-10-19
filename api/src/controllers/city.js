@@ -8,7 +8,6 @@ const getCityInfo = async (req, res) => {
       name: e.name,
     };
   });
-  console.log("json city", JSON.stringify(json,null,2))
   // json.forEach((e) => {
   //   City.findOrCreate({
   //     where: {
