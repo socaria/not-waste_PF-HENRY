@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import NavBar from '../NavBar/Navbar';
+import NavBar from '../NavBar';
 import Footer from '../Footer';
 import { perfil1 } from './Perfil1';
 import { perfil2 } from './Perfil2';
@@ -43,7 +43,7 @@ function Profile(props) {
                     </svg>
                     <div className="form-floating is-invalid">
                         <input type="text" readOnly className='form-control-plaintext' id="floatingInputName" placeholder="Name" value={profile.name} />
-                        <label htmlFor="floatingInputGroup2">Name</label>
+                        <label htmlFor="floatingInputGroup2">Nombre</label>
                     </div>
                 </div>
 
@@ -54,7 +54,7 @@ function Profile(props) {
                     </svg>
                     <div className="form-floating is-invalid">
                         <input type="text" readOnly className='form-control-plaintext' id="floatingInputName" placeholder="Name" value={profile.phone} />
-                        <label htmlFor="floatingInputGroup2">Number phone</label>
+                        <label htmlFor="floatingInputGroup2">Número de teléfono</label>
                     </div>
                 </div>
 
@@ -76,7 +76,7 @@ function Profile(props) {
                     </svg>
                     <div className="form-floating is-invalid">
                         <input type="text" readOnly className='form-control-plaintext' id="floatingInputName" placeholder="Name" value={profile.adress} />
-                        <label htmlFor="floatingInputGroup2">Adress</label>
+                        <label htmlFor="floatingInputGroup2">Dirección</label>
                     </div>
                 </div>
 
@@ -86,14 +86,14 @@ function Profile(props) {
                     </svg>
                     <div className="form-floating is-invalid">
                         <input type="text" readOnly className='form-control-plaintext' id="floatingInputName" placeholder="Name" value={profile.cuit} />
-                        <label htmlFor="floatingInputGroup2">Cuit</label>
+                        <label htmlFor="floatingInputGroup2">CUIT</label>
                     </div>
                 </div>
 
                 <div className="input-group has-validation">
                     <div className="form-floating is-invalid">
                         <input type="text" readOnly className='form-control-plaintext' id="floatingInputName" placeholder="Name" value={profile.category.join(', ')} />
-                        <label htmlFor="floatingInputGroup2">Category</label>
+                        <label htmlFor="floatingInputGroup2">Categoria</label>
                     </div>
                 </div>
 

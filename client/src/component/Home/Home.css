@@ -4,7 +4,6 @@
     font-size: 15px;
     text-align: center;
     min-height: 35px;
-    /* background-image: url(https://img.freepik.com/vector-gratis/fondo-forma-franja-geometrica-minima_1409-1014.jpg?w=1060&t=st=1663962819~exp=1663963419~hmac=e5fca3a6dda1ed472ce38c7440f0fdcedc14a8fb8ac7988dcad4827248a834d8); */
     background-size: cover;
     color: white;
     outline: none;
@@ -14,6 +13,12 @@
     background-color: #13368A;
     cursor: pointer;
     border-radius: 15px;
+    border: none;
+    text-transform: capitalize;
+}
+
+.filter-options {
+    text-transform: capitalize
 }
 
 .contSelects {
@@ -21,4 +26,10 @@
     justify-content: space-evenly;
     position: relative;
     flex-wrap: wrap;
+}
+
+.carruselCard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
