@@ -5,9 +5,14 @@ import ProductItem from "../../component/ProductItem/ProductItem";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Button, Card, ListGroup } from "react-bootstrap";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useDispatch } from "react-redux";
+import { postPay } from "../../redux/actions";
+
+const dispatch = useDispatch;
 
 function Cart() {
   const { isAuthenticated } = useAuth0();
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
