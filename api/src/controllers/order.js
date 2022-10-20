@@ -14,16 +14,8 @@ const getApiInfo = async () => {
 };
 
 const getDbInfo = async () => {
-  return await Order.findAll({
-    include: {
-      model: Post,
-      attributes: ["id"],
-      through: {
-        attributes: [],
-      },
-    },
-  });
-};
+  return await Order.findAll();
+}
 
 const getAllData = async () => {
   const apiInfo = await getApiInfo();
