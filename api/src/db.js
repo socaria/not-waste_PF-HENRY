@@ -38,8 +38,6 @@ const { Seller, Product, Customer, Manager, Order, Post, City, Diet } =
 //Relaciones de Seller
 Seller.hasMany(Product);
 Product.belongsTo(Seller);
-Seller.hasMany(Order);
-Order.belongsTo(Seller);
 Seller.belongsToMany(City, { through: "seller_city" });
 City.belongsToMany(Seller, { through: "seller_city" });
 Manager.hasMany(Seller);

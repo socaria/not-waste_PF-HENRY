@@ -72,8 +72,8 @@ const getAllOrder = async (req, res) => {
       searchState.length
         ? res.status(200).send(searchState)
         : res
-            .status(404)
-            .send(`No se encontró ninguna orden con el estado: ${state}`);
+          .status(404)
+          .send(`No se encontró ninguna orden con el estado: ${state}`);
     } else {
       res.status(200).send(orderList);
     }
@@ -84,29 +84,51 @@ const getAllOrder = async (req, res) => {
 };
 
 const postOrder = async (req, res) => {
-  let { state, review, postId, amount } = req.body;
-  const newOrder = { state, review, postId, amount };
-
+  let {
+    date,
+    amount,
+    state,
+    review,
+    postId,
+  } = req.body
   try {
-    if (validateNewOrder(newOrder)) {
-      newOrder.state = newOrder.state.toLocaleLowerCase();
-      let orderCreated = await Order.create({ ...newOrder });
-      if (orderCreated) {
-        let postDB = await Post.findAll({
-          where: {
-            name: amount,
-          },
-        });
-
-        await orderCreated.addPosts(postDB);
-
-        return res.send("Orden creada con exito");
-      }
-    }
-  } catch (error) {
-    console.log(error);
-    res.json({ msj: error.message });
+    if (!amount) { throw new Error('Debe definirse una cantidad') }
+    if (!postId) { throw new Error('Debe definirse los productos') }
+    let newOrder = await Order.create({
+      date,
+      amount,
+      state,
+      review,
+      postId
+    })
+    newOrder.setPost(postId)
+    res.send(newOrder);
+  } catch (e) {
+    res.status(500).send(`${e}`)
   }
+  // let { state, review, posts, amount } = req.body;
+  // const newOrder = { state, review, postId, amount };
+
+  // try {
+  //   if (validateNewOrder(newOrder)) {
+  //     newOrder.state = newOrder.state.toLocaleLowerCase();
+  //     let orderCreated = await Order.create({ ...newOrder });
+  //     if (orderCreated) {
+  //       let postDB = await Post.findAll({
+  //         where: {
+  //           name: amount,
+  //         },
+  //       });
+
+  //       await orderCreated.addPosts(postDB);
+
+  //       return res.send("Orden creada con exito");
+  //     }
+  //   }
+  // } catch (error) {
+  //   console.log(error);
+  //   res.json({ msj: error.message });
+  // }
 };
 module.exports = {
   getOrderById,
