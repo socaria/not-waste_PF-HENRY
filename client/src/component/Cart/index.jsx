@@ -17,7 +17,17 @@ function Cart() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const handlePayment = (e) => {
+  const handlePayment = async (e) => {
+    e.preventDefault();
+    let total = 1200;
+    let res = await fetch("http://localhost:3001/create_preference", {
+      method: "POST", // or 'PUT'
+      body: JSON.stringify(total), // data can be `string` or {object}!
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    dispatch(postPay(total));
     console.log(e);
   };
 
