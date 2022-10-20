@@ -5,7 +5,7 @@ const { getAllSellers } = require("./utils/getAllSellers");
 // Si llegasen las propiedades name, category y/o city por query
 
 const getSellers = async (req, res) => {
-  const { name, category, city, description, price, diet } = req.query;
+  const { name, category, city, description, price, diet, email } = req.query;
   let sellers;
   try {
     sellers = await getAllSellers();
@@ -16,9 +16,7 @@ const getSellers = async (req, res) => {
       }
     }
     if (name) {
-      sellers = sellers.filter((s) => {
-        s.name === name;
-      });
+      sellers = sellers.filter((s) => s.name === name );
       if (!sellers.length) {
         throw new Error("No hay proveedores con ese nombre");
       }
@@ -63,11 +61,19 @@ const getSellers = async (req, res) => {
       }
     }
 
+    if (email) {
+      sellers = sellers.filter((s) => s.email === email );
+      if (!sellers.length) {
+        throw new Error("No hay proveedores con ese nombre");
+      }
+    }
+
     res.status(200).send(sellers);
   } catch (e) {
     res.status(404).send(e.message);
   }
 };
+
 const postSeller = async (req, res) => {
   let {
     name,
@@ -172,4 +178,5 @@ module.exports = {
   getSellers,
   postSeller,
   putSeller,
+  
 };
