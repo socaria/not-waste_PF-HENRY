@@ -6,6 +6,7 @@ import { Button, Card, ListGroup } from "react-bootstrap";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch } from "react-redux";
 import { postPay } from "../../redux/actions";
+import { redirect } from "react-router-dom";
 
 const dispatch = useDispatch;
 
@@ -16,17 +17,15 @@ function Cart() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
   const handlePayment = async (e) => {
     e.preventDefault();
-    let total = 1200;
-    let res = await fetch("http://localhost:3001/create_preference", {
-      method: "POST", // or 'PUT'
-      body: JSON.stringify(total), // data can be `string` or {object}!
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    dispatch(postPay(total));
+    let price = 1200;
+
+    dispatch(postPay(price));
+    let res = postPay(price);
+    redirect(res.psgina_a_redireccionar);
+
     console.log(e);
   };
 

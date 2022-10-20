@@ -9,7 +9,7 @@ const initialState = {
   allSeller: [],
   queryParams: {},
   errorMessage: "",
-  orders: []
+  orders: [],
 };
 
 export default function rootReducer(state = initialState, actions) {
@@ -67,9 +67,14 @@ export default function rootReducer(state = initialState, actions) {
     case "ADD_CART":
       return {
         ...state,
-        orders: state.orders.push(actions.payload)
-      }
+        orders: state.orders.push(actions.payload),
+      };
 
+    case "POST_PAY":
+      return {
+        ...state,
+        payId: actions.payload,
+      };
     default:
       return state;
   }

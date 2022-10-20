@@ -155,7 +155,8 @@ export const postProduct = (payload) => {
 export function postPay(data) {
   return fetch("http://localhost:3001/create_preference", {
     method: "POST", // or 'PUT'
-    body: JSON.stringify(data), // data can be `string` or {object}!
+    type: "POST_PAY",
+    payload: JSON.stringify(data), // data can be `string` or {object}!
     headers: {
       "Content-Type": "application/json",
     },
@@ -164,17 +165,29 @@ export function postPay(data) {
     .catch((error) => console.error("Error:", error))
     .then((response) => console.log("Success:", response));
 }
-
+export function createActivity(payload) {
+  return async function (dispatch) {
+    try {
+      const act = await axios.post("http://localhost:3001/activity", payload);
+      dispatch({
+        type: "POST_ACTIVITY",
+        payload: act.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
 export function postOrder(input) {
   return async function (dispatch) {
     try {
-      const act = await axios.post('http://localhost:3001/order', input)
+      const act = await axios.post("http://localhost:3001/order", input);
       dispatch({
-        type: 'POST_ORDER',
-        payload: act.data
-      })
+        type: "POST_ORDER",
+        payload: act.data,
+      });
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 }
