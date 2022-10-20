@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import carrito from "../../imagenes/carrito.png";
 import "../Cart/Cart.css";
 import ProductItem from "../../component/ProductItem/ProductItem";
 import Offcanvas from "react-bootstrap/Offcanvas";
