@@ -10,10 +10,7 @@ const initialState = {
   queryParams: {},
   errorMessage: "",
   orders: [],
-<<<<<<< HEAD
-=======
-  cart: []
->>>>>>> 204b296c61e634bc0e1b72d950150408c43031a2
+  cart: [],
 };
 
 export default function rootReducer(state = initialState, actions) {
@@ -68,16 +65,11 @@ export default function rootReducer(state = initialState, actions) {
         seller: actions.payload,
       };
 
-    case 'ADD_CART':
+    case "ADD_CART":
       return {
         ...state,
-<<<<<<< HEAD
-        orders: state.orders.push(actions.payload),
+        cart: actions.payload,
       };
-=======
-        cart: actions.payload
-      }
->>>>>>> 204b296c61e634bc0e1b72d950150408c43031a2
 
     case "POST_PAY":
       return {
