@@ -84,8 +84,8 @@ const getAllOrder = async (req, res) => {
 };
 
 const postOrder = async (req, res) => {
-  let { state, review, postId } = req.body;
-  const newOrder = { state, review, postId };
+  let { state, review, postId, amount } = req.body;
+  const newOrder = { state, review, postId, amount };
 
   try {
     if (validateNewOrder(newOrder)) {

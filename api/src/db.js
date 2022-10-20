@@ -52,8 +52,8 @@ Product.hasMany(Post);
 Post.belongsTo(Product);
 
 //Relaciones de Post
-Post.belongsToMany(Order, { through: "post_order" });
-Order.belongsToMany(Post, { through: "post_order" });
+Post.hasMany(Order);
+Order.belongsTo(Post);
 
 //Relaciones Customer
 Customer.hasMany(Order);
