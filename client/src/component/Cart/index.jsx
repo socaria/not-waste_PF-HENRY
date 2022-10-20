@@ -4,18 +4,26 @@ import ProductItem from "../../component/ProductItem/ProductItem";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Button, Card, ListGroup } from "react-bootstrap";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useDispatch } from "react-redux";
-import { postPay } from "../../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { postPay, prodDetail } from "../../redux/actions";
+import { useEffect } from "react";
 
-const dispatch = useDispatch;
 
 function Cart() {
   const { isAuthenticated } = useAuth0();
 
+  const dispatch = useDispatch;
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const cart = useSelector(state => state.cart);
+  const productId = cart.productId;
+  console.log("🚀 ~ file: index.jsx ~ line 23 ~ Cart ~ productId", productId)
+
+
+
   const handlePayment = async (e) => {
     e.preventDefault();
     let total = 1200;
@@ -70,43 +78,42 @@ function Cart() {
               <span className="mx-4 mt-2">Tu Carrito</span>
             </Offcanvas.Title>
           </Offcanvas.Header>
-          <Offcanvas.Body>
-            <Card>
-              <Card.Header className="d-flex row">
-                <span>Los artículos de tu carrito no están reservados.</span>
-                <span>Completa tu compra para hacerte con ellos.</span>
-                <br></br>
-              </Card.Header>
-              <Card.Body>
-                <ListGroup
-                  variant="flush"
-                  className="d-flex justify-content-between"
-                >
-                  <ListGroup.Item>
-                    <div className="d-flex justify-content-between">
-                      <span>Total</span>
-                      <span className="fw-bold text-success">$ 1000</span>
-                    </div>
-                  </ListGroup.Item>
-                  <ListGroup.Item className="d-flex row">
-                    <ProductItem></ProductItem>
-                  </ListGroup.Item>
-                  <ListGroup.Item className="d-flex row">
-                    <ProductItem></ProductItem>
-                  </ListGroup.Item>
-                </ListGroup>
-              </Card.Body>
-              <Card.Footer className="d-flex justify-content-center">
-                <Button
-                  variant="dark"
-                  className="d-flex w-50 justify-content-center"
-                  onClick={(e) => handlePayment(e)}
-                >
-                  Pagar
-                </Button>
-              </Card.Footer>
-            </Card>
-          </Offcanvas.Body>
+          {cart.amount ?
+            <Offcanvas.Body>
+              <Card>
+                <Card.Header className="d-flex row">
+                  <span>Los artículos de tu carrito no están reservados.</span>
+                  <span>Completa tu compra para hacerte con ellos.</span>
+                  <br></br>
+                </Card.Header>
+                <Card.Body>
+                  <ListGroup
+                    variant="flush"
+                    className="d-flex justify-content-between"
+                  >
+                    <ListGroup.Item>
+                      <div className="d-flex justify-content-between">
+                        <span>Total</span>
+                        <span className="fw-bold text-success">${cart?.amount * cart?.price}</span>
+                      </div>
+                    </ListGroup.Item>
+                    <ListGroup.Item className="d-flex row">
+                      <ProductItem cart={cart}></ProductItem>
+                    </ListGroup.Item>
+                  </ListGroup>
+                </Card.Body>
+                <Card.Footer className="d-flex justify-content-center">
+                  <Button
+                    variant="dark"
+                    className="d-flex w-50 justify-content-center"
+                    onClick={(e) => handlePayment(e)}
+                  >
+                    Pagar
+                  </Button>
+                </Card.Footer>
+              </Card>
+            </Offcanvas.Body>
+            : <div className="cart-message">Tu carrito está vacío!</div>}
         </Offcanvas>
       </div>
     </div>

@@ -5,9 +5,18 @@ import Form from "react-bootstrap/Form";
 import { useDispatch, useSelector } from "react-redux";
 import { getDiet, postProduct } from "../../redux/actions";
 import { validate } from "../FormProducts/validate";
+import VerifyProfile from "../VerifyProfile";
+import AuthProfile from "../AuthProfile";
 
 function FormProduct() {
   const [error, setError] = useState({});
+
+  // const emailprueba = VerifyProfile(props)
+  // console.log(emailprueba,' EMAEEEEALFMSLDFÑG')
+
+  let log = AuthProfile("profile"); // esto puede ser {}, true o false
+  let db = VerifyProfile(log.email);
+  // console.log(db, 'DBBBB')
 
   const dispatch = useDispatch();
   const [input, setInput] = useState({
@@ -18,9 +27,12 @@ function FormProduct() {
     description: "",
     stock: "",
     diets: [],
+    sellerId: db.id
   });
 
   const diets = useSelector((state) => state.diet);
+  // const sellers = useSelector((state) => state.seller)
+  // const sellerIdMap = sellers.find(e => e.id === )
 
   const win = window.sessionStorage;
 

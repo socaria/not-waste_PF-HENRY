@@ -159,7 +159,7 @@ function Register(props) {
     const cookies = new Cookies();
     cookies.set("customerName", `${input.name}`, { path: "/" });
     cookies.set("customerEmail", `${input.email}`, { path: "/" });
-    window.location.href = "./perfilCustomer";
+    window.location.href = "./home";
     // console.log({ name, email });
     dispatch(postCustomer({ name, email }));
   };
