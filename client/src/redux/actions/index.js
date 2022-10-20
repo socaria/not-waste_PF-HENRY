@@ -153,31 +153,18 @@ export const postProduct = (payload) => {
 };
 
 export function postPay(price) {
-  return async function (dispatch) {
-    try {
-      const res = await axios.post(
-        "http://localhost:3001/create_preference",
-        price
-      );
-      dispatch({
-        type: "POST_PAY",
-        payload: res.id,
-      });
-      return res.psgina_a_redireccionar;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  /* return fetch("http://localhost:3001/create_preference", {
+  return fetch("http://localhost:3001/create_preference", {
     method: "POST", // or 'PUT'
-    body: JSON.stringify(data), // data can be `string` or {object}!
+    body: JSON.stringify(price), // data can be `string` or {object}!
     headers: {
       "Content-Type": "application/json",
     },
   })
     .then((res) => res.json())
     .catch((error) => console.error("Error:", error))
-    .then((response) => console.log("Success:", response)); */
+    .then((response) => {
+      window.location.replace(response.psgina_a_redireccionar);
+    });
 }
 
 export function postOrder(input) {

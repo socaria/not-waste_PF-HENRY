@@ -11,6 +11,7 @@ const initialState = {
   errorMessage: "",
   orders: [],
   cart: [],
+  payId: [],
 };
 
 export default function rootReducer(state = initialState, actions) {
