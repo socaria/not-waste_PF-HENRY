@@ -152,8 +152,23 @@ export const postProduct = (payload) => {
   };
 };
 
-export function postPay(data) {
-  return fetch("http://localhost:3001/create_preference", {
+export function postPay(price) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/create_preference",
+        price
+      );
+      dispatch({
+        type: "POST_PAY",
+        payload: response.id,
+      });
+      return response.psgina_a_redireccionar;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  /* return fetch("http://localhost:3001/create_preference", {
     method: "POST", // or 'PUT'
     type: "POST_PAY",
     payload: JSON.stringify(data), // data can be `string` or {object}!
@@ -163,7 +178,7 @@ export function postPay(data) {
   })
     .then((res) => res.json())
     .catch((error) => console.error("Error:", error))
-    .then((response) => console.log("Success:", response));
+    .then((response) => console.log("Success:", response)); */
 }
 export function createActivity(payload) {
   return async function (dispatch) {
@@ -190,11 +205,4 @@ export function postOrder(input) {
       console.log(error);
     }
   };
-}
-
-export function addCart(payload) {
-  return {
-    type: "ADD_CART",
-    payload
-  }
 }
