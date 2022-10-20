@@ -4,18 +4,26 @@ import ProductItem from "../../component/ProductItem/ProductItem";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Button, Card, ListGroup } from "react-bootstrap";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useDispatch } from "react-redux";
-import { postPay } from "../../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { postPay, prodDetail} from "../../redux/actions";
+import { useEffect } from "react";
 
-const dispatch = useDispatch;
 
 function Cart() {
   const { isAuthenticated } = useAuth0();
-
+  
+  const dispatch = useDispatch;
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const cart = useSelector(state => state.cart);
+  const productId = cart.productId;
+  console.log("🚀 ~ file: index.jsx ~ line 23 ~ Cart ~ productId", productId)
+
+
+
   const handlePayment = async (e) => {
     e.preventDefault();
     let total = 1200;
@@ -85,14 +93,11 @@ function Cart() {
                   <ListGroup.Item>
                     <div className="d-flex justify-content-between">
                       <span>Total</span>
-                      <span className="fw-bold text-success">$ 1000</span>
+                      <span className="fw-bold text-success">${cart?.amount*cart?.price}</span>
                     </div>
                   </ListGroup.Item>
                   <ListGroup.Item className="d-flex row">
-                    <ProductItem></ProductItem>
-                  </ListGroup.Item>
-                  <ListGroup.Item className="d-flex row">
-                    <ProductItem></ProductItem>
+                    <ProductItem cart={cart}></ProductItem>
                   </ListGroup.Item>
                 </ListGroup>
               </Card.Body>

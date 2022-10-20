@@ -9,7 +9,8 @@ const initialState = {
   allSeller: [],
   queryParams: {},
   errorMessage: "",
-  orders: []
+  orders: [],
+  cart: []
 };
 
 export default function rootReducer(state = initialState, actions) {
@@ -64,10 +65,10 @@ export default function rootReducer(state = initialState, actions) {
         seller: actions.payload,
       };
 
-    case "ADD_CART":
+    case 'ADD_CART':
       return {
         ...state,
-        orders: state.orders.push(actions.payload)
+        cart: actions.payload
       }
 
     default:

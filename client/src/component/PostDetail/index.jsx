@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { prodDetail, getSellers, postOrder } from "../../redux/actions";
+import { prodDetail, getSellers, postOrder, addCart } from "../../redux/actions";
 import "./postDetail.css";
 import { useParams } from "react-router-dom";
 import { Card, Badge, ListGroup, Button, Dropdown, DropdownButton } from "react-bootstrap";
@@ -16,7 +16,6 @@ const PostDetail = () => {
   // const seller = sellers.find(seller => seller.id === product.sellerId)
   useEffect(() => {
     dispatch(prodDetail(productId));
-    // dispatch(getSellers())
   }, []);
 
   const sellers = useSelector((state) => state.seller);
@@ -28,8 +27,9 @@ const PostDetail = () => {
   }
 
   const handleCart = (input) => {
+    input.amount > 0 &&
     console.log("🚀 ~ file: index.jsx ~ line 32 ~ handleCart ~ input", input)
-    dispatch(postOrder(input));
+    dispatch(addCart(input));
   }
 
   let seller = sellers.find((s) => s.id === product.sellerId);
@@ -145,7 +145,7 @@ const PostDetail = () => {
                       }
                     </DropdownButton>
                     <Button
-                      onClick={() => handleCart({amount: orders.amount, postId:post.id})}
+                      onClick={() => handleCart({amount: orders.amount, date: post.date, image: product.image, price: product.price, description: product.description})}
                       className="btn btn-dark m-1 p-1">
                       {" "}
                       <svg
