@@ -3,14 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { prodDetail, getSellers } from "../../redux/actions";
 import "./postDetail.css";
 import { useParams } from "react-router-dom";
-import { Card, Badge, ListGroup, Button } from "react-bootstrap";
+import { Card, Badge, ListGroup, Button, Dropdown, DropdownButton } from "react-bootstrap";
 import NavBar from "../NavBar";
 import Footer from "../Footer/index";
+import amountPostArray from "../../utils/amountPostArray";
 
 const PostDetail = () => {
   const { productId } = useParams();
   const dispatch = useDispatch();
   const product = useSelector((state) => state.prodDetails);
+  const orders = useSelector((state) => state.orders)
   // const seller = sellers.find(seller => seller.id === product.sellerId)
   useEffect(() => {
     dispatch(prodDetail(productId));
@@ -18,6 +20,12 @@ const PostDetail = () => {
   }, []);
 
   const sellers = useSelector((state) => state.seller);
+  let newOrder = {}
+  const handleAmount = (a) => {
+    newOrder = {...orders, amount: a};
+    console.log('cantidad:', newOrder);
+    
+  }
 
   let seller = sellers.find((s) => s.id === product.sellerId);
 
@@ -63,9 +71,8 @@ const PostDetail = () => {
                 </Card.Subtitle>
 
                 <Card.Link
-                  href={`https://maps.google.com/?q=${
-                    seller ? seller.adress : ""
-                  }, Buenos Aires, Argentina`}
+                  href={`https://maps.google.com/?q=${seller ? seller.adress : ""
+                    }, Buenos Aires, Argentina`}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -78,7 +85,8 @@ const PostDetail = () => {
                     <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
                     <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                   </svg>
-                  <span>{seller ? seller.adress : ""}</span>
+                  <span className='mx-2 text-capitalize'>{seller ? seller.adress : ""}</span>
+                  <span className='mx-2 text-capitalize'>({seller?.cities[0].name})</span>
                 </Card.Link>
               </ListGroup.Item>
 
@@ -105,15 +113,33 @@ const PostDetail = () => {
             </ListGroup>
           </Card.Body>
           <Card.Footer>
+
             {product.posts?.map((post) => {
               return (
                 <ListGroup.Item key={post.id}>
                   <div className="d-flex align-items-center">
                     <span className="mx-2">
-                      {post.amount} disponible(s) el{" "}
                       {new Date(post.date).toLocaleDateString("es-AR")}
                     </span>
-                    <Button className="btn btn-danger m-1 p-1">
+                    <DropdownButton  
+                    variant="light" 
+                    className="mx-4" 
+                    key={`newOrder_${newOrder.amount}`}
+                    title={newOrder?.amount || 'Cantidad'}
+                    >
+                      {
+                        amountPostArray(post).map(a => {
+
+                          return (
+                            <Dropdown.Item onClick={() => handleAmount(a)}  key={`${a}+${post.date}`} as="button">
+                              {a}
+                            </Dropdown.Item>
+                          )
+                        })
+
+                      }
+                    </DropdownButton>
+                    <Button className="btn btn-dark m-1 p-1">
                       {" "}
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

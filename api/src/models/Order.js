@@ -12,6 +12,10 @@ module.exports = (sequelize) => {
       type: DataTypes.DATEONLY,
       defaultValue: DataTypes.NOW,
     },
+    amount: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
     state: {
       type: DataTypes.ENUM("pendiente", "confirmado", "entregado", "cancelado"),
       defaultValue: "pendiente",
