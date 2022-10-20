@@ -191,3 +191,10 @@ export function postOrder(input) {
     }
   };
 }
+
+export function addCart(payload) {
+  return {
+    type: "ADD_CART",
+    payload
+  }
+}
