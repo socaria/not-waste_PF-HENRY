@@ -177,3 +177,16 @@ export const postProduct = (payload) => {
     return json;
   };
 };
+
+export function postPay(data) {
+  return fetch("http://localhost:3001/create_preference", {
+    method: "POST", // or 'PUT'
+    body: JSON.stringify(data), // data can be `string` or {object}!
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .catch((error) => console.error("Error:", error))
+    .then((response) => console.log("Success:", response));
+}
