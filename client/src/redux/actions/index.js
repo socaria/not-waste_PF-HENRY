@@ -155,23 +155,22 @@ export const postProduct = (payload) => {
 export function postPay(price) {
   return async function (dispatch) {
     try {
-      const response = await axios.post(
+      const res = await axios.post(
         "http://localhost:3001/create_preference",
         price
       );
       dispatch({
         type: "POST_PAY",
-        payload: response.id,
+        payload: res.id,
       });
-      return response.psgina_a_redireccionar;
+      return res.psgina_a_redireccionar;
     } catch (error) {
       console.log(error);
     }
   };
   /* return fetch("http://localhost:3001/create_preference", {
     method: "POST", // or 'PUT'
-    type: "POST_PAY",
-    payload: JSON.stringify(data), // data can be `string` or {object}!
+    body: JSON.stringify(data), // data can be `string` or {object}!
     headers: {
       "Content-Type": "application/json",
     },
@@ -180,19 +179,7 @@ export function postPay(price) {
     .catch((error) => console.error("Error:", error))
     .then((response) => console.log("Success:", response)); */
 }
-export function createActivity(payload) {
-  return async function (dispatch) {
-    try {
-      const act = await axios.post("http://localhost:3001/activity", payload);
-      dispatch({
-        type: "POST_ACTIVITY",
-        payload: act.data,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-}
+
 export function postOrder(input) {
   return async function (dispatch) {
     try {
@@ -204,5 +191,12 @@ export function postOrder(input) {
     } catch (error) {
       console.log(error);
     }
+  };
+}
+
+export function addCart(payload) {
+  return {
+    type: "ADD_CART",
+    payload,
   };
 }
