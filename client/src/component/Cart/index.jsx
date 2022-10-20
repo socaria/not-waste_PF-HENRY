@@ -27,7 +27,7 @@ function Cart() {
 
     dispatch(postPay(price));
     let res = postPay(price);
-    redirect(res.psgina_a_redireccionar);
+    // redirect(res.psgina_a_redireccionar);
 
     console.log(e);
   };
