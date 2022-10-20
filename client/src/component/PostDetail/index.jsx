@@ -30,7 +30,6 @@ const PostDetail = () => {
   const handleCart = (input) => {
     console.log("🚀 ~ file: index.jsx ~ line 32 ~ handleCart ~ input", input)
     dispatch(postOrder(input));
-    dispatch(redirecciona(input))
   }
 
   let seller = sellers.find((s) => s.id === product.sellerId);
