@@ -30,7 +30,7 @@ const registerSupplier = async (e, input, error) => {
   cookies.set("sellerCategory", `${input.category}`, { path: "/" });
   cookies.set("sellerCuit", `${input.cuit}`, { path: "/" });
   cookies.set("sellerCities", `${input.cities}`, { path: "/" });
-  window.location.href = "./perfilSeller";
+  // window.location.href = "./perfilSeller";
   dispatch(
     postSeller({
       phone,

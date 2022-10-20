@@ -1,49 +1,50 @@
 const mercadopago = require("mercadopago");
-const {ACCESS_TOKEN_MP_CRISTIAN} = process.env
+const { ACCESS_TOKEN_MP_CRISTIAN } = process.env;
 
 mercadopago.configure({
-  access_token: ACCESS_TOKEN_MP_CRISTIAN
-})
-  
+  access_token: ACCESS_TOKEN_MP_CRISTIAN,
+});
 
 const post_create_preference = async (req, res) => {
-  
-      let preference = {
-          items: [
-              {
-                  title: "Not Waste",
-                  unit_price: Number(req.body.price),
-                  quantity: 1
-              }
-          ],
-          back_urls: { //esto es donde redirecciona en cada caso
-              "success": "http://localhost:3001/feedback",
-              "failure": "http://localhost:3001/feedback",
-              "pending": "http://localhost:3001/feedback"
-        },
-          auto_return: "approved",
-      };
-      mercadopago.preferences.create(preference)
-          .then(function (response) {
-              res.json({
-                  id: response.body.id,
-                  psgina_a_redireccionar: response.body.init_point
-              });
-          })
-          .catch(function (error) {
-              console.log(error);
-          });
+  let preference = {
+    items: [
+      {
+        title: "Not Waste",
+        unit_price: Number(req.body.price),
+        quantity: 1,
+      },
+    ],
+    back_urls: {
+      //esto es donde redirecciona en cada caso
+      success: "http://localhost:3001/feedback",
+      failure: "http://localhost:3001/feedback",
+      pending: "http://localhost:3001/feedback",
+    },
+    auto_return: "approved",
   };
-  
-  const get_feedback = async (req, res) => {  //mercadopago me redirecciona aca con los datos por query
+  mercadopago.preferences
+    .create(preference)
+    .then(function (response) {
       res.json({
-      	Status: req.query.status,
-        id: req.query.preference_id,
-        queryCompleto: req.query
+        id: response.body.id,
+        psgina_a_redireccionar: response.body.init_point,
       });
-  };
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
 
-  module.exports = {
-    post_create_preference,
-    get_feedback
-  }
+const get_feedback = async (req, res) => {
+  //mercadopago me redirecciona aca con los datos por query
+  res.json({
+    Status: req.query.status,
+    id: req.query.preference_id,
+    queryCompleto: req.query,
+  });
+};
+
+module.exports = {
+  post_create_preference,
+  get_feedback,
+};

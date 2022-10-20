@@ -152,36 +152,38 @@ export const postProduct = (payload) => {
   };
 };
 
-export function postPay(data) {
+export function postPay(price) {
   return fetch("http://localhost:3001/create_preference", {
     method: "POST", // or 'PUT'
-    body: JSON.stringify(data), // data can be `string` or {object}!
+    body: JSON.stringify(price), // data can be `string` or {object}!
     headers: {
       "Content-Type": "application/json",
     },
   })
     .then((res) => res.json())
     .catch((error) => console.error("Error:", error))
-    .then((response) => console.log("Success:", response));
+    .then((response) => {
+      window.location.replace(response.psgina_a_redireccionar);
+    });
 }
 
 export function postOrder(input) {
   return async function (dispatch) {
     try {
-      const act = await axios.post('http://localhost:3001/order', input)
+      const act = await axios.post("http://localhost:3001/order", input);
       dispatch({
-        type: 'POST_ORDER',
-        payload: act.data
-      })
+        type: "POST_ORDER",
+        payload: act.data,
+      });
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 }
 
 export function addCart(payload) {
   return {
     type: "ADD_CART",
-    payload
-  }
+    payload,
+  };
 }
