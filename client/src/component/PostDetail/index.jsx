@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { prodDetail, getSellers } from "../../redux/actions";
+import { prodDetail, getSellers, postOrder } from "../../redux/actions";
 import "./postDetail.css";
 import { useParams } from "react-router-dom";
 import { Card, Badge, ListGroup, Button, Dropdown, DropdownButton } from "react-bootstrap";
@@ -12,7 +12,7 @@ const PostDetail = () => {
   const { productId } = useParams();
   const dispatch = useDispatch();
   const product = useSelector((state) => state.prodDetails);
-  const orders = useSelector((state) => state.orders)
+  const [orders, setOrders] = useState({})
   // const seller = sellers.find(seller => seller.id === product.sellerId)
   useEffect(() => {
     dispatch(prodDetail(productId));
@@ -20,11 +20,16 @@ const PostDetail = () => {
   }, []);
 
   const sellers = useSelector((state) => state.seller);
-  let newOrder = {}
-  const handleAmount = (a) => {
-    newOrder = {...orders, amount: a};
-    console.log('cantidad:', newOrder);
-    
+
+
+  function handleAmount(a) {
+    setOrders((orders) => ({ ...orders, amount: a }));
+    console.log('cantidad:', orders);
+  }
+
+  const handleCart = (input) => {
+    console.log("🚀 ~ file: index.jsx ~ line 32 ~ handleCart ~ input", input)
+    dispatch(postOrder(input));
   }
 
   let seller = sellers.find((s) => s.id === product.sellerId);
@@ -121,17 +126,17 @@ const PostDetail = () => {
                     <span className="mx-2">
                       {new Date(post.date).toLocaleDateString("es-AR")}
                     </span>
-                    <DropdownButton  
-                    variant="light" 
-                    className="mx-4" 
-                    key={`newOrder_${newOrder.amount}`}
-                    title={newOrder?.amount || 'Cantidad'}
+                    <DropdownButton
+                      variant="light"
+                      className="mx-4"
+                      key={`newOrder_${orders.amount}`}
+                      title={orders?.amount || 'Cantidad'}
                     >
                       {
                         amountPostArray(post).map(a => {
 
                           return (
-                            <Dropdown.Item onClick={() => handleAmount(a)}  key={`${a}+${post.date}`} as="button">
+                            <Dropdown.Item onClick={() => handleAmount(a)} key={`${a}+${post.date}`} as="button">
                               {a}
                             </Dropdown.Item>
                           )
@@ -139,7 +144,9 @@ const PostDetail = () => {
 
                       }
                     </DropdownButton>
-                    <Button className="btn btn-dark m-1 p-1">
+                    <Button
+                      onClick={() => handleCart({amount: orders.amount, postId:post.id})}
+                      className="btn btn-dark m-1 p-1">
                       {" "}
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

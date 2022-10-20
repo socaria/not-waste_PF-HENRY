@@ -14,16 +14,8 @@ const getApiInfo = async () => {
 };
 
 const getDbInfo = async () => {
-  return await Order.findAll({
-    include: {
-      model: Post,
-      attributes: ["id"],
-      through: {
-        attributes: [],
-      },
-    },
-  });
-};
+  return await Order.findAll();
+}
 
 const getAllData = async () => {
   const apiInfo = await getApiInfo();
@@ -106,32 +98,28 @@ const postOrder = async (req, res) => {
   } catch (e) {
     res.status(500).send(`${e}`)
   }
-  // let { state, review, posts, amount } = req.body;
-  // const newOrder = { state, review, postId, amount };
-
-  // try {
-  //   if (validateNewOrder(newOrder)) {
-  //     newOrder.state = newOrder.state.toLocaleLowerCase();
-  //     let orderCreated = await Order.create({ ...newOrder });
-  //     if (orderCreated) {
-  //       let postDB = await Post.findAll({
-  //         where: {
-  //           name: amount,
-  //         },
-  //       });
-
-  //       await orderCreated.addPosts(postDB);
-
-  //       return res.send("Orden creada con exito");
-  //     }
-  //   }
-  // } catch (error) {
-  //   console.log(error);
-  //   res.json({ msj: error.message });
-  // }
 };
+
+
+const deleteOrder = async (req, res) => {
+  const { id } = req.params;
+  let orderToDelete = await Order.findByPk(id)
+  if (!orderToDelete) {
+      return res
+          .status(404)
+          .json({
+              error: 'No hay orders con ese ID'
+          });
+  }
+  await Order.destroy({ where: { id: id } })
+  res.send(`La order con el id ${id} fue eliminado`);
+}
+
+
+
 module.exports = {
   getOrderById,
   getAllOrder,
   postOrder,
+  deleteOrder
 };
