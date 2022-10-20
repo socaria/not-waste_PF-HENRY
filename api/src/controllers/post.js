@@ -42,7 +42,6 @@ const putPost = async (req, res) => {
         amount,
         productId,
     } = req.body
-    let postToModify = await Post.findByPk(id)
     try {
         if (!date) { throw new Error('Debe definirse una fecha') }
         if (!amount) { throw new Error('Debe definirse una cantidad') }

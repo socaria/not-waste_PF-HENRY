@@ -84,7 +84,7 @@ function Home() {
             )}
             <select
               key={"filterBy_" + queryParams?.city}
-              value={queryParams?.price || ""}
+              value={queryParams?.city || "Ciudades"}
               className="selects"
               onChange={(e) => handleFiltersCity(e)}
             >
