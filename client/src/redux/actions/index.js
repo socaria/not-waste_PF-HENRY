@@ -37,18 +37,6 @@ export function getSellers(queryParams) {
       });
     }
   };
-  // return async function(dispatch) {
-  //     try {
-  //         const seller = await axios.get('http://localhost:3001/seller')
-  //         dispatch({
-  //             type: 'GET_SELLER',
-  //             payload: seller.data
-  //         })
-  //         // console.log(seller)
-  //     } catch (error) {
-  //         console.log(error)
-  //     }
-  // }
 }
 
 export function getCities() {
@@ -109,20 +97,6 @@ export function getDiet() {
     }
   };
 }
-
-// export function filtro(payload) {
-//     return {
-//         type: 'FILTRO_DIETA',
-//         payload
-//     }
-// }
-
-// export function orderPriceProduct(payload) {
-//     return {
-//         type: 'FILTRO_PRECIO',
-//         payload
-//     }
-// }
 
 export function getCustomer() {
   return async function (dispatch) {
@@ -189,4 +163,18 @@ export function postPay(data) {
     .then((res) => res.json())
     .catch((error) => console.error("Error:", error))
     .then((response) => console.log("Success:", response));
+}
+
+export function postOrder(input) {
+  return async function (dispatch) {
+    try {
+      const act = await axios.post('http://localhost:3001/order', input)
+      dispatch({
+        type: 'POST_ORDER',
+        payload: act.data
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
 }

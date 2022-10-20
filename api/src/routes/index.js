@@ -5,7 +5,7 @@ const { getSellers, postSeller, putSeller } = require("../controllers/seller");
 const { getProducts, postProduct, putProduct, deleteProduct, getProductsById } = require("../controllers/product");
 const { getPosts, postPost, putPost, deletePost } = require("../controllers/post");
 const { getManagerById, getAllManager, postManager, putManager } = require("../controllers/manager");
-const { getOrderById, getAllOrder, postOrder } = require("../controllers/order");
+const { getOrderById, getAllOrder, postOrder, deleteOrder } = require("../controllers/order");
 const { getDiets } = require("../controllers/diets");
 const {post_create_preference, get_feedback} = require('../controllers/mercadopago')
 
@@ -46,6 +46,7 @@ router.get("/city", getCityInfo);
 router.get("/order/:id", getOrderById);
 router.get("/order", getAllOrder);
 router.post("/order", postOrder);
+router.delete("/order/:id", deleteOrder)
 
 //Ruta de Dietas
 router.get("/diets", getDiets);
