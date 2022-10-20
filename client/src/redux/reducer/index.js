@@ -67,7 +67,7 @@ export default function rootReducer(state = initialState, actions) {
     case "ADD_CART":
       return {
         ...state,
-        orders: orders.push(actions.payload)
+        orders: state.orders.push(actions.payload)
       }
 
     default:
