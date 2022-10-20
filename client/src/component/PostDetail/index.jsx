@@ -130,7 +130,7 @@ const PostDetail = () => {
                       variant="light"
                       className="mx-4"
                       key={`newOrder_${orders.amount}`}
-                      title={orders?.amount || 'Cantidad'}
+                      title={orders.amount || 'Cantidad'}
                     >
                       {
                         amountPostArray(post).map(a => {
