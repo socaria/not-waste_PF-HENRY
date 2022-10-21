@@ -13,6 +13,7 @@ function ViewProductSeller() {
     // let db = VerifyProfile(log.email);  
     // <------------ esta es la linea que tiene que estar funcionando
     let db = VerifyProfile("sweetlove@gmail.com"); //<------------ linea hardcore
+    
     return (
         <>
             <NavBar />            
