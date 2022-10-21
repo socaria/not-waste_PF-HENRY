@@ -166,7 +166,7 @@ const PostDetail = () => {
                           date: post.date,
                           image: product.image,
                           price: product.price,
-                          description: product.description,
+                          name: product.name,
                         })
                       }
                       className="btn btn-dark m-1 p-1"

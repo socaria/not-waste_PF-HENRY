@@ -21,7 +21,6 @@ function Cart() {
 
   const cart = useSelector((state) => state.cart);
   const productId = cart.productId;
-  console.log("🚀 ~ file: index.jsx ~ line 23 ~ Cart ~ productId", productId);
 
   const price = cart?.amount * cart?.price;
 
