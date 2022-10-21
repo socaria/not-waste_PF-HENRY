@@ -72,7 +72,7 @@ function Register(props) {
     if (!input.cities.includes(e.target.value)) {
       setInput({
         ...input,
-        cities: [...input.cities, e.target.value],
+        cities: [e.target.value],
       });
     }
   };
