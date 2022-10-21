@@ -19,6 +19,16 @@ const Order = () => {
     // }, [])
 
 // catnidad, fecha del pedido, titulo del pedido 
+
+//current.customer
+// PEDIDOS EN CURSO
+// customer.orders.map(o => o.state === 'pendiente')
+// PEDIDOS ENTREGADOS
+// customer.orders.map(o => o.state === 'entregado')
+// con la orden accedo a cantidad, fecha. debo acceder a traves de post
+// a la info de fecha de entrega, y productId, y con eso acceder a 
+// image, name, y onClick a detail.
+
     return (
         <>
             <NavBar />
