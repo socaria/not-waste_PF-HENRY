@@ -212,6 +212,15 @@ export function postPost(data) {
     },
   })
     .then((res) => res.json())
+    .then((response) => console.log("Success:", response))
     .catch((error) => console.error("Error:", error))
-    .then((response) => console.log("Success:", response));
+}
+
+export function deleteProduct(data) {
+  return fetch(`http://localhost:3001/product/${data}`, {
+    method: "DELETE",
+  })
+  .then((res) => res.json())
+  .then((response) => console.log("Success:", response))
+  .catch((error) => console.error("Error:", error))
 }
