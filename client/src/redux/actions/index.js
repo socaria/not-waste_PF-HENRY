@@ -98,19 +98,34 @@ export function getDiet() {
   };
 }
 
-export function getCustomer() {
+export function getCustomer(email) {
+  let url = "http://localhost:3001/customer";
+  if (email) {
+    url = `http://localhost:3001/customer?email=${email}`
+  }
+  console.log("🚀 ~ file: index.js ~ line 103 ~ getCustomer ~ url", url)
+  
   return async function (dispatch) {
-    try {
-      const customer = await axios.get("http://localhost:3001/customer");
+    
+      const response = await fetch(url);
+      if (response.ok) {
+        const json = await response.json();
+        console.log("🚀 ~ file: index.js ~ line 111 ~ json", json)
       dispatch({
         type: "GET_CUSTOMER",
-        payload: customer.data,
+        payload: json,
       });
-    } catch (error) {
-      console.log(error);
+    } else {
+      dispatch({
+        type: "REQUEST_ERROR",
+        payload: "La búsqueda no arrojó resultados",
+      });
     }
-  };
+  }
 }
+
+
+    
 
 export function postCustomer(data) {
   return fetch("http://localhost:3001/customer", {

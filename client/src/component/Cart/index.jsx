@@ -24,7 +24,6 @@ function Cart() {
   const price = cart?.amount * cart?.price;
   
   const handlePayment = async (cart) => {
-    console.log("🚀 ~ file: index.jsx ~ line 25 ~ Cart ~ cart", cart)
     dispatch(postOrder(cart));
     dispatch(postPay({ price: price }));
   };
