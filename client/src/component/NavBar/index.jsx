@@ -11,6 +11,7 @@ import { useAuth0 } from "@auth0/auth0-react"; //esto es un hook que da auth0
 import AuthProfile from "../AuthProfile";
 import VerifyProfile from "../VerifyProfile";
 import "../NavBar/Navbar.css";
+import { Profile } from "../Hamburguesa";
 
 function NavBar() {
   const { isAuthenticated } = useAuth0(); //isAuthenticated me informa si es usuario esta logueado o no
@@ -43,7 +44,7 @@ function NavBar() {
             <Cart />
 
             <div className="vr bg-dark"></div>
-            {isAuthenticated ? <LogoutButton /> : <LogingButton />}
+            {isAuthenticated ? <Profile {...db}/> : <LogingButton />}
             <div className="vr bg-dark"></div>
             {!db.exists && (
               <li className="nav-item">

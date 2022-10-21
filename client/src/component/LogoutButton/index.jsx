@@ -1,4 +1,4 @@
-import { Profile } from "../Perfile/index";
+import { Profile } from "../Hamburguesa/index";
 
 function LogoutButton() {
   return <Profile />;
