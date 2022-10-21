@@ -42,9 +42,9 @@ function NavBar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <Navbar className="navbar-nav ms-auto mx-5">
             <Cart />
-
+            {console.log(isAuthenticated, "AQUIIII")}
             <div className="vr bg-dark"></div>
-            {isAuthenticated ? <Profile {...db}/> : <LogingButton />}
+            {isAuthenticated ? <Profile {...db} /> : <LogingButton />}
             <div className="vr bg-dark"></div>
             {!db.exists && (
               <li className="nav-item">
