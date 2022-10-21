@@ -1,9 +1,9 @@
 import { v4 as uuidv4 } from "uuid";
-import registerPost from "./middleware";
+import { registerPost, disDeleteProduct } from "./middleware";
 
 
 export default function createcards(data) {
-
+     
         // hace referencia a que no se puede activar un producto en una fecha anterior ------------->
         var today = new Date();
         var dd = today.getDate();
@@ -25,6 +25,13 @@ export default function createcards(data) {
         document.getElementById(e.target.name).reset()
         }
 
+        const eliminar = (e) => {
+            setTimeout(() => {
+                window.location.reload()
+            }, 100);
+            disDeleteProduct(e.target.name)
+        }
+
         return (
             data ? data.map((e) =>
                 <div key={uuidv4()} className="card text-bg-light w-75 m-3" height={"250px"}>
@@ -34,7 +41,7 @@ export default function createcards(data) {
                         </div>
                         <div className="col-md-8">
                             <div className="card-body" >
-                                <button className="btn btn-outline-danger col-md-4 mb-2" type="button" onClick={() => alert("esta seguro que desea eliminar el producto?")}>Eliminar producto</button>
+                                <button className="btn btn-outline-danger col-md-4 mb-2" type="button" name={e.id} onClick={(event) => eliminar(event)}>Eliminar producto</button>
                                 <h5 className="card-title">Nombre: {e.name}</h5>
                                 <p className="card-text">Descripcion: {e.description}</p>
                                 <p className="card-text"><small className="text-muted">Precio: ${e.price}</small></p>

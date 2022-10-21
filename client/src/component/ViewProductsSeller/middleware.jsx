@@ -1,12 +1,14 @@
 import { useDispatch } from "react-redux";
-import { postPost } from "../../redux/actions";
+import { deleteProduct, postPost } from "../../redux/actions";
 
 const dispatch = useDispatch
 
 function registerPost (data) {
-
     dispatch(postPost(data))
-
 }
 
-export default registerPost
+function disDeleteProduct(data) {
+    dispatch(deleteProduct(data))
+}
+
+export {registerPost, disDeleteProduct}
