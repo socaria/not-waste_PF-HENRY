@@ -169,7 +169,7 @@ const PostDetail = () => {
                           price: product.price,
                           name: product.name,
                           customerId: customer.id,
-                          productId: product.id
+                          postId: post.id
                         })
                       }
                       className="btn btn-dark m-1 p-1"
