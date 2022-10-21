@@ -4,9 +4,16 @@ const { getAllPosts } = require("./utils/getAllPosts")
 
 const getPosts = async (req, res) => {
     let posts;
+    const id = req.query.id
+    let respuesta = {respuesta: "no existe el post"};
     try {
         posts = await getAllPosts();
-        res.status(200).send(posts);
+        if (id) {for (let i = 0; i < posts.length; i++) {
+            if(posts[i].id === id) {
+                respuesta = posts[i]
+            }
+        }} else respuesta = posts
+        res.status(200).send(respuesta);
     } catch (e) {
         res.status(404).send(e.message);
     }

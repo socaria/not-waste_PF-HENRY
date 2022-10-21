@@ -110,7 +110,7 @@ export function getCustomer(email) {
       const response = await fetch(url);
       if (response.ok) {
         const json = await response.json();
-        console.log("🚀 ~ file: index.js ~ line 111 ~ json", json)
+
       dispatch({
         type: "GET_CUSTOMER",
         payload: json,
@@ -220,6 +220,13 @@ export function deleteProduct(data) {
   return fetch(`http://localhost:3001/product/${data}`, {
     method: "DELETE",
   })
+  .then((res) => res.json())
+  .then((response) => console.log("Success:", response))
+  .catch((error) => console.error("Error:", error))
+}
+
+export function getpost(id) {
+  fetch(`http://localhost:3001/post/?id=${id}`)
   .then((res) => res.json())
   .then((response) => console.log("Success:", response))
   .catch((error) => console.error("Error:", error))
