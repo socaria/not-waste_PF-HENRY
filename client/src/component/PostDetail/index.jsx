@@ -168,7 +168,8 @@ const PostDetail = () => {
                           image: product.image,
                           price: product.price,
                           name: product.name,
-                          customerId: customer.id
+                          customerId: customer.id,
+                          productId: product.id
                         })
                       }
                       className="btn btn-dark m-1 p-1"
