@@ -9,6 +9,8 @@ import Footer from '../Footer/index';
 import ProductItem from '../ProductItem/ProductItem';
 
 const Order = () => {
+    const customer = useSelector(state => state.customer)
+    console.log("🚀 ~ file: index.jsx ~ line 13 ~ Order ~ customer", customer)
     // const { productId } = useParams()
     // const dispatch = useDispatch()
     // const product = useSelector(state => state.prodDetails)
@@ -27,7 +29,7 @@ const Order = () => {
 // customer.orders.map(o => o.state === 'entregado')
 // con la orden accedo a cantidad, fecha. debo acceder a traves de post
 // a la info de fecha de entrega, y productId, y con eso acceder a 
-// image, name, y onClick a detail.
+// image, name, y onClick a detail.0
 
     return (
         <>
@@ -44,7 +46,7 @@ const Order = () => {
                             <div className='d-flex row'>
                                 <Card.Subtitle className="mb-2 text-muted ">Pedidos en curso</Card.Subtitle>
                                 {/* se agrega un product item por cada orden que esté en estado "en curso" */}
-                                <ProductItem />
+                                {/* <ProductItem /> */}
                                 <div className='d-flex column justify-content-between'>
                                     <span>Fecha de la orden</span>
                                     <span>|</span>
@@ -57,7 +59,7 @@ const Order = () => {
                             <div>
                                 <Card.Subtitle className="mb-2 text-muted ">Pedidos entregados</Card.Subtitle>
                                 {/* se agrega un product item por cada orden que esté en estado "entregado" */}
-                                <ProductItem />
+                                {/* <ProductItem /> */}
                             </div>
                         </ListGroup.Item>
 

@@ -5,14 +5,13 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import { Button, Card, ListGroup } from "react-bootstrap";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from "react-redux";
-import { postPay, prodDetail } from "../../redux/actions";
-import { useEffect } from "react";
-import axios from "axios";
+import { postOrder, postPay, prodDetail } from "../../redux/actions";
+
 
 function Cart() {
   const { isAuthenticated } = useAuth0();
 
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const [pay, setPay] = useState({});
 
@@ -23,13 +22,11 @@ function Cart() {
   const productId = cart.productId;
 
   const price = cart?.amount * cart?.price;
-
-  const handlePayment = async (e) => {
-    e.preventDefault();
-    console.log(e);
-    console.log(e.target.value);
-
-    dispatch(postPay({ price: e.target.value }));
+  
+  const handlePayment = async (cart) => {
+    console.log("🚀 ~ file: index.jsx ~ line 25 ~ Cart ~ cart", cart)
+    dispatch(postOrder(cart));
+    dispatch(postPay({ price: price }));
   };
 
   return (
@@ -100,7 +97,7 @@ function Cart() {
                   <Button
                     variant="dark"
                     className="d-flex w-50 justify-content-center"
-                    onClick={(e) => handlePayment(e)}
+                    onClick={() => handlePayment(cart)}
                     value={price}
                   >
                     Pagar
