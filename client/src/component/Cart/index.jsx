@@ -7,35 +7,30 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from "react-redux";
 import { postPay, prodDetail } from "../../redux/actions";
 import { useEffect } from "react";
-
+import axios from "axios";
 
 function Cart() {
   const { isAuthenticated } = useAuth0();
 
   const dispatch = useDispatch;
   const [show, setShow] = useState(false);
+  const [pay, setPay] = useState({});
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const cart = useSelector(state => state.cart);
+  const cart = useSelector((state) => state.cart);
   const productId = cart.productId;
-  console.log("🚀 ~ file: index.jsx ~ line 23 ~ Cart ~ productId", productId)
+  console.log("🚀 ~ file: index.jsx ~ line 23 ~ Cart ~ productId", productId);
 
-
+  const price = cart?.amount * cart?.price;
 
   const handlePayment = async (e) => {
     e.preventDefault();
-    let total = 1200;
-    let res = await fetch("http://localhost:3001/create_preference", {
-      method: "POST", // or 'PUT'
-      body: JSON.stringify(total), // data can be `string` or {object}!
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    dispatch(postPay(total));
     console.log(e);
+    console.log(e.target.value);
+
+    dispatch(postPay({ price: e.target.value }));
   };
 
   return (
@@ -78,7 +73,7 @@ function Cart() {
               <span className="mx-4 mt-2">Tu Carrito</span>
             </Offcanvas.Title>
           </Offcanvas.Header>
-          {cart.amount ?
+          {cart.amount ? (
             <Offcanvas.Body>
               <Card>
                 <Card.Header className="d-flex row">
@@ -94,7 +89,7 @@ function Cart() {
                     <ListGroup.Item>
                       <div className="d-flex justify-content-between">
                         <span>Total</span>
-                        <span className="fw-bold text-success">${cart?.amount * cart?.price}</span>
+                        <span className="fw-bold text-success">${price}</span>
                       </div>
                     </ListGroup.Item>
                     <ListGroup.Item className="d-flex row">
@@ -107,13 +102,16 @@ function Cart() {
                     variant="dark"
                     className="d-flex w-50 justify-content-center"
                     onClick={(e) => handlePayment(e)}
+                    value={price}
                   >
                     Pagar
                   </Button>
                 </Card.Footer>
               </Card>
             </Offcanvas.Body>
-            : <div className="cart-message">Tu carrito está vacío!</div>}
+          ) : (
+            <div className="cart-message">Tu carrito está vacío!</div>
+          )}
         </Offcanvas>
       </div>
     </div>

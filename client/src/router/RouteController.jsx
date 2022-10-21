@@ -9,6 +9,8 @@ import Developers from "../component/Developers";
 import PostDetail from "../component/PostDetail";
 import FormProduct from "../component/FormProducts";
 import Order from "../component/Order";
+import ViewProductSeller from "../component/ViewProductsSeller";
+import MyShopping from "../component/MyShopping";
 
 function RouteController() {
   return (
@@ -22,6 +24,8 @@ function RouteController() {
       <Route path="/home/:productId" element={<PostDetail />} />
       <Route path="/formproduct" element={<FormProduct />} />
       <Route path="/customer/orders" element={<Order />}/>
+      <Route exact path="/viewproductseller" element={<ViewProductSeller />} />
+      <Route path="/myShopping" element={<MyShopping />} />
     </Routes>
   );
 }
