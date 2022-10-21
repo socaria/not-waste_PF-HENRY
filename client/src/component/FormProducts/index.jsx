@@ -21,7 +21,7 @@ function FormProduct() {
 
   let log = AuthProfile("profile"); // esto puede ser {}, true o false
   let db = VerifyProfile(log.email);
-  console.log(db, 'DBBBB')
+  //console.log(db, 'DBBBB')
 
   const dispatch = useDispatch();
   const [input, setInput] = useState({
@@ -84,6 +84,16 @@ function FormProduct() {
       };
       console.log(inputMod, "INPUTMOD");
       dispatch(postProduct(inputMod));
+      setInput({
+        name: "",
+        price: "",
+        realValue: "",
+        image: "",
+        description: "",
+        stock: "",
+        diets: [],
+        sellerId: db.id
+      })
     } else {
       alert("Datos Faltantes");
     }
