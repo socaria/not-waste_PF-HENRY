@@ -1,9 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
-import { useDispatch } from "react-redux";
-import { postOrder } from "../../redux/actions";
+import registerPost from "./middleware";
 
-
-const dispatch = useDispatch;
 
 export default function createcards(data) {
 
@@ -21,19 +18,10 @@ export default function createcards(data) {
         today = yyyy + '-' + mm + '-' + dd;  //<------------ hace referencia a que no se puede activar un producto en una fecha anterior
 
 
-        const posteo = async function (e) {
+        const posteo = (e) => {
         e.preventDefault()
         let data = {productId: e.target.name, date: e.target[0].value, amount: Number(e.target[1].value)}
-        // dispatch(postOrder(data))
-        console.log(data)
-        const res = await fetch(
-            "http://localhost:3001/post",
-            {
-              method: "POST",
-              body: JSON.stringify(data),
-            }
-          );
-          console.log(res)
+        registerPost(data)
         document.getElementById(e.target.name).reset()
         }
 
@@ -54,7 +42,7 @@ export default function createcards(data) {
                                 <p className="card-text"><small className="text-muted">Stock: {e.stock}</small></p>
                                 <p className="card-text"><small className="text-muted">Publicaciones activas: {e.posts.length ? e.posts.length : " Aun no publico este producto, haga click abajo para que sea visible por el cliente."}</small></p>
                             </div>
-                            <form id={e.id} name={e.id} onChange={(e) => console.log(e)} onSubmit={(e) => posteo(e)}>
+                            <form id={e.id} name={e.id} onSubmit={(e) => posteo(e)}>
                                 <div className="card-body" >
                                     <p>Seleccione fecha y cantidad para realizar una publicacion:</p>
                                     <input type="date" min={today} required></input>
