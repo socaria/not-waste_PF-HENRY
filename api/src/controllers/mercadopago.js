@@ -16,9 +16,9 @@ const post_create_preference = async (req, res) => {
     ],
     back_urls: {
       //esto es donde redirecciona en cada caso
-      success: "http://localhost:3001/feedback",
-      failure: "http://localhost:3001/feedback",
-      pending: "http://localhost:3001/feedback",
+      success: "http://localhost:3000/customer/orders",
+      failure: "http://localhost:3000/home",
+      pending: "http://localhost:3000/home",
     },
     auto_return: "approved",
   };
