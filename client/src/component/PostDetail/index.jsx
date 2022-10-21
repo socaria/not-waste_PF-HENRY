@@ -31,6 +31,7 @@ const PostDetail = () => {
   }, []);
 
   const sellers = useSelector((state) => state.seller);
+  const customer = useSelector((state) => state.customer)
 
   function handleAmount(a) {
     setOrders((orders) => ({ ...orders, amount: a }));
@@ -167,6 +168,7 @@ const PostDetail = () => {
                           image: product.image,
                           price: product.price,
                           name: product.name,
+                          customerId: customer.id
                         })
                       }
                       className="btn btn-dark m-1 p-1"
