@@ -19,7 +19,6 @@ export default function createcards(data) {
 
 
         const posteo = (e) => {
-        e.preventDefault()
         let data = {productId: e.target.name, date: e.target[0].value, amount: Number(e.target[1].value)}
         registerPost(data)
         document.getElementById(e.target.name).reset()
