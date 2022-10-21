@@ -10,9 +10,9 @@ function ViewProductSeller() {
 
    //esta es la linea que tiene que estar funcionando ------->
     let log = AuthProfile("profile"); // esto puede ser {}, true o false
-    // let db = VerifyProfile(log.email);  
+    let db = VerifyProfile(log.email);  
     // <------------ esta es la linea que tiene que estar funcionando
-    let db = VerifyProfile("sweetlove@gmail.com"); //<------------ linea hardcore
+   // let db = VerifyProfile("sweetlove@gmail.com"); //<------------ linea hardcore
     
     return (
         <>
