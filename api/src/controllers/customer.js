@@ -1,15 +1,18 @@
-const { Customer, City } = require("../db");
+const { Customer, City, Order } = require("../db");
 
 const getCallCustomer = async (req, res) => {
   try {
     let infoDb = await Customer.findAll({
-      include: {
+      include: [{
         model: City,
         attributes: ["name"],
         through: {
           attributes: [],
         },
       },
+      {
+        model: Order
+      }]
     });
     if (!infoDb.length) {
       return res.status(400).send("No hay nada en la base de datos");
