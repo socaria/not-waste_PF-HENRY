@@ -17,13 +17,13 @@ const ProductItem = ({cart}) => {
         <>
 
             <div className='d-flex align-items-center mw-10r justify-content-around'>
-                {/* <span className='font-weight-normal'>{cart.amount}</span> */}
-                {/* <span className='font-weight-normal'>|</span>
-                <span className='font-weight-normal'>{cart.description}</span>
-                <span className='font-weight-normal'>|</span>
-                <span className='font-weight-normal'>{cart.price}</span> */}
+                <span className='mr-4 font-weight-normal'>{cart.amount}</span>
+                {/* <span className='font-weight-normal'>|</span> */}
+                <span className='ms-4 text-capitalize font-weight-normal'>{cart.name}</span>
+                {/* <span className='font-weight-normal'>|</span> */}
+                <span className='font-weight-normal'>{cart.price}</span>
                 <Image roundedCircle className='product-image' src='https://www.schaer.com/sites/default/files/styles/landscape_lg/public/2022-02/SCHAER_BK_XL%20SANDWICH.jpg?h=29bae58f&itok=K2jqqlnH' />
-                <CartButton className='dark' onClick={e => handleCart(e)}/>
+                {/* <CartButton className='dark' onClick={e => handleCart(e)}/> */}
             </div>
         </>
     )

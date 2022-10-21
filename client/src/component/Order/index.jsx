@@ -18,6 +18,7 @@ const Order = () => {
     //     // dispatch(getSellers())
     // }, [])
 
+// catnidad, fecha del pedido, titulo del pedido 
     return (
         <>
             <NavBar />
