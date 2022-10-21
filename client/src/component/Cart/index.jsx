@@ -7,10 +7,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from "react-redux";
 import { postOrder, postPay, prodDetail } from "../../redux/actions";
 
-
 function Cart() {
-  const { isAuthenticated } = useAuth0();
-
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const [pay, setPay] = useState({});
@@ -22,10 +19,17 @@ function Cart() {
   const productId = cart.productId;
 
   const price = cart?.amount * cart?.price;
-  
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
+
   const handlePayment = async (cart) => {
-    dispatch(postOrder(cart));
-    dispatch(postPay({ price: price }));
+    /* dispatch(postOrder(cart));
+    dispatch(postPay({ price: price })); */
+    if (isAuthenticated) {
+      dispatch(postOrder(cart));
+      dispatch(postPay({ price: price }));
+    } else {
+      loginWithRedirect();
+    }
   };
 
   return (
