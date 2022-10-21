@@ -19,8 +19,10 @@ import {
 import NavBar from "../NavBar";
 import Footer from "../Footer/index";
 import amountPostArray from "../../utils/amountPostArray";
+import { useAuth0 } from '@auth0/auth0-react'
 
 const PostDetail = () => {
+  const {user} = useAuth0();
   const { productId } = useParams();
   const dispatch = useDispatch();
   const product = useSelector((state) => state.prodDetails);
@@ -31,7 +33,9 @@ const PostDetail = () => {
   }, []);
 
   const sellers = useSelector((state) => state.seller);
-  const customer = useSelector((state) => state.customer)
+  const customers = useSelector((state) => state.customer)
+  const customer = customers.find(c => c.email === user.email)
+  console.log("🚀 ~ file: index.jsx ~ line 35 ~ PostDetail ~ customer", customer)
 
   function handleAmount(a) {
     setOrders((orders) => ({ ...orders, amount: a }));
@@ -168,7 +172,8 @@ const PostDetail = () => {
                           image: product.image,
                           price: product.price,
                           name: product.name,
-                          customerId: customer.id
+                          customerId: customer.id,
+                          postId: post.id
                         })
                       }
                       className="btn btn-dark m-1 p-1"
