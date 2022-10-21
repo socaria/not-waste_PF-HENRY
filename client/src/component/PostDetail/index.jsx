@@ -5,6 +5,7 @@ import {
   getSellers,
   postOrder,
   addCart,
+  getpost,
 } from "../../redux/actions";
 import "./postDetail.css";
 import { useParams } from "react-router-dom";
@@ -23,6 +24,9 @@ import { useAuth0 } from '@auth0/auth0-react'
 
 const PostDetail = () => {
   let URLsearch = window.location.search.slice(1);
+  useEffect(() => {
+    getpost(URLsearch)
+  })
   // const {user} = useAuth0();
   // const { productId } = useParams();
   // const dispatch = useDispatch();
