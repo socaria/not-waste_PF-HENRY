@@ -202,3 +202,16 @@ export function addCart(payload) {
     payload,
   };
 }
+
+export function postPost(data) {
+  return fetch("http://localhost:3001/post", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .catch((error) => console.error("Error:", error))
+    .then((response) => console.log("Success:", response));
+}
