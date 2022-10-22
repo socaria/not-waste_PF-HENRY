@@ -17,27 +17,7 @@ function Register(props) {
     dispatch(getCities());
   }, [dispatch]);
 
-  function getFormValues() {
-    const storedValues = localStorage.getItem("form");
-    if (!storedValues)
-      return {
-        email: props.email.toLowerCase(),
-        name: props.name.toLowerCase(),
-        imageurl: "",
-        namesupplier: "",
-        phone: "",
-        image: {},
-        adress: "",
-        cities: [],
-        cuit: "",
-        category: "",
-      };
-    return JSON.parse(storedValues);
-  }
-
-  const [input, setInput] = useState(
-    getFormValues(),
-    { supplier: false } /* {
+  const [input, setInput] = useState({
     supplier: false,
     email: props.email.toLowerCase(),
     name: props.name.toLowerCase(),
@@ -49,15 +29,14 @@ function Register(props) {
     cities: [],
     cuit: "",
     category: "",
-  } */
-  );
+  });
 
   useEffect(() => {
-    localStorage.setItem("form", JSON.stringify(input));
+    localStorage.setItem("formSeller", JSON.stringify(input));
   }, [input]);
 
   useEffect(() => {
-    const storedValues = localStorage.getItem("form");
+    const storedValues = localStorage.getItem("formSeller");
     setInput(JSON.parse(storedValues));
   }, []);
 
@@ -105,10 +84,6 @@ function Register(props) {
         cities: [e.target.value],
       });
     }
-    /* setInput({
-      ...input,
-      cities: [e.target.value],
-    }); */
   };
 
   const option_categories = () => {
@@ -143,6 +118,7 @@ function Register(props) {
         reload();
       }, 3000);
       document.getElementById("buttonRegister").disabled = true;
+      localStorage.removeItem("formSeller");
     } else {
       e.preventDefault();
       alert(
@@ -224,7 +200,6 @@ function Register(props) {
           <input
             className="form-check-input me-3"
             type="checkbox"
-            /*  aria-checked="true" //{toString(input.supplier)} */
             role="switch"
             id="flexSwitchCheckDefault"
             name="supplier"

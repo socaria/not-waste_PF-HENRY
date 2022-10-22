@@ -17,9 +17,10 @@ function FormProduct() {
 
   let log = AuthProfile("profile");
   let db = VerifyProfile(log.email);
+  const diets = useSelector((state) => state.diet);
 
   function getFormValues() {
-    const storedValues = localStorage.getItem("form");
+    const storedValues = localStorage.getItem("formProducts");
     if (!storedValues)
       return {
         name: "",
@@ -38,10 +39,8 @@ function FormProduct() {
   const [input, setInput] = useState(getFormValues());
 
   useEffect(() => {
-    localStorage.setItem("form", JSON.stringify(input));
+    localStorage.setItem("formProducts", JSON.stringify(input));
   }, [input]);
-
-  const diets = useSelector((state) => state.diet);
 
   useEffect(() => {
     dispatch(getDiet());
@@ -86,8 +85,8 @@ function FormProduct() {
       };
       console.log(inputMod, "INPUTMOD");
       dispatch(postProduct(inputMod));
-      localStorage.removeItem("form");
-      /* setInput({
+      localStorage.removeItem("formProducts");
+      setInput({
         name: "",
         price: "",
         realValue: "",
@@ -96,7 +95,7 @@ function FormProduct() {
         stock: "",
         diets: [],
         sellerId: db.id,
-      }); */
+      });
     } else {
       alert("Datos Faltantes");
     }
