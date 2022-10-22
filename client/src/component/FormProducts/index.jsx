@@ -9,7 +9,7 @@ import { getDiet, postProduct } from "../../redux/actions";
 import { validate } from "../FormProducts/validate";
 import VerifyProfile from "../VerifyProfile";
 import AuthProfile from "../AuthProfile";
-import './FormProducts.css'
+import "./FormProducts.css";
 import { Link } from "react-router-dom";
 
 function FormProduct() {
@@ -18,7 +18,7 @@ function FormProduct() {
   let log = AuthProfile("profile");
   let db = VerifyProfile(log.email);
 
-  function getFormValues() {
+  /* function getFormValues() {
     const storedValues = localStorage.getItem("form");
     if (!storedValues)
       return {
@@ -32,14 +32,23 @@ function FormProduct() {
         sellerId: db.id,
       };
     return JSON.parse(storedValues);
-  }
+  } */
 
   const dispatch = useDispatch();
-  const [input, setInput] = useState(getFormValues());
+  const [input, setInput] = useState({
+    name: "",
+    price: "",
+    realValue: "",
+    image: "",
+    description: "",
+    stock: "",
+    diets: [],
+    sellerId: db.id,
+  });
 
-  useEffect(() => {
+  /*  useEffect(() => {
     localStorage.setItem("form", JSON.stringify(input));
-  }, [input]);
+  }, [input]); */
 
   const diets = useSelector((state) => state.diet);
 
@@ -86,6 +95,7 @@ function FormProduct() {
       };
       console.log(inputMod, "INPUTMOD");
       dispatch(postProduct(inputMod));
+      // localStorage.removeItem("form");
       setInput({
         name: "",
         price: "",
@@ -231,12 +241,16 @@ function FormProduct() {
             ))}
           </Form.Group>
           <div className="">
-            <Button type="submit" className='bg-light mx-5'>
-              <Link to='/home' className="text-decoration-none">
+            <Button type="submit" className="bg-light mx-5">
+              <Link to="/home" className="text-decoration-none">
                 Volver
               </Link>
             </Button>
-            <Button type="submit" onClick={(e) => handleSubmit(e)} className='mx-5'>
+            <Button
+              type="submit"
+              onClick={(e) => handleSubmit(e)}
+              className="mx-5"
+            >
               Crear Producto
             </Button>
           </div>
