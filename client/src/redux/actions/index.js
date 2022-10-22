@@ -23,6 +23,11 @@ export function getSellers(queryParams) {
     url.searchParams.append("sortBy", queryParams?.sortBy);
   }
 
+  
+  if (queryParams?.email) {
+    url.searchParams.append("email", queryParams?.email);
+  }
+
   return async function (dispatch) {
     const response = await fetch(url);
 
