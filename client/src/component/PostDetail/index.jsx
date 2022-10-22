@@ -23,16 +23,16 @@ const PostDetail = () => {
   }, []);
   
   
-  const post = useSelector(state => state.postDetail)
+  let post = useSelector(state => state.postDetail)
   const {user} = useAuth0();
-  const productId = post?.productId
-  const product = useSelector((state) => state.prodDetails);
+  let productId = post?.productId
+  let product = useSelector((state) => state.prodDetails);
   const [orders, setOrders] = useState({});
 
   
-  const sellers = useSelector((state) => state.seller);
-  const customers = useSelector((state) => state.customer)
-  const customer = customers.find(c => c.email === user.email)
+  let sellers = useSelector((state) => state.seller);
+  let customers = useSelector((state) => state.customer)
+  let customer = customers.find(c => c.email === user.email)
 
   function handleAmount(a) {
     setOrders((orders) => ({ ...orders, amount: a }));
