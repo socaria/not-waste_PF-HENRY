@@ -18,7 +18,7 @@ function FormProduct() {
   let log = AuthProfile("profile");
   let db = VerifyProfile(log.email);
 
-  /* function getFormValues() {
+  function getFormValues() {
     const storedValues = localStorage.getItem("form");
     if (!storedValues)
       return {
@@ -32,23 +32,14 @@ function FormProduct() {
         sellerId: db.id,
       };
     return JSON.parse(storedValues);
-  } */
+  }
 
   const dispatch = useDispatch();
-  const [input, setInput] = useState({
-    name: "",
-    price: "",
-    realValue: "",
-    image: "",
-    description: "",
-    stock: "",
-    diets: [],
-    sellerId: db.id,
-  });
+  const [input, setInput] = useState(getFormValues());
 
-  /*  useEffect(() => {
+  useEffect(() => {
     localStorage.setItem("form", JSON.stringify(input));
-  }, [input]); */
+  }, [input]);
 
   const diets = useSelector((state) => state.diet);
 
@@ -95,8 +86,8 @@ function FormProduct() {
       };
       console.log(inputMod, "INPUTMOD");
       dispatch(postProduct(inputMod));
-      // localStorage.removeItem("form");
-      setInput({
+      localStorage.removeItem("form");
+      /* setInput({
         name: "",
         price: "",
         realValue: "",
@@ -105,13 +96,19 @@ function FormProduct() {
         stock: "",
         diets: [],
         sellerId: db.id,
-      });
+      }); */
     } else {
       alert("Datos Faltantes");
     }
   }
 
   function handleSelectDiet(e) {
+    if (!input.diets.length) {
+      setError({
+        ...error,
+        diets: undefined,
+      });
+    }
     if (!input.diets.includes(e.target.value)) {
       setInput({
         ...input,
@@ -231,14 +228,16 @@ function FormProduct() {
                 );
               })}
             </Form.Select>
-            {input.diets?.map((diet, i) => (
-              <div key={i}>
-                <p>{diet}</p>
-                <button value={diet} onClick={(e) => handleDelete(e)}>
-                  X
-                </button>
-              </div>
-            ))}
+            <div>
+              {input.diets?.map((diet, i) => (
+                <div key={i}>
+                  <p>{diet}</p>
+                  <button value={diet} onClick={(e) => handleDelete(e)}>
+                    X
+                  </button>
+                </div>
+              ))}
+            </div>
           </Form.Group>
           <div className="">
             <Button type="submit" className="bg-light mx-5">
