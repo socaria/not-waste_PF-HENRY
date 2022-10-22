@@ -78,8 +78,19 @@ const deletePost = async (req, res) => {
     await Post.destroy({ where: { id: id } })
     res.send(`El producto con el id ${id} fue eliminado`);
 }
+const getPostById = async (req, res) => {
+    let { id } = req.params;
+    try {
+        let postId = await Post.findByPk(id);
+    
+        res.status(200).send(postId);
+    } catch (e) {
+        res.status(404).send('No hay posts de ese id');
+    }
+};
 
 module.exports = {
+    getPostById,
     getPosts,
     postPost,
     putPost,

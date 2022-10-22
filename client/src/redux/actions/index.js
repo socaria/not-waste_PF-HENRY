@@ -221,7 +221,7 @@ export function deleteProduct(data) {
     method: "DELETE",
   })
   .then((res) => res.json())
-  .then((response) => console.log("Success:", response))
+  .then((response) => {console.log("Success:", response)})
   .catch((error) => console.error("Error:", error))
 }
 
@@ -230,4 +230,20 @@ export function getpost(id) {
   .then((res) => res.json())
   .then((response) => console.log("Success:", response))
   .catch((error) => console.error("Error:", error))
+}
+export function postDetail(id) {
+  return async function (dispatch) {
+    try {
+      let postDetail = await axios.get(
+        "http://localhost:3001/post/" + id
+      );
+      postDetail = postDetail.data;
+      dispatch({
+        type: "POST_DETAIL",
+        payload: postDetail,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
