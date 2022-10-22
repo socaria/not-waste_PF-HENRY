@@ -7,7 +7,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from "react-redux";
 import { postOrder, postPay, prodDetail } from "../../redux/actions";
 
-function Cart() {
+function Cart(props) {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const [pay, setPay] = useState({});
@@ -34,7 +34,10 @@ function Cart() {
 
   return (
     <div>
-      <div
+      {
+        props.type === 'customer' ? (
+          <div>
+            <div
         width="50px"
         className="mx-4"
         variant="primary"
@@ -113,6 +116,13 @@ function Cart() {
           )}
         </Offcanvas>
       </div>
+          </div>
+        ) : (
+          <div>
+
+          </div>
+        )
+      }
     </div>
   );
 }

@@ -11,7 +11,7 @@ import AuthProfile from "../AuthProfile";
 import VerifyProfile from "../VerifyProfile";
 import "../NavBar/Navbar.css";
 import { Profile } from "../Hamburguesa";
-import CartButton from "../CartButton";
+import Cart from "../Cart/index";
 
 function NavBar({ isSearchVisible }) {
   const { isAuthenticated } = useAuth0(); //isAuthenticated me informa si es usuario esta logueado o no
@@ -48,7 +48,7 @@ function NavBar({ isSearchVisible }) {
         </div>
       )}
       <Navbar className="navbar-nav ms-auto mx-5">
-            <CartButton {...db} />
+            <Cart {...db} />
 
             <div className="vr bg-dark"></div>
             {isAuthenticated ? <Profile {...db}/> : <LogingButton />}
