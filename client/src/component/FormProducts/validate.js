@@ -13,7 +13,7 @@ export function validate(input) {
   }
 
   if (!input.realValue) {
-    error.realValue = "Debe ingresar el valor real de su product...";
+    error.realValue = "Debe ingresar el valor real de su producto...";
   }
 
   if (input.description === "") {
