@@ -48,20 +48,20 @@ function NavBar({ isSearchVisible }) {
           <Navbar className="navbar-nav ms-auto mx-5">
             <Cart />
 
+          </Navbar>
+        </div>
+      )}
             <div className="vr bg-dark"></div>
             {isAuthenticated ? <Profile {...db}/> : <LogingButton />}
             <div className="vr bg-dark"></div>
             {!db.exists && (
               <li className="nav-item">
-                {/* <Link to="/register" className="nav-link mx-4">
+                <Link to="/register" className="nav-link mx-4">
                   REGISTER
-                </Link> */}
+                </Link>
               </li>
             )}
             <div className="vr bg-dark"></div>
-          </Navbar>
-        </div>
-      )}
       </div> 
     </nav>
   );
