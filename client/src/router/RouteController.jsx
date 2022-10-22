@@ -11,6 +11,7 @@ import FormProduct from "../component/FormProducts";
 import Order from "../component/Order";
 import ViewProductSeller from "../component/ViewProductsSeller";
 import MyShopping from "../component/MyShopping";
+import StoreSeller from "../component/StoreSeller/index";
 
 function RouteController() {
   return (
@@ -26,6 +27,7 @@ function RouteController() {
       <Route path="/customer/orders" element={<Order />}/>
       <Route exact path="/viewproductseller" element={<ViewProductSeller />} />
       <Route path="/myShopping" element={<MyShopping />} />
+      <Route path="/postSeller" element={<StoreSeller />} />
     </Routes>
   );
 }

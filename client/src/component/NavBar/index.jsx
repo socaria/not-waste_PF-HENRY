@@ -1,17 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar";
-import Cart from "../Cart";
 import Navbar from "react-bootstrap/Navbar";
 import burguermenu from "../../imagenes/burguermenu.png";
 import logoProy from "../../imagenes/logoProy.png";
 import LogingButton from "../LoginButton";
-import LogoutButton from "../LogoutButton";
+// import LogoutButton from "../LogoutButton";
 import { useAuth0 } from "@auth0/auth0-react"; //esto es un hook que da auth0
 import AuthProfile from "../AuthProfile";
 import VerifyProfile from "../VerifyProfile";
 import "../NavBar/Navbar.css";
 import { Profile } from "../Hamburguesa";
+import CartButton from "../CartButton";
 
 function NavBar({ isSearchVisible }) {
   const { isAuthenticated } = useAuth0(); //isAuthenticated me informa si es usuario esta logueado o no
@@ -48,16 +48,16 @@ function NavBar({ isSearchVisible }) {
         </div>
       )}
       <Navbar className="navbar-nav ms-auto mx-5">
-            <Cart />
+            <CartButton {...db} />
 
             <div className="vr bg-dark"></div>
             {isAuthenticated ? <Profile {...db}/> : <LogingButton />}
             <div className="vr bg-dark"></div>
             {!db.exists && (
               <li className="nav-item">
-                <Link to="/register" className="nav-link mx-4">
+                {/* <Link to="/register" className="nav-link mx-4">
                   REGISTER
-                </Link>
+                </Link> */}
               </li>
             )}
             <div className="vr bg-dark"></div>

@@ -31,6 +31,15 @@ function Register(props) {
     category: "",
   });
 
+  useEffect(() => {
+    localStorage.setItem("formSeller", JSON.stringify(input));
+  }, [input]);
+
+  useEffect(() => {
+    const storedValues = localStorage.getItem("formSeller");
+    setInput(JSON.parse(storedValues));
+  }, []);
+
   const [error, setError] = useState({});
 
   const changeState = function (e) {
@@ -109,6 +118,7 @@ function Register(props) {
         reload();
       }, 3000);
       document.getElementById("buttonRegister").disabled = true;
+      localStorage.removeItem("formSeller");
     } else {
       e.preventDefault();
       alert(
