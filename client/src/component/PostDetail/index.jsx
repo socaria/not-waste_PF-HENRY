@@ -2,10 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   prodDetail,
-  getSellers,
-  postOrder,
   addCart,
-  getpost,
   postDetail,
 } from "../../redux/actions";
 import "./postDetail.css";
@@ -18,17 +15,15 @@ import { useAuth0 } from '@auth0/auth0-react'
 
 const PostDetail = () => {
   const { postId } = useParams();
-  console.log("🚀 ~ file: index.jsx ~ line 21 ~ PostDetail ~ postId", postId)
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(postDetail(postId));
     dispatch(prodDetail(productId));
-  }, [dispatch]);
+  }, []);
   
   
   const post = useSelector(state => state.postDetail)
-  console.log("🚀 ~ file: index.jsx ~ line 24 ~ PostDetail ~ post", post)
   const {user} = useAuth0();
   const productId = post?.productId
   const product = useSelector((state) => state.prodDetails);
@@ -41,18 +36,19 @@ const PostDetail = () => {
 
   function handleAmount(a) {
     setOrders((orders) => ({ ...orders, amount: a }));
-    console.log("cantidad:", orders);
+    
   }
 
   const handleCart = (input) => {
     input.amount > 0 &&
-      console.log("🚀 ~ file: index.jsx ~ line 32 ~ handleCart ~ input", input);
     dispatch(addCart(input));
   };
 
   let seller = sellers.find((s) => s.id === product.sellerId);
 
   if (product?.id) {
+    console.log("🚀 ~ file: index.jsx ~ line 50 ~ PostDetail ~ product", product)
+    
     return (
       <>
         <NavBar />
