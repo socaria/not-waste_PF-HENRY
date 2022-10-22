@@ -9,6 +9,8 @@ import { getDiet, postProduct } from "../../redux/actions";
 import { validate } from "../FormProducts/validate";
 import VerifyProfile from "../VerifyProfile";
 import AuthProfile from "../AuthProfile";
+import './FormProducts.css'
+import { Link } from "react-router-dom";
 
 function FormProduct() {
   const [error, setError] = useState({});
@@ -228,10 +230,16 @@ function FormProduct() {
               </div>
             ))}
           </Form.Group>
-
-          <Button type="submit" onClick={(e) => handleSubmit(e)}>
-            Crear Producto
-          </Button>
+          <div className="">
+            <Button type="submit" className='bg-light mx-5'>
+              <Link to='/home' className="text-decoration-none">
+                Volver
+              </Link>
+            </Button>
+            <Button type="submit" onClick={(e) => handleSubmit(e)} className='mx-5'>
+              Crear Producto
+            </Button>
+          </div>
         </Form>
       </div>
       <Footer />

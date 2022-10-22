@@ -55,9 +55,9 @@ function NavBar({ isSearchVisible }) {
             <div className="vr bg-dark"></div>
             {!db.exists && (
               <li className="nav-item">
-                <Link to="/register" className="nav-link mx-4">
+                {/* <Link to="/register" className="nav-link mx-4">
                   REGISTER
-                </Link>
+                </Link> */}
               </li>
             )}
             <div className="vr bg-dark"></div>
