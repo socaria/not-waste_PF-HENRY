@@ -3,7 +3,7 @@ const { postCustomer, getCallCustomer } = require("../controllers/customer");
 const { getCityInfo } = require("../controllers/city");
 const { getSellers, postSeller, putSeller } = require("../controllers/seller");
 const { getProducts, postProduct, putProduct, deleteProduct, getProductsById } = require("../controllers/product");
-const { getPosts, postPost, putPost, deletePost } = require("../controllers/post");
+const { getPosts, postPost, putPost, deletePost, getPostById } = require("../controllers/post");
 const { getManagerById, getAllManager, postManager, putManager } = require("../controllers/manager");
 const { getOrderById, getAllOrder, postOrder, deleteOrder } = require("../controllers/order");
 const { getDiets } = require("../controllers/diets");
@@ -24,10 +24,11 @@ router.put("/product/:id", putProduct);
 router.delete("/product/:id", deleteProduct);
 
 //Rutas del Post
+router.get("/post/:id", getPostById);
 router.get("/post", getPosts);
 router.post("/post", postPost);
-router.put("/post/:id", putPost);
 router.delete("/post/:id", deletePost);
+router.put("/post/:id", putPost);
 
 //Aca van las rutas del Customer
 router.get("/customer", getCallCustomer);

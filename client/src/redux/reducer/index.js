@@ -12,6 +12,7 @@ const initialState = {
   orders: [],
   cart: [],
   payId: [],
+  postDetail: []
 };
 
 export default function rootReducer(state = initialState, actions) {
@@ -77,6 +78,11 @@ export default function rootReducer(state = initialState, actions) {
         ...state,
         payId: actions.payload,
       };
+    case "POST_DETAIL":
+      return {
+        ...state,
+        postDetail: actions.payload
+      }
     default:
       return state;
   }

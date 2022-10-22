@@ -10,7 +10,7 @@ function PostCard({ product, post }) {
     return (
 
         <Card className="postCard">
-            <Card.Link className='card-link' href={`/home/id?${post.id}`}>
+            <Card.Link className='card-link' href={`/home/${post.id}`}>
                 <Card.Img className="card-image" variant="top" src={product.image} />
                 <Card.ImgOverlay>
                     <Badge pill bg="warning" text="white">
