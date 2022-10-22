@@ -63,7 +63,7 @@ function Home() {
   let currentCities = sellers.map((s) => s.cities.map((c) => c.name));
   return (
     <div>
-      <NavBar />
+      <NavBar isSearchVisible/>
       {errorMessage ? (
         <>
           <button className="selects" onClick={(e) => handleCleanFilters(e)}>
