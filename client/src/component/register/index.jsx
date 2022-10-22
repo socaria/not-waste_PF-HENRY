@@ -17,7 +17,27 @@ function Register(props) {
     dispatch(getCities());
   }, [dispatch]);
 
-  const [input, setInput] = useState({
+  function getFormValues() {
+    const storedValues = localStorage.getItem("form");
+    if (!storedValues)
+      return {
+        supplier: false,
+        email: props.email.toLowerCase(),
+        name: props.name.toLowerCase(),
+        imageurl: "",
+        namesupplier: "",
+        phone: "",
+        image: {},
+        adress: "",
+        cities: [],
+        cuit: "",
+        category: "",
+      };
+    return JSON.parse(storedValues);
+  }
+
+  const [input, setInput] = useState(
+    getFormValues() /* {
     supplier: false,
     email: props.email.toLowerCase(),
     name: props.name.toLowerCase(),
@@ -29,7 +49,17 @@ function Register(props) {
     cities: [],
     cuit: "",
     category: "",
-  });
+  } */
+  );
+
+  useEffect(() => {
+    localStorage.setItem("form", JSON.stringify(input));
+  }, [input]);
+
+  useEffect(() => {
+    const storedValues = localStorage.getItem("form");
+    setInput(JSON.parse(storedValues));
+  }, []);
 
   const [error, setError] = useState({});
 
@@ -75,6 +105,10 @@ function Register(props) {
         cities: [e.target.value],
       });
     }
+    /* setInput({
+      ...input,
+      cities: [e.target.value],
+    }); */
   };
 
   const option_categories = () => {
@@ -190,6 +224,7 @@ function Register(props) {
           <input
             className="form-check-input me-3"
             type="checkbox"
+            aria-checked={toString(input.supplier)}
             role="switch"
             id="flexSwitchCheckDefault"
             name="supplier"
