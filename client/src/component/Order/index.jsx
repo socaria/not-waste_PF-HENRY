@@ -2,14 +2,16 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { prodDetail, getSellers } from '../../redux/actions'
 import './order.css';
-import { useParams } from "react-router-dom";
 import { Card, Badge, ListGroup, Button } from 'react-bootstrap';
 import NavBar from '../NavBar';
 import Footer from '../Footer/index';
 import ProductItem from '../ProductItem/ProductItem';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Order = () => {
-    const customer = useSelector(state => state.customer)
+    const {user} = useAuth0();
+    const customers = useSelector(state => state.customer)
+    const customer = customers.find(c => c.email === user.email)
     console.log("🚀 ~ file: index.jsx ~ line 13 ~ Order ~ customer", customer)
     // const { productId } = useParams()
     // const dispatch = useDispatch()

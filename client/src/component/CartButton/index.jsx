@@ -4,7 +4,6 @@ import '../CartButton/cartButton.css'
 import { Button } from 'react-bootstrap';
 
 function CartButton(props) {
-    console.log(props,'HOLAAA')
 
     const handleClick = (e) => {
         console.log(e)
