@@ -2,7 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import NavBar from '../NavBar/index'
 import Footer from '../Footer/index'
-import './FormProducts.css'
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useDispatch, useSelector } from "react-redux";
