@@ -45,12 +45,11 @@ function NavBar({ isSearchVisible }) {
         {isSearchVisible && (
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <SearchBar />
-          <Navbar className="navbar-nav ms-auto mx-5">
-            <Cart />
-
-          </Navbar>
         </div>
       )}
+      <Navbar className="navbar-nav ms-auto mx-5">
+            <Cart />
+
             <div className="vr bg-dark"></div>
             {isAuthenticated ? <Profile {...db}/> : <LogingButton />}
             <div className="vr bg-dark"></div>
@@ -62,6 +61,7 @@ function NavBar({ isSearchVisible }) {
               </li>
             )}
             <div className="vr bg-dark"></div>
+          </Navbar>
       </div> 
     </nav>
   );
