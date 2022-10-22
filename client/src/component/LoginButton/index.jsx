@@ -8,7 +8,7 @@ function LogingButton() {
       className="btn btn-secondary"
       onClick={() => loginWithRedirect()}
     >
-      Registar
+      Ingresar
     </button>
   );
 }
