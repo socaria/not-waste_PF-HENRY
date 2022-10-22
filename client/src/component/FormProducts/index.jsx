@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import NavBar from '../NavBar/index'
-import Footer from '../Footer/index'
+import NavBar from "../NavBar/index";
+import Footer from "../Footer/index";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,20 +18,30 @@ function FormProduct() {
   let log = AuthProfile("profile");
   let db = VerifyProfile(log.email);
 
+  function getFormValues() {
+    const storedValues = localStorage.getItem("form");
+    if (!storedValues)
+      return {
+        name: "",
+        price: "",
+        realValue: "",
+        image: "",
+        description: "",
+        stock: "",
+        diets: [],
+        sellerId: db.id,
+      };
+    return JSON.parse(storedValues);
+  }
+
   const dispatch = useDispatch();
-  const [input, setInput] = useState({
-    name: "",
-    price: "",
-    realValue: "",
-    image: "",
-    description: "",
-    stock: "",
-    diets: [],
-    sellerId: db.id
-  });
+  const [input, setInput] = useState(getFormValues());
+
+  useEffect(() => {
+    localStorage.setItem("form", JSON.stringify(input));
+  }, [input]);
 
   const diets = useSelector((state) => state.diet);
-
 
   useEffect(() => {
     dispatch(getDiet());
@@ -84,8 +94,8 @@ function FormProduct() {
         description: "",
         stock: "",
         diets: [],
-        sellerId: db.id
-      })
+        sellerId: db.id,
+      });
     } else {
       alert("Datos Faltantes");
     }
@@ -122,7 +132,7 @@ function FormProduct() {
       <NavBar />
       <div className="m-2 row justify-content-center">
         <Form className="col-auto px-5 py-2 text-center" id="formId">
-        <h1>¡Cargá tu producto!</h1>
+          <h1>¡Cargá tu producto!</h1>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label></Form.Label>
             <Form.Control
@@ -158,7 +168,10 @@ function FormProduct() {
             {error.realValue && <p>{error.realValue}</p>}
 
             <Form.Label></Form.Label>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+            <Form.Group
+              className="mb-3"
+              controlId="exampleForm.ControlTextarea1"
+            >
               <Form.Label></Form.Label>
               <Form.Control
                 as="textarea"
@@ -216,8 +229,6 @@ function FormProduct() {
                 </button>
               </div>
             ))}
-
-
           </Form.Group>
           <div className="">
             <Button type="submit" className='bg-light mx-5'>
