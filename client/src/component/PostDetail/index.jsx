@@ -4,51 +4,64 @@ import {
   prodDetail,
   addCart,
   postDetail,
+  getProduct,
 } from "../../redux/actions";
 import "./postDetail.css";
 import { useParams } from "react-router-dom";
-import { Card, Badge, ListGroup, Button, Dropdown, DropdownButton } from "react-bootstrap";
+import {
+  Card,
+  Badge,
+  ListGroup,
+  Button,
+  Dropdown,
+  DropdownButton,
+} from "react-bootstrap";
 import NavBar from "../NavBar";
 import Footer from "../Footer/index";
 import amountPostArray from "../../utils/amountPostArray";
-import { useAuth0 } from '@auth0/auth0-react'
+import { useAuth0 } from "@auth0/auth0-react";
 
 const PostDetail = () => {
   const { postId } = useParams();
   const dispatch = useDispatch();
 
+  var { user } = useAuth0();
+
+  let post = useSelector((state) => state.postDetail);
+  let products = useSelector((state) => state.product);
+  let product = products.find((p) => p.id === post.productId);
+  console.log(user, "USER");
+  let sellers = useSelector((state) => state.seller);
+  let customers = useSelector((state) => state.customer);
+
+  const [orders, setOrders] = useState({});
+  console.log(customers, "CUSTOMER");
+  // let customer = customers.find((c) => c.email === user.email);
+  let productId = post.productId;
+  console.log(productId, "AQUIIIII");
+
   useEffect(() => {
     dispatch(postDetail(postId));
     dispatch(prodDetail(productId));
+    dispatch(getProduct());
   }, []);
-  
-  
-  let post = useSelector(state => state.postDetail)
-  const {user} = useAuth0();
-  let productId = post?.productId
-  let product = useSelector((state) => state.prodDetails);
-  const [orders, setOrders] = useState({});
-
-  
-  let sellers = useSelector((state) => state.seller);
-  let customers = useSelector((state) => state.customer)
-  let customer = customers.find(c => c.email === user.email)
 
   function handleAmount(a) {
     setOrders((orders) => ({ ...orders, amount: a }));
-    
   }
 
   const handleCart = (input) => {
-    input.amount > 0 &&
-    dispatch(addCart(input));
+    input.amount > 0 && dispatch(addCart(input));
   };
 
   let seller = sellers.find((s) => s.id === product.sellerId);
 
   if (product?.id) {
-    console.log("🚀 ~ file: index.jsx ~ line 50 ~ PostDetail ~ product", product)
-    
+    console.log(
+      "🚀 ~ file: index.jsx ~ line 50 ~ PostDetail ~ product",
+      product
+    );
+
     return (
       <>
         <NavBar />
@@ -135,63 +148,62 @@ const PostDetail = () => {
             </ListGroup>
           </Card.Body>
           <Card.Footer>
-
-                  <div className="d-flex align-items-center">
-                    <span className="mx-2">
-                      {new Date(post.date).toLocaleDateString("es-AR")}
-                    </span>
-                    <DropdownButton
-                      variant="light"
-                      className="mx-4"
-                      key={`newOrder_${orders.amount}`}
-                      title={orders.amount || "Cantidad"}
+            <div className="d-flex align-items-center">
+              <span className="mx-2">
+                {new Date(post.date).toLocaleDateString("es-AR")}
+              </span>
+              <DropdownButton
+                variant="light"
+                className="mx-4"
+                key={`newOrder_${orders.amount}`}
+                title={orders.amount || "Cantidad"}
+              >
+                {amountPostArray(post).map((a) => {
+                  return (
+                    <Dropdown.Item
+                      onClick={() => handleAmount(a)}
+                      key={`${a}+${post.date}`}
+                      as="button"
                     >
-                      {amountPostArray(post).map((a) => {
-                        return (
-                          <Dropdown.Item
-                            onClick={() => handleAmount(a)}
-                            key={`${a}+${post.date}`}
-                            as="button"
-                          >
-                            {a}
-                          </Dropdown.Item>
-                        );
-                      })}
-                    </DropdownButton>
-                    <Button
-                      onClick={() =>
-                        handleCart({
-                          amount: orders.amount,
-                          date: post.date,
-                          image: product.image,
-                          price: product.price,
-                          name: product.name,
-                          customerId: customer.id,
-                          postId: post.id
-                        })
-                      }
-                      className="btn btn-dark m-1 p-1"
-                    >
-                      {" "}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-cart-plus"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z" />
-                        <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-                      </svg>
-                    </Button>
-                  </div>
+                      {a}
+                    </Dropdown.Item>
+                  );
+                })}
+              </DropdownButton>
+              <Button
+                onClick={() =>
+                  handleCart({
+                    amount: orders.amount,
+                    date: post.date,
+                    image: product.image,
+                    price: product.price,
+                    name: product.name,
+                    // customerId: customer.id,
+                    postId: post.id,
+                  })
+                }
+                className="btn btn-dark m-1 p-1"
+              >
+                {" "}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  className="bi bi-cart-plus"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z" />
+                  <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                </svg>
+              </Button>
+            </div>
           </Card.Footer>
         </Card>
         <Footer />
       </>
     );
-  } 
+  }
 };
 
 export default PostDetail;
