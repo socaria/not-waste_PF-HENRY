@@ -21,7 +21,6 @@ function Register(props) {
     const storedValues = localStorage.getItem("form");
     if (!storedValues)
       return {
-        supplier: false,
         email: props.email.toLowerCase(),
         name: props.name.toLowerCase(),
         imageurl: "",
@@ -37,7 +36,8 @@ function Register(props) {
   }
 
   const [input, setInput] = useState(
-    getFormValues() /* {
+    getFormValues(),
+    { supplier: false } /* {
     supplier: false,
     email: props.email.toLowerCase(),
     name: props.name.toLowerCase(),
@@ -224,7 +224,7 @@ function Register(props) {
           <input
             className="form-check-input me-3"
             type="checkbox"
-            aria-checked={toString(input.supplier)}
+            /*  aria-checked="true" //{toString(input.supplier)} */
             role="switch"
             id="flexSwitchCheckDefault"
             name="supplier"
