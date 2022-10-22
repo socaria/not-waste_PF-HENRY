@@ -1,5 +1,8 @@
 .headerPri {
     background-image: url('https://img.freepik.com/foto-gratis/arreglo-paquetes-comida-deliciosa_23-2149182241.jpg?w=996&t=st=1666462685~exp=1666463285~hmac=f3a5c0d7fb699450366380391f022473dcbca4ac2ba0711338539d717b987642');
+    height: 550px;
+    background-size: cover;
+    position: relative;
 }
 
 #btnInicio{
@@ -17,5 +20,27 @@
 .title {
     color: #F4511F;
     font-size: 45px;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#row-about {
+    background-color: #F4511F;
+}
+
+.imgRedonda {
+    width:250px;
+    height:250px;
+    border-radius:150px;
+    transition: transform .2s;
+}
+
+.row {
+    margin: 0;  
+}
+
+.h3titleimage {
     font-weight: bold;
 }

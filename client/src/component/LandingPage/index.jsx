@@ -230,80 +230,57 @@ function LandingPage() {
     // </main>
     <div>
       <header className="headerPri">
-        <nav className="navbar navbar-expand-md bg-ligth">
-          <div className="container-fluid">
-            <img src={imgIcon} alt="🥑" width="50px" />
-            <div className="nav-link mx-4">
-              <h3>Not Waste</h3>
-            </div>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon bg-ligth"></span>
-            </button>
-
-            <div
-              className="collapse navbar-collapse"
-              id="navbarSupportedContent"
-            >
-              <Navbar className=" navbar-nav ms-auto px-5">
-                
-                
-                
-                <Nav
-                  className="nav-link mx-4 text-dark"
-                  href="#about"
-                  onClick={handleClick}
-                >
-                  ABOUT
-                </Nav>
-                
-                <Nav
-                  href="#FAQ"
-                  onClick={handleClick}
-                  className=" text-dark mx-4"
-                >
-                  FAQ's
-                </Nav>
-
-                <Nav
-                  href="#nosotros"
-                  onClick={handleClick}
-                  className="nav-link text-dark mx-4"
-                >
-                  NOSOTROS
-                </Nav>
-                
-                <Nav
-                  href="#contact"
-                  onClick={handleClick}
-                  className="nav-link text-dark mx-4"
-                >
-                  CONTACTANOS
-                </Nav>
-                
-              </Navbar>
-            </div>
+        <nav className="navbar navbar-dark">
+          <div className="container">
+            <img src={imgIcon} alt="🥑" width="100px" />
           </div>
         </nav>
 
         <div className="container">
-            <div className="title">
-                Los mejores precios del mercado,<br/> los encontras acá.<br/>
-                  <button className="btn mt-4" id="btnInicio"><Link to="/home" className="text-decoration-none" id="inicioBtn">Inicio</Link></button>
-            </div>
+          <div className="title font-weight-bold">
+            Los mejores precios del mercado,<br /> los encontras acá.<br />
+            <button className="btn mt-4" id="btnInicio"><Link to="/home" className="text-decoration-none" id="inicioBtn">Inicio</Link></button>
+          </div>
         </div>
 
       </header>
       <main>
-        <div className="row" id='row-about'>
-
+        <div className="row text-white py-5" id='row-about'>
+          <div className="container text-center">
+            <div className="row">
+              <h1 className="h3titleimage">Nuestros principios</h1>
+              <h5>Nuestros principios se basan en lo siguiente</h5>
+            </div>
+            <div className="row">
+              <div className="col">
+              <img
+                alt="imgCanasta"
+                src="https://alimentacionysalud.unam.mx/wp-content/uploads/2020/11/reducir-riesgo-1536x1024.jpg"
+                className="imgRedonda"
+              />
+              <h3 className="h3titleimage">Canasta de comida sorpresa</h3>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+              </div>
+              <div className="col">
+              <img
+                alt="imgChanchito"
+                src="https://cdn.icon-icons.com/icons2/516/PNG/512/coin_money_icon-icons.com_51091.png"
+                className="imgRedonda"
+              />
+              <h3 className="h3titleimage">Comprá a un precio reducido</h3>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+              </div>
+              <div className="col">
+              <img
+                alt="imgPlaneta"
+                src="https://us.123rf.com/450wm/sudowoodo/sudowoodo1810/sudowoodo181000004/128176206-dibujo-de-planeta-tierra-con-cara-de-dibujos-animados-lindo-naturaleza-y-ecolog%C3%ADa-ilustraci%C3%B3n-de-art.jpg?ver=6"
+                className="imgRedonda"
+              />
+              <h3 className="h3titleimage">Cuidá el planeta</h3>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="row" id="row-faqs">
 
