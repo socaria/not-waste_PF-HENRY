@@ -13,11 +13,13 @@ import VerifyProfile from "../VerifyProfile";
 import "../NavBar/Navbar.css";
 import { Profile } from "../Hamburguesa";
 
-function NavBar() {
+function NavBar({ isSearchVisible }) {
   const { isAuthenticated } = useAuth0(); //isAuthenticated me informa si es usuario esta logueado o no
   let db = VerifyProfile(AuthProfile("profile").email);
   return (
-    <nav className="navbar navbar-expand-md" id="navbar">
+
+    <nav  className="navbar navbar-expand-md" id="navbar">
+    
       <div className="container-fluid">
         <button
           className="navbar-toggler"
@@ -27,7 +29,9 @@ function NavBar() {
           aria-controls="navbarSupportedContent"
           aria-expanded="false"
           aria-label="Toggle navigation"
-        >
+        >     
+  
+    
           <span>
             <img src={burguermenu} alt="logoburg" width="30px" />
           </span>
@@ -38,13 +42,14 @@ function NavBar() {
             Not Waste
           </Link>
         </h3>
-        <SearchBar />
+        {isSearchVisible && (
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <SearchBar />
           <Navbar className="navbar-nav ms-auto mx-5">
             <Cart />
-            {console.log(isAuthenticated, "AQUIIII")}
+
             <div className="vr bg-dark"></div>
-            {isAuthenticated ? <Profile {...db} /> : <LogingButton />}
+            {isAuthenticated ? <Profile {...db}/> : <LogingButton />}
             <div className="vr bg-dark"></div>
             {!db.exists && (
               <li className="nav-item">
@@ -56,7 +61,8 @@ function NavBar() {
             <div className="vr bg-dark"></div>
           </Navbar>
         </div>
-      </div>
+      )}
+      </div> 
     </nav>
   );
 }

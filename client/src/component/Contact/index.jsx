@@ -4,7 +4,7 @@ function Contact() {
     
     return (
         <div>
-            {NavBar()}
+            <NavBar/>
             <h1> esto es un formulario de contacto</h1>
         </div>
     )
