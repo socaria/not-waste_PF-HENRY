@@ -2,11 +2,11 @@ import React from "react";
 // import style from "./landing.module.css";
 import './csslan.css'
 
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
+// import Nav from "react-bootstrap/Nav";
+// import Navbar from "react-bootstrap/Navbar";
 import Footer from '../Footer/index'
 
-import Carousel from "react-bootstrap/Carousel";
+// import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
 
 function LandingPage() {
@@ -22,15 +22,19 @@ function LandingPage() {
     });
   };
 
-  const img =
-    "https://img.freepik.com/fotos-premium/comida-italiana-ingredientes_1220-4676.jpg?w=5000";
-  const img2 =
-    "https://img.freepik.com/foto-gratis/concepto-comida-sabrosa-carne-res-vista-superior-verduras_185193-74994.jpg?w=5000&t=st=1665986120~exp=1665986720~hmac=656d6d168a4d199700f7730e0c08f6202abb54ba30846d93c2bdc9dd1596fd21";
-  const img3 =
-    "https://static.vecteezy.com/system/resources/previews/001/271/830/large_2x/baked-bread-on-illuminated-background-free-photo.jpg";
-  const imgIcon =
-    "https://cdn.iconscout.com/icon/premium/png-256-thumb/vegetarian-food-1834409-1557027.png";
-  return (
+  // const img =
+  //   "https://img.freepik.com/fotos-premium/comida-italiana-ingredientes_1220-4676.jpg?w=5000";
+  // const img2 =
+  //   "https://img.freepik.com/foto-gratis/concepto-comida-sabrosa-carne-res-vista-superior-verduras_185193-74994.jpg?w=5000&t=st=1665986120~exp=1665986720~hmac=656d6d168a4d199700f7730e0c08f6202abb54ba30846d93c2bdc9dd1596fd21";
+  // const img3 =
+  //   "https://static.vecteezy.com/system/resources/previews/001/271/830/large_2x/baked-bread-on-illuminated-background-free-photo.jpg";
+  // const imgIcon =
+  //   "https://cdn.iconscout.com/icon/premium/png-256-thumb/vegetarian-food-1834409-1557027.png";
+  // const imgcomunity =
+  //   "https://img.freepik.com/vector-gratis/gente-trabajo-equipo-piezas-rompecabezas_24877-54950.jpg?w=740&t=st=1666535575~exp=1666536175~hmac=6cdc1b8bf3f29e5df21fdcff558d7f8547d742fc8c6d1c31500b82992df37a94";
+  // const imgfaqs = 
+  // "https://img.freepik.com/vector-gratis/dibujado-mano-gente-haciendo-preguntas-ilustracion_23-2148906555.jpg?w=996&t=st=1666537925~exp=1666538525~hmac=37ed79719c77117538eac1bf0a56d09311b5c6313a410cbaf719cc2854325ee3"
+    return (
     // <main className={style.main}>
     //   <div>
     //     <nav className="navbar navbar-expand-md bg-ligth">
@@ -230,9 +234,25 @@ function LandingPage() {
     // </main>
     <div>
       <header className="headerPri">
-        <nav className="navbar navbar-dark">
+        <nav className="navbar navbar-expand-lg navbar-light">
           <div className="container">
-            <img src={imgIcon} alt="🥑" width="100px" />
+            <img src='https://cdn.iconscout.com/icon/premium/png-256-thumb/vegetarian-food-1834409-1557027.png' alt="🥑" width="100px" />
+            {/* <button className="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#miLista" aria-controls="miLista" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse justify-content-end" id="miLista">
+              <ul className="navbar-nav">
+                <li className="nav-item mb-2">
+                  <a className="nav-link" id="btnnav" href="">Principios</a>
+                </li>
+                <li className="nav-item mb-2">
+                  <a className="nav-link" id="btnnav" href="">Nosotros</a>
+                </li>
+                <li className="nav-item mb-2">
+                  <a className="nav-link" id="btnnav" href="">Faq's</a>
+                </li>
+              </ul>
+            </div> */}
           </div>
         </nav>
 
@@ -247,49 +267,88 @@ function LandingPage() {
       <main>
         <div className="row text-white py-5" id='row-about'>
           <div className="container text-center">
-            <div className="row">
-              <h1 className="h3titleimage">Nuestros principios</h1>
-              <h5>Nuestros principios se basan en lo siguiente</h5>
+            <div className="d-flex justify-content-center">
+              <div className="col-md-8">
+                <h1 className="h3titleimage">Nuestros principios</h1>
+                <h5>Nuestros principios se basan en lo siguiente</h5>
+              </div>
             </div>
-            <div className="row">
+            <div className="row mt-4">
               <div className="col">
-              <img
-                alt="imgCanasta"
-                src="https://alimentacionysalud.unam.mx/wp-content/uploads/2020/11/reducir-riesgo-1536x1024.jpg"
-                className="imgRedonda"
-              />
-              <h3 className="h3titleimage">Canasta de comida sorpresa</h3>
-              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                <img
+                  alt="imgCanasta"
+                  src="https://alimentacionysalud.unam.mx/wp-content/uploads/2020/11/reducir-riesgo-1536x1024.jpg"
+                  className="imgRedonda"
+                />
+                <h3 className="h3titleimage mt-4">Canasta de comida sorpresa</h3>
+                <p>Adquirí paquetes de comida sorpresa.</p>
               </div>
               <div className="col">
-              <img
-                alt="imgChanchito"
-                src="https://cdn.icon-icons.com/icons2/516/PNG/512/coin_money_icon-icons.com_51091.png"
-                className="imgRedonda"
-              />
-              <h3 className="h3titleimage">Comprá a un precio reducido</h3>
-              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                <img
+                  alt="imgChanchito"
+                  src="https://cdn.icon-icons.com/icons2/516/PNG/512/coin_money_icon-icons.com_51091.png"
+                  className="imgRedonda"
+                />
+                <h3 className="h3titleimage mt-4">Comprá a un precio reducido</h3>
+                <p>Aprovechá las oportunidades que se ofrecen.</p>
               </div>
               <div className="col">
-              <img
-                alt="imgPlaneta"
-                src="https://us.123rf.com/450wm/sudowoodo/sudowoodo1810/sudowoodo181000004/128176206-dibujo-de-planeta-tierra-con-cara-de-dibujos-animados-lindo-naturaleza-y-ecolog%C3%ADa-ilustraci%C3%B3n-de-art.jpg?ver=6"
-                className="imgRedonda"
-              />
-              <h3 className="h3titleimage">Cuidá el planeta</h3>
-              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                <img
+                  alt="imgPlaneta"
+                  src="https://us.123rf.com/450wm/sudowoodo/sudowoodo1810/sudowoodo181000004/128176206-dibujo-de-planeta-tierra-con-cara-de-dibujos-animados-lindo-naturaleza-y-ecolog%C3%ADa-ilustraci%C3%B3n-de-art.jpg?ver=6"
+                  className="imgRedonda"
+                />
+                <h3 className="h3titleimage mt-4">Cuidá el planeta</h3>
+                <p>Juntos evitemos el la generación de residuos.</p>
               </div>
             </div>
           </div>
         </div>
+        <div className="row py-5" id="row-us">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-5 text-center">
+                <img className="imgusRedonda" src='https://img.freepik.com/vector-gratis/gente-trabajo-equipo-piezas-rompecabezas_24877-54950.jpg?w=740&t=st=1666535575~exp=1666536175~hmac=6cdc1b8bf3f29e5df21fdcff558d7f8547d742fc8c6d1c31500b82992df37a94' alt="logous" />
+              </div>
+              <div className="col-md-7 mt-4">
+                <h1 className="fw-bold mb-3" id="titleUs">Sobre nosotros</h1>
+                <p className="textUs">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p className="textUs">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="row" id="row-phrase">
+          <div className="container text-center">
+            <h3 className="textphrase">“Comer es una necesidad, pero comer de forma inteligente es un arte”</h3>
+            <h3 className="textphrase mt-4 fw-bold">-Francisco VI</h3>
+          </div>
+        </div>
         <div className="row" id="row-faqs">
-
-        </div>
-        <div className="row" id="row-us">
-
-        </div>
-        <div className="row" id="row-contact">
-
+        <div className="container">
+            <div className="row flex-row-reverse">
+              <div className="col-md-5 text-center">
+                <img className="imgfaqs" src="https://img.freepik.com/vector-gratis/dibujado-mano-gente-haciendo-preguntas-ilustracion_23-2148906555.jpg?w=996&t=st=1666537925~exp=1666538525~hmac=37ed79719c77117538eac1bf0a56d09311b5c6313a410cbaf719cc2854325ee3" alt="logofaqs" />
+              </div>
+              <div className="col-md-7 mt-4">
+                <h1 className="fw-bold mb-3" id="titleUs">Faq's</h1>
+                <p className="pfaqs">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p className="pfaqs">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
       <Footer />

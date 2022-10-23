@@ -45,7 +45,7 @@ export default function createcards(data) {
                                 <p className="card-text">Descripcion: {e.description}</p>
                                 <p className="card-text"><small className="text-muted">Precio: ${e.price}</small></p>
                                 <p className="card-text"><small className="text-muted">Precio real: ${e.realValue}</small></p>
-                                <p className="card-text"><small className="text-muted">Stock: {e.stock}</small></p>
+                                {/* <p className="card-text"><small className="text-muted">Stock: {e.stock}</small></p> */}
                                 <p className="card-text"><small className="text-muted">Publicaciones activas: {e.posts.length ? e.posts.length : " Aun no publico este producto, haga click abajo para que sea visible por el cliente."}</small></p>
                             </div>
                             <form id={e.id} name={e.id} onSubmit={(e) => posteo(e)}>
