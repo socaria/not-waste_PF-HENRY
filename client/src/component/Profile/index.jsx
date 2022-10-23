@@ -5,7 +5,7 @@ import { getSellers } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { ListGroup } from "react-bootstrap";
-
+ 
 function Profile() {
   const dispatch = useDispatch()
   const {user} = useParams()
