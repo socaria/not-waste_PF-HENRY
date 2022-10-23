@@ -11,10 +11,6 @@ function Cart(props) {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
 
-  var { user } = useAuth0();
-
-  let customers = useSelector((state) => state.customer);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -25,18 +21,12 @@ function Cart(props) {
   const price = cart?.amount * cart?.price;
   const { isAuthenticated, loginWithRedirect } = useAuth0();
   const handlePayment = async (cart) => {
-    let customer = customers.find((c) => c.email === user.email);
-    cart.customerId = customer.id;
-    /* dispatch(postOrder(cart));
-    dispatch(postPay({ price: price })); */
-    console.log(user, "USER");
-    console.log(cart, "CART");
-    /* if (isAuthenticated) {
+    if (isAuthenticated) {
       dispatch(postOrder(cart));
       dispatch(postPay({ price: price }));
     } else {
       loginWithRedirect();
-    } */
+    }
   };
 
   return (
@@ -49,7 +39,7 @@ function Cart(props) {
             variant="primary"
             onClick={handleShow}
             id="logocart"
-            left='0'
+            left="0"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -63,12 +53,7 @@ function Cart(props) {
           </div>
 
           <div className="cart-container">
-            <Offcanvas
-              show={show}
-              onHide={handleClose}
-              top='0'
-              left='0'
-            >
+            <Offcanvas show={show} onHide={handleClose} top="0" left="0">
               <Offcanvas.Header className="mt-1 p-1">
                 <Offcanvas.Title className="d-flex align-items-center mx-2">
                   <svg
