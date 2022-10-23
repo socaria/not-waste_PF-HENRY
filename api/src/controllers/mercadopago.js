@@ -12,6 +12,7 @@ const post_create_preference = async (req, res) => {
         title: "Not Waste",
         unit_price: Number(req.body.price),
         quantity: 1,
+        postId: req.body.postId
       },
     ],
     back_urls: {
