@@ -30,12 +30,12 @@ const PostDetail = () => {
   let post = useSelector((state) => state.postDetail);
   let products = useSelector((state) => state.product);
   let product = products.find((p) => p.id === post.productId);
-  console.log(user, "USER");
   let sellers = useSelector((state) => state.seller);
   let customers = useSelector((state) => state.customer);
 
   const [orders, setOrders] = useState({});
-  let customer = customers.find((c) => c.email === user?.email);
+  console.log(customers, "CUSTOMER");
+  let customer = customers?.find((c) => c.email === user?.email);
   let productId = post.productId;
 
   useEffect(() => {
@@ -55,7 +55,10 @@ const PostDetail = () => {
   let seller = sellers.find((s) => s.id === product.sellerId);
 
   if (product?.id) {
-
+    console.log(
+      "🚀 ~ file: index.jsx ~ line 50 ~ PostDetail ~ product",
+      product
+    );
 
     return (
       <>

@@ -252,3 +252,15 @@ export function postDetail(id) {
     }
   };
 }
+
+export function modifyPost(id, input) {
+  return async function (dispatch) {
+      const response = await axios.put(`http://localhost:3001/post/${id}`, input);
+      if (response.ok) {
+          const json = await response.data();
+          dispatch({ type: "MODIFY_POST", payload: json });
+      } else {
+          dispatch({ type: "REQUEST_ERROR", payload: 'There are no post with that ID' });
+      }
+  }
+}
