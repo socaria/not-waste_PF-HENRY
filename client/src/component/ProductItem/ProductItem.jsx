@@ -8,7 +8,7 @@ import CartButton from '../CartButton';
 
 
 
-const ProductItem = ({cart}) => {
+const ProductItem = ({ cart}) => {
     
     const handleCart = () => {
         console.log('handlecart')
@@ -22,7 +22,7 @@ const ProductItem = ({cart}) => {
                 <span className='ms-4 text-capitalize font-weight-normal'>{cart.name}</span>
                 {/* <span className='font-weight-normal'>|</span> */}
                 <span className='font-weight-normal'>{cart.price}</span>
-                <Image roundedCircle className='product-image' src='https://www.schaer.com/sites/default/files/styles/landscape_lg/public/2022-02/SCHAER_BK_XL%20SANDWICH.jpg?h=29bae58f&itok=K2jqqlnH' />
+                <Image roundedCircle className='product-image' src={cart.image} />
                 {/* <CartButton className='dark' onClick={e => handleCart(e)}/> */}
             </div>
         </>
