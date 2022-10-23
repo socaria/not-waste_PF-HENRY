@@ -9,6 +9,7 @@ import {
 import CarouselSeller from "../CarouselSeller";
 import NavBar from "../NavBar";
 import Footer from "../Footer";
+import Filters from "../Filters/Filters";
 import "../Home/Home.css";
 import Message from "../Message";
 import { v4 as uuidv4 } from "uuid";
@@ -63,7 +64,7 @@ function Home() {
   let currentCities = sellers.map((s) => s.cities.map((c) => c.name));
   return (
     <div>
-      <NavBar isSearchVisible/>
+      <NavBar isSearchVisible />
       {errorMessage ? (
         <>
           <button className="selects" onClick={(e) => handleCleanFilters(e)}>
@@ -73,6 +74,9 @@ function Home() {
         </>
       ) : (
         <div className="container-fluid my-3">
+          <div>
+            <Filters />
+          </div>
           <div className="contSelects">
             {queryParams && (
               <button
