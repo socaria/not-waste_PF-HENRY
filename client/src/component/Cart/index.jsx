@@ -17,13 +17,14 @@ function Cart(props) {
   let cart = useSelector((state) => state.cart);
 
   const productId = cart.productId;
+  console.log(cart, "CART");
 
   const price = cart?.amount * cart?.price;
   const { isAuthenticated, loginWithRedirect } = useAuth0();
   const handlePayment = async (cart) => {
     if (isAuthenticated) {
       dispatch(postOrder(cart));
-      dispatch(postPay({ price: price }));
+      dispatch(postPay({ price: price, postId: cart.postId }));
     } else {
       loginWithRedirect();
     }
