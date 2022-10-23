@@ -24,8 +24,7 @@ function Cart(props) {
 
   const price = cart?.amount * cart?.price;
   const { isAuthenticated, loginWithRedirect } = useAuth0();
-  let products = useSelector(state => state.product);
-  let product = products.find(p => p.id === productId);
+
   const handlePayment = async (cart) => {
     let customer = customers.find((c) => c.email === user.email);
     cart.customerId = customer.id;
@@ -107,7 +106,7 @@ function Cart(props) {
                           </div>
                         </ListGroup.Item>
                         <ListGroup.Item className="d-flex row">
-                          <ProductItem cart={cart} product={product}></ProductItem>
+                          <ProductItem cart={cart}></ProductItem>
                         </ListGroup.Item>
                       </ListGroup>
                     </Card.Body>
