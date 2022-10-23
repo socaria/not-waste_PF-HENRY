@@ -35,6 +35,7 @@ const PostDetail = () => {
   let customers = useSelector((state) => state.customer);
 
   const [orders, setOrders] = useState({});
+  console.log(customers, "CUSTOMER");
   let customer = customers.find((c) => c.email === user?.email);
   let productId = post.productId;
 
@@ -55,7 +56,10 @@ const PostDetail = () => {
   let seller = sellers.find((s) => s.id === product.sellerId);
 
   if (product?.id) {
-
+    console.log(
+      "🚀 ~ file: index.jsx ~ line 50 ~ PostDetail ~ product",
+      product
+    );
 
     return (
       <>

@@ -41,6 +41,7 @@ function Cart(props) {
 
   const handleDelete = (e) => {
     e.preventDefault();
+
     dispatch(addCart(null));
   }
   return (
@@ -111,7 +112,7 @@ function Cart(props) {
                           </div>
                         </ListGroup.Item>
                         <ListGroup.Item className="d-flex column">
-                          <ProductItem cart={cart} handle={handleDelete}></ProductItem>
+                          <ProductItem cart={cart}></ProductItem>
                           <button type="button" className="close"
                             onClick={(e) => handleDelete(e)}>
                             <span aria-hidden="true">&times;</span>
