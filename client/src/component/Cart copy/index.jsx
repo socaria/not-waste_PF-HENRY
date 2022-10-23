@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../Cart/Cart.css";
-import ProductItem from "../../component/ProductItem/ProductItem";
+import ProductItem from "../ProductItem/ProductItem";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Button, Card, ListGroup } from "react-bootstrap";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -24,6 +24,7 @@ function Cart(props) {
 
   const price = cart?.amount * cart?.price;
   const { isAuthenticated, loginWithRedirect } = useAuth0();
+
   const handlePayment = async (cart) => {
     let customer = customers.find((c) => c.email === user.email);
     cart.customerId = customer.id;
@@ -49,7 +50,6 @@ function Cart(props) {
             variant="primary"
             onClick={handleShow}
             id="logocart"
-            left='0'
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -66,8 +66,7 @@ function Cart(props) {
             <Offcanvas
               show={show}
               onHide={handleClose}
-              top='0'
-              left='0'
+              aria-controls="offcanvasRight"
             >
               <Offcanvas.Header className="mt-1 p-1">
                 <Offcanvas.Title className="d-flex align-items-center mx-2">
