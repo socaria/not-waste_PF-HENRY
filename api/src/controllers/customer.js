@@ -1,23 +1,29 @@
-const { Customer, City } = require("../db");
+const { Customer, City, Order } = require("../db");
 
 const getCallCustomer = async (req, res) => {
+  const { email } = req.query
   try {
-    let infoDb = await Customer.findAll({
-      include: {
+    let customers = await Customer.findAll({
+      include: [{
         model: City,
         attributes: ["name"],
         through: {
           attributes: [],
         },
       },
+      {
+        model: Order
+      }]
     });
-    if (!infoDb.length) {
-      return res.status(400).send("No hay nada en la base de datos");
-    } else {
-      return res.status(200).send(infoDb);
+    if (email) {
+      customers = customers.filter((s) => s.email === email);
+      if (!customers.length) {
+        throw new Error("No hay consumidores con ese email");
+      }
     }
-  } catch (error) {
-    console.log(error);
+    res.status(200).send(customers)
+  } catch (e) {
+    res.status(404).send(e.message);
   }
 };
 

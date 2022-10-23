@@ -5,7 +5,7 @@ const path = require("path");
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
 const sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/notwaste`,
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/not_waste`,
   {
     logging: false, // set to console.log to see the raw SQL queries
     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
@@ -32,13 +32,12 @@ let capsEntries = entries.map((entry) => [
 ]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Seller, Product, Customer, Manager, Order, Post, City, Diet } = sequelize.models;
+const { Seller, Product, Customer, Manager, Order, Post, City, Diet } =
+  sequelize.models;
 
 //Relaciones de Seller
 Seller.hasMany(Product);
 Product.belongsTo(Seller);
-Seller.hasMany(Order);
-Order.belongsTo(Seller);
 Seller.belongsToMany(City, { through: "seller_city" });
 City.belongsToMany(Seller, { through: "seller_city" });
 Manager.hasMany(Seller);
@@ -51,8 +50,8 @@ Product.hasMany(Post);
 Post.belongsTo(Product);
 
 //Relaciones de Post
-Post.belongsToMany(Order, { through: "post_order" });
-Order.belongsToMany(Post, { through: "post_order" });
+Post.hasMany(Order);
+Order.belongsTo(Post);
 
 //Relaciones Customer
 Customer.hasMany(Order);

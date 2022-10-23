@@ -4,9 +4,16 @@ const { getAllPosts } = require("./utils/getAllPosts")
 
 const getPosts = async (req, res) => {
     let posts;
+    const id = req.query.id
+    let respuesta = {respuesta: "no existe el post"};
     try {
         posts = await getAllPosts();
-        res.status(200).send(posts);
+        if (id) {for (let i = 0; i < posts.length; i++) {
+            if(posts[i].id === id) {
+                respuesta = posts[i]
+            }
+        }} else respuesta = posts
+        res.status(200).send(respuesta);
     } catch (e) {
         res.status(404).send(e.message);
     }
@@ -42,7 +49,6 @@ const putPost = async (req, res) => {
         amount,
         productId,
     } = req.body
-    let postToModify = await Post.findByPk(id)
     try {
         if (!date) { throw new Error('Debe definirse una fecha') }
         if (!amount) { throw new Error('Debe definirse una cantidad') }
@@ -72,8 +78,19 @@ const deletePost = async (req, res) => {
     await Post.destroy({ where: { id: id } })
     res.send(`El producto con el id ${id} fue eliminado`);
 }
+const getPostById = async (req, res) => {
+    let { id } = req.params;
+    try {
+        let postId = await Post.findByPk(id);
+    
+        res.status(200).send(postId);
+    } catch (e) {
+        res.status(404).send('No hay posts de ese id');
+    }
+};
 
 module.exports = {
+    getPostById,
     getPosts,
     postPost,
     putPost,

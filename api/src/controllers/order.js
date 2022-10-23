@@ -14,16 +14,8 @@ const getApiInfo = async () => {
 };
 
 const getDbInfo = async () => {
-  return await Order.findAll({
-    include: {
-      model: Post,
-      attributes: ["id"],
-      through: {
-        attributes: [],
-      },
-    },
-  });
-};
+  return await Order.findAll();
+}
 
 const getAllData = async () => {
   const apiInfo = await getApiInfo();
@@ -72,8 +64,8 @@ const getAllOrder = async (req, res) => {
       searchState.length
         ? res.status(200).send(searchState)
         : res
-            .status(404)
-            .send(`No se encontró ninguna orden con el estado: ${state}`);
+          .status(404)
+          .send(`No se encontró ninguna orden con el estado: ${state}`);
     } else {
       res.status(200).send(orderList);
     }
@@ -84,32 +76,52 @@ const getAllOrder = async (req, res) => {
 };
 
 const postOrder = async (req, res) => {
-  let { state, review, postId } = req.body;
-  const newOrder = { state, review, postId };
-
+  let {
+    date,
+    amount,
+    state,
+    review,
+    postId,
+    customerId
+  } = req.body
   try {
-    if (validateNewOrder(newOrder)) {
-      newOrder.state = newOrder.state.toLocaleLowerCase();
-      let orderCreated = await Order.create({ ...newOrder });
-      if (orderCreated) {
-        let postDB = await Post.findAll({
-          where: {
-            name: amount,
-          },
-        });
-
-        await orderCreated.addPosts(postDB);
-
-        return res.send("Orden creada con exito");
-      }
-    }
-  } catch (error) {
-    console.log(error);
-    res.json({ msj: error.message });
+    if (!amount) { throw new Error('Debe definirse una cantidad') }
+    if (!postId) { throw new Error('Debe definirse los productos') }
+    let newOrder = await Order.create({
+      date,
+      amount,
+      state,
+      review,
+      postId,
+      customerId
+    })
+    newOrder.setPost(postId)
+    res.send(newOrder);
+  } catch (e) {
+    res.status(500).send(`${e}`)
   }
 };
+
+
+const deleteOrder = async (req, res) => {
+  const { id } = req.params;
+  let orderToDelete = await Order.findByPk(id)
+  if (!orderToDelete) {
+      return res
+          .status(404)
+          .json({
+              error: 'No hay orders con ese ID'
+          });
+  }
+  await Order.destroy({ where: { id: id } })
+  res.send(`La order con el id ${id} fue eliminado`);
+}
+
+
+
 module.exports = {
   getOrderById,
   getAllOrder,
   postOrder,
+  deleteOrder
 };

@@ -1,0 +1,142 @@
+.headerPri {
+    background-image: url('https://img.freepik.com/foto-gratis/arreglo-paquetes-comida-deliciosa_23-2149182241.jpg?w=996&t=st=1666462685~exp=1666463285~hmac=f3a5c0d7fb699450366380391f022473dcbca4ac2ba0711338539d717b987642');
+    height: 670px;
+    background-size: cover;
+    position: relative;
+}
+
+#btnInicio{
+    background-color: #F4511F;
+    border-radius: 20px;
+    font-weight: bold;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 60px;
+    width: 120px;
+}
+
+#btnnav {
+    color: black;
+}
+
+#btnInicio:hover {
+    background-color: black;
+}
+
+#inicioBtn {
+    color: white;
+    font-size: 25px;
+}
+
+#titleUs {
+    color: #F4511F;
+    text-shadow: 2px 2px black;
+}
+
+.title {
+    color: white;
+    text-shadow: 2px 2px black;
+    font-size: 45px;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#row-about {
+    background-color: #F4511F;
+}
+
+.imgRedonda {
+    width:250px;
+    height:250px;
+    border-radius: 50%;
+    border: solid black;
+    box-shadow: 3px 3px black;
+    transition: transform .2s;
+}
+
+.row {
+    margin: 0;  
+}
+
+.h3titleimage {
+    font-weight: bold;
+    text-shadow: 2px 2px black;
+}
+
+#row-us{
+    background-image: url(https://cdn.pixabay.com/photo/2013/11/24/11/26/background-217211_960_720.jpg);
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    padding-top: 100px !important;
+    padding-bottom: 100px !important;
+}
+
+.textUs {
+    color: rgb(0, 0, 0);
+    text-shadow: 1px 1px white;
+    font-weight: bold;
+}
+
+.imgusRedonda {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    border: solid black;
+}
+
+.imgfaqs {
+    height: 250px;
+    width: 350px;
+    border-radius: 10%;
+    border: solid #F4511F;
+}
+
+#row-faqs {
+    background-image: url(https://img.freepik.com/foto-gratis/arreglo-paquetes-comida-sabrosa_23-2149182194.jpg?w=996&t=st=1666539579~exp=1666540179~hmac=996768ee903bf031651805e0c8df16fb25579c8da16dfe65ae43c95d2a3dd87d);
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    padding-top: 100px !important;
+    padding-bottom: 100px !important;
+}
+
+.pfaqs {
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow: 1px 1px white;
+}
+
+#row-phrase {
+    background-image: url(https://cdn.pixabay.com/photo/2018/12/10/09/32/abstract-3866503_960_720.jpg);
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    padding-top: 200px !important;
+    padding-bottom: 200px !important;
+}
+
+.textphrase {
+    color: white;
+    text-shadow: 2px 2px black;
+}
+
+/* .navbar-nav {
+    background-color: #F4511F;
+} */
+
+/* @media(max-width:992px){
+    .navbar-nav {
+        background-color: #F4511F;
+    }
+} */
+
+nav {
+    z-index: 100;
+}

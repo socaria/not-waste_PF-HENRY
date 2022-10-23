@@ -1,35 +1,40 @@
 .selects {
-    width: 15%;
-    font-family: 'Roboto Condensed', sans-serif;
-    font-size: 15px;
-    text-align: center;
-    min-height: 35px;
-    background-size: cover;
-    color: white;
-    outline: none;
-    padding: 0px 10px;
-    -webkit-backdrop-filter: blur(0px);
-    backdrop-filter: blur(0px);
-    background-color: #13368A;
-    cursor: pointer;
-    border-radius: 15px;
-    border: none;
-    text-transform: capitalize;
+  width: 15%;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 15px;
+  text-align: center;
+  min-height: 35px;
+  background-size: cover;
+  color: white;
+  outline: none;
+  padding: 0px 10px;
+  -webkit-backdrop-filter: blur(0px);
+  backdrop-filter: blur(0px);
+  background-color: #13368a;
+  cursor: pointer;
+  border-radius: 15px;
+  border: none;
+  text-transform: capitalize;
 }
 
 .filter-options {
-    text-transform: capitalize
+  text-transform: capitalize;
 }
 
 .contSelects {
-    display: flex;
-    justify-content: space-evenly;
-    position: relative;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-evenly;
+  position: relative;
+  flex-wrap: wrap;
 }
 
 .carruselCard {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.colorBg {
+  background-color: #c7f2a4;
+  margin-top: 0;
+  padding-top: 1rem;
 }

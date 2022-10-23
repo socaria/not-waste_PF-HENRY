@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCustomer, getSellers } from "../../redux/actions";
 
-function VerifyProfile (props) { //se debe pasar como propiedad el email a buscar en la base de datos
+function VerifyProfile(props) { //se debe pasar como propiedad el email a buscar en la base de datos
 
     const dispatch = useDispatch()
     const seller = useSelector(state => state.seller)
@@ -13,26 +13,23 @@ function VerifyProfile (props) { //se debe pasar como propiedad el email a busca
     useEffect(() => {
         dispatch(getCustomer())
     }, [dispatch])
-    if(!customer){
-        dispatch(getSellers())
-    }
-    
-    let respuesta = {exists: false}
-    if(props){
-    
-    seller && seller.map(e => {
-        if (e.email === props.toLowerCase()) {
-            respuesta = {exists: true,type: "seller", ...e}
-        }
-    })
-    // seller && seller.map(e => e.email === props.toLowerCase() ? respuesta = {exists: true,type: "seller", ...e}: respuesta)
-    customer && customer.map(e => {
-        if (e.email === props.toLowerCase()) {
-            respuesta = {exists: true,type: "customer", ...e}
-        }
-    })
 
-}
+    let respuesta = { exists: false }
+    if (props) {
+
+        seller && seller.map(e => {
+            if (e.email === props.toLowerCase()) {
+                respuesta = { exists: true, type: "seller", ...e }
+            }
+        })
+        // seller && seller.map(e => e.email === props.toLowerCase() ? respuesta = {exists: true,type: "seller", ...e}: respuesta)
+        customer && customer.map(e => {
+            if (e.email === props.toLowerCase()) {
+                respuesta = { exists: true, type: "customer", ...e }
+            }
+        })
+
+    }
 
     return respuesta
 }
