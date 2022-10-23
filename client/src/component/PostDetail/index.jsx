@@ -36,7 +36,7 @@ const PostDetail = () => {
 
   const [orders, setOrders] = useState({});
   console.log(customers, "CUSTOMER");
-  // let customer = customers.find((c) => c.email === user.email);
+  let customer = customers.find((c) => c.email === user.email);
   let productId = post.productId;
   console.log(productId, "AQUIIIII");
 
@@ -178,7 +178,8 @@ const PostDetail = () => {
                     image: product.image,
                     price: product.price,
                     name: product.name,
-                    // customerId: customer.id,
+                    image: product.image,
+                    customerId: customer.id,
                     postId: post.id,
                   })
                 }
