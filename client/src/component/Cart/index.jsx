@@ -8,8 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { postOrder, postPay, addCart } from "../../redux/actions";
 
 function Cart(props) {
-var { user } = useAuth0();
-let customers = useSelector((state) => state.customer);
+  var { user } = useAuth0();
+  let customers = useSelector((state) => state.customer);
 
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
@@ -28,12 +28,10 @@ let customers = useSelector((state) => state.customer);
     let customer = customers.find((c) => c.email === user?.email);
     cart.customerId = customer.id;
 
-
     if (isAuthenticated) {
       dispatch(postOrder(cart));
-      dispatch(postPay({ price: price }));
+      dispatch(postPay({ price: price, postId: cart.postId }));
     } else {
-
       loginWithRedirect();
     }
   };
@@ -42,7 +40,7 @@ let customers = useSelector((state) => state.customer);
     e.preventDefault();
 
     dispatch(addCart(null));
-  }
+  };
   return (
     <div>
       {props.type === "customer" ? (
@@ -107,8 +105,11 @@ let customers = useSelector((state) => state.customer);
                         </ListGroup.Item>
                         <ListGroup.Item className="d-flex column">
                           <ProductItem cart={cart}></ProductItem>
-                          <button type="button" className="close"
-                            onClick={(e) => handleDelete(e)}>
+                          <button
+                            type="button"
+                            className="close"
+                            onClick={(e) => handleDelete(e)}
+                          >
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </ListGroup.Item>

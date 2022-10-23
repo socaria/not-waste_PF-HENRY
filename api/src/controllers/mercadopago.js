@@ -12,7 +12,6 @@ const post_create_preference = async (req, res) => {
         title: "Not Waste",
         unit_price: Number(req.body.price),
         quantity: 1,
-        postId: req.body.postId
       },
     ],
     back_urls: {
@@ -29,6 +28,7 @@ const post_create_preference = async (req, res) => {
       res.json({
         id: response.body.id,
         psgina_a_redireccionar: response.body.init_point,
+        /* postId: response.body.postId, */
       });
     })
     .catch(function (error) {
