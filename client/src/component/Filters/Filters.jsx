@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./filters.css";
 import ProductItem from "../ProductItem/ProductItem";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { Button, Accordion, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Button, Accordion, ToggleButtonGroup , ToggleButton } from "react-bootstrap";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSellers, postPay, prodDetail } from "../../redux/actions";
@@ -10,8 +10,20 @@ import { getSellers, postPay, prodDetail } from "../../redux/actions";
 function Filters() {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
-  let queryParams = useSelector(state => state.queryParams)
-  let cities = useSelector(state => state.cities)
+  let queryParams = useSelector(state => state.queryParams);
+  let cities = useSelector(state => state.cities);
+  const [priceValue, setPriceValue] = useState('');
+  const [categoryValue, setCategoryValue] = useState('');
+
+  const prices = [
+    { name: '< $500', value: '500' },
+    { name: '< $1000', value: '1000' }
+  ]
+  const categories = [
+    { name: 'Panadería', value: 'panaderia' },
+    { name: 'Restaurante', value: 'restaurante' },
+    { name: 'Supermercado', value: 'supermercado' }
+  ]
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -21,7 +33,9 @@ function Filters() {
     window.location.reload();
   }
 
-  function handleFilterCategory(category) {
+  function handleFilterCategory(e, category) {
+    e.preventDefault();
+    setCategoryValue(e.currentTarget.checked);
     dispatch(
       getSellers({
         ...queryParams,
@@ -30,7 +44,9 @@ function Filters() {
     );
   }
 
-  function handleFiltersPrice(price) {
+  function handleFiltersPrice(e, price) {
+    e.preventDefault();
+    setPriceValue(e.currentTarget.checked);
     dispatch(
       getSellers({
         ...queryParams,
@@ -49,6 +65,7 @@ function Filters() {
   }
 
   let i = 0;
+  let k = 0;
   return (
     <div>
       <div
@@ -81,34 +98,68 @@ function Filters() {
           </Offcanvas.Header>
           <Offcanvas.Body >
             <div className="d-flex justify-content-center my-2">
-              <Button onClick={(e) => handleCleanFilters(e)} variant="secondary">Limpiar filtros</Button>
+              <Button onClick={(e) => handleCleanFilters(e)} variant="light">Limpiar filtros</Button>
             </div>
-            <Accordion defaultActiveKey={['0']} alwaysOpen>
+            <Accordion defaultActiveKey={['0', '1', '2']} alwaysOpen>
               <Accordion.Item eventKey='0'>
                 <Accordion.Header key='0'>Filtrar por precio</Accordion.Header>
                 <Accordion.Body className="d-flex row">
-                  <Button className="my-2" onClick={() => handleFiltersPrice('500')}>{'< $500'}</Button>
-                  <Button onClick={() => handleFiltersPrice('1000')}>{'< $1000'}</Button>
+                  <ToggleButtonGroup type= "checkbox" className="my-2 d-flex row">
+                    {prices.map((price, idx) => {
+                      return (
+                        <ToggleButton
+                          key={idx}
+                          id={`price-${idx}`}
+                          type="checkbox"
+                          variant="light"
+                          name="price"
+                          value={price.value}
+                          checked={priceValue === price.value}
+                          onClick={(e) => handleFiltersPrice(e, price.value)}
+                          className="my-2"
+                        >
+                          {price.name}
+                        </ToggleButton>
+                      )
+                    })}
+                  </ToggleButtonGroup >
                 </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey='1'>
                 <Accordion.Header key='1'>Filtrar por categoría</Accordion.Header>
                 <Accordion.Body className="d-flex row">
-                  <Button onClick={() => handleFilterCategory('panaderia')}>Panadería</Button>
-                  <Button className="my-2" onClick={() => handleFilterCategory('supermercado')}>Supermercado</Button>
-                  <Button onClick={() => handleFilterCategory('restaurante')}>Restaurante</Button>
+                <ToggleButtonGroup  type= "checkbox" className="my-2 d-flex row">
+                    {categories.map((category) => {
+                      return (
+                        <ToggleButton
+                          key={k++}
+                          id={`category-${k++}`}
+                          type="checkbox"
+                          variant="light"
+                          name="category"
+                          value={category.value}
+                          checked={categoryValue === category.value}
+                          onClick={(e) => handleFilterCategory(e, category.value)}
+                          className="my-2"
+                        >
+                          {category.name}
+                        </ToggleButton>
+                      )
+                    })}
+                  </ToggleButtonGroup >
+                 
                 </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey='2'>
                 <Accordion.Header key='2'>Filtrar por ciudad</Accordion.Header>
                 <Accordion.Body className="d-flex row">
                   {cities?.map((city) => {
-                    console.log("🚀 ~ file: Filters.jsx ~ line 128 ~ {cities?.map ~ city", city)
                     return (
                       <Button
                         onClick={() => handleFiltersCity(city.name)}
                         key={city.id}
                         className='cities-button'
+                        variant='light'
                       >
                         {city.name}
                       </Button>
