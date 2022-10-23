@@ -30,13 +30,12 @@ const PostDetail = () => {
   let post = useSelector((state) => state.postDetail);
   let products = useSelector((state) => state.product);
   let product = products.find((p) => p.id === post.productId);
-  console.log(user, "USER");
   let sellers = useSelector((state) => state.seller);
   let customers = useSelector((state) => state.customer);
 
   const [orders, setOrders] = useState({});
   console.log(customers, "CUSTOMER");
-  let customer = customers.find((c) => c.email === user?.email);
+  let customer = customers?.find((c) => c.email === user?.email);
   let productId = post.productId;
 
   useEffect(() => {
