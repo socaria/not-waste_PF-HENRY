@@ -5,9 +5,12 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import { Button, Card, ListGroup } from "react-bootstrap";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from "react-redux";
-import { postOrder, postPay, prodDetail } from "../../redux/actions";
+import { postOrder, postPay, addCart } from "../../redux/actions";
 
 function Cart(props) {
+  var { user } = useAuth0();
+  let customers = useSelector((state) => state.customer);
+
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
 
@@ -16,12 +19,15 @@ function Cart(props) {
 
   let cart = useSelector((state) => state.cart);
 
-  const productId = cart.productId;
-  console.log(cart, "CART");
+  const productId = cart?.productId;
 
   const price = cart?.amount * cart?.price;
   const { isAuthenticated, loginWithRedirect } = useAuth0();
+
   const handlePayment = async (cart) => {
+    let customer = customers.find((c) => c.email === user?.email);
+    cart.customerId = customer.id;
+
     if (isAuthenticated) {
       dispatch(postOrder(cart));
       dispatch(postPay({ price: price, postId: cart.postId }));
@@ -30,6 +36,11 @@ function Cart(props) {
     }
   };
 
+  const handleDelete = (e) => {
+    e.preventDefault();
+
+    dispatch(addCart(null));
+  };
   return (
     <div>
       {props.type === "customer" ? (
@@ -69,7 +80,7 @@ function Cart(props) {
                   <span className="mx-4 mt-2">Tu Carrito</span>
                 </Offcanvas.Title>
               </Offcanvas.Header>
-              {cart.amount ? (
+              {cart?.amount ? (
                 <Offcanvas.Body>
                   <Card>
                     <Card.Header className="d-flex row">
@@ -92,8 +103,15 @@ function Cart(props) {
                             </span>
                           </div>
                         </ListGroup.Item>
-                        <ListGroup.Item className="d-flex row">
+                        <ListGroup.Item className="d-flex column">
                           <ProductItem cart={cart}></ProductItem>
+                          <button
+                            type="button"
+                            className="close"
+                            onClick={(e) => handleDelete(e)}
+                          >
+                            <span aria-hidden="true">&times;</span>
+                          </button>
                         </ListGroup.Item>
                       </ListGroup>
                     </Card.Body>

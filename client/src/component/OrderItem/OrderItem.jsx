@@ -15,7 +15,7 @@ const OrderItem = ({ product, order }) => {
             <div className='d-flex align-items-center my-2 justify-content-around'>
                 <Card className='card-container'>
                     <Card.Title>
-                        Tu pedido realizado el {new Date(order?.date).toLocaleDateString("es-AR")}
+                        Tu pedido realizado el {new Date(order?.createdAt).toLocaleDateString("es-AR")}
                     </Card.Title>
                     <Card.Body>
                        {order?.state === 'entregado' ? 

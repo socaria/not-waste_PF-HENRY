@@ -8,22 +8,17 @@ import CartButton from '../CartButton';
 
 
 
-const ProductItem = ({ cart}) => {
+const ProductItem = ({ cart }) => {
+
     
-    const handleCart = () => {
-        console.log('handlecart')
-    };
     return (
         <>
 
-            <div className='d-flex align-items-center mw-10r justify-content-around'>
-                <span className='mr-4 font-weight-normal'>{cart.amount}</span>
-                {/* <span className='font-weight-normal'>|</span> */}
-                <span className='ms-4 text-capitalize font-weight-normal'>{cart.name}</span>
-                {/* <span className='font-weight-normal'>|</span> */}
-                <span className='font-weight-normal'>{cart.price}</span>
+            <div className='d-flex align-items-center justify-content-between'>
+                <span className='mr-2 font-weight-normal'>{cart.amount}</span>
+                <span className='ms-2 text-capitalize font-weight-normal'>{cart.name}</span>
                 <Image roundedCircle className='product-image' src={cart.image} />
-                {/* <CartButton className='dark' onClick={e => handleCart(e)}/> */}
+                
             </div>
         </>
     )

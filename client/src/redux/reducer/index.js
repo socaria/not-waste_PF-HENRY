@@ -83,6 +83,12 @@ export default function rootReducer(state = initialState, actions) {
         ...state,
         postDetail: actions.payload
       }
+    case "MODIFY_POST":
+      console.log("🚀 ~ file: index.js ~ line 90 ~ rootReducer ~ actions.payload", actions.payload)
+      return {
+        ...state,
+        postDetail: actions.payload
+      }
     default:
       return state;
   }
