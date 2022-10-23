@@ -27,7 +27,7 @@ const filtro = userData.filter(e=>e.email === user)
 <>
 <ListGroup variant="flush">
           <ListGroup.Item><strong>Logo: </strong><img alt='asd' src={e.image} width='50px' height='50px'/></ListGroup.Item>
-          <ListGroup.Item className="textx-capitalice"><strong>Nombre: </strong></ListGroup.Item>
+          <ListGroup.Item className="textx-capitalice"><strong>Nombre: {e.name}</strong></ListGroup.Item>
           <ListGroup.Item ><strong>Email: </strong>{e.email}</ListGroup.Item>
           <ListGroup.Item ><strong>Número: </strong>{e.phone}</ListGroup.Item>
           <ListGroup.Item className="text-capitalize"><strong>Dirección: </strong>{e.adress}</ListGroup.Item>
