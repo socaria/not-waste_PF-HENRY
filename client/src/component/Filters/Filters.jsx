@@ -33,6 +33,30 @@ function Filters() {
     window.location.reload();
   }
 
+  function handleCloseCategory(e) {
+    e.preventDefault();
+    dispatch(getSellers({
+      ...queryParams,
+      category: null,
+    }))
+  }
+
+  function handleCloseCity(e) {
+    e.preventDefault();
+    dispatch(getSellers({
+      ...queryParams,
+      city: null,
+    }))
+  }
+
+  function handleClosePrice(e) {
+    e.preventDefault();
+    dispatch(getSellers({
+      ...queryParams,
+      price: null,
+    }))
+  }
+
   function handleFilterCategory(e, category) {
     e.preventDefault();
     setCategoryValue(e.currentTarget.checked);
@@ -99,6 +123,17 @@ function Filters() {
           <Offcanvas.Body >
             <div className="d-flex justify-content-center my-2">
               <Button onClick={(e) => handleCleanFilters(e)} variant="light">Limpiar filtros</Button>
+            </div>
+            <div>
+              {queryParams?.price &&
+               <Button className="mx-2 my-1" onClick={e => handleClosePrice(e)}>Price: {'< $'}{queryParams.price}</Button>
+              }
+               {queryParams?.category &&
+               <Button className="mx-2 my-1"  onClick={e => handleCloseCategory(e)}>Category: {queryParams.category}</Button>
+              }
+              {queryParams?.city &&
+               <Button className="mx-2 my-1"  onClick={e => handleCloseCity(e) }>City: {queryParams.city}</Button>
+              }
             </div>
             <Accordion defaultActiveKey={['0', '1', '2']} alwaysOpen>
               <Accordion.Item eventKey='0'>
