@@ -50,6 +50,7 @@ const PostDetail = () => {
 
   const handleCart = (input) => {
     input.amount > 0 && dispatch(addCart(input));
+    alert(input.name + ' se añadio correctamente')
   };
 
   let seller = sellers.find((s) => s.id === product.sellerId);
@@ -168,7 +169,7 @@ const PostDetail = () => {
                   );
                 })}
               </DropdownButton>
-              <Button
+              <Button 
                 onClick={() =>
                   handleCart({
                     amount: orders.amount,
