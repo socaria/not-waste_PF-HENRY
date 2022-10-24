@@ -236,7 +236,7 @@ function LandingPage() {
       <header className="headerPri">
         <nav className="navbar navbar-expand-lg navbar-light">
           <div className="container">
-            <img src='https://cdn.iconscout.com/icon/premium/png-256-thumb/vegetarian-food-1834409-1557027.png' alt="🥑" width="100px" />
+            {/* <img src='https://cdn.iconscout.com/icon/premium/png-256-thumb/vegetarian-food-1834409-1557027.png' alt="🥑" width="100px" /> */}
             {/* <button className="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#miLista" aria-controls="miLista" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
@@ -258,7 +258,7 @@ function LandingPage() {
 
         <div className="container">
           <div className="title font-weight-bold">
-            Los mejores precios del mercado,<br /> los encontras acá.<br />
+          VENDER TU EXCEDENTE<br /> NUNCA HABÍA SIDO TAN FÁCIL!<br />
             <button className="btn mt-4" id="btnInicio"><Link to="/home" className="text-decoration-none" id="inicioBtn">Inicio</Link></button>
           </div>
         </div>
