@@ -23,7 +23,6 @@ export function getSellers(queryParams) {
     url.searchParams.append("sortBy", queryParams?.sortBy);
   }
 
-  
   if (queryParams?.email) {
     url.searchParams.append("email", queryParams?.email);
   }
@@ -106,15 +105,14 @@ export function getDiet() {
 export function getCustomer(email) {
   let url = "http://localhost:3001/customer";
   if (email) {
-    url = `http://localhost:3001/customer?email=${email}`
+    url = `http://localhost:3001/customer?email=${email}`;
   }
-  console.log("🚀 ~ file: index.js ~ line 103 ~ getCustomer ~ url", url)
-  
+  console.log("🚀 ~ file: index.js ~ line 103 ~ getCustomer ~ url", url);
+
   return async function (dispatch) {
-    
-      const response = await fetch(url);
-      if (response.ok) {
-        const json = await response.json();
+    const response = await fetch(url);
+    if (response.ok) {
+      const json = await response.json();
 
       dispatch({
         type: "GET_CUSTOMER",
@@ -126,11 +124,8 @@ export function getCustomer(email) {
         payload: "La búsqueda no arrojó resultados",
       });
     }
-  }
+  };
 }
-
-
-    
 
 export function postCustomer(data) {
   return fetch("http://localhost:3001/customer", {
@@ -183,7 +178,8 @@ export function postPay(price) {
     .then((res) => res.json())
     .catch((error) => console.error("Error:", error))
     .then((response) => {
-      window.location.replace(response.psgina_a_redireccionar);
+      return { id: response.id, redirect: response.psgina_a_redireccionar };
+      /* window.location.replace(response.psgina_a_redireccionar); */
     });
 }
 
@@ -218,30 +214,30 @@ export function postPost(data) {
   })
     .then((res) => res.json())
     .then((response) => console.log("Success:", response))
-    .catch((error) => console.error("Error:", error))
+    .catch((error) => console.error("Error:", error));
 }
 
 export function deleteProduct(data) {
   return fetch(`http://localhost:3001/product/${data}`, {
     method: "DELETE",
   })
-  .then((res) => res.json())
-  .then((response) => {console.log("Success:", response)})
-  .catch((error) => console.error("Error:", error))
+    .then((res) => res.json())
+    .then((response) => {
+      console.log("Success:", response);
+    })
+    .catch((error) => console.error("Error:", error));
 }
 
 export function getpost(id) {
   fetch(`http://localhost:3001/post/?id=${id}`)
-  .then((res) => res.json())
-  .then((response) => console.log("Success:", response))
-  .catch((error) => console.error("Error:", error))
+    .then((res) => res.json())
+    .then((response) => console.log("Success:", response))
+    .catch((error) => console.error("Error:", error));
 }
 export function postDetail(id) {
   return async function (dispatch) {
     try {
-      let postDetail = await axios.get(
-        "http://localhost:3001/post/" + id
-      );
+      let postDetail = await axios.get("http://localhost:3001/post/" + id);
       postDetail = postDetail.data;
       dispatch({
         type: "POST_DETAIL",
@@ -255,12 +251,32 @@ export function postDetail(id) {
 
 export function modifyPost(id, input) {
   return async function (dispatch) {
-      const response = await axios.put(`http://localhost:3001/post/${id}`, input);
-      if (response.ok) {
-          const json = await response.data();
-          dispatch({ type: "MODIFY_POST", payload: json });
-      } else {
-          dispatch({ type: "REQUEST_ERROR", payload: 'There are no post with that ID' });
-      }
-  }
+    const response = await axios.put(`http://localhost:3001/post/${id}`, input);
+    if (response.ok) {
+      const json = await response.data();
+      dispatch({ type: "MODIFY_POST", payload: json });
+    } else {
+      dispatch({
+        type: "REQUEST_ERROR",
+        payload: "There are no post with that ID",
+      });
+    }
+  };
+}
+
+export function putOrder(id, state) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.put(
+        `http://localhost:3001/order/${id}`,
+        state
+      );
+      dispatch({
+        type: "PUT_ORDER",
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
