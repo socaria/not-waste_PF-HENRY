@@ -19,13 +19,6 @@ export function validate(input) {
   if (input.description === "") {
     error.description = "La descripción es requerida...";
   }
-  if (!input.stock) {
-    error.stock = "Ingrese la cantidad de stock disponible...";
-  }
-
-  if (!input.image) {
-    error.image = "Debe ingresar una imagen...";
-  }
 
   return error;
 }
