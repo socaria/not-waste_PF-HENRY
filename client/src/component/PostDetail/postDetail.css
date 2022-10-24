@@ -1,19 +1,29 @@
 .cont {
-    border:solid 3px black;
-    border-radius: 15px;
-    background-color: rgb(20, 179, 126);
-    /* padding: 50px 50px 50px 50px; */
-    margin: 50px 50px 50px 50px;
+  border: solid 3px black;
+  border-radius: 15px;
+  background-color: rgb(20, 179, 126);
+  /* padding: 50px 50px 50px 50px; */
+  margin: 50px 50px 50px 50px;
 }
 
 .tittle {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 .cont:hover {
-    transition: 500ms;
-    border-radius: 25px;
-    background-color: rgba(47, 212, 157, 0.384);
-    backdrop-filter: blur(12px);
+  transition: 500ms;
+  border-radius: 25px;
+  background-color: rgba(47, 212, 157, 0.384);
+  backdrop-filter: blur(12px);
+}
 
+.bgColor {
+  background-color: #b6e388;
+}
+
+.pill-diets {
+  display: flex;
+  width: fit-content;
+  margin: 8px;
+  padding: 8px;
 }

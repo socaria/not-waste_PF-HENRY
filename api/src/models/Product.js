@@ -23,10 +23,6 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    stock: {
-      type: DataTypes.INTEGER,
-      min: 0,
-    },
     image: {
       type: DataTypes.STRING,
       isUrl: true,

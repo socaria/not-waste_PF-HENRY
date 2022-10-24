@@ -2,11 +2,38 @@ const { Router } = require("express");
 const { postCustomer, getCallCustomer } = require("../controllers/customer");
 const { getCityInfo } = require("../controllers/city");
 const { getSellers, postSeller, putSeller } = require("../controllers/seller");
-const { getProducts, postProduct, putProduct, deleteProduct, getProductsById } = require("../controllers/product");
-const { getPosts, postPost, putPost, deletePost } = require("../controllers/post");
-const { getManagerById, getAllManager, postManager, putManager } = require("../controllers/manager");
-const { getOrderById, getAllOrder, postOrder } = require("../controllers/order");
+const {
+  getProducts,
+  postProduct,
+  putProduct,
+  deleteProduct,
+  getProductsById,
+} = require("../controllers/product");
+const {
+  getPosts,
+  postPost,
+  putPost,
+  deletePost,
+  getPostById,
+} = require("../controllers/post");
+const {
+  getManagerById,
+  getAllManager,
+  postManager,
+  putManager,
+} = require("../controllers/manager");
+const {
+  getOrderById,
+  getAllOrder,
+  postOrder,
+  deleteOrder,
+  putOrder,
+} = require("../controllers/order");
 const { getDiets } = require("../controllers/diets");
+const {
+  post_create_preference,
+  get_feedback,
+} = require("../controllers/mercadopago");
 
 const router = Router();
 
@@ -23,10 +50,11 @@ router.put("/product/:id", putProduct);
 router.delete("/product/:id", deleteProduct);
 
 //Rutas del Post
+router.get("/post/:id", getPostById);
 router.get("/post", getPosts);
 router.post("/post", postPost);
-router.put("/post/:id", putPost);
 router.delete("/post/:id", deletePost);
+router.put("/post/:id", putPost);
 
 //Aca van las rutas del Customer
 router.get("/customer", getCallCustomer);
@@ -45,9 +73,15 @@ router.get("/city", getCityInfo);
 router.get("/order/:id", getOrderById);
 router.get("/order", getAllOrder);
 router.post("/order", postOrder);
+router.delete("/order/:id", deleteOrder);
+router.put("/order/:id", putOrder);
 
 //Ruta de Dietas
 router.get("/diets", getDiets);
 
+//mercadopago -->
+router.post("/create_preference", post_create_preference);
+router.get("/feedback", get_feedback);
+//<-- mercadopago
 
 module.exports = router;

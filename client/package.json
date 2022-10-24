@@ -16,6 +16,7 @@
     "cloudinary-core": "^2.13.0",
     "cloudinary-react": "^1.8.1",
     "install": "^0.13.0",
+    "mercadopago": "^1.5.14",
     "react": "^18.2.0",
     "react-bootstrap": "2.5.0",
     "react-dom": "^18.2.0",
@@ -25,6 +26,7 @@
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
+    "universal-cookie": "^4.0.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

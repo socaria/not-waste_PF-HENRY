@@ -1,0 +1,10 @@
+.product-image {
+    width: 40px;
+    height: 40px;
+    margin: 8px;
+    border: 1px solid #ccc;
+}
+
+.card-container{
+    width: 650px;
+}

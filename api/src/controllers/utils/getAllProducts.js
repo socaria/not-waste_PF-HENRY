@@ -1,23 +1,6 @@
 const product = require("../../public/newProduct-model.json");
 const { Product, Diet, Post, Order } = require("../../db");
 
-const getApiInfo = async () => {
-  let productApi = product.map((p) => {
-    return {
-      id: p.id,
-      name: p.name,
-      price: p.price,
-      realValue: p.realValue,
-      description: p.description,
-      stock: p.stock,
-      image: p.image,
-      posts: p.posts,
-      sellerId: p.sellerId,
-      diets: p.diets
-    };
-  });
-  return productApi;
-};
 
 const getDbInfo = async () => {
   return await Product.findAll({
@@ -38,10 +21,10 @@ const getDbInfo = async () => {
 };
 
 const getAllProducts = async () => {
-  const apiInfo = await getApiInfo();
+ 
   const dbInfo = await getDbInfo();
-  const infoTotal = apiInfo.concat(dbInfo);
-  return infoTotal;
+
+  return dbInfo;
 };
 
 module.exports = { getAllProducts };

@@ -5,84 +5,105 @@ const initialState = {
   price: [],
   diet: [],
   customer: [],
-  prodDetails:[],
+  prodDetails: [],
   allSeller: [],
   queryParams: {},
-  errorMessage: ""
-}
+  errorMessage: "",
+  currentOrder: [],
+  cart: [],
+  payId: [],
+  postDetail: [],
+  orderDetail: {}
+};
 
 export default function rootReducer(state = initialState, actions) {
   switch (actions.type) {
-
-    case 'GET_SELLER':
+    case "GET_SELLER":
       return {
         ...state,
         seller: actions.payload,
         allSeller: actions.payload,
-        queryParams: actions.query
-      }
-    case 'REQUEST_ERROR':
-    return{
-        ...state,
-        errorMessage: actions.payload
-    }
-
-    case 'GET_CITIES':
+        queryParams: actions.query,
+      };
+    case "REQUEST_ERROR":
       return {
         ...state,
-        cities: actions.payload
-      }
-    case 'GET_DIET':
+        errorMessage: actions.payload,
+      };
+
+    case "GET_CITIES":
       return {
         ...state,
-        diet: actions.payload
-      }
+        cities: actions.payload,
+      };
+    case "GET_DIET":
+      return {
+        ...state,
+        diet: actions.payload,
+      };
 
-      // case "FILTER_BY_CITY":
-      //   const allSeller = state.allSeller.map((e) => ({
-      //     id: e.id,
-      //     name: e.name,
-      //     image: e.image,
-      //     adress: e.adress,
-      //     category: e.category,
-      //     cities: e.cities.map((c) => c.name),
-      //     cuit: e.cuit,
-      //     email: e.email,
-      //     products: e.products.map((d) => ({
-      //       name: d.name,
-      //       price: d.price,
-      //     })),
-      //   }));
-      //   const filterSeller = allSeller.filter((e) =>
-      //     e.cities.includes(actions.payload)
-      //   );
-      //   return {
-      //     ...state,
-      //     seller: filterSeller,
-      //   };
-
-    case 'GET_PRODUCT': {
+    case "GET_PRODUCT": {
       return {
         ...state,
         product: actions.payload,
-        queryParams: actions.query
-
-      }
+        queryParams: actions.query,
+      };
     }
 
-    case 'GET_CUSTOMER':
+    case "GET_CUSTOMER":
       return {
         ...state,
-        customer: actions.payload
-      }
+        customer: actions.payload,
+      };
 
-      case 'PROD_DETAIL':
-      return{
+    case "PROD_DETAIL":
+      return {
         ...state,
-        prodDetails: actions.payload
-      }
+        prodDetails: actions.payload,
+      };
 
+    case "POST_PRODUCT":
+      return {
+        ...state,
+        seller: actions.payload,
+      };
+    case "POST_ORDER":
+      return {
+        ...state,
+        currentOrder: actions.orders,
+      };
+
+    case "ADD_CART":
+      return {
+        ...state,
+        cart: actions.payload,
+      };
+
+    case "POST_PAY":
+      return {
+        ...state,
+        payId: actions.payload,
+      };
+    case "POST_DETAIL":
+      return {
+        ...state,
+        postDetail: actions.payload,
+      };
+    case "MODIFY_POST":
+      console.log(
+        actions.payload
+      );
+      return {
+        ...state,
+        postDetail: actions.payload,
+      };
+
+      case "ORDER_DETAIL":
+        return {
+          ...state,
+          orderDetail: actions.payload
+        }
     default:
-      return state
+      return state;
   }
 }

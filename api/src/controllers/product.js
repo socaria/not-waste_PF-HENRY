@@ -55,7 +55,6 @@ const postProduct = async (req, res) => {
         price,
         realValue,
         description,
-        stock,
         image,
         diets,
         sellerId
@@ -66,13 +65,11 @@ const postProduct = async (req, res) => {
         if (!price) { throw new Error('Debe definirse un precio') }
         if (!realValue) { throw new Error('Debe definirse un valor real') }
         if (!description) { throw new Error('Debe definirse una descripción') }
-        if (!stock) { throw new Error('Debe definirse un stock') }
         let newProduct = await Product.create({
             name,
             price,
             realValue,
             description,
-            stock,
             image,
             sellerId
         })
@@ -87,7 +84,7 @@ const postProduct = async (req, res) => {
         res.send(newProduct);
 
     } catch (e) {
-        res.status(500).send(`${e}`)
+        res.status(500).send(`${e.message}`)
     }
 };
 
@@ -98,7 +95,6 @@ const putProduct = async (req, res) => {
         price,
         realValue,
         description,
-        stock,
         image,
         diets
     } = req.body
@@ -108,7 +104,6 @@ const putProduct = async (req, res) => {
         if (!price) { throw new Error('Debe definirse un precio') }
         if (!realValue) { throw new Error('Debe definirse un valor real') }
         if (!description) { throw new Error('Debe definirse una descripción') }
-        if (!stock) { throw new Error('Debe definirse un stock') }
         let productToModify = await Product.upsert(
             {
                 id,
@@ -116,7 +111,6 @@ const putProduct = async (req, res) => {
                 price,
                 realValue,
                 description,
-                stock,
                 image
             }
         )
@@ -130,7 +124,7 @@ const putProduct = async (req, res) => {
 
         res.send(productToModify);
     } catch (e) {
-        res.status(500).send(`${e}`)
+        res.status(500).send(`${e.message}`)
     }
 };
 
@@ -145,7 +139,7 @@ const deleteProduct = async (req, res) => {
             });
     }
     await Product.destroy({ where: { id: id } })
-    res.send('done');
+    res.send({result: "objeto eliminado"});
 }
 
 module.exports = {
