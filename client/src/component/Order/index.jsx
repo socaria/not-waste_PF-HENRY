@@ -7,18 +7,29 @@ import NavBar from "../NavBar";
 import Footer from "../Footer/index";
 import OrderItem from "../OrderItem/OrderItem";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 
 const Order = () => {
   let { user } = useAuth0();
+
+  const useQuery = () => new URLSearchParams(useLocation().search);
+
+  let query = useQuery();
+
+  let postIdToModify = query.get('external_reference')
+
   let customers = useSelector((state) => state.customer);
   let customer = customers?.find((c) => c.email === user?.email);
+  let orderFinded = customer?.orders?.find(o => o.postId === postIdToModify)
+  console.log("🚀 ~ file: index.jsx ~ line 24 ~ Order ~ orderFinded", orderFinded)
   let products = useSelector((state) => state.product);
   const dispatch = useDispatch();
+  dispatch(putOrder(orderFinded?.id, {state: 'confirmado'}));
   useEffect(() => {
     dispatch(getCustomer());
     dispatch(getProduct());
   }, []);
+
   let ordersInProgress = customer?.orders.filter(
     (order) => order.state !== "entregado"
   );
@@ -41,7 +52,6 @@ const Order = () => {
   );
 
   const params = useParams(); //No esta trayendo los parametros
-  console.log(params, "PARAMS");
   let orderConfirmed = customer?.orders.find(
     (order) => order.payId === params.preference_id
   );

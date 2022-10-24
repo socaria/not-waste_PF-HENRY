@@ -18,10 +18,10 @@ const OrderItem = ({ product, order }) => {
                         Tu pedido realizado el {new Date(order?.createdAt).toLocaleDateString("es-AR")}
                     </Card.Title>
                     <Card.Body>
-                       {order?.state === 'entregado' ? 
-                       <Card.Subtitle className='text-success text-capitalize'>{order.state}</Card.Subtitle>
-                       : <Card.Subtitle className='text-warning text-capitalize'>{order.state}</Card.Subtitle>
-                    }
+                        {order?.state === 'entregado' && <Card.Subtitle className='text-success text-capitalize'>{order.state}</Card.Subtitle>}
+                        {order?.state === 'confirmado' && <Card.Subtitle className='text-warning text-capitalize'>{order.state}</Card.Subtitle>}
+                        {order?.state === 'pendiente' && <Card.Subtitle className='text-danger text-capitalize'>{order.state}</Card.Subtitle>}
+
                         <div className='d-flex justify-content-around'>
                             <Card.Img variant='left' className='product-image' src={product?.image} />
                             <span>{order.amount}</span>

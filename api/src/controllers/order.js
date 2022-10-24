@@ -52,28 +52,59 @@ const getOrderById = async (req, res) => {
     console.log(error);
   }
 };
-
 const getAllOrder = async (req, res) => {
-  const { state } = req.query;
+  const { state, customerId } = req.query;
+  let orders;
   try {
-    let orderList = await getAllData();
-    if (state) {
-      let searchState = orderList.filter((order) =>
-        order.state.toLowerCase().includes(state.toLocaleLowerCase())
-      );
-      searchState.length
-        ? res.status(200).send(searchState)
-        : res
-            .status(404)
-            .send(`No se encontró ninguna orden con el estado: ${state}`);
-    } else {
-      res.status(200).send(orderList);
-    }
-  } catch (error) {
-    console.log(error);
-    res.status(500).send(error);
+      orders = await getAllData();
+      if (customerId) {
+          orders = orders.filter(o => {
+            return o.customerId === customerId
+          })
+          if (!orders.length) {
+              throw new Error('No hay ordenes asociadas a ese consumidor')
+          };
+      }
+      if (state) {
+          orders = orders.filter(o =>
+              o.state === state )
+          if (!orders.length) {
+              throw new Error('No hay ordenes con ese estado')
+          }; 
+      
+      }
+           
+      res.status(200).send(orders);
+  } catch (e) {
+      res.status(404).send(e.message);
   }
 };
+
+// const getAllOrder = async (req, res) => {
+//   const { state, customerId } = req.query;
+//   try {
+//     let orderList = await getAllData();
+//     if (state) {
+//       let orderList = orderList.filter((order) =>
+//         order.state.toLowerCase().includes(state.toLocaleLowerCase())
+//       );
+//       orderList.length
+//         ? res.status(200).send(orderList)
+//         : res
+//             .status(404)
+//             .send(`No se encontró ninguna orden con el estado: ${state}`);
+//     } if (customerId) {
+//       let orderList = orderList.filter((order) =>
+//         order.customerId = customerId
+//       );
+//       res.status(200).send(orderList);
+//     }
+//     res.status(200).send(orderList);
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).send(error);
+//   }
+// };
 
 const postOrder = async (req, res) => {
   let { date, amount, state, review, postId, customerId, payId } = req.body;
@@ -117,13 +148,13 @@ const putOrder = async (req, res) => {
   let { state } = req.body;
   try {
     if (!state) {
-      throw new Error("No se recibio parametro State");
+      throw new Error("No se recibio parametro state");
     }
-    let orderMod = await Order.upsert({
-      id,
-      state,
-    });
-    res.send(orderMod);
+    let orderMod = await Order.update(
+      {state},
+        {where: {id}  });
+    let orderModificated = await Order.findByPk(id)
+    res.send(orderModificated);
   } catch (e) {
     res.status(500).send(`${e}`);
   }
