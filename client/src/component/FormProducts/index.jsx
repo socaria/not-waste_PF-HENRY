@@ -28,7 +28,7 @@ function FormProduct() {
         realValue: "",
         image: "",
         description: "",
-        stock: "",
+        stock: 0,
         diets: [],
         sellerId: db.id,
       };
@@ -97,17 +97,12 @@ function FormProduct() {
         sellerId: db.id,
       });
     } else {
-      alert("Datos Faltantes");
+     console.log(error);
     }
   }
 
   function handleSelectDiet(e) {
-    if (!input.diets.length) {
-      setError({
-        ...error,
-        diets: undefined,
-      });
-    }
+
     if (!input.diets.includes(e.target.value)) {
       setInput({
         ...input,
@@ -200,17 +195,6 @@ function FormProduct() {
               onChange={(e) => changeStateImage(e)}
             />
             {error.image && <p>{error.image}</p>}
-
-            <Form.Label></Form.Label>
-            <Form.Control
-              name="stock"
-              value={input.stock}
-              type="number"
-              placeholder="Stock"
-              id="inputss"
-              onChange={(e) => handleInput(e)}
-            />
-            {error.stock && <p>{error.stock}</p>}
 
             <Form.Label></Form.Label>
             <Form.Select
