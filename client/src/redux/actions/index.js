@@ -107,8 +107,7 @@ export function getCustomer(email) {
   if (email) {
     url = `http://localhost:3001/customer?email=${email}`;
   }
-  console.log("🚀 ~ file: index.js ~ line 103 ~ getCustomer ~ url", url);
-
+  
   return async function (dispatch) {
     const response = await fetch(url);
     if (response.ok) {
@@ -167,10 +166,10 @@ export const postProduct = (payload) => {
   };
 };
 
-export function postPay(price) {
+export function postPay(price, postId) {
   return fetch("http://localhost:3001/create_preference", {
     method: "POST", // or 'PUT'
-    body: JSON.stringify(price), // data can be `string` or {object}!
+    body: JSON.stringify(price, postId), // data can be `string` or {object}!
     headers: {
       "Content-Type": "application/json",
     },
@@ -190,9 +189,34 @@ export function postOrder(input) {
       dispatch({
         type: "POST_ORDER",
         payload: act.data,
+        orders: act.data.id
       });
     } catch (error) {
       console.log(error);
+    }
+  };
+}
+
+export function getOrders(customerId) {
+  let url = "http://localhost:3001/order";
+  if (customerId) {
+    url = `http://localhost:3001/customer?customerId=${customerId}`;
+  }
+
+  return async function (dispatch) {
+    const response = await fetch(url);
+    if (response.ok) {
+      const json = await response.json();
+
+      dispatch({
+        type: "GET_ORDERS",
+        payload: json,
+      });
+    } else {
+      dispatch({
+        type: "REQUEST_ERROR",
+        payload: "La búsqueda no arrojó resultados",
+      });
     }
   };
 }
@@ -274,6 +298,23 @@ export function putOrder(id, state) {
       dispatch({
         type: "PUT_ORDER",
         payload: response.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function orderDetail(id) {
+  return async function (dispatch) {
+    try {
+      let detailOrder = await  axios.get(
+        "http://localhost:3001/order/" + id
+      );
+      detailOrder = detailOrder.data[0];
+      dispatch({
+        type: "ORDER_DETAIL",
+        payload: detailOrder,
       });
     } catch (error) {
       console.log(error);
