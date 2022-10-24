@@ -76,7 +76,7 @@ const getAllOrder = async (req, res) => {
 };
 
 const postOrder = async (req, res) => {
-  let { date, amount, state, review, postId, customerId } = req.body;
+  let { date, amount, state, review, postId, customerId, payId } = req.body;
   try {
     if (!amount) {
       throw new Error("Debe definirse una cantidad");
@@ -91,6 +91,7 @@ const postOrder = async (req, res) => {
       review,
       postId,
       customerId,
+      payId,
     });
     newOrder.setPost(postId);
     res.send(newOrder);
