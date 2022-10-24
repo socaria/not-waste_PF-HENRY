@@ -1,36 +1,25 @@
-.container {
-  margin-top: 30px;
-  flex-wrap: wrap;
+.contenedor_card {
+  display: grid;
+  align-items: center;
+  justify-content: center;
 }
 
-.seller-image {
-  width: 60px;
-  height: 60px;
-  margin: 8px;
-  border: 1px solid #ccc;
+.name-post {
+  color: red;
+  text-transform: lowercase;
 }
 
-.container-cards {
-  background-color: #e1ffb1;
-  padding: 8px;
-  margin: 16px;
-  display: inline-flex;
+.name-post:first-letter {
+  text-transform: uppercase;
 }
-
-.container-carousel {
-  background-color: #e1ffb1;
-  padding: 8px;
-  margin: 16px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  overflow-x: auto;
-  height: 500px;
+.precio {
+  color: red;
 }
-
-.seller-title {
-  text-align: flex-start;
-  padding-left: 4px;
+.titulo-h1 {
+  color: rgb(11, 129, 56);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 55px;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-shadow: 2px 5px #000;
 }

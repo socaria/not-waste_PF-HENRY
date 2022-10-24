@@ -75,6 +75,11 @@ export const Profile = (props) => {
                 Cargar Produtos
               </Link>
             </Dropdown.Item>
+            <Dropdown.Item className="drop">
+              <Link className="link" to="/postSeller">
+                Mis Posteos
+              </Link>
+            </Dropdown.Item>
             <Dropdown.Item
               className="drop"
               type="button"
