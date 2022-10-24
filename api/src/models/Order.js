@@ -14,7 +14,7 @@ module.exports = (sequelize) => {
     },
     amount: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
     },
     state: {
       type: DataTypes.ENUM("pendiente", "confirmado", "entregado", "cancelado"),
@@ -26,5 +26,9 @@ module.exports = (sequelize) => {
       max: 5,
       // TODO agregar condición de que sólo se puede modificar cuando el pedido está en estado entregado
     },
+    /* payId: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    }, */
   });
 };

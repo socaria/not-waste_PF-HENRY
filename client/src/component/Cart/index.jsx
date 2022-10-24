@@ -25,15 +25,11 @@ function Cart(props) {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
 
   const handlePayment = async (cart) => {
-    let customer = customers.find((c) => c.email === user?.email);
-    cart.customerId = customer.id;
-
-    if (isAuthenticated) {
-      dispatch(postOrder(cart));
-      dispatch(postPay({ price: price, postId: cart.postId }));
-    } else {
-      loginWithRedirect();
-    }
+    let payId = await postPay({ price: price });
+    cart.payId = payId.id;
+    console.log(cart, "CART");
+    dispatch(postOrder(cart));
+    window.location.replace(payId.redirect);
   };
 
   const handleDelete = (e) => {
