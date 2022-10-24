@@ -167,10 +167,10 @@ export const postProduct = (payload) => {
   };
 };
 
-export function postPay(price) {
+export function postPay(price, postId) {
   return fetch("http://localhost:3001/create_preference", {
     method: "POST", // or 'PUT'
-    body: JSON.stringify(price), // data can be `string` or {object}!
+    body: JSON.stringify(price, postId), // data can be `string` or {object}!
     headers: {
       "Content-Type": "application/json",
     },

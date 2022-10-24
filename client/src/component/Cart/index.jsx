@@ -25,7 +25,8 @@ function Cart(props) {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
 
   const handlePayment = async (cart) => {
-    let payId = await postPay({ price: price });
+    console.log("🚀 ~ file: index.jsx ~ line 28 ~ handlePayment ~ cart", cart)
+    let payId = await postPay({ price: price, postId: cart.postId });
     cart.payId = payId.id;
     console.log(cart, "CART");
     dispatch(postOrder(cart));

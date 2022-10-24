@@ -21,6 +21,7 @@ const post_create_preference = async (req, res) => {
       pending: "http://localhost:3000/home",
     },
     auto_return: "approved",
+    external_reference: req.body.postId,
   };
   mercadopago.preferences
     .create(preference)
