@@ -11,14 +11,14 @@
 }
 
 .container-cards {
-  background-color: #e1ffb1;
+  background-color: white;
   padding: 8px;
   margin: 16px;
   display: inline-flex;
 }
 
 .container-carousel {
-  background-color: #e1ffb1;
+  background-color: white;
   padding: 8px;
   margin: 16px;
   border-radius: 10px;

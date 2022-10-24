@@ -119,17 +119,17 @@ const PostDetail = () => {
                   </span>
                 </Card.Link>
               </ListGroup.Item>
-
+              <ListGroup.Item>
               {product?.diets.length > 0 && (
                 <>
-                  <Card.Subtitle className="mb-2 text-muted">
+                  <Card.Subtitle className="text-muted">
                     Dietas
                   </Card.Subtitle>
                   {product.diets?.map((diet) => {
                     return (
                       <Badge
                         pill
-                        className="d-flex "
+                        className="pill-diets"
                         bg="light"
                         text="dark"
                         key={diet.id}
@@ -140,6 +140,7 @@ const PostDetail = () => {
                   })}
                 </>
               )}
+              </ListGroup.Item>
             </ListGroup>
           </Card.Body>
           <Card.Footer>
