@@ -20,7 +20,7 @@ const getSellers = async (req, res) => {
       if (!sellers.length) {
         throw new Error("No hay proveedores con ese nombre");
       }
-    }
+    } 
     if (category) {
       sellers = sellers.filter((s) => s.category === category);
       if (!sellers.length) {
