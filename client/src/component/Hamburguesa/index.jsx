@@ -38,7 +38,7 @@ export const Profile = (props) => {
             <Dropdown.Item
               className="drop"
               type="button"
-              onClick={() => logout({ returnTo: "http://localhost:3000/home" })}
+              onClick={() => logout({ returnTo: `${process.env.URL_FRONT}/home` })}
             >
               Cerrar Sessión
             </Dropdown.Item>
@@ -83,7 +83,7 @@ export const Profile = (props) => {
             <Dropdown.Item
               className="drop"
               type="button"
-              onClick={() => logout({ returnTo: "http://localhost:3000/home" })}
+              onClick={() => logout({ returnTo: `${process.env.URL_FRONT}/home` })}
             >
               Cerrar Sessión
             </Dropdown.Item>

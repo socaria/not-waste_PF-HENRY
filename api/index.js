@@ -6,7 +6,7 @@ const { conn } = require("./src/db.js");
 // server.use(cors());
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
+conn.sync({ force: false }).then(() => {
   server.listen(process.env.PORT, () => {
     console.log("Escuchando servidor "); // eslint-disable-line no-console
   });

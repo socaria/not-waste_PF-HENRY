@@ -15,7 +15,7 @@ function Registrering() {
 
   return (
     <>
-      {db.exists && window.location.assign("http://localhost:3000/home")}
+      {db.exists && window.location.assign(`${process.env.URL_FRONT}/home`)}
       <div>
         <NavBar />
         <div className="dashRegister">

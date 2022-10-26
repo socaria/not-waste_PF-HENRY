@@ -107,7 +107,7 @@ function Register(props) {
   };
 
   const reload = () => {
-    window.location.assign("http://localhost:3000/home");
+    window.location.assign(`${process.env.URL_FRONT}/home`);
   };
 
   const registrarproveedor = (e) => {

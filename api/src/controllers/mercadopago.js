@@ -5,6 +5,7 @@ mercadopago.configure({
   access_token: ACCESS_TOKEN_MP_CRISTIAN,
 });
 
+
 const post_create_preference = async (req, res) => {
   let preference = {
     items: [
@@ -16,9 +17,9 @@ const post_create_preference = async (req, res) => {
     ],
     back_urls: {
       //esto es donde redirecciona en cada caso
-      success: "http://localhost:3000/customer/orders",
-      failure: "http://localhost:3000/home",
-      pending: "http://localhost:3000/home",
+      success: `${process.env.URL_FRONT}/customer/orders`,
+      failure: `${process.env.URL_FRONT}/home`,
+      pending: `${process.env.URL_FRONT}/home`,
     },
     auto_return: "approved",
     external_reference: req.body.postId,
