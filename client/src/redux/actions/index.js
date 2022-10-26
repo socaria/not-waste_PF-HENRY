@@ -1,7 +1,12 @@
 import axios from "axios";
+// import dotenv from "dotenv";
+
+// dotenv.config();
+
+const baseURL = process.env.REACT_APP_API || "http://localhost:3001";
 
 export function getSellers(queryParams) {
-  let url = new URL("http://localhost:3001/seller");
+  let url = new URL(`${baseURL}/seller`);
   if (queryParams?.city) {
     url.searchParams.append("city", queryParams?.city);
   }
@@ -46,7 +51,7 @@ export function getSellers(queryParams) {
 export function getCities() {
   return async function (dispatch) {
     try {
-      const cities = await axios.get("http://localhost:3001/city");
+      const cities = await axios.get(`${baseURL}/city`);
       dispatch({
         type: "GET_CITIES",
         payload: cities.data,
@@ -60,7 +65,7 @@ export function getCities() {
 export function getProduct() {
   return async function (dispatch) {
     try {
-      const price = await axios.get("http://localhost:3001/product");
+      const price = await axios.get(`${baseURL}/product`);
       dispatch({
         type: "GET_PRODUCT",
         payload: price.data,
@@ -74,9 +79,7 @@ export function getProduct() {
 export function prodDetail(id) {
   return async function (dispatch) {
     try {
-      let detailProduct = await await axios.get(
-        "http://localhost:3001/product/" + id
-      );
+      let detailProduct = await await axios.get(`${baseURL}/product` + id);
       detailProduct = detailProduct.data[0];
       dispatch({
         type: "PROD_DETAIL",
@@ -91,7 +94,7 @@ export function prodDetail(id) {
 export function getDiet() {
   return async function (dispatch) {
     try {
-      const diet = await axios.get("http://localhost:3001/diets");
+      const diet = await axios.get(`${baseURL}/diets`);
       dispatch({
         type: "GET_DIET",
         payload: diet.data,
@@ -103,11 +106,11 @@ export function getDiet() {
 }
 
 export function getCustomer(email) {
-  let url = "http://localhost:3001/customer";
+  let url = `${baseURL}/customer`;
   if (email) {
-    url = `http://localhost:3001/customer?email=${email}`;
+    url = `${baseURL}/customer?email=${email}`;
   }
-  
+
   return async function (dispatch) {
     const response = await fetch(url);
     if (response.ok) {
@@ -127,7 +130,7 @@ export function getCustomer(email) {
 }
 
 export function postCustomer(data) {
-  return fetch("http://localhost:3001/customer", {
+  return fetch(`${baseURL}/customer`, {
     method: "POST", // or 'PUT'
     body: JSON.stringify(data), // data can be `string` or {object}!
     headers: {
@@ -140,7 +143,7 @@ export function postCustomer(data) {
 }
 
 export function postSeller(data) {
-  return fetch("http://localhost:3001/seller", {
+  return fetch(`${baseURL}/seller`, {
     method: "POST", // or 'PUT'
     body: JSON.stringify(data), // data can be `string` or {object}!
     headers: {
@@ -161,13 +164,13 @@ export const filterByCity = (payload) => {
 
 export const postProduct = (payload) => {
   return async () => {
-    let json = await axios.post("http://localhost:3001/product", payload);
+    let json = await axios.post(`${baseURL}/product`, payload);
     return json;
   };
 };
 
 export function postPay(price, postId) {
-  return fetch("http://localhost:3001/create_preference", {
+  return fetch(`${baseURL}/create_preference`, {
     method: "POST", // or 'PUT'
     body: JSON.stringify(price, postId), // data can be `string` or {object}!
     headers: {
@@ -185,11 +188,11 @@ export function postPay(price, postId) {
 export function postOrder(input) {
   return async function (dispatch) {
     try {
-      const act = await axios.post("http://localhost:3001/order", input);
+      const act = await axios.post(`${baseURL}/order`, input);
       dispatch({
         type: "POST_ORDER",
         payload: act.data,
-        orders: act.data.id
+        orders: act.data.id,
       });
     } catch (error) {
       console.log(error);
@@ -198,9 +201,9 @@ export function postOrder(input) {
 }
 
 export function getOrders(customerId) {
-  let url = "http://localhost:3001/order";
+  let url = `${baseURL}/order`;
   if (customerId) {
-    url = `http://localhost:3001/customer?customerId=${customerId}`;
+    url = `${baseURL}/order?customerId=${customerId}`;
   }
 
   return async function (dispatch) {
@@ -229,7 +232,7 @@ export function addCart(payload) {
 }
 
 export function postPost(data) {
-  return fetch("http://localhost:3001/post", {
+  return fetch(`${baseURL}/post`, {
     method: "POST",
     body: JSON.stringify(data),
     headers: {
@@ -242,7 +245,7 @@ export function postPost(data) {
 }
 
 export function deleteProduct(data) {
-  return fetch(`http://localhost:3001/product/${data}`, {
+  return fetch(`${baseURL}/product/${data}`, {
     method: "DELETE",
   })
     .then((res) => res.json())
@@ -253,7 +256,7 @@ export function deleteProduct(data) {
 }
 
 export function getpost(id) {
-  fetch(`http://localhost:3001/post/?id=${id}`)
+  fetch(`${baseURL}/post/?id=${id}`)
     .then((res) => res.json())
     .then((response) => console.log("Success:", response))
     .catch((error) => console.error("Error:", error));
@@ -261,7 +264,7 @@ export function getpost(id) {
 export function postDetail(id) {
   return async function (dispatch) {
     try {
-      let postDetail = await axios.get("http://localhost:3001/post/" + id);
+      let postDetail = await axios.get(`${baseURL}/post/${id}`);
       postDetail = postDetail.data;
       dispatch({
         type: "POST_DETAIL",
@@ -275,7 +278,7 @@ export function postDetail(id) {
 
 export function modifyPost(id, input) {
   return async function (dispatch) {
-    const response = await axios.put(`http://localhost:3001/post/${id}`, input);
+    const response = await axios.put(`${baseURL}/post/${id}`, input);
     if (response.ok) {
       const json = await response.data();
       dispatch({ type: "MODIFY_POST", payload: json });
@@ -291,10 +294,7 @@ export function modifyPost(id, input) {
 export function putOrder(id, state) {
   return async function (dispatch) {
     try {
-      const response = await axios.put(
-        `http://localhost:3001/order/${id}`,
-        state
-      );
+      const response = await axios.put(`${baseURL}/order/${id}`, state);
       dispatch({
         type: "PUT_ORDER",
         payload: response.data,
@@ -308,9 +308,7 @@ export function putOrder(id, state) {
 export function orderDetail(id) {
   return async function (dispatch) {
     try {
-      let detailOrder = await  axios.get(
-        "http://localhost:3001/order/" + id
-      );
+      let detailOrder = await axios.get(`${baseURL}/order/${id}`);
       detailOrder = detailOrder.data[0];
       dispatch({
         type: "ORDER_DETAIL",
