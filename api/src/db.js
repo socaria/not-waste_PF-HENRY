@@ -29,7 +29,7 @@ let sequelize =
         ssl: true,
       })
     : new Sequelize(
-        `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/notwaste`,
+        `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/not_waste`,
         { logging: false, native: false }
       );
 

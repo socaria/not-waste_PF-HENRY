@@ -6,8 +6,10 @@ import { getCities } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { postCustomer, postSeller } from "../../redux/actions";
 import "../register/register.css";
-import registerSupplier from "./middleware";
+import {registerSupplier, registerCustomer} from "./middleware";
 import Cookies from "universal-cookie";
+
+const redirectUri = process.env.REACT_APP_AUTH0_REDIRECT_URI
 
 function Register(props) {
   const dispatch = useDispatch();
@@ -107,7 +109,7 @@ function Register(props) {
   };
 
   const reload = () => {
-    window.location.assign(`${process.env.URL_FRONT}/home`);
+    window.location.assign(`${redirectUri}/home` );
   };
 
   const registrarproveedor = (e) => {
@@ -164,14 +166,17 @@ function Register(props) {
   //   }
   // };
 
-  const registerCustomer = () => {
+  const registerCustom = (e) => {
+    e.preventDefault()
     const { name, email } = input;
     const cookies = new Cookies();
     cookies.set("customerName", `${input.name}`, { path: "/" });
     cookies.set("customerEmail", `${input.email}`, { path: "/" });
-    window.location.href = "./home";
+    registerCustomer(name, email);
+    setTimeout(() => {
+      reload();
+    }, 3000);
     // console.log({ name, email });
-    dispatch(postCustomer({ name, email }));
   };
 
   const handleDeleteCity = (e) => {
@@ -254,7 +259,7 @@ function Register(props) {
                 type="submit"
                 value="registerCustomer"
                 onClick={(e) => {
-                  registerCustomer(e);
+                  registerCustom(e);
                 }}
               >
                 Confirmar

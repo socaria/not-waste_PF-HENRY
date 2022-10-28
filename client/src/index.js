@@ -14,14 +14,13 @@ const root = createRoot(container);
 
 const domain = process.env.REACT_APP_AUTH0_DOMAIN
 const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID
-const urlFront = process.env.URL_FRONT
-
+const redirectUri = process.env.REACT_APP_AUTH0_REDIRECT_URI
 
 root.render(
     <Auth0Provider
         domain={domain}
         clientId={clientId}
-        redirectUri={`${urlFront}/register`}>
+        redirectUri= {`${redirectUri}/register`}>
         <Provider store={store}>
             <App />
         </Provider>

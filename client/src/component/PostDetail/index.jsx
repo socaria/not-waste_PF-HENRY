@@ -5,6 +5,7 @@ import {
   addCart,
   postDetail,
   getProduct,
+  modifyPost,
 } from "../../redux/actions";
 import "./postDetail.css";
 import { useParams } from "react-router-dom";
@@ -28,14 +29,16 @@ const PostDetail = () => {
   var { user } = useAuth0();
 
   let post = useSelector((state) => state.postDetail);
+  let postO = post[0]
   let products = useSelector((state) => state.product);
-  let product = products.find((p) => p.id === post.productId);
+  let product = products.find((p) => p.id === postO.productId);
   let sellers = useSelector((state) => state.seller);
   let customers = useSelector((state) => state.customer);
 
   const [orders, setOrders] = useState({});
   let customer = customers?.find((c) => c.email === user?.email);
   let productId = post.productId;
+  let ordersReview = post[0]?.orders?.map(e=>e);
 
   useEffect(() => {
     dispatch(postDetail(postId));
@@ -48,15 +51,15 @@ const PostDetail = () => {
   }
 
   const handleCart = (input) => {
-    input.amount > 0 && dispatch(addCart(input));
-    alert(input.name + ' se añadio correctamente')
+    if (input.amount > 0) {
+      dispatch(addCart(input));
+      alert(input.name + " se añadio correctamente");
+    }
   };
 
   let seller = sellers.find((s) => s.id === product.sellerId);
 
   if (product?.id) {
-    
-
     return (
       <>
         <NavBar />
@@ -65,7 +68,7 @@ const PostDetail = () => {
             <Card.Img variant="top" src={product.image} />
             <Card.ImgOverlay className="d-flex align-items-start flex-column justify-content-between">
               <Badge pill bg="warning">
-                {post.amount + " disponible(s)"}
+                {postO.amount + " disponible(s)"}
               </Badge>
               <Card.Title className="text-white fw-bold bg-light rounded p-2 ">
                 <span className="text-dark text-uppercase">{product.name}</span>
@@ -96,9 +99,8 @@ const PostDetail = () => {
                 </Card.Subtitle>
 
                 <Card.Link
-                  href={`https://maps.google.com/?q=${
-                    seller ? seller.adress : ""
-                  }, Buenos Aires, Argentina`}
+                  href={`https://maps.google.com/?q=${seller ? seller.adress : ""
+                    }, Buenos Aires, Argentina`}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -114,88 +116,95 @@ const PostDetail = () => {
                   <span className="mx-2 text-capitalize">
                     {seller ? seller.adress : ""}
                   </span>
-                  <span className="mx-2 text-capitalize">
-                    ({seller?.cities[0].name})
-                  </span>
+                  {
+                    <span className="mx-2 text-capitalize">
+                      ({seller?.cities[0].name})
+                    </span>
+                  }
                 </Card.Link>
               </ListGroup.Item>
               <ListGroup.Item>
-              {product?.diets.length > 0 && (
-                <>
-                  <Card.Subtitle className="text-muted">
-                    Dietas
-                  </Card.Subtitle>
-                  {product.diets?.map((diet) => {
-                    return (
-                      <Badge
-                        pill
-                        className="pill-diets"
-                        bg="light"
-                        text="dark"
-                        key={diet.id}
-                      >
-                        {diet.name}
-                      </Badge>
-                    );
-                  })}
-                </>
-              )}
+                {product?.diets.length > 0 && (
+                  <>
+                    <Card.Subtitle className="text-muted">Dietas</Card.Subtitle>
+                    {product.diets?.map((diet) => {
+                      return (
+                        <Badge
+                          pill
+                          className="pill-diets"
+                          bg="light"
+                          text="dark"
+                          key={diet.id}
+                        >
+                          {diet.name}
+                        </Badge>
+                      );
+                    })}
+                  </>
+                )}
               </ListGroup.Item>
             </ListGroup>
           </Card.Body>
           <Card.Footer>
-            <div className="d-flex align-items-center">
-              <span className="mx-2">
-                {new Date(post.date).toLocaleDateString("es-AR")}
-              </span>
-              <DropdownButton
-                variant="light"
-                className="mx-4"
-                key={`newOrder_${orders.amount}`}
-                title={orders.amount || "Cantidad"}
-              >
-                {amountPostArray(post).map((a) => {
-                  return (
-                    <Dropdown.Item
-                      onClick={() => handleAmount(a)}
-                      key={`${a}+${post.date}`}
-                      as="button"
-                    >
-                      {a}
-                    </Dropdown.Item>
-                  );
-                })}
-              </DropdownButton>
-              <Button 
-                onClick={() =>
-                  handleCart({
-                    amount: orders.amount,
-                    date: post.date,
-                    image: product.image,
-                    price: product.price,
-                    name: product.name,
-                    image: product.image,
-                    customerId: customer.id,
-                    postId: post.id,
-                  })
-                }
-                className="btn btn-dark m-1 p-1"
-              >
-                {" "}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  className="bi bi-cart-plus"
-                  viewBox="0 0 16 16"
+            {postO.amount === 0 ?
+              <div>no hay disponibilidad</div>
+              : <div className="d-flex align-items-center">
+                <span className="mx-2">
+                  {new Date(postO.date).toLocaleDateString("es-AR")}
+                </span>
+                <span className="mx-2">
+                  {new Date(postO.date).toLocaleTimeString("es-AR")}
+                </span>
+                <DropdownButton
+                  variant="light"
+                  className="mx-4"
+                  key={`newOrder_${orders.amount}`}
+                  title={orders.amount || "Cantidad"}
                 >
-                  <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z" />
-                  <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-                </svg>
-              </Button>
-            </div>
+                  {amountPostArray(postO).map((a) => {
+                    return (
+                      <Dropdown.Item
+                        onClick={() => handleAmount(a)}
+                        key={`${a}+${postO.date}`}
+                        as="button"
+                      >
+                        {a}
+                      </Dropdown.Item>
+                    );
+                  })}
+                </DropdownButton>
+                <Button
+                  onClick={() =>
+                    handleCart({
+                      amount: orders.amount,
+                      date: postO.date,
+                      image: product.image,
+                      price: product.price,
+                      name: product.name,
+                      image: product.image,
+                      customerId: customer.id,
+                      postId: postO.id,
+                    })
+                  }
+                  className="btn btn-dark m-1 p-1"
+                >
+                  {" "}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    className="bi bi-cart-plus"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z" />
+                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                  </svg>
+                </Button>
+              </div>
+            }
           </Card.Footer>
+          {ordersReview?.map(e=>{return <div>{e.reviewValue}</div>}) + "review"}
         </Card>
         <Footer />
       </>
